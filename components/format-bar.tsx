@@ -1,6 +1,6 @@
 import React from "react";
 import { Bold, Italic, Underline } from "lucide-react";
-import { Button } from "./ui/button";
+import { Toggle } from "./ui/toggle";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -22,8 +22,7 @@ export default function FormatBar({
 }: Props) {
   return (
     <div className="flex items-center justify-start w-full p-1 space-x-2 bg-windows border-t-windows-dark">
-      <Button
-        variant="ghost"
+      <Toggle
         onClick={setBold}
         className={cn(
           `shadow shadow-windows-dark px-2 py-1 hover:bg-white/50`,
@@ -31,9 +30,8 @@ export default function FormatBar({
         )}
       >
         <Bold />
-      </Button>
-      <Button
-        variant="ghost"
+      </Toggle>
+      <Toggle
         onClick={setItalic}
         className={cn(
           `shadow shadow-windows-dark px-2 py-1 hover:bg-white/50`,
@@ -41,9 +39,8 @@ export default function FormatBar({
         )}
       >
         <Italic />
-      </Button>
-      <Button
-        variant="ghost"
+      </Toggle>
+      <Toggle
         onClick={setUnderline}
         className={cn(
           `shadow shadow-windows-dark px-2 py-1 hover:bg-white/50`,
@@ -51,7 +48,7 @@ export default function FormatBar({
         )}
       >
         <Underline />
-      </Button>
+      </Toggle>
     </div>
   );
 }

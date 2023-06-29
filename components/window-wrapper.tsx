@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import { Button } from "./ui/button";
-import { CornerLeftDown, X, AppWindow, Save } from "lucide-react";
+import { X, AppWindow, Save } from "lucide-react";
 import Link from "next/link";
 import {
   Menubar,
@@ -12,7 +12,6 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import { LucideIcon } from "lucide-react";
 
 type Props = {
   children: React.ReactNode;
@@ -28,10 +27,10 @@ const WindowWrapper = ({ children, title, icon, expand }: Props) => {
     <>
       <div
         className={cn(
-          `absolute flex flex-col bg-white border border-t-windows-white border-l-windows-white border-r-windows-dark border-b-windows-dark resize-none`,
+          `absolute bg-white border border-t-windows-white border-l-windows-white border-r-windows-dark border-b-windows-dark resize-none`,
           isMax
-            ? `w-screen top-0 left-0 h-screen`
-            : `w-1/2 mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-[60vh]`
+            ? `w-screen max-w-[100vw] top-0 left-0 h-[95vh] max-h-[95vh]`
+            : `w-2/3 mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-[70vh]`
         )}
       >
         <div className="flex flex-col">
@@ -41,12 +40,6 @@ const WindowWrapper = ({ children, title, icon, expand }: Props) => {
               <p className="">{title}</p>
             </div>
             <div className="flex items-center gap-1">
-              <Button
-                variant="ghost"
-                className="p-0.5 h-7 w-7 rounded-none text-windows-dark bg-windows"
-              >
-                <CornerLeftDown />
-              </Button>
               <Button
                 variant="ghost"
                 className="p-0.5 h-7 rounded-none text-windows-dark bg-windows"
