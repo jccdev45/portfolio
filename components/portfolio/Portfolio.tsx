@@ -35,7 +35,7 @@ const Portfolio = () => {
           </Link>
         </div>
 
-        <div className="">
+        <div className="prose">
           <Separator />
           <p>{project.desc}</p>
           <Separator />
