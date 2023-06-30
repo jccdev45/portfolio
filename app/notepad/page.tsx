@@ -3,7 +3,7 @@
 import React from "react";
 import { StickyNote } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
-import WindowWrapper from "@/components/window-wrapper";
+import WindowWrapper from "@/components/window/window-wrapper";
 import FormatBar from "@/components/format-bar";
 import { cn } from "@/lib/utils";
 

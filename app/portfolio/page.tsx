@@ -1,6 +1,6 @@
 import { Briefcase } from "lucide-react";
 
-import WindowWrapper from "@/components/window-wrapper";
+import WindowWrapper from "@/components/window/window-wrapper";
 import Portfolio from "@/components/portfolio/Portfolio";
 
 const BCase = <Briefcase />;

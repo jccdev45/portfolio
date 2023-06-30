@@ -7,11 +7,12 @@ import {
   Laptop2,
   PlugZap,
   Spade,
-  StickyNote,
+  BookOpen,
   Trash2,
   Twitch,
-  Utensils,
   UtensilsCrossed,
+  StickyNote,
+  Music,
 } from "lucide-react";
 
 export const myProjects = [
@@ -102,7 +103,34 @@ export const desktopIcons = [
     id: 4,
     label: "Notepad",
     path: "notepad",
-    icon: <StickyNote className="block w-10 h-10 text-windows-black/70" />,
+    icon: <BookOpen className="block w-10 h-10 text-windows-black/70" />,
+  },
+];
+
+export const toRecycle = [
+  {
+    id: 1,
+    title: "passwords.txt",
+    ext: ".txt",
+    size: "14 kb",
+    icon: <StickyNote />,
+    path: "/user/notes",
+  },
+  {
+    id: 2,
+    title: "creed_take_me_higher.mp3",
+    ext: ".mp3",
+    size: "4.6 mb",
+    icon: <Music />,
+    path: "/user/audio",
+  },
+  {
+    id: 3,
+    title: "bank_account_number_and_debit_card_pin.txt",
+    ext: ".txt",
+    size: "8 kb",
+    icon: <StickyNote />,
+    path: "/user/notes",
   },
 ];
 

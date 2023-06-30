@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          `bg-gradient-to-br from-sky-300 to-sky-600 relative h-screen overflow-hidden`,
+          `bg-gradient-to-br from-sky-400 to-sky-200 relative h-screen overflow-hidden`,
           inter.className
         )}
       >

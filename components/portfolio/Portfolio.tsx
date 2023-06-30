@@ -7,13 +7,16 @@ import { Separator } from "@/components/ui/separator";
 import { myProjects } from "@/lib/constants";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { WindowContent } from "../window/window-content";
+import WindowSidebar from "../window/window-sidebar";
+import WindowIcon from "../window/window-icon";
 
 const Portfolio = () => {
   const [project, setProject] = useState<typeof myProjects[0]>(myProjects[0]);
 
   return (
-    <div className="grid w-full h-full grid-cols-12 justify-items-center">
-      <div className="grid min-h-full col-span-4 grid-rows-3 p-2 text-center border-r-windows gap-y-8 bg-gradient-to-r from-windows via-windows-white to-windows-white">
+    <div className="grid w-full h-full grid-cols-12">
+      <WindowSidebar>
         <div className="flex flex-col items-center justify-evenly">
           <span className="scale-110">{project.icon}</span>
           <Link
@@ -45,32 +48,26 @@ const Portfolio = () => {
             </Badge>
           ))}
         </div>
-      </div>
+      </WindowSidebar>
 
-      <div className="grid w-full grid-cols-12 col-span-8 grid-rows-6 p-2 pb-0 shadow-inner space-4 shadow-windows-dark">
+      <WindowContent>
         {myProjects.map((proj) => (
-          <div
+          <WindowIcon
             key={proj.id}
-            className={cn(
-              `flex flex-col items-center justify-center col-span-3 cursor-pointer w-3/4 mx-auto h-full`,
+            topStyle={
               proj === project ? `border border-dashed border-windows-dark` : ``
-            )}
-            onClick={() => {
+            }
+            bottomStyle={
+              proj === project ? `bg-windows-blue text-windows-white` : ``
+            }
+            handleClick={() => {
               proj !== project && setProject(proj);
             }}
-          >
-            <span className="scale-75">{proj.icon}</span>
-            <p
-              className={cn(
-                `text-sm truncate max-w-full`,
-                proj === project ? `bg-windows-blue text-windows-white` : ``
-              )}
-            >
-              {proj.title}
-            </p>
-          </div>
+            icon={proj.icon}
+            title={proj.title}
+          />
         ))}
-      </div>
+      </WindowContent>
     </div>
   );
 };
