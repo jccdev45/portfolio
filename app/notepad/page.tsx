@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import WindowWrapper from "@/components/window/window-wrapper";
 import FormatBar from "@/components/format-bar";
 import { cn } from "@/lib/utils";
+import { menuItems } from "@/lib/constants";
 
 const SNote = <StickyNote />;
 
@@ -16,7 +17,7 @@ const NotepadPage = () => {
   const [isUnderline, setIsUnderline] = React.useState(false);
 
   return (
-    <WindowWrapper title="Notepad" icon={SNote}>
+    <WindowWrapper title="Notepad" icon={SNote} menu={menuItems.notepad}>
       <FormatBar
         setBold={() => setIsBold(!isBold)}
         setItalic={() => setIsItalic(!isItalic)}

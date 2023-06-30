@@ -1,19 +1,52 @@
+import { ClipboardPaste } from "lucide-react";
 import {
+  BookOpen,
   Briefcase,
   ChefHat,
   Club,
+  Copy,
   Diamond,
+  FileX2,
   Heart,
   Laptop2,
+  Music,
   PlugZap,
+  Save,
   Spade,
-  BookOpen,
+  StickyNote,
   Trash2,
   Twitch,
   UtensilsCrossed,
-  StickyNote,
-  Music,
+  XCircle,
 } from "lucide-react";
+
+export const menuItems = {
+  notepad: [
+    {
+      trigger: "File",
+      items: [
+        { title: "Save", icon: <Save /> },
+        { title: "Exit", icon: <XCircle /> },
+      ],
+    },
+    {
+      trigger: "Edit",
+      items: [
+        { title: "Copy", icon: <Copy /> },
+        { title: "Paste", icon: <ClipboardPaste /> },
+      ],
+    },
+  ],
+  recycleBin: [
+    {
+      trigger: "File",
+      items: [
+        { title: "Empty", icon: <FileX2 /> },
+        { title: "Exit", icon: <XCircle /> },
+      ],
+    },
+  ],
+};
 
 export const myProjects = [
   {

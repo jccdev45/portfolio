@@ -6,7 +6,7 @@ import WindowSidebar from "@/components/window/window-sidebar";
 import { WindowContent } from "@/components/window/window-content";
 import WindowIcon from "@/components/window/window-icon";
 import WindowWrapper from "@/components/window/window-wrapper";
-import { toRecycle } from "@/lib/constants";
+import { menuItems, toRecycle } from "@/lib/constants";
 
 const TrashIcon = <Trash2 />;
 
@@ -14,7 +14,11 @@ const RecycleBinPage = () => {
   const [recycleItem, setRecycleItem] = useState<typeof toRecycle[0]>();
 
   return (
-    <WindowWrapper title="Recycle Bin" icon={TrashIcon}>
+    <WindowWrapper
+      title="Recycle Bin"
+      icon={TrashIcon}
+      menu={menuItems.recycleBin}
+    >
       <div className="grid w-full min-h-full grid-cols-12">
         <WindowSidebar>
           <div className="flex flex-col items-center justify-evenly">
@@ -58,10 +62,6 @@ const RecycleBinPage = () => {
               </li>
             </ul>
           </div>
-
-          {/* <div className="flex flex-col items-start text-left justify-evenly">
-            
-          </div> */}
         </WindowSidebar>
 
         <WindowContent>

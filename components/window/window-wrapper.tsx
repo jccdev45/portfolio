@@ -1,10 +1,9 @@
 "use client";
 
-import { cn } from "@/lib/utils";
 import React from "react";
-import { Button } from "@/components/ui/button";
-import { X, AppWindow, Save } from "lucide-react";
 import Link from "next/link";
+import { X, AppWindow } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Menubar,
   MenubarContent,
@@ -12,15 +11,17 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
+import { cn } from "@/lib/utils";
 
 type Props = {
   children: React.ReactNode;
-  title: string;
-  icon: any;
   expand?: boolean;
+  icon: JSX.Element;
+  menu?: { trigger: string; items: { title: string; icon: JSX.Element }[] }[];
+  title: string;
 };
 
-const WindowWrapper = ({ children, title, icon, expand }: Props) => {
+const WindowWrapper = ({ children, expand, icon, menu, title }: Props) => {
   const [isMax, setIsMax] = React.useState<boolean | null>(expand || false);
 
   return (
@@ -58,30 +59,26 @@ const WindowWrapper = ({ children, title, icon, expand }: Props) => {
               </Button>
             </div>
           </div>
-          <Menubar className="h-8 rounded-none bg-windows">
-            <MenubarMenu>
-              <MenubarTrigger className="data-[state=open]:shadow-inner data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:bg-windows/70 data-[state=open]:border-windows-dark focus:bg-windows/50">
-                File
-              </MenubarTrigger>
-              <MenubarContent className="-mt-2 rounded-none bg-windows">
-                <MenubarItem>
-                  <Save /> Save
-                  {/* <Button
-                  onClick={() => {
-                    const makeTitle = note
-                      .replace(/^(\w+).*$/, "$1")
-                      .slice(0, 10);
-                    const fullTitle =
-                      makeTitle.length === 10 ? makeTitle + "..." : makeTitle;
-                    setTitle(fullTitle);
-                  }}
-                >
-                  <Save /> Save
-                </Button> */}
-                </MenubarItem>
-              </MenubarContent>
-            </MenubarMenu>
-          </Menubar>
+
+          {menu && (
+            <Menubar className="h-8 rounded-none bg-windows">
+              {menu.map((menuItem) => (
+                <MenubarMenu key={menuItem.trigger}>
+                  <MenubarTrigger className="data-[state=open]:shadow-inner data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:bg-windows/70 data-[state=open]:border-windows-dark focus:bg-windows/50">
+                    {menuItem.trigger}
+                  </MenubarTrigger>
+                  <MenubarContent className="ml-1 -mt-2 rounded-none bg-windows">
+                    {menuItem.items.map((item) => (
+                      <MenubarItem key={item.title}>
+                        <>{item.icon}</>{" "}
+                        <span className="mx-2">{item.title}</span>
+                      </MenubarItem>
+                    ))}
+                  </MenubarContent>
+                </MenubarMenu>
+              ))}
+            </Menubar>
+          )}
         </div>
         {children}
       </div>
