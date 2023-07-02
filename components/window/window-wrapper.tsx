@@ -20,14 +20,14 @@ import {
 import { cn } from "@/lib/utils";
 
 type Props = {
-  actionProp: string;
+  actionProp?: string;
   children: React.ReactNode;
   expand?: boolean;
   icon: JSX.Element;
   menu: {
     trigger: string;
     items: {
-      action: (actionProp: string) => void;
+      action?: ((actionProp: string | undefined) => void) | null;
       title: string;
       icon: JSX.Element;
       tooltip: string;
@@ -36,14 +36,14 @@ type Props = {
   title: string;
 };
 
-const WindowWrapper = ({
+export function WindowWrapper({
   actionProp,
   children,
   expand,
   icon,
   menu,
   title,
-}: Props) => {
+}: Props) {
   const [isMax, setIsMax] = React.useState<boolean | null>(expand || false);
 
   return (
@@ -53,7 +53,7 @@ const WindowWrapper = ({
           `absolute bg-white border-2 border-t-windows border-l-windows border-r-windows-dark border-b-windows-dark shadow-inner shadow-windows-dark resize-none`,
           isMax
             ? `w-screen max-w-[100vw] top-0 left-0 h-[95vh] max-h-[95vh]`
-            : `w-2/3 mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-[70vh]`
+            : `w-2/3 mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-[70vh] max-h-[90vh]`
         )}
       >
         <div className="flex flex-col">
@@ -95,7 +95,9 @@ const WindowWrapper = ({
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <MenubarItem
-                              onClick={() => item.action(actionProp)}
+                              onClick={() =>
+                                item.action && item.action(actionProp)
+                              }
                             >
                               <>{item.icon}</>{" "}
                               <span className="mx-2">{item.title}</span>
@@ -119,6 +121,4 @@ const WindowWrapper = ({
       </div>
     </>
   );
-};
-
-export default WindowWrapper;
+}

@@ -1,9 +1,10 @@
-import { ClipboardPaste } from "lucide-react";
 import {
   BookOpen,
   Briefcase,
   ChefHat,
+  ClipboardPaste,
   Club,
+  Contact,
   Copy,
   Diamond,
   FileX2,
@@ -38,15 +39,15 @@ export const menuItems = {
           tooltip: "Max 10 notes",
           icon: <Save />,
         },
-        { action: () => {}, title: "Exit", tooltip: "", icon: <XCircle /> },
+        { action: null, title: "Exit", tooltip: "", icon: <XCircle /> },
       ],
     },
     {
       trigger: "Edit",
       items: [
-        { action: () => {}, title: "Copy", tooltip: "", icon: <Copy /> },
+        { action: null, title: "Copy", tooltip: "", icon: <Copy /> },
         {
-          action: () => {},
+          action: null,
           title: "Paste",
           tooltip: "",
           icon: <ClipboardPaste />,
@@ -66,16 +67,19 @@ export const menuItems = {
           tooltip: "",
           icon: <FileX2 />,
         },
-        { action: () => {}, title: "Exit", tooltip: "", icon: <XCircle /> },
+        {
+          action: null,
+          title: "Exit",
+          tooltip: "",
+          icon: <XCircle />,
+        },
       ],
     },
   ],
   default: [
     {
       trigger: "File",
-      items: [
-        { action: () => {}, title: "Exit", tooltip: "", icon: <XCircle /> },
-      ],
+      items: [{ action: null, title: "Exit", tooltip: "", icon: <XCircle /> }],
     },
   ],
 };
@@ -170,6 +174,18 @@ export const desktopIcons = [
     path: "/notepad",
     icon: <BookOpen className="block w-10 h-10 text-windows-black/70" />,
   },
+  {
+    id: 5,
+    label: "Solitaire",
+    path: "/solitaire",
+    icon: <Club className="block w-10 h-10 text-windows-black/70" />,
+  },
+  {
+    id: 6,
+    label: "Contact",
+    path: "/contact",
+    icon: <Contact className="block w-10 h-10 text-windows-black/70" />,
+  },
 ];
 
 export const toRecycle = [
@@ -199,23 +215,27 @@ export const toRecycle = [
   },
 ];
 
-export const offsets = {
-  "0": "top-0",
-  "1": "top-4",
-  "2": "top-8",
-  "3": "top-12",
-  "4": "top-16",
-  "5": "top-20",
-  "6": "top-24",
-  "7": "top-28",
-  "8": "top-32",
-  "9": "top-36",
-  "10": "top-40",
-  "11": "top-44",
-  "12": "top-48",
-  "13": "top-52",
-  "14": "top-56",
-  "15": "top-60",
+interface Offset {
+  [key: number]: string;
+}
+
+export const offsets: Offset = {
+  0: "top-0",
+  1: "top-4",
+  2: "top-8",
+  3: "top-12",
+  4: "top-16",
+  5: "top-20",
+  6: "top-24",
+  7: "top-28",
+  8: "top-32",
+  9: "top-36",
+  10: "top-40",
+  11: "top-44",
+  12: "top-48",
+  13: "top-52",
+  14: "top-56",
+  15: "top-60",
 };
 
 export const suitIcons = {
@@ -227,18 +247,22 @@ export const suitIcons = {
   spades: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
 };
 
-export const values = {
-  "1": "A",
-  "2": "2",
-  "3": "3",
-  "4": "4",
-  "5": "5",
-  "6": "6",
-  "7": "7",
-  "8": "8",
-  "9": "9",
-  "10": "10",
-  "11": "J",
-  "12": "Q",
-  "13": "K",
+interface Value {
+  [key: number]: string;
+}
+
+export const values: Value = {
+  1: "A",
+  2: "2",
+  3: "3",
+  4: "4",
+  5: "5",
+  6: "6",
+  7: "7",
+  8: "8",
+  9: "9",
+  10: "10",
+  11: "J",
+  12: "Q",
+  13: "K",
 };

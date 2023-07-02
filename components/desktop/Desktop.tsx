@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { desktopIcons } from "@/lib/constants";
 
-const Desktop = () => {
+export default function Desktop() {
   return (
     <div className="absolute flex flex-col flex-wrap items-center justify-center max-h-full gap-8 top-2 left-2">
       {desktopIcons.map((icon) => (
@@ -18,6 +18,4 @@ const Desktop = () => {
       ))}
     </div>
   );
-};
-
-export default Desktop;
+}

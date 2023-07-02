@@ -6,12 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { myProjects } from "@/lib/constants";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
 import { WindowContent } from "../window/window-content";
-import WindowSidebar from "../window/window-sidebar";
-import WindowIcon from "../window/window-icon";
+import { WindowSidebar } from "../window/window-sidebar";
+import { WindowIcon } from "../window/window-icon";
 
-const Portfolio = () => {
+export function Portfolio() {
   const [project, setProject] = useState<typeof myProjects[0]>(myProjects[0]);
 
   return (
@@ -70,6 +69,4 @@ const Portfolio = () => {
       </WindowContent>
     </div>
   );
-};
-
-export default Portfolio;
+}

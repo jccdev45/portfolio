@@ -6,7 +6,7 @@ type WindowContentProps = {
   style?: string;
 };
 
-export const WindowContent = ({ children, style }: WindowContentProps) => {
+export function WindowContent({ children, style }: WindowContentProps) {
   return (
     <div
       className={cn(
@@ -17,4 +17,4 @@ export const WindowContent = ({ children, style }: WindowContentProps) => {
       {children}
     </div>
   );
-};
+}

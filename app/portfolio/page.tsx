@@ -1,16 +1,17 @@
 import { Briefcase } from "lucide-react";
 
-import WindowWrapper from "@/components/window/window-wrapper";
-import Portfolio from "@/components/portfolio/Portfolio";
+import { Portfolio } from "@/components/portfolio/Portfolio";
+import { WindowWrapper } from "@/components/window/window-wrapper";
+import { menuItems } from "@/lib/constants";
 
-const BCase = <Briefcase />;
-
-const PortfolioPage = () => {
+export default function PortfolioPage() {
   return (
-    <WindowWrapper icon={BCase} title="My Work">
+    <WindowWrapper
+      icon={<Briefcase />}
+      title="My Work"
+      menu={menuItems.default}
+    >
       <Portfolio />
     </WindowWrapper>
   );
-};
-
-export default PortfolioPage;
+}

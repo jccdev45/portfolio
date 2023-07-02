@@ -12,7 +12,7 @@ type Props = {
   isUnderline: boolean;
 };
 
-export default function FormatBar({
+export function FormatBar({
   setBold,
   isBold,
   setItalic,

@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { MainNav } from "@/components/main-nav";
+import Desktop from "@/components/desktop/Desktop";
 import { cn } from "@/lib/utils";
 import "./globals.css";
-import Desktop from "@/components/desktop/Desktop";
 
 const inter = Inter({ subsets: ["latin"] });
 

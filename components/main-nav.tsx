@@ -16,6 +16,12 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   Club,
   Contact2,
   Files,
@@ -100,10 +106,21 @@ export function MainNav({ defaultValue }: Props) {
 
       <div className="flex items-center justify-between col-span-1 col-end-13 shadow-inner shadow-windows-dark">
         <MenubarMenu>
-          <MenubarTrigger className="">
-            {/* @ts-ignore */}
-            {value > 0 ? <Volume2 /> : <Volume />}
-          </MenubarTrigger>
+          <TooltipProvider>
+            <Tooltip>
+              <MenubarTrigger className="">
+                <TooltipTrigger asChild>
+                  {/* @ts-ignore */}
+                  <span>{value > 0 ? <Volume2 /> : <Volume />}</span>
+                </TooltipTrigger>
+              </MenubarTrigger>
+              <TooltipContent>
+                {/* @ts-ignore */}
+                <p>Volume: {value ? value * 100 : 0} %</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+
           <MenubarContent>
             <MenubarItem>
               <Slider
@@ -118,10 +135,30 @@ export function MainNav({ defaultValue }: Props) {
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
+
         <MenubarMenu>
           <MenubarTrigger className="">
-            <Clock />
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <span>
+                    <Clock />
+                  </span>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>
+                    {new Date().toLocaleDateString("en-US", {
+                      weekday: "long",
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           </MenubarTrigger>
+
           <MenubarContent>
             <MenubarItem>
               <Calendar

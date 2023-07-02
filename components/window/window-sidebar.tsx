@@ -1,12 +1,12 @@
-import { cn } from "@/lib/utils";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 type WindowSidebarProps = {
   children: React.ReactNode;
   style?: string;
 };
 
-const WindowSidebar = ({ children, style }: WindowSidebarProps) => {
+export function WindowSidebar({ children, style }: WindowSidebarProps) {
   return (
     <div
       className={cn(
@@ -17,6 +17,4 @@ const WindowSidebar = ({ children, style }: WindowSidebarProps) => {
       {children}
     </div>
   );
-};
-
-export default WindowSidebar;
+}

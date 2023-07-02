@@ -2,23 +2,20 @@
 
 import { useState } from "react";
 import { Trash2 } from "lucide-react";
-import WindowSidebar from "@/components/window/window-sidebar";
+import { WindowSidebar } from "@/components/window/window-sidebar";
 import { WindowContent } from "@/components/window/window-content";
-import WindowIcon from "@/components/window/window-icon";
-import WindowWrapper from "@/components/window/window-wrapper";
+import { WindowIcon } from "@/components/window/window-icon";
+import { WindowWrapper } from "@/components/window/window-wrapper";
 import { menuItems, toRecycle } from "@/lib/constants";
 
-const TrashIcon = <Trash2 />;
-
-const RecycleBinPage = () => {
+export default function RecycleBinPage() {
   const [recycleItem, setRecycleItem] = useState<typeof toRecycle[0]>();
 
   return (
     <WindowWrapper
       title="Recycle Bin"
-      icon={TrashIcon}
+      icon={<Trash2 />}
       menu={menuItems.recycleBin}
-      actionProp={``}
     >
       <div className="grid w-full min-h-full grid-cols-12">
         <WindowSidebar>
@@ -90,6 +87,4 @@ const RecycleBinPage = () => {
       </div>
     </WindowWrapper>
   );
-};
-
-export default RecycleBinPage;
+}

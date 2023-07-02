@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const Clock = () => {
+export default function Clock() {
   const [min, setMin] = useState("");
   const [hrs, setHrs] = useState("");
 
@@ -33,6 +33,4 @@ const Clock = () => {
       {hrs} <span className="animate-pulse">:</span> {min}
     </div>
   );
-};
-
-export default Clock;
+}

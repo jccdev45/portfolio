@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   bottomStyle?: string;
@@ -9,13 +9,13 @@ type Props = {
   topStyle?: string;
 };
 
-const WindowIcon = ({
+export function WindowIcon({
   bottomStyle,
   handleClick,
   icon,
   title,
   topStyle,
-}: Props) => {
+}: Props) {
   return (
     <div
       className={cn(
@@ -28,6 +28,4 @@ const WindowIcon = ({
       <p className={cn(`text-sm truncate max-w-full`, bottomStyle)}>{title}</p>
     </div>
   );
-};
-
-export default WindowIcon;
+}
