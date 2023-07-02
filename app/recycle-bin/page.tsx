@@ -18,6 +18,7 @@ const RecycleBinPage = () => {
       title="Recycle Bin"
       icon={TrashIcon}
       menu={menuItems.recycleBin}
+      actionProp={``}
     >
       <div className="grid w-full min-h-full grid-cols-12">
         <WindowSidebar>
@@ -36,7 +37,7 @@ const RecycleBinPage = () => {
           </div>
 
           <div>
-            <h2 className="flex items-center max-w-full my-4 text-2xl break-all gap-x-2">
+            <h2 className="flex items-center max-w-full my-4 text-xl break-all gap-x-2">
               <span className="scale-110">
                 {recycleItem ? (
                   recycleItem.icon

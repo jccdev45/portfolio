@@ -20,20 +20,37 @@ import {
   XCircle,
 } from "lucide-react";
 
+export const playSound = (title: string) => {
+  const audioElement = new Audio(`/${title}.mp3`);
+  audioElement.play();
+};
+
 export const menuItems = {
   notepad: [
     {
       trigger: "File",
       items: [
-        { title: "Save", icon: <Save /> },
-        { title: "Exit", icon: <XCircle /> },
+        {
+          action: () => {
+            return playSound("save");
+          },
+          title: "Save",
+          tooltip: "Max 10 notes",
+          icon: <Save />,
+        },
+        { action: () => {}, title: "Exit", tooltip: "", icon: <XCircle /> },
       ],
     },
     {
       trigger: "Edit",
       items: [
-        { title: "Copy", icon: <Copy /> },
-        { title: "Paste", icon: <ClipboardPaste /> },
+        { action: () => {}, title: "Copy", tooltip: "", icon: <Copy /> },
+        {
+          action: () => {},
+          title: "Paste",
+          tooltip: "",
+          icon: <ClipboardPaste />,
+        },
       ],
     },
   ],
@@ -41,8 +58,23 @@ export const menuItems = {
     {
       trigger: "File",
       items: [
-        { title: "Empty", icon: <FileX2 /> },
-        { title: "Exit", icon: <XCircle /> },
+        {
+          action: () => {
+            return playSound("empty");
+          },
+          title: "Empty",
+          tooltip: "",
+          icon: <FileX2 />,
+        },
+        { action: () => {}, title: "Exit", tooltip: "", icon: <XCircle /> },
+      ],
+    },
+  ],
+  default: [
+    {
+      trigger: "File",
+      items: [
+        { action: () => {}, title: "Exit", tooltip: "", icon: <XCircle /> },
       ],
     },
   ],
@@ -53,7 +85,7 @@ export const myProjects = [
     id: 1,
     title: "Family Recipes",
     desc:
-      "-- v2 in progress, full rewrite to NextJS w/ Supabase -- Digital version of a family recipe book. Includes several Firebase services: Authentication, Cloud Firestore and Storage for photo upload.",
+      "-- v2 in progress, full rewrite in Typescript to NextJS w/ Supabase -- Digital version of a family recipe book. Includes several Firebase services: Authentication, Cloud Firestore and Storage for photo upload.",
     tech: [
       "fullstack",
       "react",
@@ -73,7 +105,7 @@ export const myProjects = [
     id: 2,
     title: "NYC Health Inspections",
     desc:
-      "-- v2 in progress, full rewrite to NextJS -- Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. Made with create-react-app, using react-mapbox-gl, styled with TailwindCSS and deployed via Netlify.",
+      "-- v2 in progress, full rewrite to Typescript in NextJS -- Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. Made with create-react-app, using react-mapbox-gl, styled with TailwindCSS and deployed via Netlify.",
     tech: ["frontend", "react", "hooks", "react-mapbox-gl", "tailwindcss"],
     live: "https://nyc-health-violations.netlify.app/",
     repoURL: "https://github.com/jccdev45/nyc-restaurant-violations",
@@ -117,25 +149,25 @@ export const desktopIcons = [
   {
     id: 1,
     label: "My Computer",
-    path: "computer",
+    path: "/computer",
     icon: <Laptop2 className="block w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 2,
     label: "My Briefcase",
-    path: "portfolio",
+    path: "/portfolio",
     icon: <Briefcase className="block w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 3,
     label: "Recycle Bin",
-    path: "recycle-bin",
+    path: "/recycle-bin",
     icon: <Trash2 className="block w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 4,
     label: "Notepad",
-    path: "notepad",
+    path: "/notepad",
     icon: <BookOpen className="block w-10 h-10 text-windows-black/70" />,
   },
 ];
@@ -146,7 +178,7 @@ export const toRecycle = [
     title: "passwords.txt",
     ext: ".txt",
     size: "14 kb",
-    icon: <StickyNote />,
+    icon: <StickyNote className="w-20 h-20" />,
     path: "/user/notes",
   },
   {
@@ -154,7 +186,7 @@ export const toRecycle = [
     title: "creed_take_me_higher.mp3",
     ext: ".mp3",
     size: "4.6 mb",
-    icon: <Music />,
+    icon: <Music className="w-20 h-20" />,
     path: "/user/audio",
   },
   {
@@ -162,7 +194,7 @@ export const toRecycle = [
     title: "bank_account_number_and_debit_card_pin.txt",
     ext: ".txt",
     size: "8 kb",
-    icon: <StickyNote />,
+    icon: <StickyNote className="w-20 h-20" />,
     path: "/user/notes",
   },
 ];

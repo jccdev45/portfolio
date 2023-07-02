@@ -17,7 +17,12 @@ const NotepadPage = () => {
   const [isUnderline, setIsUnderline] = React.useState(false);
 
   return (
-    <WindowWrapper title="Notepad" icon={SNote} menu={menuItems.notepad}>
+    <WindowWrapper
+      title="Notepad"
+      icon={SNote}
+      menu={menuItems.notepad}
+      actionProp={note}
+    >
       <FormatBar
         setBold={() => setIsBold(!isBold)}
         setItalic={() => setIsItalic(!isItalic)}
@@ -29,7 +34,7 @@ const NotepadPage = () => {
       <Textarea
         placeholder="Eggs, milk, sugar..."
         className={cn(
-          `min-h-[200px] placeholder:italic placeholder:font-normal placeholder:underline flex-1 p-4 rounded-none shadow-inner resize-none`,
+          `absolute left-0 h-full max-h-[80%] placeholder:italic placeholder:font-normal placeholder:underline flex-1 p-4 rounded-none shadow-inner resize-none`,
           isBold ? `font-bold` : `font-normal`,
           isItalic ? `italic` : `not-italic`,
           isUnderline ? `underline` : `no-underline`

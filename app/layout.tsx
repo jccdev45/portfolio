@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Inter } from "next/font/google";
 import { MainNav } from "@/components/main-nav";
 import { cn } from "@/lib/utils";
 import "./globals.css";
-import { desktopIcons } from "@/lib/constants";
+import Desktop from "@/components/desktop/Desktop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,22 +25,14 @@ export default function RootLayout({
           inter.className
         )}
       >
-        <div className="absolute flex flex-col items-center gap-8 top-2 left-2 justify-evenly">
-          {desktopIcons.map((icon) => (
-            <Link
-              href={icon.path}
-              key={icon.id}
-              className="flex flex-col items-center w-30 h-30"
-            >
-              {icon.icon}
-              {icon.label}
-            </Link>
-          ))}
-        </div>
+        <Desktop />
+
         <div className="relative grid w-1/3 h-screen mx-auto -z-0 place-items-center">
           <Image src="/download.png" alt="" height={200} width={200} priority />
         </div>
+
         {children}
+
         <MainNav />
       </body>
     </html>
