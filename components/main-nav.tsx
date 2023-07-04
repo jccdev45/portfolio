@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SliderProps } from "@radix-ui/react-slider";
 import {
@@ -9,7 +10,6 @@ import {
   MenubarItem,
   MenubarMenu,
   MenubarSeparator,
-  MenubarShortcut,
   MenubarSub,
   MenubarSubContent,
   MenubarSubTrigger,
@@ -22,9 +22,9 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
+  Briefcase,
   Club,
-  Contact2,
-  Files,
+  Contact,
   LayoutPanelLeft,
   Power,
   StickyNote,
@@ -33,16 +33,15 @@ import {
   Volume,
   Volume2,
 } from "lucide-react";
+import Clock from "./desktop/Clock";
 import { Calendar } from "./ui/calendar";
 import { Slider } from "./ui/slider";
-import Link from "next/link";
-import Clock from "./desktop/Clock";
 
-interface Props {
+interface MainNavProps {
   defaultValue?: SliderProps["defaultValue"];
 }
 
-export function MainNav({ defaultValue }: Props) {
+export function MainNav({ defaultValue }: MainNavProps) {
   const path = usePathname();
   const withoutSlashes = path.replace(/\//g, "");
 
@@ -56,50 +55,61 @@ export function MainNav({ defaultValue }: Props) {
   return (
     <Menubar className="absolute bottom-0 left-0 grid w-screen h-12 grid-cols-12 px-1 border rounded-none bg-windows border-t-windows-white">
       <MenubarMenu>
-        <MenubarTrigger className="relative flex items-center col-start-1 col-span-1 justify-between border-2 rounded-none shadow shadow-windows-dark border-b-windows-dark border-r-windows-dark border-t-windows-white border-l-windows-white data-[state=open]:bg-windows-white/70 data-[state=open]:text-windows-black px-1.5 py-1 focus:bg-windows data-[state=open]:shadow-inner data-[state=open]:border-t-windows-dark data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-b-windows-white active:shadow-windows-dark data-[state=open]:border-dashed data-[state=open]:border-windows-dark">
+        <MenubarTrigger className="relative px-1.5 py-1 flex items-center col-start-1 col-span-1 justify-between border-2 rounded-none shadow shadow-windows-dark border-b-windows-dark border-r-windows-dark border-t-windows-white border-l-windows-white data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black focus:bg-windows data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-t-windows-dark data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-b-windows-white active:shadow-windows-dark">
           <Ungroup /> Start
         </MenubarTrigger>
-        <MenubarContent className="relative pl-4 -mb-1 rounded-none bg-windows -z-0">
-          <div className="absolute left-0 w-4 h-full bg-windows-blue"></div>
+        <MenubarContent className="relative pl-6 py-0 pr-0 -mb-[0.2rem] rounded-none bg-windows">
+          <div className="absolute left-0 w-6 h-full bg-windows-blue">
+            <span className="absolute tracking-widest -rotate-90 -left-[1.25rem] bottom-8 text-sm text-windows-white">
+              jccdev
+            </span>
+          </div>
           <MenubarSub>
-            <MenubarSubTrigger>
+            <MenubarSubTrigger className="rounded-none">
               <LayoutPanelLeft className="mr-2" /> Programs
             </MenubarSubTrigger>
             <MenubarSeparator />
-            <MenubarSubContent className="bg-windows">
-              <MenubarItem>
-                <Contact2 /> Contact
-              </MenubarItem>
-              <MenubarItem>
+            <MenubarSubContent className="rounded-none bg-windows">
+              <MenubarItem className="rounded-none">
                 <Link href="/notepad" className="flex items-center">
-                  <StickyNote /> Notepad
+                  <StickyNote className="mr-2" /> Notepad
                 </Link>
               </MenubarItem>
-              <MenubarItem>
+              <MenubarItem className="rounded-none">
                 <Link href="/solitaire" className="flex items-center">
-                  <Club /> Solitaire
+                  <Club className="mr-2" /> Solitaire
                 </Link>
               </MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
-          <MenubarItem className="my-4">
-            <Files className="mr-2" /> Documents
-            <MenubarShortcut>⌘D</MenubarShortcut>
+          <MenubarItem className="rounded-none">
+            <Link
+              href="/portfolio"
+              className="flex items-center w-full cursor-pointer"
+            >
+              <Briefcase className="mr-2" /> Briefcase
+            </Link>
           </MenubarItem>
-          <MenubarItem>
-            <Terminal className="mr-2" /> Run{" "}
-            <MenubarShortcut>⌘R</MenubarShortcut>
+          <MenubarItem className="rounded-none">
+            <Link
+              href="/contact"
+              className="flex items-center w-full cursor-pointer"
+            >
+              <Contact className="mr-2" /> Contact
+            </Link>
+          </MenubarItem>
+          <MenubarItem className="rounded-none">
+            <Terminal className="mr-2" /> Run
           </MenubarItem>
           <MenubarSeparator />
-          <MenubarItem>
-            <Power className="mr-2" /> Shut Down{" "}
-            <MenubarShortcut>⌘S</MenubarShortcut>
+          <MenubarItem className="rounded-none">
+            <Power className="mr-2" /> Shut Down
           </MenubarItem>
         </MenubarContent>
       </MenubarMenu>
 
       {capitalized.length > 0 && (
-        <div className="border mr-auto border-dashed col-auto col-start-2 shadow-inner shadow-windows-dark border-windows-white py-1 px-1.5 w-44 truncate">
+        <div className="border-2 border-t-windows-dark border-l-windows-dark border-b-windows-white border-r-windows-white mr-auto bg-windows-white/30 col-auto col-start-2 shadow-inner shadow-windows-dark border-windows-white py-1 px-1.5 w-44 truncate">
           {capitalized}
         </div>
       )}
@@ -108,7 +118,7 @@ export function MainNav({ defaultValue }: Props) {
         <MenubarMenu>
           <TooltipProvider>
             <Tooltip>
-              <MenubarTrigger className="">
+              <MenubarTrigger>
                 <TooltipTrigger asChild>
                   {/* @ts-ignore */}
                   <span>{value > 0 ? <Volume2 /> : <Volume />}</span>

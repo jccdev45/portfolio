@@ -18,23 +18,25 @@ export function Portfolio() {
       <WindowSidebar>
         <div className="flex flex-col items-center justify-evenly">
           <span className="scale-110">{project.icon}</span>
-          <Link
-            target="_blank"
-            href={project.live}
-            className="flex items-center text-lg underline hover:text-windows-blue"
-          >
-            <ExternalLink /> {project.title}
-          </Link>
-          <Link
-            target="_blank"
-            href={project.repoURL}
-            className="flex items-center underline hover:text-windows-blue"
-          >
-            <ExternalLink /> Github
-          </Link>
+          <div className="flex justify-evenly w-full">
+            <Link
+              target="_blank"
+              href={project.live}
+              className="flex items-center text-lg underline underline-offset-2 hover:text-windows-blue"
+            >
+              <ExternalLink /> Live
+            </Link>
+            <Link
+              target="_blank"
+              href={project.repoURL}
+              className="flex items-center underline underline-offset-2 hover:text-windows-blue"
+            >
+              <ExternalLink /> Github
+            </Link>
+          </div>
         </div>
 
-        <div className="prose">
+        <div className="">
           <Separator />
           <p>{project.desc}</p>
           <Separator />

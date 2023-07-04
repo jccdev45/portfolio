@@ -10,6 +10,7 @@ export default function PortfolioPage() {
       icon={<Briefcase />}
       title="My Work"
       menu={menuItems.default}
+      bottomBar
     >
       <Portfolio />
     </WindowWrapper>

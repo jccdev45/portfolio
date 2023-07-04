@@ -16,6 +16,7 @@ export default function RecycleBinPage() {
       title="Recycle Bin"
       icon={<Trash2 />}
       menu={menuItems.recycleBin}
+      bottomBar
     >
       <div className="grid w-full min-h-full grid-cols-12">
         <WindowSidebar>
@@ -34,15 +35,19 @@ export default function RecycleBinPage() {
           </div>
 
           <div>
-            <h2 className="flex items-center max-w-full my-4 text-xl break-all gap-x-2">
-              <span className="scale-110">
+            <h2 className="flex items-center max-w-full my-4 text-lg break-all gap-x-2">
+              <span className="scale-50 w-1/6">
                 {recycleItem ? (
                   recycleItem.icon
                 ) : (
                   <span className="w-24 h-24"></span>
                 )}
               </span>
-              {recycleItem ? recycleItem.title : ""}
+              {recycleItem ? (
+                <span className="w-5/6">{recycleItem.title}</span>
+              ) : (
+                ""
+              )}
             </h2>
 
             <ul className="text-left">

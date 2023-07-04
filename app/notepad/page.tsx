@@ -20,6 +20,7 @@ export default function NotepadPage() {
       icon={<StickyNote />}
       menu={menuItems.notepad}
       actionProp={note}
+      bottomBar
     >
       <FormatBar
         setBold={() => setIsBold(!isBold)}

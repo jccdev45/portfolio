@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { X, AppWindow } from "lucide-react";
+import { X, AppWindow, Laptop2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Menubar,
@@ -21,10 +21,11 @@ import { cn } from "@/lib/utils";
 
 type Props = {
   actionProp?: string;
+  bottomBar: boolean;
   children: React.ReactNode;
   expand?: boolean;
   icon: JSX.Element;
-  menu: {
+  menu?: {
     trigger: string;
     items: {
       action?: ((actionProp: string | undefined) => void) | null;
@@ -38,6 +39,7 @@ type Props = {
 
 export function WindowWrapper({
   actionProp,
+  bottomBar,
   children,
   expand,
   icon,
@@ -57,7 +59,7 @@ export function WindowWrapper({
         )}
       >
         <div className="flex flex-col">
-          <div className="flex items-center justify-between w-full py-0.5 bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] text-windows-white handle h-9 px-1.5">
+          <div className="select-none flex items-center justify-between w-full py-0.5 bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] text-windows-white handle h-9 px-1.5">
             <div className="flex items-center text-sm gap-x-2">
               <>{icon}</>
               <p className="font-bold">{title}</p>
@@ -117,7 +119,19 @@ export function WindowWrapper({
         </div>
         {children}
 
-        <div className="absolute bottom-0 left-0 w-full h-6 bg-windows"></div>
+        <div
+          className={cn(
+            `absolute bottom-0 left-0 w-full h-6 bg-windows flex gap-x-0.5 items-center`,
+            !bottomBar && `hidden`
+          )}
+        >
+          <div className="border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/4 h-full"></div>
+          <div className="border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/2 h-full"></div>
+          <div className="flex items-center border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/4 h-full text-sm">
+            <Laptop2 className="mx-2" />
+            My Computer
+          </div>
+        </div>
       </div>
     </>
   );
