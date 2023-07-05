@@ -7,6 +7,7 @@ import { WindowContent } from "@/components/window/window-content";
 import { WindowIcon } from "@/components/window/window-icon";
 import { WindowWrapper } from "@/components/window/window-wrapper";
 import { menuItems, toRecycle } from "@/lib/constants";
+import { RainbowSeparator } from "@/components/rainbow-separator";
 
 export default function RecycleBinPage() {
   const [recycleItem, setRecycleItem] = useState<typeof toRecycle[0]>();
@@ -18,53 +19,50 @@ export default function RecycleBinPage() {
       menu={menuItems.recycleBin}
       bottomBar
     >
-      <div className="grid w-full min-h-full grid-cols-12">
+      <div className="flex flex-col justify-around w-full h-full text-sm md:items-start md:text-base lg:flex-row md:justify-center">
         <WindowSidebar>
-          <div className="flex flex-col items-center justify-evenly">
-            <span className="scale-110">
-              <Trash2 className="w-24 h-24" />
+          <div className="flex flex-col items-center w-full justify-evenly">
+            <span className="w-1/4 mx-auto md:w-1/6 lg:w-1/2">
+              <Trash2 className="w-full h-full" />
             </span>
             <h2 className="max-w-full text-xl font-semibold">Recycle Bin</h2>
 
-            <div className="grid w-full grid-cols-4">
-              <span className="h-0.5 col-span-1 bg-red-400"></span>
-              <span className="h-0.5 col-span-1 bg-yellow-400"></span>
-              <span className="h-0.5 col-span-1 bg-green-400"></span>
-              <span className="h-0.5 col-span-1 bg-blue-400"></span>
-            </div>
+            <RainbowSeparator />
           </div>
 
-          <div>
-            <h2 className="flex items-center max-w-full my-4 text-lg break-all gap-x-2">
-              <span className="scale-50 w-1/6">
-                {recycleItem ? (
-                  recycleItem.icon
-                ) : (
-                  <span className="w-24 h-24"></span>
-                )}
-              </span>
+          {/* <div> */}
+          <h2 className="flex items-center w-full my-4 text-lg break-all gap-x-2">
+            <span className="w-1/12 md:w-1/12 lg:w-1/6">
               {recycleItem ? (
-                <span className="w-5/6">{recycleItem.title}</span>
+                recycleItem.icon
               ) : (
-                ""
+                <span className="w-24 h-24"></span>
               )}
-            </h2>
+            </span>
+            {recycleItem ? (
+              <span className="w-5/6 text-sm md:text-lg lg:text-base">
+                {recycleItem.title}
+              </span>
+            ) : (
+              ""
+            )}
+          </h2>
 
-            <ul className="text-left">
-              <li className="">
-                <span className="font-bold">File type: </span>
-                {recycleItem ? recycleItem.ext : `---`}
-              </li>
-              <li className="">
-                <span className="font-bold">Size: </span>
-                {recycleItem ? recycleItem.size : `0 b`}
-              </li>
-              <li className="">
-                <span className="font-bold">Path: </span>
-                {recycleItem ? recycleItem.path : `---`}
-              </li>
-            </ul>
-          </div>
+          <ul className="text-left">
+            <li className="">
+              <span className="font-bold">File type: </span>
+              {recycleItem ? recycleItem.ext : `---`}
+            </li>
+            <li className="">
+              <span className="font-bold">Size: </span>
+              {recycleItem ? recycleItem.size : `0 b`}
+            </li>
+            <li className="">
+              <span className="font-bold">Path: </span>
+              {recycleItem ? recycleItem.path : `---`}
+            </li>
+          </ul>
+          {/* </div> */}
         </WindowSidebar>
 
         <WindowContent>

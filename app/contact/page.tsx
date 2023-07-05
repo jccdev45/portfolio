@@ -19,6 +19,7 @@ import { ContactSchema, ContactSchemaValues, menuItems } from "@/lib/constants";
 import { WindowContent } from "@/components/window/window-content";
 import { WindowSidebar } from "@/components/window/window-sidebar";
 import { Textarea } from "@/components/ui/textarea";
+import { RainbowSeparator } from "@/components/rainbow-separator";
 
 export default function ContactPage() {
   const form = useForm<ContactSchemaValues>({
@@ -41,25 +42,21 @@ export default function ContactPage() {
       menu={menuItems.default}
       bottomBar
     >
-      <div className="grid w-full min-h-full grid-cols-12">
-        <WindowSidebar>
-          <div className="flex flex-col items-center justify-evenly">
-            <span className="scale-110">
-              <Contact className="w-24 h-24" />
+      <div className="flex flex-col items-start w-full h-full text-sm md:text-base lg:flex-row md:justify-center">
+        <WindowSidebar style="h-1/5 md:h-1/6 lg:h-2/3">
+          <div className="flex flex-col items-center w-full h-full justify-evenly">
+            <span className="w-1/6 mx-auto md:w-1/4 lg:w-2/3">
+              <Contact className="w-full h-full" />
             </span>
             <h2 className="max-w-full text-xl font-semibold">Contact Me</h2>
-            <div className="grid w-full grid-cols-4">
-              <span className="h-0.5 col-span-1 bg-red-400"></span>
-              <span className="h-0.5 col-span-1 bg-yellow-400"></span>
-              <span className="h-0.5 col-span-1 bg-green-400"></span>
-              <span className="h-0.5 col-span-1 bg-blue-400"></span>
-            </div>
+
+            <RainbowSeparator />
           </div>
         </WindowSidebar>
-        <WindowContent>
+        <WindowContent style="h-full pt-4">
           <Form {...form}>
             <form
-              className="grid w-3/4 max-w-[500px] row-span-4 mx-auto space-y-2 col-span-full"
+              className="grid w-full md:row-start-2 lg:row-start-1 md:max-w-[500px] row-span-4 md:row-span-2 mx-auto md:space-y-2 col-span-full px-2 md:p-0"
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <FormField
@@ -75,7 +72,6 @@ export default function ContactPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>Your email</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -94,7 +90,6 @@ export default function ContactPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>Brief reason for contact</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -113,9 +108,6 @@ export default function ContactPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      Not so brief reason for contact
-                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}

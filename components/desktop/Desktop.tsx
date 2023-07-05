@@ -5,7 +5,7 @@ import { desktopIcons } from "@/lib/constants";
 
 export default function Desktop() {
   return (
-    <div className="absolute flex flex-col flex-wrap items-center justify-center max-h-full gap-8 top-2 left-2">
+    <div className="absolute flex flex-col flex-wrap items-center justify-center max-h-[90vh] gap-4 md:gap-8 top-2 left-2">
       {desktopIcons.map((icon) => (
         <Link
           href={icon.path}

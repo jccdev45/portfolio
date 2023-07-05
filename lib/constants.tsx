@@ -1,3 +1,5 @@
+// TODO: standardize <Icon /> size implementation
+
 import {
   BookOpen,
   Briefcase,
@@ -22,6 +24,8 @@ import {
   XCircle,
 } from "lucide-react";
 import * as z from "zod";
+import { playSound } from "./utils";
+import { Offset, Value } from "./types";
 
 export const ContactSchema = z.object({
   email: z.string(),
@@ -35,11 +39,6 @@ export const ContactSchema = z.object({
     .max(200, { message: "Must be less than 200 characters" }),
 });
 export type ContactSchemaValues = z.infer<typeof ContactSchema>;
-
-export const playSound = (title: string) => {
-  const audioElement = new Audio(`/${title}.mp3`);
-  audioElement.play();
-};
 
 export const menuItems = {
   notepad: [
@@ -99,6 +98,7 @@ export const menuItems = {
   ],
 };
 
+// NOTE: PORTFOLIO
 export const myProjects = [
   {
     id: 1,
@@ -116,9 +116,7 @@ export const myProjects = [
     live: "https://medinarecipes.netlify.app",
     repoURL: "https://github.com/jccdev45/family-recipes",
     demo: "https://www.youtube.com/embed/hRg217nKaPI",
-    icon: (
-      <ChefHat className="w-24 h-24 text-sky-600" color="rgb(2, 132, 199)" />
-    ),
+    icon: <ChefHat className="w-full h-full" color="rgb(2, 132, 199)" />,
   },
   {
     id: 2,
@@ -129,12 +127,7 @@ export const myProjects = [
     live: "https://nyc-health-violations.netlify.app/",
     repoURL: "https://github.com/jccdev45/nyc-restaurant-violations",
     demo: "https://www.youtube.com/embed/VWsU9YeihUM",
-    icon: (
-      <UtensilsCrossed
-        className="w-24 h-24 text-windows-dark"
-        color="hsl(0, 0%, 51%)"
-      />
-    ),
+    icon: <UtensilsCrossed className="w-full h-full" color="hsl(0, 0%, 51%)" />,
   },
   {
     id: 3,
@@ -145,9 +138,7 @@ export const myProjects = [
     live: "https://luzcontrolsystems.com/",
     repoURL: "https://github.com/jccdev45/luz-electric",
     demo: "https://www.youtube.com/embed/lxjgXCtqgac",
-    icon: (
-      <PlugZap className="w-24 h-24 text-amber-500" color="rgb(245, 158, 11)" />
-    ),
+    icon: <PlugZap className="w-full h-full" color="rgb(245, 158, 11)" />,
   },
   {
     id: 4,
@@ -158,64 +149,64 @@ export const myProjects = [
     live: "https://willneff.netlify.app/",
     repoURL: "https://github.com/jccdev45/willneff",
     demo: "https://youtu.be/RDVMhI4ZAgs",
-    icon: (
-      <Twitch className="w-24 h-24 text-purple-700" color="rgb(126, 34, 206)" />
-    ),
+    icon: <Twitch className="w-full h-full" color="rgb(126, 34, 206)" />,
   },
 ];
 
+// NOTE: DESKTOP
 export const desktopIcons = [
   {
     id: 1,
     label: "My Computer",
     path: "/computer",
-    icon: <Laptop2 className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Laptop2 className="w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 2,
-    label: "My Briefcase",
+    label: "Portfolio",
     path: "/portfolio",
-    icon: <Briefcase className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Briefcase className="w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 3,
     label: "Recycle Bin",
     path: "/recycle-bin",
-    icon: <Trash2 className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Trash2 className="w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 4,
     label: "Notepad",
     path: "/notepad",
-    icon: <BookOpen className="block w-10 h-10 text-windows-black/70" />,
+    icon: <BookOpen className="w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 5,
     label: "Solitaire",
     path: "/solitaire",
-    icon: <Club className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Club className="w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 6,
     label: "Contact",
     path: "/contact",
-    icon: <Contact className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Contact className="w-10 h-10 text-windows-black/70" />,
   },
   {
     id: 7,
     label: "Terminal",
     path: "/terminal",
-    icon: <Terminal className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Terminal className="w-10 h-10 text-windows-black/70" />,
   },
 ];
 
+// NOTE: RECYCLE
 export const toRecycle = [
   {
     id: 1,
     title: "passwords.txt",
     ext: ".txt",
     size: "14 kb",
-    icon: <StickyNote className="w-20 h-20" />,
+    icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
   {
@@ -223,7 +214,7 @@ export const toRecycle = [
     title: "creed_take_me_higher.mp3",
     ext: ".mp3",
     size: "4.6 mb",
-    icon: <Music className="w-20 h-20" />,
+    icon: <Music className="w-full h-full" />,
     path: "/user/audio",
   },
   {
@@ -231,15 +222,12 @@ export const toRecycle = [
     title: "bank_account_number_and_debit_card_pin.txt",
     ext: ".txt",
     size: "8 kb",
-    icon: <StickyNote className="w-20 h-20" />,
+    icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
 ];
 
-interface Offset {
-  [key: number]: string;
-}
-
+// NOTE: SOLITAIRE
 export const offsets: Offset = {
   0: "top-0",
   1: "top-4",
@@ -267,10 +255,6 @@ export const suitIcons = {
   ),
   spades: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
 };
-
-interface Value {
-  [key: number]: string;
-}
 
 export const values: Value = {
   1: "A",

@@ -53,68 +53,69 @@ export function MainNav({ defaultValue }: MainNavProps) {
   const [value, setValue] = useState(defaultValue);
 
   return (
-    <Menubar className="absolute bottom-0 left-0 grid w-screen h-12 grid-cols-12 px-1 border rounded-none bg-windows border-t-windows-white">
-      <MenubarMenu>
-        <MenubarTrigger className="relative px-1.5 py-1 flex items-center col-start-1 col-span-1 justify-between border-2 rounded-none shadow shadow-windows-dark border-b-windows-dark border-r-windows-dark border-t-windows-white border-l-windows-white data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black focus:bg-windows data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-t-windows-dark data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-b-windows-white active:shadow-windows-dark">
-          <Ungroup /> Start
-        </MenubarTrigger>
-        <MenubarContent className="relative pl-6 py-0 pr-0 -mb-[0.2rem] rounded-none bg-windows">
-          <div className="absolute left-0 w-6 h-full bg-windows-blue">
-            <span className="absolute tracking-widest -rotate-90 -left-[1.25rem] bottom-8 text-sm text-windows-white">
-              jccdev
-            </span>
-          </div>
-          <MenubarSub>
-            <MenubarSubTrigger className="rounded-none">
-              <LayoutPanelLeft className="mr-2" /> Programs
-            </MenubarSubTrigger>
+    <Menubar className="absolute bottom-0 left-0 flex justify-between w-screen h-12 px-1 border rounded-none bg-windows border-t-windows-white">
+      <div className="flex items-center justify-start w-1/5 gap-x-2">
+        <MenubarMenu>
+          <MenubarTrigger className="relative px-1.5 w-2/5 min-w-[80px] max-w-[90px] py-1 flex items-center justify-between border-2 rounded-none shadow shadow-windows-dark border-b-windows-dark border-r-windows-dark border-t-windows-white border-l-windows-white data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black focus:bg-windows data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-t-windows-dark data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-b-windows-white active:shadow-windows-dark">
+            <Ungroup /> Start
+          </MenubarTrigger>
+          <MenubarContent className="relative pl-6 py-0 pr-0 -mb-[0.2rem] rounded-none bg-windows">
+            <div className="absolute left-0 w-6 h-full bg-windows-blue">
+              <span className="absolute tracking-widest -rotate-90 -left-[1.25rem] bottom-8 text-sm text-windows-white">
+                jccdev
+              </span>
+            </div>
+            <MenubarSub>
+              <MenubarSubTrigger className="rounded-none">
+                <LayoutPanelLeft className="mr-2" /> Programs
+              </MenubarSubTrigger>
+              <MenubarSeparator />
+              <MenubarSubContent className="rounded-none bg-windows">
+                <MenubarItem className="rounded-none">
+                  <Link href="/notepad" className="flex items-center">
+                    <StickyNote className="mr-2" /> Notepad
+                  </Link>
+                </MenubarItem>
+                <MenubarItem className="rounded-none">
+                  <Link href="/solitaire" className="flex items-center">
+                    <Club className="mr-2" /> Solitaire
+                  </Link>
+                </MenubarItem>
+              </MenubarSubContent>
+            </MenubarSub>
+            <MenubarItem className="rounded-none">
+              <Link
+                href="/portfolio"
+                className="flex items-center w-full cursor-pointer"
+              >
+                <Briefcase className="mr-2" /> Portfolio
+              </Link>
+            </MenubarItem>
+            <MenubarItem className="rounded-none">
+              <Link
+                href="/contact"
+                className="flex items-center w-full cursor-pointer"
+              >
+                <Contact className="mr-2" /> Contact
+              </Link>
+            </MenubarItem>
+            <MenubarItem className="rounded-none">
+              <Terminal className="mr-2" /> Run
+            </MenubarItem>
             <MenubarSeparator />
-            <MenubarSubContent className="rounded-none bg-windows">
-              <MenubarItem className="rounded-none">
-                <Link href="/notepad" className="flex items-center">
-                  <StickyNote className="mr-2" /> Notepad
-                </Link>
-              </MenubarItem>
-              <MenubarItem className="rounded-none">
-                <Link href="/solitaire" className="flex items-center">
-                  <Club className="mr-2" /> Solitaire
-                </Link>
-              </MenubarItem>
-            </MenubarSubContent>
-          </MenubarSub>
-          <MenubarItem className="rounded-none">
-            <Link
-              href="/portfolio"
-              className="flex items-center w-full cursor-pointer"
-            >
-              <Briefcase className="mr-2" /> Briefcase
-            </Link>
-          </MenubarItem>
-          <MenubarItem className="rounded-none">
-            <Link
-              href="/contact"
-              className="flex items-center w-full cursor-pointer"
-            >
-              <Contact className="mr-2" /> Contact
-            </Link>
-          </MenubarItem>
-          <MenubarItem className="rounded-none">
-            <Terminal className="mr-2" /> Run
-          </MenubarItem>
-          <MenubarSeparator />
-          <MenubarItem className="rounded-none">
-            <Power className="mr-2" /> Shut Down
-          </MenubarItem>
-        </MenubarContent>
-      </MenubarMenu>
+            <MenubarItem className="rounded-none">
+              <Power className="mr-2" /> Shut Down
+            </MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+        {capitalized.length > 0 && (
+          <div className="min-w-[125px] max-w-[175px] border-2 border-t-windows-dark border-l-windows-dark border-b-windows-white border-r-windows-white mr-auto bg-windows-white/30 col-span-2 shadow-inner shadow-windows-dark border-windows-white py-1 px-1.5 w-28 md:w-36 lg:w-44 truncate">
+            {capitalized}
+          </div>
+        )}
+      </div>
 
-      {capitalized.length > 0 && (
-        <div className="border-2 border-t-windows-dark border-l-windows-dark border-b-windows-white border-r-windows-white mr-auto bg-windows-white/30 col-auto col-start-2 shadow-inner shadow-windows-dark border-windows-white py-1 px-1.5 w-44 truncate">
-          {capitalized}
-        </div>
-      )}
-
-      <div className="flex items-center justify-between col-span-1 col-end-13 shadow-inner shadow-windows-dark">
+      <div className="flex items-center justify-between shadow-inner shadow-windows-dark">
         <MenubarMenu>
           <TooltipProvider>
             <Tooltip>
@@ -147,9 +148,9 @@ export function MainNav({ defaultValue }: MainNavProps) {
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger className="">
-            <TooltipProvider>
-              <Tooltip>
+          <TooltipProvider>
+            <Tooltip>
+              <MenubarTrigger>
                 <TooltipTrigger asChild>
                   <span>
                     <Clock />
@@ -165,9 +166,9 @@ export function MainNav({ defaultValue }: MainNavProps) {
                     })}
                   </p>
                 </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </MenubarTrigger>
+              </MenubarTrigger>
+            </Tooltip>
+          </TooltipProvider>
 
           <MenubarContent>
             <MenubarItem>

@@ -19,12 +19,12 @@ export function WindowIcon({
   return (
     <div
       className={cn(
-        `flex flex-col items-center justify-center col-span-3 cursor-pointer w-3/4 mx-auto h-full`,
+        `flex flex-col col-span-1 row-span-1 items-center justify-center cursor-pointer m-auto h-full md:row-span-2 lg:row-span-1 w-3/4 md:w-2/3 lg:h-2/3`,
         topStyle
       )}
       onClick={handleClick}
     >
-      <span className="scale-75">{icon}</span>
+      <span className="w-8 h-8 md:w-20 md:h-20 lg:w-16 lg:h-16">{icon}</span>
       <p className={cn(`text-sm truncate max-w-full`, bottomStyle)}>{title}</p>
     </div>
   );

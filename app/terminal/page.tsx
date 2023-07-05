@@ -5,6 +5,7 @@ import { Chivo_Mono } from "next/font/google";
 import { Terminal } from "lucide-react";
 import { WindowWrapper } from "@/components/window/window-wrapper";
 import { cn } from "@/lib/utils";
+import { menuItems } from "@/lib/constants";
 
 const chivo = Chivo_Mono({ subsets: ["latin"], weight: ["400"] });
 
@@ -23,15 +24,20 @@ export default function TerminalPage() {
   }
 
   return (
-    <WindowWrapper title="Terminal" icon={<Terminal />} bottomBar={false}>
+    <WindowWrapper
+      title="Terminal"
+      icon={<Terminal />}
+      bottomBar
+      menu={menuItems.default}
+    >
       <div
         className={cn(
-          `absolute bottom-[24px] top-[36px] w-full max-h-[95vh] bg-windows-black text-windows-white p-2`,
+          `w-full h-full absolute bg-windows-black text-windows-white p-2 overflow-hidden`,
           chivo.className
         )}
       >
-        <div className="mb-4">
-          <div className="text-lg font-bold">
+        <div className="w-full mx-auto mb-4 text-sm md:mx-0 md:text-lg">
+          <div className="font-bold">
             <div>**********</div>
             <div>** iDev **</div>
             <div>**********</div>
@@ -56,7 +62,7 @@ export default function TerminalPage() {
           <span className="mr-2">{`C:\\>`}</span>
           <span
             contentEditable
-            className="flex-1 bg-transparent break-all border-none appearance-none outline-none"
+            className="flex-1 break-all bg-transparent border-none outline-none appearance-none"
             autoFocus
             onKeyDown={handleEnterKey}
           />

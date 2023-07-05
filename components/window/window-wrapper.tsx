@@ -51,11 +51,13 @@ export function WindowWrapper({
   return (
     <>
       <div
+        id="window-wrapper"
         className={cn(
           `absolute bg-white border-2 border-t-windows border-l-windows border-r-windows-dark border-b-windows-dark shadow-inner shadow-windows-dark resize-none`,
           isMax
-            ? `w-screen max-w-[100vw] top-0 left-0 h-[95vh] max-h-[95vh]`
-            : `w-2/3 mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-[70vh] max-h-[90vh]`
+            ? // ? `w-screen max-w-[100vw] top-0 left-0 h-[95vh] max-h-[94vh] lg:max-h-[95vh]`
+              `w-screen max-w-[100vw] top-0 left-0 h-[calc(100vh-47px)]`
+            : `w-3/4 lg:w-2/3 -translate-x-1/2 -translate-y-[55%] top-1/2 left-1/2 h-5/6`
         )}
       >
         <div className="flex flex-col">
@@ -117,7 +119,13 @@ export function WindowWrapper({
             </Menubar>
           )}
         </div>
-        {children}
+
+        <div
+          className="absolute top-[68px] bottom-[24px] w-full"
+          id="wrapper-children"
+        >
+          {children}
+        </div>
 
         <div
           className={cn(
@@ -125,9 +133,9 @@ export function WindowWrapper({
             !bottomBar && `hidden`
           )}
         >
-          <div className="border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/4 h-full"></div>
-          <div className="border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/2 h-full"></div>
-          <div className="flex items-center border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/4 h-full text-sm">
+          <div className="w-1/3 h-full border lg:w-1/4 border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark"></div>
+          <div className="hidden w-1/2 h-full border md:block border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark"></div>
+          <div className="flex items-center w-2/3 h-full text-sm truncate border lg:w-1/4 border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark">
             <Laptop2 className="mx-2" />
             My Computer
           </div>
