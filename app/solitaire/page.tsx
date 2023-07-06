@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WindowWrapper } from "@/components/window/window-wrapper";
 import { menuItems } from "@/lib/constants";
-import { Card as CardType, Suit } from "@/lib/utils";
+import { CardType, Suit } from "@/lib/types";
 
 const createDeck = (): CardType[] => {
   const deck: CardType[] = [];

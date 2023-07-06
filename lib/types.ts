@@ -13,7 +13,7 @@ export interface Value {
   [key: number]: string;
 }
 
-export interface Card {
+export interface CardType {
   idx: number;
   suit: Suit;
   value: number;

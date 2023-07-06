@@ -1,8 +1,7 @@
 import React from "react";
-import { Card as CardType, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { suitIcons, values } from "@/lib/constants";
-
-interface CardProps extends CardType {}
+import { CardType } from "@/lib/types";
 
 export function Card({
   faceUp,
@@ -11,7 +10,7 @@ export function Card({
   suit,
   table,
   value,
-}: CardProps) {
+}: CardType) {
   const tableStyle = table ? `absolute left-0 ${offset}` : ``;
 
   return (
