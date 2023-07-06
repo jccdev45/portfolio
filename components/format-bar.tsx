@@ -21,11 +21,11 @@ export function FormatBar({
   isUnderline,
 }: Props) {
   return (
-    <div className="flex items-center justify-start w-full p-1 space-x-2 bg-windows border-t-windows-dark">
+    <div className="flex items-center justify-start w-full p-1 space-x-2 h-9 md:h-10 bg-windows border-t-windows-dark">
       <Toggle
         onClick={setBold}
         className={cn(
-          `shadow shadow-windows-dark px-2 py-1 hover:bg-white/50`,
+          `shadow rounded-none shadow-windows-dark border border-t-windows-white border-l-windows-white border-r-windows-dark border-b-windows-dark w-7 h-7 px-2 py-1 hover:bg-white/50`,
           isBold && `shadow-inner shadow-windows-black bg-windows-dark/50`
         )}
       >
@@ -34,7 +34,7 @@ export function FormatBar({
       <Toggle
         onClick={setItalic}
         className={cn(
-          `shadow shadow-windows-dark px-2 py-1 hover:bg-white/50`,
+          `shadow rounded-none shadow-windows-dark border border-t-windows-white border-l-windows-white border-r-windows-dark border-b-windows-dark w-7 h-7 px-2 py-1 hover:bg-white/50`,
           isItalic && `shadow-inner shadow-windows-black bg-windows-dark/50`
         )}
       >
@@ -43,7 +43,7 @@ export function FormatBar({
       <Toggle
         onClick={setUnderline}
         className={cn(
-          `shadow shadow-windows-dark px-2 py-1 hover:bg-white/50`,
+          `shadow rounded-none shadow-windows-dark border border-t-windows-white border-l-windows-white border-r-windows-dark border-b-windows-dark w-7 h-7 px-2 py-1 hover:bg-white/50`,
           isUnderline && `shadow-inner shadow-windows-black bg-windows-dark/50`
         )}
       >

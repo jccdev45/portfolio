@@ -26,15 +26,15 @@ export default function TerminalPage() {
     <WindowWrapper title="Terminal" icon={<Terminal />} bottomBar={false}>
       <div
         className={cn(
-          `absolute bottom-[24px] top-[36px] w-full max-h-[95vh] bg-windows-black text-windows-white p-2`,
+          `bg-windows-black text-windows-white p-2 absolute inset-0 text-sm md:text-base`,
           chivo.className
         )}
       >
         <div className="mb-4">
           <div className="text-lg font-bold">
-            <div>**********</div>
-            <div>** iDev **</div>
-            <div>**********</div>
+            <div>********************</div>
+            <div>******* iDev *******</div>
+            <div>********************</div>
           </div>
           <span className="block ml-8">
             &copy;copyright by: nobody {new Date().getFullYear()}
@@ -45,7 +45,7 @@ export default function TerminalPage() {
             <span className="mr-2">{`C:\\>`}</span>
             <span>{line}</span>
             <div className="my-1">
-              <span className="font-bold bg-windows-white/20 p-0.5">
+              <span className="font-bold bg-red-500 p-0.5">
                 Illegal command:
               </span>{" "}
               {line}
@@ -56,7 +56,7 @@ export default function TerminalPage() {
           <span className="mr-2">{`C:\\>`}</span>
           <span
             contentEditable
-            className="flex-1 bg-transparent break-all border-none appearance-none outline-none"
+            className="flex-1 break-all bg-transparent border-none outline-none appearance-none"
             autoFocus
             onKeyDown={handleEnterKey}
           />

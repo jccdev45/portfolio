@@ -4,12 +4,11 @@ import {
   ChefHat,
   ClipboardPaste,
   Club,
-  Contact,
   Copy,
   Diamond,
   FileX2,
   Heart,
-  Laptop2,
+  MailPlus,
   Music,
   PlugZap,
   Save,
@@ -18,13 +17,14 @@ import {
   Terminal,
   Trash2,
   Twitch,
+  UserCircle2,
   UtensilsCrossed,
   XCircle,
 } from "lucide-react";
 import * as z from "zod";
 
 export const ContactSchema = z.object({
-  email: z.string(),
+  email: z.string().email({ message: "Must be a valid email" }),
   subject: z
     .string()
     .min(3, { message: "Must be longer than 3 characters" })
@@ -104,35 +104,40 @@ export const myProjects = [
     id: 1,
     title: "Family Recipes",
     desc:
-      "-- v2 in progress, full rewrite in Typescript to NextJS w/ Supabase -- Digital version of a family recipe book. Includes several Firebase services: Authentication, Cloud Firestore and Storage for photo upload.",
+      "Digital version of a family recipe book. Includes several Firebase services: Authentication, Cloud Firestore and Storage for photo upload (v2 in progress, full rewrite to Typescript in NextJS).",
     tech: [
       "fullstack",
       "react",
       "hooks",
       "firebase",
-      "cloud firestore",
+      "firestore",
       "tailwindcss",
     ],
     live: "https://medinarecipes.netlify.app",
     repoURL: "https://github.com/jccdev45/family-recipes",
     demo: "https://www.youtube.com/embed/hRg217nKaPI",
     icon: (
-      <ChefHat className="w-24 h-24 text-sky-600" color="rgb(2, 132, 199)" />
+      <ChefHat
+        className="w-full h-full"
+        color="rgb(2, 132, 199)"
+        fill="rgba(2, 132, 199, 0.5)"
+      />
     ),
   },
   {
     id: 2,
     title: "NYC Health Inspections",
     desc:
-      "-- v2 in progress, full rewrite to Typescript in NextJS -- Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. Made with create-react-app, using react-mapbox-gl, styled with TailwindCSS and deployed via Netlify.",
+      "Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. Made with create-react-app, using react-mapbox-gl, styled with TailwindCSS and deployed via Netlify (v2 in progress, full rewrite to Typescript in NextJS)",
     tech: ["frontend", "react", "hooks", "react-mapbox-gl", "tailwindcss"],
     live: "https://nyc-health-violations.netlify.app/",
     repoURL: "https://github.com/jccdev45/nyc-restaurant-violations",
     demo: "https://www.youtube.com/embed/VWsU9YeihUM",
     icon: (
       <UtensilsCrossed
-        className="w-24 h-24 text-windows-dark"
+        className="w-full h-full"
         color="hsl(0, 0%, 51%)"
+        fill="hsla(0, 0%, 51%, 0.5)"
       />
     ),
   },
@@ -146,7 +151,11 @@ export const myProjects = [
     repoURL: "https://github.com/jccdev45/luz-electric",
     demo: "https://www.youtube.com/embed/lxjgXCtqgac",
     icon: (
-      <PlugZap className="w-24 h-24 text-amber-500" color="rgb(245, 158, 11)" />
+      <PlugZap
+        className="w-full h-full"
+        color="rgb(245, 158, 11)"
+        fill="rgba(245, 158, 11, 0.5)"
+      />
     ),
   },
   {
@@ -159,7 +168,11 @@ export const myProjects = [
     repoURL: "https://github.com/jccdev45/willneff",
     demo: "https://youtu.be/RDVMhI4ZAgs",
     icon: (
-      <Twitch className="w-24 h-24 text-purple-700" color="rgb(126, 34, 206)" />
+      <Twitch
+        className="w-full h-full"
+        color="rgb(126, 34, 206)"
+        fill="rgba(126, 34, 206, 0.5)"
+      />
     ),
   },
 ];
@@ -167,45 +180,80 @@ export const myProjects = [
 export const desktopIcons = [
   {
     id: 1,
-    label: "My Computer",
-    path: "/computer",
-    icon: <Laptop2 className="block w-10 h-10 text-windows-black/70" />,
+    label: "About",
+    path: "/about",
+    icon: (
+      <UserCircle2
+        fill="rgba(256,256,256,0.5)"
+        color="black"
+        className="block w-12 h-12 text-windows-black/70"
+      />
+    ),
   },
   {
     id: 2,
-    label: "My Briefcase",
+    label: "Portfolio",
     path: "/portfolio",
-    icon: <Briefcase className="block w-10 h-10 text-windows-black/70" />,
+    icon: (
+      <Briefcase
+        fill="rgba(154,102,29, 0.9)"
+        color="black"
+        className="block w-12 h-12 text-windows-black/70"
+      />
+    ),
   },
   {
     id: 3,
     label: "Recycle Bin",
     path: "/recycle-bin",
-    icon: <Trash2 className="block w-10 h-10 text-windows-black/70" />,
+    icon: (
+      <Trash2
+        fill="rgba(200,200,200)"
+        // color="black"
+        className="block w-12 h-12 text-windows-black/70"
+      />
+    ),
   },
   {
     id: 4,
     label: "Notepad",
     path: "/notepad",
-    icon: <BookOpen className="block w-10 h-10 text-windows-black/70" />,
+    icon: (
+      <BookOpen
+        fill="white"
+        color="rgb(2, 132, 199, 0.9)"
+        className="block w-12 h-12 text-windows-black/70"
+      />
+    ),
   },
-  {
-    id: 5,
-    label: "Solitaire",
-    path: "/solitaire",
-    icon: <Club className="block w-10 h-10 text-windows-black/70" />,
-  },
+  // {
+  //   id: 5,
+  //   label: "Solitaire",
+  //   path: "/solitaire",
+  //   icon: (
+  //     <Club
+  //       fill="rgba(239, 68, 68, 0.9)"
+  //       className="block w-12 h-12 text-windows-black/70"
+  //     />
+  //   ),
+  // },
   {
     id: 6,
     label: "Contact",
     path: "/contact",
-    icon: <Contact className="block w-10 h-10 text-windows-black/70" />,
+    icon: (
+      <MailPlus
+        fill="rgba(256,256,256,0.7)"
+        // color="black"
+        className="block w-12 h-12 text-windows-black/70"
+      />
+    ),
   },
   {
     id: 7,
     label: "Terminal",
     path: "/terminal",
-    icon: <Terminal className="block w-10 h-10 text-windows-black/70" />,
+    icon: <Terminal className="block w-12 h-12 text-windows-black/70" />,
   },
 ];
 
@@ -215,7 +263,7 @@ export const toRecycle = [
     title: "passwords.txt",
     ext: ".txt",
     size: "14 kb",
-    icon: <StickyNote className="w-20 h-20" />,
+    icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
   {
@@ -223,7 +271,7 @@ export const toRecycle = [
     title: "creed_take_me_higher.mp3",
     ext: ".mp3",
     size: "4.6 mb",
-    icon: <Music className="w-20 h-20" />,
+    icon: <Music className="w-full h-full" />,
     path: "/user/audio",
   },
   {
@@ -231,7 +279,7 @@ export const toRecycle = [
     title: "bank_account_number_and_debit_card_pin.txt",
     ext: ".txt",
     size: "8 kb",
-    icon: <StickyNote className="w-20 h-20" />,
+    icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
 ];

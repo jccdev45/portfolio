@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
-type Props = {
+type WindowWrapperProps = {
   actionProp?: string;
   bottomBar: boolean;
   children: React.ReactNode;
@@ -45,21 +45,23 @@ export function WindowWrapper({
   icon,
   menu,
   title,
-}: Props) {
+}: WindowWrapperProps) {
   const [isMax, setIsMax] = React.useState<boolean | null>(expand || false);
 
   return (
     <>
       <div
         className={cn(
-          `absolute bg-white border-2 border-t-windows border-l-windows border-r-windows-dark border-b-windows-dark shadow-inner shadow-windows-dark resize-none`,
+          `absolute bg-white border-2 border-t-windows border-l-windows border-r-windows-dark border-b-windows-dark shadow-inner shadow-windows-dark resize-none flex flex-col justify-evenly`,
           isMax
-            ? `w-screen max-w-[100vw] top-0 left-0 h-[95vh] max-h-[95vh]`
-            : `w-2/3 mx-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 min-h-[70vh] max-h-[90vh]`
+            ? bottomBar
+              ? `h-[calc(100vh-48px)] inset-0`
+              : `w-screen h-screen inset-0`
+            : `w-5/6 mx-auto -translate-x-1/2 -translate-y-1/2 top-[45%] left-1/2 h-5/6`
         )}
       >
         <div className="flex flex-col">
-          <div className="select-none flex items-center justify-between w-full py-0.5 bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] text-windows-white handle h-9 px-1.5">
+          <div className="select-none flex items-center justify-between w-full py-0.5 bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] text-windows-white handle h-8 md:h-9 px-1.5">
             <div className="flex items-center text-sm gap-x-2">
               <>{icon}</>
               <p className="font-bold">{title}</p>
@@ -85,7 +87,7 @@ export function WindowWrapper({
           </div>
 
           {menu && (
-            <Menubar className="h-8 rounded-none bg-windows">
+            <Menubar className="h-8 border-0 rounded-none md:h-9 bg-windows">
               {menu.map((menuItem) => (
                 <MenubarMenu key={menuItem.trigger}>
                   <MenubarTrigger className="data-[state=open]:shadow-inner data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:bg-windows/70 data-[state=open]:border-windows-dark focus:bg-windows/50">
@@ -117,17 +119,25 @@ export function WindowWrapper({
             </Menubar>
           )}
         </div>
-        {children}
 
         <div
           className={cn(
-            `absolute bottom-0 left-0 w-full h-6 bg-windows flex gap-x-0.5 items-center`,
+            `w-full relative h-full`
+            // bottomBar ? `h-[calc(100%-24px)]` : `h-full`
+          )}
+        >
+          {children}
+        </div>
+
+        <div
+          className={cn(
+            `absolute bottom-0 inset-x-0 h-6 bg-windows flex gap-x-0.5 items-center justify-between`,
             !bottomBar && `hidden`
           )}
         >
-          <div className="border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/4 h-full"></div>
-          <div className="border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/2 h-full"></div>
-          <div className="flex items-center border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark w-1/4 h-full text-sm">
+          <div className="w-1/2 h-full border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark md:w-1/4"></div>
+          <div className="hidden w-1/2 h-full border border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark md:block"></div>
+          <div className="flex items-center w-1/2 h-full text-xs border md:text-sm border-r-windows-white border-b-windows-white border-t-windows-dark border-l-windows-dark md:w-1/4">
             <Laptop2 className="mx-2" />
             My Computer
           </div>

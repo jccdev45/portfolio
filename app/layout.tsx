@@ -21,13 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          `bg-gradient-to-br from-sky-400 to-sky-200 relative h-screen overflow-hidden`,
+          `bg-gradient-to-br from-sky-400 to-sky-200 relative w-screen h-screen`,
           inter.className
         )}
       >
         <Desktop />
 
-        <div className="relative grid w-1/3 h-screen mx-auto -z-0 place-items-center">
+        <div className="grid w-1/3 h-screen mx-auto -z-0 place-items-center">
           <Image src="/download.png" alt="" height={200} width={200} priority />
         </div>
 

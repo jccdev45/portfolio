@@ -33,7 +33,7 @@ export default function NotepadPage() {
       <Textarea
         placeholder="Eggs, milk, sugar..."
         className={cn(
-          `absolute left-0 h-full max-h-[80%] placeholder:italic placeholder:font-normal placeholder:underline flex-1 p-4 rounded-none shadow-inner resize-none`,
+          `absolute top-8 bottom-6 md:top-10 placeholder:italic placeholder:font-normal flex-1 p-4 rounded-none shadow-inner resize-none`,
           isBold ? `font-bold` : `font-normal`,
           isItalic ? `italic` : `not-italic`,
           isUnderline ? `underline` : `no-underline`

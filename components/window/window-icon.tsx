@@ -17,15 +17,19 @@ export function WindowIcon({
   topStyle,
 }: Props) {
   return (
-    <div
+    <figure
       className={cn(
-        `flex flex-col items-center justify-center col-span-3 cursor-pointer w-3/4 mx-auto h-full`,
+        `flex flex-col items-center text-center justify-center col-span-1 lg:col-span-3 cursor-pointer p-1 h-full w-full md:w-1/2 lg:w-3/4`,
         topStyle
       )}
       onClick={handleClick}
     >
-      <span className="scale-75">{icon}</span>
-      <p className={cn(`text-sm truncate max-w-full`, bottomStyle)}>{title}</p>
-    </div>
+      <span className="w-1/3 lg:w-1/3">{icon}</span>
+      <figcaption
+        className={cn(`text-xs md:text-sm truncate w-3/4 mx-auto`, bottomStyle)}
+      >
+        {title}
+      </figcaption>
+    </figure>
   );
 }

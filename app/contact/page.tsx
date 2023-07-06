@@ -19,6 +19,7 @@ import { ContactSchema, ContactSchemaValues, menuItems } from "@/lib/constants";
 import { WindowContent } from "@/components/window/window-content";
 import { WindowSidebar } from "@/components/window/window-sidebar";
 import { Textarea } from "@/components/ui/textarea";
+import { RainbowSeparator } from "@/components/rainbow-separator";
 
 export default function ContactPage() {
   const form = useForm<ContactSchemaValues>({
@@ -41,32 +42,28 @@ export default function ContactPage() {
       menu={menuItems.default}
       bottomBar
     >
-      <div className="grid w-full min-h-full grid-cols-12">
-        <WindowSidebar>
-          <div className="flex flex-col items-center justify-evenly">
-            <span className="scale-110">
-              <Contact className="w-24 h-24" />
-            </span>
-            <h2 className="max-w-full text-xl font-semibold">Contact Me</h2>
-            <div className="grid w-full grid-cols-4">
-              <span className="h-0.5 col-span-1 bg-red-400"></span>
-              <span className="h-0.5 col-span-1 bg-yellow-400"></span>
-              <span className="h-0.5 col-span-1 bg-green-400"></span>
-              <span className="h-0.5 col-span-1 bg-blue-400"></span>
-            </div>
-          </div>
+      <div className="absolute inset-x-0 top-0 flex flex-col p-2 overflow-scroll bottom-6 lg:p-0 lg:flex-row gap-y-2 justify-evenly">
+        <WindowSidebar className="flex flex-col items-center justify-start w-full lg:p-2 md:justify-start gap-y-2 lg:w-1/3 lg:justify-start lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+          {/* <div className="flex flex-col items-center justify-start"> */}
+          <span className="">
+            <Contact className="w-12 h-12 md:w-24 md:h-24" />
+          </span>
+          <h2 className="max-w-full text-xl font-semibold">Contact Me</h2>
+          <RainbowSeparator />
+          {/* </div> */}
         </WindowSidebar>
-        <WindowContent>
+
+        <WindowContent className="h-2/3 lg:w-2/3 md:h-full lg:shadow-inner lg:shadow-windows-dark">
           <Form {...form}>
             <form
-              className="grid w-3/4 max-w-[500px] row-span-4 mx-auto space-y-2 col-span-full"
+              className="flex flex-col justify-center w-3/4 h-full mx-auto gap-y-4 lg:w-2/3"
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem className="col-span-4 row-span-1">
+                  <FormItem>
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <Input
@@ -75,7 +72,6 @@ export default function ContactPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>Your email</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -85,7 +81,7 @@ export default function ContactPage() {
                 control={form.control}
                 name="subject"
                 render={({ field }) => (
-                  <FormItem className="col-span-4 row-span-1">
+                  <FormItem>
                     <FormLabel>Subject</FormLabel>
                     <FormControl>
                       <Input
@@ -94,7 +90,6 @@ export default function ContactPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>Brief reason for contact</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -104,7 +99,7 @@ export default function ContactPage() {
                 control={form.control}
                 name="message"
                 render={({ field }) => (
-                  <FormItem className="col-span-4 row-span-1">
+                  <FormItem>
                     <FormLabel>Message</FormLabel>
                     <FormControl>
                       <Textarea
@@ -113,14 +108,13 @@ export default function ContactPage() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      Not so brief reason for contact
-                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit">Submit</Button>
+              <Button type="submit" className="w-1/3 ml-auto">
+                Submit
+              </Button>
             </form>
           </Form>
         </WindowContent>
