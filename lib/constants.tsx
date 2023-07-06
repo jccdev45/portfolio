@@ -1,3 +1,5 @@
+// TODO: standardize <Icon /> size implementation
+
 import {
   BookOpen,
   Briefcase,
@@ -22,6 +24,8 @@ import {
   XCircle,
 } from "lucide-react";
 import * as z from "zod";
+import { playSound } from "./utils";
+import { Offset, Value } from "./types";
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -35,11 +39,6 @@ export const ContactSchema = z.object({
     .max(200, { message: "Must be less than 200 characters" }),
 });
 export type ContactSchemaValues = z.infer<typeof ContactSchema>;
-
-export const playSound = (title: string) => {
-  const audioElement = new Audio(`/${title}.mp3`);
-  audioElement.play();
-};
 
 export const menuItems = {
   notepad: [
@@ -99,6 +98,7 @@ export const menuItems = {
   ],
 };
 
+// NOTE: PORTFOLIO
 export const myProjects = [
   {
     id: 1,
@@ -177,6 +177,7 @@ export const myProjects = [
   },
 ];
 
+// NOTE: DESKTOP
 export const desktopIcons = [
   {
     id: 1,
@@ -257,12 +258,14 @@ export const desktopIcons = [
   },
 ];
 
+// NOTE: RECYCLE
 export const toRecycle = [
   {
     id: 1,
     title: "passwords.txt",
     ext: ".txt",
     size: "14 kb",
+    icon: <StickyNote className="w-full h-full" />,
     icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
@@ -272,6 +275,7 @@ export const toRecycle = [
     ext: ".mp3",
     size: "4.6 mb",
     icon: <Music className="w-full h-full" />,
+    icon: <Music className="w-full h-full" />,
     path: "/user/audio",
   },
   {
@@ -280,14 +284,12 @@ export const toRecycle = [
     ext: ".txt",
     size: "8 kb",
     icon: <StickyNote className="w-full h-full" />,
+    icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
 ];
 
-interface Offset {
-  [key: number]: string;
-}
-
+// NOTE: SOLITAIRE
 export const offsets: Offset = {
   0: "top-0",
   1: "top-4",
@@ -315,10 +317,6 @@ export const suitIcons = {
   ),
   spades: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
 };
-
-interface Value {
-  [key: number]: string;
-}
 
 export const values: Value = {
   1: "A",

@@ -157,9 +157,9 @@ export function MainNav({ defaultValue }: MainNavProps) {
         </MenubarMenu>
 
         <MenubarMenu>
-          <MenubarTrigger className="">
-            <TooltipProvider>
-              <Tooltip>
+          <TooltipProvider>
+            <Tooltip>
+              <MenubarTrigger>
                 <TooltipTrigger asChild>
                   <span>
                     <Clock />
@@ -175,9 +175,9 @@ export function MainNav({ defaultValue }: MainNavProps) {
                     })}
                   </p>
                 </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </MenubarTrigger>
+              </MenubarTrigger>
+            </Tooltip>
+          </TooltipProvider>
 
           <MenubarContent className="mb-0.5 rounded-none bg-windows">
             <MenubarItem className="bg-windows">

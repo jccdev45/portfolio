@@ -5,6 +5,7 @@ import { Chivo_Mono } from "next/font/google";
 import { Terminal } from "lucide-react";
 import { WindowWrapper } from "@/components/window/window-wrapper";
 import { cn } from "@/lib/utils";
+import { menuItems } from "@/lib/constants";
 
 const chivo = Chivo_Mono({ subsets: ["latin"], weight: ["400"] });
 
@@ -23,7 +24,12 @@ export default function TerminalPage() {
   }
 
   return (
-    <WindowWrapper title="Terminal" icon={<Terminal />} bottomBar={false}>
+    <WindowWrapper
+      title="Terminal"
+      icon={<Terminal />}
+      bottomBar
+      menu={menuItems.default}
+    >
       <div
         className={cn(
           `bg-windows-black text-windows-white p-2 absolute inset-0 text-sm md:text-base`,

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
+import { ScrollArea } from "../ui/scroll-area";
 
 type WindowContentProps = {
   children: React.ReactNode;

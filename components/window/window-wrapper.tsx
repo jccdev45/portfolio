@@ -51,6 +51,7 @@ export function WindowWrapper({
   return (
     <>
       <div
+        id="window-wrapper"
         className={cn(
           `absolute bg-white border-2 border-t-windows border-l-windows border-r-windows-dark border-b-windows-dark shadow-inner shadow-windows-dark resize-none flex flex-col justify-evenly`,
           isMax

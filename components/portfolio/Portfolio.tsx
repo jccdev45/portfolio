@@ -9,6 +9,7 @@ import Link from "next/link";
 import { WindowContent } from "../window/window-content";
 import { WindowSidebar } from "../window/window-sidebar";
 import { WindowIcon } from "../window/window-icon";
+import { RainbowSeparator } from "../rainbow-separator";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 export function Portfolio() {
@@ -31,7 +32,7 @@ export function Portfolio() {
               href={project.live}
               className="flex items-center underline underline-offset-2 text-windows-blue/70 hover:text-windows-blue"
             >
-              <ExternalLink /> Live
+              <ExternalLink /> {project.title}
             </Link>
             <Link
               target="_blank"
