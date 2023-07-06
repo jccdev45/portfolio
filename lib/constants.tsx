@@ -266,7 +266,6 @@ export const toRecycle = [
     ext: ".txt",
     size: "14 kb",
     icon: <StickyNote className="w-full h-full" />,
-    icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },
   {
@@ -275,7 +274,6 @@ export const toRecycle = [
     ext: ".mp3",
     size: "4.6 mb",
     icon: <Music className="w-full h-full" />,
-    icon: <Music className="w-full h-full" />,
     path: "/user/audio",
   },
   {
@@ -283,7 +281,6 @@ export const toRecycle = [
     title: "bank_account_number_and_debit_card_pin.txt",
     ext: ".txt",
     size: "8 kb",
-    icon: <StickyNote className="w-full h-full" />,
     icon: <StickyNote className="w-full h-full" />,
     path: "/user/notes",
   },

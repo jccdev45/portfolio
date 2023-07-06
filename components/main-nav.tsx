@@ -77,11 +77,11 @@ export function MainNav({ defaultValue }: MainNavProps) {
                     <StickyNote className="mr-2" /> Notepad
                   </Link>
                 </MenubarItem>
-                <MenubarItem className="rounded-none">
+                {/* <MenubarItem className="rounded-none">
                   <Link href="/solitaire" className="flex items-center">
                     <Club className="mr-2" /> Solitaire
                   </Link>
-                </MenubarItem>
+                </MenubarItem> */}
               </MenubarSubContent>
             </MenubarSub>
             <MenubarItem className="rounded-none">
