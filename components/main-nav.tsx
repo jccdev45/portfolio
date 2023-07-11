@@ -37,6 +37,7 @@ import {
 import Clock from "./desktop/Clock";
 import { Calendar } from "./ui/calendar";
 import { Slider } from "./ui/slider";
+import { startMenuItems } from "@/lib/constants";
 
 interface MainNavProps {
   defaultValue?: SliderProps["defaultValue"];
@@ -46,12 +47,11 @@ export function MainNav({ defaultValue }: MainNavProps) {
   const path = usePathname();
   const withoutSlashes = path.replace(/\//g, "");
 
-  // Capitalize the first letter
   const capitalized =
     withoutSlashes.charAt(0).toUpperCase() + withoutSlashes.slice(1);
 
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [value, setValue] = useState(defaultValue);
+  const [value, setValue] = useState<number[]>(defaultValue || []);
 
   return (
     <Menubar className="absolute bottom-0 left-0 flex justify-between w-screen h-12 px-1 border rounded-none bg-windows border-t-windows-white">
@@ -84,33 +84,18 @@ export function MainNav({ defaultValue }: MainNavProps) {
                 </MenubarItem> */}
               </MenubarSubContent>
             </MenubarSub>
-            <MenubarItem className="rounded-none">
-              <Link
-                href="/about"
-                className="flex items-center w-full cursor-pointer"
-              >
-                <UserCircle2 className="mr-2" /> About
-              </Link>
-            </MenubarItem>
-            <MenubarItem className="rounded-none">
-              <Link
-                href="/portfolio"
-                className="flex items-center w-full cursor-pointer"
-              >
-                <Briefcase className="mr-2" /> Portfolio
-              </Link>
-            </MenubarItem>
-            <MenubarItem className="rounded-none">
-              <Link
-                href="/contact"
-                className="flex items-center w-full cursor-pointer"
-              >
-                <MailPlus className="mr-2" /> Contact
-              </Link>
-            </MenubarItem>
-            <MenubarItem className="rounded-none">
-              <Terminal className="mr-2" /> Run
-            </MenubarItem>
+
+            {startMenuItems.map((item) => (
+              <MenubarItem key={item.id} className="rounded-none">
+                <Link
+                  href={item.link.href}
+                  className="flex items-center w-full cursor-pointer"
+                >
+                  {item.link.text}
+                </Link>
+              </MenubarItem>
+            ))}
+
             <MenubarSeparator />
             <MenubarItem className="rounded-none">
               <Power className="mr-2" /> Shut Down
@@ -130,13 +115,15 @@ export function MainNav({ defaultValue }: MainNavProps) {
             <Tooltip>
               <MenubarTrigger>
                 <TooltipTrigger asChild>
-                  {/* @ts-ignore */}
-                  <span>{value > 0 ? <Volume2 /> : <Volume />}</span>
+                  <span>
+                    {value && value.length > 0 ? <Volume2 /> : <Volume />}
+                  </span>
                 </TooltipTrigger>
               </MenubarTrigger>
               <TooltipContent>
-                {/* @ts-ignore */}
-                <p>Volume: {value ? value * 100 : 0} %</p>
+                <div>
+                  Volume: {value && value.length > 0 ? value[0] * 100 : 0} %
+                </div>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>

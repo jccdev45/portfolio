@@ -148,6 +148,53 @@ export const menuItems = {
   ],
 };
 
+export const startMenuItems = [
+  {
+    id: 1,
+    link: {
+      href: "/about",
+      text: (
+        <>
+          <UserCircle2 className="mr-2" /> About
+        </>
+      ),
+    },
+  },
+  {
+    id: 2,
+    link: {
+      href: "/portfolio",
+      text: (
+        <>
+          <Briefcase className="mr-2" /> Portfolio
+        </>
+      ),
+    },
+  },
+  {
+    id: 3,
+    link: {
+      href: "/contact",
+      text: (
+        <>
+          <MailPlus className="mr-2" /> Contact
+        </>
+      ),
+    },
+  },
+  {
+    id: 4,
+    link: {
+      href: "/terminal",
+      text: (
+        <>
+          <Terminal className="mr-2" /> Run
+        </>
+      ),
+    },
+  },
+];
+
 // NOTE: PORTFOLIO
 export const myProjects = [
   {
