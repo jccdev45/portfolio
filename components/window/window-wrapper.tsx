@@ -11,12 +11,6 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 type WindowWrapperProps = {
@@ -28,7 +22,7 @@ type WindowWrapperProps = {
   menu?: {
     trigger: string;
     items: {
-      action?: ((actionProp: string | undefined) => void) | null;
+      action?: null;
       title: string;
       icon: JSX.Element;
       tooltip: string;
@@ -38,7 +32,6 @@ type WindowWrapperProps = {
 };
 
 export function WindowWrapper({
-  actionProp,
   bottomBar,
   children,
   expand,
@@ -96,23 +89,22 @@ export function WindowWrapper({
                   </MenubarTrigger>
                   <MenubarContent className="ml-1 -mt-2 rounded-none bg-windows">
                     {menuItem.items.map((item) => (
-                      <TooltipProvider key={item.title}>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <MenubarItem
-                              onClick={() =>
-                                item.action && item.action(actionProp)
-                              }
-                            >
-                              <>{item.icon}</>{" "}
-                              <span className="mx-2">{item.title}</span>
-                            </MenubarItem>
-                          </TooltipTrigger>
-                          <TooltipContent>
-                            {item.tooltip ? item.tooltip : null}
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
+                      <MenubarItem key={item.title}>
+                        {item.title === "Exit" ? (
+                          <Link
+                            href="/"
+                            className="flex items-center w-full hover:bg-transparent"
+                          >
+                            <>{item.icon}</>{" "}
+                            <span className="mx-2">{item.title}</span>
+                          </Link>
+                        ) : (
+                          <>
+                            {item.icon}
+                            <span className="mx-2">{item.title}</span>
+                          </>
+                        )}
+                      </MenubarItem>
                     ))}
                   </MenubarContent>
                 </MenubarMenu>
@@ -121,14 +113,7 @@ export function WindowWrapper({
           )}
         </div>
 
-        <div
-          className={cn(
-            `w-full relative h-full`
-            // bottomBar ? `h-[calc(100%-24px)]` : `h-full`
-          )}
-        >
-          {children}
-        </div>
+        <div className={cn(`w-full relative h-full`)}>{children}</div>
 
         <div
           className={cn(

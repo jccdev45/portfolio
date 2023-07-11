@@ -51,13 +51,19 @@ export default function AboutPage() {
             </p>
             <p className="">
               Most recently, I worked as cook at a high level restaurant in the
-              Hudson Yards area of Manhattan and before that, I was a teaching
-              assistant at a software engineer bootcamp. In the past, I served
-              in the Army and worked as a residential electrician so I&apos;ve
-              definitely got a well-rounded background and I&apos;m ready to
-              handle those &quot;<i>what the shit is going on</i>&quot; moments.
-              Right now, I&apos;m on the lookout for a fresh opportunity to
-              apply my skills and experience.
+              downtown Manhattan and before that, I was a teaching assistant at
+              a software engineer bootcamp. I&apos;ve also served in the Army
+              and worked as a residential electrician so I&apos;ve definitely
+              got a well-rounded background and I&apos;m ready to handle those
+              &quot;<i>can you believe this shit</i>&quot; moments. Right now,
+              I&apos;m on the lookout for a fresh opportunity to apply my skills
+              and experience.
+            </p>
+            <p className="">
+              Outside of web dev, I&apos;m an avid PC gamer (League of Legends
+              player for well over a decade so...there&apos;s that), pro
+              wrestling fan and occasionally I&apos;ll even pick up my guitar
+              and bass and mess around.
             </p>
             <p className="">
               Web development is my passion, and I&apos;m always up for new

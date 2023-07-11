@@ -100,16 +100,15 @@ export const menuItems = {
             return playSound("save");
           },
           title: "Save",
-          tooltip: "Max 10 notes",
           icon: <Save />,
         },
-        { action: null, title: "Exit", tooltip: "", icon: <XCircle /> },
+        { action: null, title: "Exit", icon: <XCircle /> },
       ],
     },
     {
       trigger: "Edit",
       items: [
-        { action: null, title: "Copy", tooltip: "", icon: <Copy /> },
+        { action: null, title: "Copy", icon: <Copy /> },
         {
           action: null,
           title: "Paste",
@@ -128,13 +127,11 @@ export const menuItems = {
             return playSound("empty");
           },
           title: "Empty",
-          tooltip: "",
           icon: <FileX2 />,
         },
         {
           action: null,
           title: "Exit",
-          tooltip: "",
           icon: <XCircle />,
         },
       ],
@@ -143,7 +140,7 @@ export const menuItems = {
   default: [
     {
       trigger: "File",
-      items: [{ action: null, title: "Exit", tooltip: "", icon: <XCircle /> }],
+      items: [{ action: null, title: "Exit", icon: <XCircle /> }],
     },
   ],
 };
