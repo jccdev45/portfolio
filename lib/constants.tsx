@@ -27,10 +27,11 @@ import {
   UtensilsCrossed,
   XCircle,
 } from "lucide-react";
-import * as z from "zod";
-import { playSound } from "./utils";
-import { Offset, Value } from "./types";
 import Link from "next/link";
+import * as z from "zod";
+
+import { Offset, Value } from "./types";
+import { playSound } from "./utils";
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -213,17 +214,17 @@ export const myProjects = [
     id: 2,
     title: "Family Recipes",
     desc:
-      "Digital version of a family recipe book. Includes several Firebase services: Authentication, Cloud Firestore and Storage (v2 in progress, Typescript / NextJS / Supabase).",
+      "Digital version of a family recipe book. Includes several Supabase services: Authentication, Database and Storage.",
     tech: [
       "fullstack",
-      "react",
-      "hooks",
-      "firebase",
-      "firestore",
+      "nextjs",
+      "typescript",
+      "supabase",
       "tailwindcss",
+      "shadcn-ui",
     ],
-    live: "https://medinarecipes.netlify.app",
-    repoURL: "https://github.com/jccdev45/family-recipes",
+    live: "https://family-recipes-v2.vercel.app",
+    repoURL: "https://github.com/jccdev45/recipes-v2",
     icon: (
       <ChefHat
         className="w-full h-full"
