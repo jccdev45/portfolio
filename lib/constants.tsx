@@ -97,21 +97,17 @@ export const menuItems = {
       trigger: "File",
       items: [
         {
-          action: () => {
-            return playSound("save");
-          },
           title: "Save",
           icon: <Save />,
         },
-        { action: null, title: "Exit", icon: <XCircle /> },
+        { title: "Exit", icon: <XCircle /> },
       ],
     },
     {
       trigger: "Edit",
       items: [
-        { action: null, title: "Copy", icon: <Copy /> },
+        { title: "Copy", icon: <Copy /> },
         {
-          action: null,
           title: "Paste",
           tooltip: "",
           icon: <ClipboardPaste />,
@@ -124,14 +120,10 @@ export const menuItems = {
       trigger: "File",
       items: [
         {
-          action: () => {
-            return playSound("empty");
-          },
           title: "Empty",
           icon: <FileX2 />,
         },
         {
-          action: null,
           title: "Exit",
           icon: <XCircle />,
         },
@@ -141,7 +133,7 @@ export const menuItems = {
   default: [
     {
       trigger: "File",
-      items: [{ action: null, title: "Exit", icon: <XCircle /> }],
+      items: [{ title: "Exit", icon: <XCircle /> }],
     },
   ],
 };

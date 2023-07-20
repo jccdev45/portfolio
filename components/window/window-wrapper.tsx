@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import { AppWindow, Laptop2, X } from "lucide-react";
 import Link from "next/link";
-import { X, AppWindow, Laptop2 } from "lucide-react";
+import React from "react";
+
 import { Button } from "@/components/ui/button";
 import {
   Menubar,
@@ -22,10 +23,8 @@ type WindowWrapperProps = {
   menu?: {
     trigger: string;
     items: {
-      action?: null;
       title: string;
       icon: JSX.Element;
-      tooltip: string;
     }[];
   }[];
   title: string;
