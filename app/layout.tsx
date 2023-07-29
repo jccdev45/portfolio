@@ -1,9 +1,12 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import { MainNav } from "@/components/main-nav";
-import Desktop from "@/components/desktop/Desktop";
-import { cn } from "@/lib/utils";
 import "./globals.css";
+
+import { Inter } from "next/font/google";
+import Image from "next/image";
+
+import Desktop from "@/components/desktop/Desktop";
+import { MainNav } from "@/components/main-nav";
+import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +28,8 @@ export default function RootLayout({
           inter.className
         )}
       >
+        <Analytics />
+
         <Desktop />
 
         <div className="grid w-1/3 h-screen mx-auto -z-0 place-items-center">
