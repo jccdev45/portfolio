@@ -1,9 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import {
+  Briefcase,
+  Club,
+  LayoutPanelLeft,
+  MailPlus,
+  Power,
+  StickyNote,
+  Terminal,
+  Ungroup,
+  UserCircle2,
+  Volume,
+  Volume2,
+} from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SliderProps } from "@radix-ui/react-slider";
+import { useState } from "react";
+
 import {
   Menubar,
   MenubarContent,
@@ -21,26 +34,15 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  Briefcase,
-  Club,
-  LayoutPanelLeft,
-  MailPlus,
-  Power,
-  StickyNote,
-  Terminal,
-  Ungroup,
-  UserCircle2,
-  Volume,
-  Volume2,
-} from "lucide-react";
+import { startMenuItems } from "@/lib/constants";
+import { SliderProps } from "@radix-ui/react-slider";
+
 import Clock from "./desktop/Clock";
 import { Calendar } from "./ui/calendar";
 import { Slider } from "./ui/slider";
-import { startMenuItems } from "@/lib/constants";
 
 interface MainNavProps {
-  defaultValue?: SliderProps["defaultValue"];
+  defaultValue: SliderProps["defaultValue"];
 }
 
 export function MainNav({ defaultValue }: MainNavProps) {
@@ -51,7 +53,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
     withoutSlashes.charAt(0).toUpperCase() + withoutSlashes.slice(1);
 
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [value, setValue] = useState<number[]>(defaultValue || []);
+  const [value, setValue] = useState(defaultValue);
 
   return (
     <Menubar className="absolute bottom-0 left-0 flex justify-between w-screen h-12 px-1 border rounded-none bg-windows border-t-windows-white">
@@ -116,14 +118,13 @@ export function MainNav({ defaultValue }: MainNavProps) {
               <MenubarTrigger>
                 <TooltipTrigger asChild>
                   <span>
-                    {value && value.length > 0 ? <Volume2 /> : <Volume />}
+                    {/* {value && value.length > 0 ? <Volume2 /> : <Volume />} */}
+                    {value && value[0] === 0 ? <Volume /> : <Volume2 />}
                   </span>
                 </TooltipTrigger>
               </MenubarTrigger>
               <TooltipContent>
-                <div>
-                  Volume: {value && value.length > 0 ? value[0] * 100 : 0} %
-                </div>
+                <div>Volume: {value && value.length > 0 ? value[0] : 0} %</div>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -133,8 +134,8 @@ export function MainNav({ defaultValue }: MainNavProps) {
               <Slider
                 id="volume"
                 defaultValue={value}
-                max={1}
-                step={0.1}
+                max={100}
+                step={1}
                 className="[&_[role=slider]]:h-5 [&_[role=slider]]:w-5 rounded-none bg-windows"
                 onValueChange={setValue}
                 aria-label="Volume"

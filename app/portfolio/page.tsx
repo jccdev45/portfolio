@@ -4,6 +4,11 @@ import { Portfolio } from "@/components/portfolio/Portfolio";
 import { WindowWrapper } from "@/components/window/window-wrapper";
 import { menuItems } from "@/lib/constants";
 
+export const metadata = {
+  title: "portfolio",
+  description: "🆗",
+};
+
 export default function PortfolioPage() {
   return (
     <WindowWrapper

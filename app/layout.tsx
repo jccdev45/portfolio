@@ -11,7 +11,11 @@ import { Analytics } from "@vercel/analytics/react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "jccdev  -  🆒",
+  // title: "jccdev | 🆒",
+  title: {
+    template: "%s | jccdev 🆒",
+    default: "jccdev 🆒",
+  },
   description: "🆗",
 };
 
@@ -38,7 +42,7 @@ export default function RootLayout({
 
         {children}
 
-        <MainNav />
+        <MainNav defaultValue={[0]} />
       </body>
     </html>
   );

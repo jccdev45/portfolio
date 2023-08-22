@@ -192,7 +192,7 @@ export const myProjects = [
     title: "Portfolio",
     desc: `You're on it! Inspired by Windows 98, this is a new redesign for my portfolio to showcase my skills, using a whole mess of components from the incredible `,
     tech: ["frontend", "nextjs", "tailwindcss", "shadcn-ui"],
-    live: "https://jccdev.tech",
+    live: "https://jccdev.vercel.app",
     repoURL: "https://github.com/jccdev45/portfolio-v2",
     icon: (
       <Briefcase

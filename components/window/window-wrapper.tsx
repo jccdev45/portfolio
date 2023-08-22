@@ -15,7 +15,6 @@ import {
 import { cn } from "@/lib/utils";
 
 type WindowWrapperProps = {
-  actionProp?: string;
   bottomBar: boolean;
   children: React.ReactNode;
   expand?: boolean;

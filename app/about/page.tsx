@@ -1,11 +1,17 @@
+import { Contact, UserCircle } from "lucide-react";
+import Link from "next/link";
+
 import { RainbowSeparator } from "@/components/rainbow-separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { WindowContent } from "@/components/window/window-content";
 import { WindowSidebar } from "@/components/window/window-sidebar";
 import { WindowWrapper } from "@/components/window/window-wrapper";
 import { menuItems } from "@/lib/constants";
-import { Contact, UserCircle } from "lucide-react";
-import Link from "next/link";
+
+export const metadata = {
+  title: "about",
+  description: "🆗",
+};
 
 export default function AboutPage() {
   return (
