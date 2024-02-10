@@ -1,18 +1,18 @@
-import { Terminal } from "lucide-react";
-import { Chivo_Mono } from "next/font/google";
+import { Chivo_Mono } from "next/font/google"
+import { Terminal } from "lucide-react"
 
-import { WindowWrapper } from "@/components/window/window-wrapper";
-import { menuItems } from "@/lib/constants";
-import { cn } from "@/lib/utils";
+import { menuItems } from "@/lib/constants"
+import { cn } from "@/lib/utils"
+import { WindowWrapper } from "@/components/window/window-wrapper"
 
-import { TerminalWindow } from "./Terminal";
+import { TerminalWindow } from "./terminal"
 
-const chivo = Chivo_Mono({ subsets: ["latin"], weight: ["400"] });
+const chivo = Chivo_Mono({ subsets: ["latin"], weight: ["400"] })
 
 export const metadata = {
   title: "terminal",
   description: "🆗",
-};
+}
 
 export default function TerminalPage() {
   return (
@@ -24,7 +24,7 @@ export default function TerminalPage() {
     >
       <div
         className={cn(
-          `bg-windows-black text-windows-white p-2 absolute inset-0 text-sm md:text-base`,
+          `absolute inset-0 bg-windows-black p-2 text-sm text-windows-white md:text-base`,
           chivo.className
         )}
       >
@@ -34,12 +34,12 @@ export default function TerminalPage() {
             <div>******* iDev *******</div>
             <div>********************</div>
           </div>
-          <span className="block ml-8">
+          <span className="ml-8 block">
             &copy;copyright by: nobody {new Date().getFullYear()}
           </span>
         </div>
         <TerminalWindow />
       </div>
     </WindowWrapper>
-  );
+  )
 }

@@ -1,3 +1,5 @@
+// const { fontFamily } = require("tailwindcss/defaultTheme")
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -23,14 +25,14 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         windows: {
-          DEFAULT: "hsl(var(--color-1))",
-          dark: "hsl(var(--color-2))",
-          white: "hsl(var(--color-3))",
-          blue: "hsl(var(--color-4))",
-          green: "hsl(var(--color-5))",
-          black: "hsl(var(--color-6))",
-          pink: "hsl(var(--color-7))",
-          solitaire: "hsl(var(--color-8))",
+          DEFAULT: "hsl(var(--gray))",
+          dark: "hsl(var(--dark))",
+          white: "hsl(var(--white))",
+          blue: "hsl(var(--blue))",
+          green: "hsl(var(--green))",
+          black: "hsl(var(--black))",
+          pink: "hsl(var(--pink))",
+          solitaire: "hsl(var(--solitaire))",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -66,6 +68,10 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        // levi: ["var(--font-levi)", ...fontFamily.sans],
+        levi: "var(--font-levi)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -82,5 +88,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
-};
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    require("tailwind-scrollbar")({ nocompatible: true }),
+  ],
+}

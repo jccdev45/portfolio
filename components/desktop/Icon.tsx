@@ -1,22 +1,22 @@
-import React from "react";
-import { Button } from "../ui/button";
+import { ReactNode } from "react"
+
+import { Button } from "../ui/button"
 
 type Props = {
-  // icon: React.ReactNode;
-  icon: any;
-  label?: string;
-};
+  icon: ReactNode
+  label?: string
+}
 
 function Icon({ icon, label }: Props) {
   return (
     <Button
       variant="ghost"
-      className="flex flex-col items-center my-3 space-y-2 w-30 h-30 justify-evenly"
+      className="my-3 flex size-32 flex-col items-center justify-evenly space-y-2"
     >
       {icon}
-      <p className="text-sm bg-windows-green text-windows-white">{label}</p>
+      <p className="bg-windows-green text-sm text-windows-white">{label}</p>
     </Button>
-  );
+  )
 }
 
-export default Icon;
+export default Icon

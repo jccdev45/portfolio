@@ -17,11 +17,11 @@ export function TerminalWindow() {
   return (
     <>
       {lines.map((line, index) => (
-        <div key={index} className="mt-1 mb-3 break-all">
+        <div key={index} className="mb-3 mt-1 break-all">
           <span className="mr-2">{`C:\\>`}</span>
           <span>{line}</span>
           <div className="my-1">
-            <span className="font-bold bg-red-500 p-0.5">Illegal command:</span>{" "}
+            <span className="bg-red-500 p-0.5 font-bold">Illegal command:</span>{" "}
             {line}
           </div>
         </div>
@@ -30,7 +30,7 @@ export function TerminalWindow() {
         <span className="mr-2">{`C:\\>`}</span>
         <span
           contentEditable
-          className="flex-1 break-all bg-transparent border-none outline-none appearance-none"
+          className="flex-1 appearance-none break-all border-none bg-transparent outline-none"
           autoFocus
           onKeyDown={handleEnterKey}
         />

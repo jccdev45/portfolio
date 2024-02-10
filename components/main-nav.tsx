@@ -1,22 +1,20 @@
-"use client";
+"use client"
 
+import { useState } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { SliderProps } from "@radix-ui/react-slider"
 import {
-  Briefcase,
-  Club,
   LayoutPanelLeft,
-  MailPlus,
   Power,
   StickyNote,
-  Terminal,
   Ungroup,
-  UserCircle2,
   Volume,
   Volume2,
-} from "lucide-react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+} from "lucide-react"
 
+import { startMenuItems } from "@/lib/constants"
+import { Calendar } from "@/components/ui/calendar"
 import {
   Menubar,
   MenubarContent,
@@ -27,44 +25,40 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/components/ui/menubar";
+} from "@/components/ui/menubar"
+import { Slider } from "@/components/ui/slider"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { startMenuItems } from "@/lib/constants";
-import { SliderProps } from "@radix-ui/react-slider";
-
-import Clock from "./desktop/Clock";
-import { Calendar } from "./ui/calendar";
-import { Slider } from "./ui/slider";
+} from "@/components/ui/tooltip"
+import Clock from "@/components/desktop/clock"
 
 interface MainNavProps {
-  defaultValue: SliderProps["defaultValue"];
+  defaultValue?: SliderProps["defaultValue"]
 }
 
 export function MainNav({ defaultValue }: MainNavProps) {
-  const path = usePathname();
-  const withoutSlashes = path.replace(/\//g, "");
+  const path = usePathname()
+  const withoutSlashes = path.replace(/\//g, "")
 
   const capitalized =
-    withoutSlashes.charAt(0).toUpperCase() + withoutSlashes.slice(1);
+    withoutSlashes.charAt(0).toUpperCase() + withoutSlashes.slice(1)
 
-  const [date, setDate] = useState<Date | undefined>(new Date());
-  const [value, setValue] = useState(defaultValue);
+  const [date, setDate] = useState<Date | undefined>(new Date())
+  const [value, setValue] = useState(defaultValue)
 
   return (
-    <Menubar className="absolute bottom-0 left-0 flex justify-between w-screen h-12 px-1 border rounded-none bg-windows border-t-windows-white">
+    <Menubar className="absolute bottom-0 left-0 flex h-12 w-screen justify-between rounded-none border border-t-windows-white bg-windows px-1">
       <div className="flex items-center gap-x-1">
         <MenubarMenu>
-          <MenubarTrigger className="relative px-1.5 py-1 flex items-center justify-between border-2 rounded-none shadow shadow-windows-dark border-b-windows-dark border-r-windows-dark border-t-windows-white border-l-windows-white data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black focus:bg-windows data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-t-windows-dark data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-b-windows-white active:shadow-windows-dark">
+          <MenubarTrigger className="relative flex items-center justify-between rounded-none border-2 border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-1.5 py-1 shadow shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-b-windows-white data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-t-windows-dark data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark focus:bg-windows active:shadow-windows-dark">
             <Ungroup /> Start
           </MenubarTrigger>
-          <MenubarContent className="relative pl-6 py-0 pr-0 -mb-[0.2rem] rounded-none bg-windows">
-            <div className="absolute left-0 w-6 h-full bg-windows-blue">
-              <span className="absolute tracking-widest -rotate-90 -left-[1.25rem] bottom-8 text-sm text-windows-white">
+          <MenubarContent className="relative mb-[-0.2rem] rounded-none bg-windows py-0 pl-6 pr-0">
+            <div className="absolute left-0 h-full w-6 bg-windows-blue">
+              <span className="absolute bottom-8 left-[-1.25rem] -rotate-90 text-sm tracking-widest text-windows-white">
                 jccdev
               </span>
             </div>
@@ -91,7 +85,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
               <MenubarItem key={item.id} className="rounded-none">
                 <Link
                   href={item.link.href}
-                  className="flex items-center w-full cursor-pointer"
+                  className="flex w-full cursor-pointer items-center"
                 >
                   {item.link.text}
                 </Link>
@@ -105,7 +99,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
           </MenubarContent>
         </MenubarMenu>
         {capitalized.length > 0 && (
-          <div className="border-2 border-t-windows-dark border-l-windows-dark border-b-windows-white border-r-windows-white mr-auto bg-windows-white/30 shadow-inner shadow-windows-dark border-windows-white py-1 px-1.5 w-28 md:w-36 lg:w-44 truncate">
+          <div className="mr-auto w-28 truncate border-2 border-windows-white border-l-windows-dark border-t-windows-dark bg-windows-white/30 px-1.5 py-1 shadow-inner shadow-windows-dark md:w-36 lg:w-44">
             {capitalized}
           </div>
         )}
@@ -136,7 +130,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
                 defaultValue={value}
                 max={100}
                 step={1}
-                className="[&_[role=slider]]:h-5 [&_[role=slider]]:w-5 rounded-none bg-windows"
+                className="rounded-none bg-windows [&_[role=slider]]:size-5"
                 onValueChange={setValue}
                 aria-label="Volume"
               />
@@ -173,12 +167,12 @@ export function MainNav({ defaultValue }: MainNavProps) {
                 mode="single"
                 selected={date}
                 onSelect={setDate}
-                className="border rounded-none shadow bg-windows-white"
+                className="rounded-none border bg-windows-white shadow"
               />
             </MenubarItem>
           </MenubarContent>
         </MenubarMenu>
       </div>
     </Menubar>
-  );
+  )
 }

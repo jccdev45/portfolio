@@ -1,14 +1,13 @@
-import { Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react"
 
-import { WindowWrapper } from "@/components/window/window-wrapper";
-import { menuItems } from "@/lib/constants";
-
-import { Bin } from "./Bin";
+import { menuItems } from "@/lib/constants"
+import { WindowWrapper } from "@/components/window/window-wrapper"
+import { Bin } from "@/app/recycle-bin/bin"
 
 export const metadata = {
   title: "recycle bin",
   description: "🆗",
-};
+}
 
 export default function RecycleBinPage() {
   return (
@@ -18,9 +17,9 @@ export default function RecycleBinPage() {
       menu={menuItems.recycleBin}
       bottomBar
     >
-      <div className="absolute inset-x-0 top-0 flex flex-col p-2 overflow-scroll bottom-6 lg:p-0 lg:flex-row gap-y-2 justify-evenly">
+      <div className="absolute inset-x-0 bottom-6 top-0 flex flex-col justify-evenly gap-y-2 overflow-scroll p-2 lg:flex-row lg:p-0">
         <Bin />
       </div>
     </WindowWrapper>
-  );
+  )
 }

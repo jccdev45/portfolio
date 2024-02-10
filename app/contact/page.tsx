@@ -1,14 +1,13 @@
-import { Contact } from "lucide-react";
+import { Contact } from "lucide-react"
 
-import { WindowWrapper } from "@/components/window/window-wrapper";
-import { menuItems } from "@/lib/constants";
-
-import { ContactForm } from "./Contact";
+import { menuItems } from "@/lib/constants"
+import { WindowWrapper } from "@/components/window/window-wrapper"
+import { ContactForm } from "@/app/contact/contact-form"
 
 export const metadata = {
   title: "contact",
   description: "🆗",
-};
+}
 
 export default function ContactPage() {
   return (
@@ -20,5 +19,5 @@ export default function ContactPage() {
     >
       <ContactForm />
     </WindowWrapper>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import { Briefcase } from "lucide-react";
+import { Briefcase } from "lucide-react"
 
-import { Portfolio } from "@/components/portfolio/Portfolio";
-import { WindowWrapper } from "@/components/window/window-wrapper";
-import { menuItems } from "@/lib/constants";
+import { menuItems } from "@/lib/constants"
+import { WindowWrapper } from "@/components/window/window-wrapper"
+import { Portfolio } from "@/app/portfolio/portfolio"
 
 export const metadata = {
   title: "portfolio",
   description: "🆗",
-};
+}
 
 export default function PortfolioPage() {
   return (
@@ -19,5 +19,5 @@ export default function PortfolioPage() {
     >
       <Portfolio />
     </WindowWrapper>
-  );
+  )
 }

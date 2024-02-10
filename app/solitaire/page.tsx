@@ -1,14 +1,14 @@
-import { Club } from "lucide-react";
+import { Club } from "lucide-react"
 
-import { WindowWrapper } from "@/components/window/window-wrapper";
-import { menuItems } from "@/lib/constants";
+import { menuItems } from "@/lib/constants"
+import { WindowWrapper } from "@/components/window/window-wrapper"
 
-import { Game } from "./Game";
+import { Game } from "./game"
 
 export const metadata = {
   title: "solitaire",
   description: "🆗",
-};
+}
 
 export default function SolitairePage() {
   return (
@@ -20,5 +20,5 @@ export default function SolitairePage() {
     >
       <Game />
     </WindowWrapper>
-  );
+  )
 }

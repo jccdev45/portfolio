@@ -26,7 +26,7 @@ export function Card({
     >
       {faceUp && (
         <>
-          <div className="absolute grid col-span-2 max-h-full grid-rows-2 mx-auto text-center top-0 left-0.5">
+          <div className="absolute left-0.5 top-0 col-span-2 mx-auto grid max-h-full grid-rows-2 text-center">
             <span
               className={cn(
                 suit === `hearts` || suit === `diamonds`
@@ -38,16 +38,16 @@ export function Card({
             </span>{" "}
             {suitIcons[suit]}
           </div>
-          <div className="absolute grid items-center justify-center w-2/3 grid-cols-2 col-span-8 grid-rows-2">
+          <div className="absolute col-span-8 grid w-2/3 grid-cols-2 grid-rows-2 items-center justify-center">
             {Array(Number(value))
               .fill(0)
               .map((_, idx) => (
-                <span key={idx} className="mx-auto scale-125 m-0.5">
+                <span key={idx} className="m-0.5 mx-auto scale-125">
                   {suitIcons[suit]}
                 </span>
               ))}
           </div>
-          <div className="absolute grid col-span-2 grid-rows-2 mx-auto text-center rotate-180 bottom-0 right-0.5">
+          <div className="absolute bottom-0 right-0.5 col-span-2 mx-auto grid rotate-180 grid-rows-2 text-center">
             <span
               className={cn(
                 suit === `hearts` || suit === `diamonds`

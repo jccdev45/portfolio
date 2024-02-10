@@ -1,5 +1,4 @@
 import {
-  AtSign,
   BookOpen,
   Briefcase,
   ChefHat,
@@ -7,10 +6,13 @@ import {
   Club,
   Copy,
   Diamond,
-  ExternalLink,
+  File,
+  FileSliders,
+  FileSpreadsheet,
   FileX2,
   Github,
   Heart,
+  ImageIcon,
   Instagram,
   Linkedin,
   MailPlus,
@@ -25,13 +27,12 @@ import {
   Twitter,
   UserCircle2,
   UtensilsCrossed,
+  Video,
   XCircle,
-} from "lucide-react";
-import Link from "next/link";
-import * as z from "zod";
+} from "lucide-react"
+import * as z from "zod"
 
-import { Offset, Value } from "./types";
-import { playSound } from "./utils";
+import { Offset, Value } from "./types"
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -43,13 +44,13 @@ export const ContactSchema = z.object({
     .string()
     .min(5, { message: "Must be at least 5 characters" })
     .max(200, { message: "Must be less than 200 characters" }),
-});
-export type ContactSchemaValues = z.infer<typeof ContactSchema>;
+})
+export type ContactSchemaValues = z.infer<typeof ContactSchema>
 
 export const socials = [
   {
     id: 1,
-    icon: <Github className="w-full h-full" fill="rgba(0,0,0,0.3)" />,
+    icon: <Github className="size-full" fill="rgba(0,0,0,0.3)" />,
     title: "Github",
     link: "https://github.com/jccdev45",
   },
@@ -57,7 +58,7 @@ export const socials = [
     id: 2,
     icon: (
       <Twitter
-        className="w-full h-full"
+        className="size-full"
         color="rgb(0, 159, 234)"
         fill="rgba(0, 159, 234, 0.3)"
       />
@@ -69,7 +70,7 @@ export const socials = [
     id: 3,
     icon: (
       <Linkedin
-        className="w-full h-full"
+        className="size-full"
         color="rgb(0,	107, 189)"
         fill="rgba(0,	107, 189, 0.3)"
       />
@@ -81,7 +82,7 @@ export const socials = [
     id: 4,
     icon: (
       <Instagram
-        className="w-full h-full"
+        className="size-full"
         color="rgb(221, 39, 103)"
         fill="rgba(221, 39, 103, 0.3)"
       />
@@ -89,7 +90,7 @@ export const socials = [
     title: "Instagram",
     link: "https://instagram.com/jccdev",
   },
-];
+]
 
 export const menuItems = {
   notepad: [
@@ -136,7 +137,7 @@ export const menuItems = {
       items: [{ title: "Exit", icon: <XCircle /> }],
     },
   ],
-};
+}
 
 export const startMenuItems = [
   {
@@ -183,7 +184,7 @@ export const startMenuItems = [
       ),
     },
   },
-];
+]
 
 // NOTE: PORTFOLIO
 export const myProjects = [
@@ -196,7 +197,7 @@ export const myProjects = [
     repoURL: "https://github.com/jccdev45/portfolio-v2",
     icon: (
       <Briefcase
-        className="w-full h-full"
+        className="size-full"
         fill="rgba(154,102,29, 0.9)"
         color="black"
       />
@@ -205,8 +206,7 @@ export const myProjects = [
   {
     id: 2,
     title: "Family Recipes",
-    desc:
-      "Digital version of a family recipe book. Includes several Supabase services: Authentication, Database and Storage.",
+    desc: "Digital version of a family recipe book. Includes several Supabase services: Authentication, Database and Storage.",
     tech: [
       "fullstack",
       "nextjs",
@@ -219,7 +219,7 @@ export const myProjects = [
     repoURL: "https://github.com/jccdev45/recipes-v2",
     icon: (
       <ChefHat
-        className="w-full h-full"
+        className="size-full"
         color="rgb(2, 132, 199)"
         fill="rgba(2, 132, 199, 0.5)"
       />
@@ -228,14 +228,13 @@ export const myProjects = [
   {
     id: 3,
     title: "Health Inspections",
-    desc:
-      "Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. (v2 in progress,Typescript / NextJS)",
+    desc: "Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. (v2 in progress,Typescript / NextJS)",
     tech: ["frontend", "react", "hooks", "react-mapbox-gl", "tailwindcss"],
     live: "https://nyc-health-violations.netlify.app/",
     repoURL: "https://github.com/jccdev45/nyc-restaurant-violations",
     icon: (
       <UtensilsCrossed
-        className="w-full h-full"
+        className="size-full"
         color="hsl(0, 0%, 51%)"
         fill="hsla(0, 0%, 51%, 0.5)"
       />
@@ -244,14 +243,13 @@ export const myProjects = [
   {
     id: 4,
     title: "Luz Electric",
-    desc:
-      "Luz Electric is a residential, commercial and industrial electrical contracting company based in the Bronx. This is an essentially 1-to-1 redesign of their existing website.",
+    desc: "Luz Electric is a residential, commercial and industrial electrical contracting company based in the Bronx. This is an essentially 1-to-1 redesign of their existing website.",
     tech: ["frontend", "react", "gatsbyjs", "tailwindcss", "react-bootstrap"],
     live: "https://luzcontrolsystems.com/",
     repoURL: "https://github.com/jccdev45/luz-electric",
     icon: (
       <PlugZap
-        className="w-full h-full"
+        className="size-full"
         color="rgb(245, 158, 11)"
         fill="rgba(245, 158, 11, 0.5)"
       />
@@ -260,21 +258,20 @@ export const myProjects = [
   {
     id: 5,
     title: "Will Neff",
-    desc:
-      "(Unofficial) personal site for content creator extraordinaire Will Neff. He's got great hair.",
+    desc: "(Unofficial) personal site for content creator extraordinaire Will Neff. He's got great hair.",
     tech: ["frontend", "react", "gatsbyjs", "tailwindcss"],
     live: "https://willneff.netlify.app/",
     repoURL: "https://github.com/jccdev45/willneff",
     demo: "https://youtu.be/RDVMhI4ZAgs",
     icon: (
       <Twitch
-        className="w-full h-full"
+        className="size-full"
         color="rgb(126, 34, 206)"
         fill="rgba(126, 34, 206, 0.5)"
       />
     ),
   },
-];
+]
 
 // NOTE: DESKTOP
 export const desktopIcons = [
@@ -286,7 +283,7 @@ export const desktopIcons = [
       <UserCircle2
         fill="rgba(256,256,256,0.5)"
         color="black"
-        className="block w-12 h-12 text-windows-black/70"
+        className="block size-12 text-windows-black/70"
       />
     ),
   },
@@ -298,7 +295,7 @@ export const desktopIcons = [
       <Briefcase
         fill="rgba(154,102,29, 0.9)"
         color="black"
-        className="block w-12 h-12 text-windows-black/70"
+        className="block size-12 text-windows-black/70"
       />
     ),
   },
@@ -310,7 +307,7 @@ export const desktopIcons = [
       <Trash2
         fill="rgba(200,200,200)"
         // color="black"
-        className="block w-12 h-12 text-windows-black/70"
+        className="block size-12 text-windows-black/70"
       />
     ),
   },
@@ -322,7 +319,7 @@ export const desktopIcons = [
       <BookOpen
         fill="white"
         color="rgb(2, 132, 199, 0.9)"
-        className="block w-12 h-12 text-windows-black/70"
+        className="block size-12 text-windows-black/70"
       />
     ),
   },
@@ -345,7 +342,7 @@ export const desktopIcons = [
       <MailPlus
         fill="rgba(256,256,256,0.7)"
         // color="black"
-        className="block w-12 h-12 text-windows-black/70"
+        className="block size-12 text-windows-black/70"
       />
     ),
   },
@@ -353,9 +350,9 @@ export const desktopIcons = [
     id: 7,
     label: "Terminal",
     path: "/terminal",
-    icon: <Terminal className="block w-12 h-12 text-windows-black/70" />,
+    icon: <Terminal className="block size-12 text-windows-black/70" />,
   },
-];
+]
 
 // NOTE: RECYCLE
 export const toRecycle = [
@@ -364,7 +361,7 @@ export const toRecycle = [
     title: "passwords.txt",
     ext: ".txt",
     size: "14 kb",
-    icon: <StickyNote className="w-full h-full" />,
+    icon: <StickyNote className="size-full" />,
     path: "/user/notes",
   },
   {
@@ -372,7 +369,7 @@ export const toRecycle = [
     title: "creed_take_me_higher.mp3",
     ext: ".mp3",
     size: "4.6 mb",
-    icon: <Music className="w-full h-full" />,
+    icon: <Music className="size-full" />,
     path: "/user/audio",
   },
   {
@@ -380,10 +377,66 @@ export const toRecycle = [
     title: "bank_account_number_and_debit_card_pin.txt",
     ext: ".txt",
     size: "8 kb",
-    icon: <StickyNote className="w-full h-full" />,
+    icon: <StickyNote className="size-full" />,
     path: "/user/notes",
   },
-];
+  {
+    id: 4,
+    title: "important_documents.pdf",
+    ext: ".pdf",
+    size: "1.2 mb",
+    icon: <File className="size-full" />,
+    path: "/user/documents",
+  },
+  {
+    id: 5,
+    title: "old_photos.jpg",
+    ext: ".jpg",
+    size: "3.4 mb",
+    icon: <ImageIcon className="size-full" />,
+    path: "/user/pictures",
+  },
+  {
+    id: 6,
+    title: "old_resume.doc",
+    ext: ".doc",
+    size: "25 kb",
+    icon: <File className="size-full" />,
+    path: "/user/documents",
+  },
+  {
+    id: 7,
+    title: "funny_cat_video.avi",
+    ext: ".avi",
+    size: "12.5 mb",
+    icon: <Video className="size-full" />,
+    path: "/user/videos",
+  },
+  {
+    id: 8,
+    title: "secret_letter.txt",
+    ext: ".txt",
+    size: "10 kb",
+    icon: <StickyNote className="size-full" />,
+    path: "/user/notes",
+  },
+  {
+    id: 9,
+    title: "old_presentation.ppt",
+    ext: ".ppt",
+    size: "500 kb",
+    icon: <FileSliders className="size-full" />,
+    path: "/user/presentations",
+  },
+  {
+    id: 10,
+    title: "old_spreadsheet.xls",
+    ext: ".xls",
+    size: "200 kb",
+    icon: <FileSpreadsheet className="size-full" />,
+    path: "/user/spreadsheets",
+  },
+]
 
 // NOTE: SOLITAIRE
 export const offsets: Offset = {
@@ -403,7 +456,7 @@ export const offsets: Offset = {
   13: "top-52",
   14: "top-56",
   15: "top-60",
-};
+}
 
 export const suitIcons = {
   hearts: <Heart size={12} fill="rgb(239, 68, 68)" className="text-red-500" />,
@@ -412,7 +465,7 @@ export const suitIcons = {
     <Diamond size={12} fill="rgb(239, 68, 68)" className="text-red-500" />
   ),
   spades: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
-};
+}
 
 export const values: Value = {
   1: "A",
@@ -428,4 +481,4 @@ export const values: Value = {
   11: "J",
   12: "Q",
   13: "K",
-};
+}
