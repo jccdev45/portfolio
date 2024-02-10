@@ -1,8 +1,7 @@
 import { Bold, Italic, Underline } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-
-import { Toggle } from "./ui/toggle"
+import { Toggle } from "@/components/ui/toggle"
 
 type Props = {
   setBold: () => void

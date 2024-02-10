@@ -1,9 +1,8 @@
 import { Club } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
-import { WindowWrapper } from "@/components/window/window-wrapper"
-
-import { Game } from "./game"
+import { Game } from "@/components/game"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "solitaire",

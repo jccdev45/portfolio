@@ -1,8 +1,8 @@
 import { Briefcase } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
-import { WindowWrapper } from "@/components/window/window-wrapper"
-import { Portfolio } from "@/app/portfolio/portfolio"
+import { Portfolio } from "@/components/portfolio"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "portfolio",

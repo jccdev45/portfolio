@@ -33,7 +33,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import Clock from "@/components/desktop/clock"
+import Clock from "@/components/clock"
 
 interface MainNavProps {
   defaultValue?: SliderProps["defaultValue"]

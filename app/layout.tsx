@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/react"
 import { Toaster } from "sonner"
 
 import { cn } from "@/lib/utils"
-import Desktop from "@/components/desktop/desktop"
+import Desktop from "@/components/desktop"
 import { MainNav } from "@/components/main-nav"
 
 // const inter = Inter({ subsets: ["latin"] })

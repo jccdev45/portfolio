@@ -1,4 +1,4 @@
-import { ResizablePanel } from "../ui/resizable"
+import { ResizablePanel } from "@/components/ui/resizable"
 
 type WindowContentProps = {
   children: React.ReactNode

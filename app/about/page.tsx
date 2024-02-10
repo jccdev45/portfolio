@@ -4,7 +4,7 @@ import { Contact, UserCircle } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
 import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowWrapper } from "@/components/window/window-wrapper"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "about",

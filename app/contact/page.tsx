@@ -1,8 +1,8 @@
 import { Contact } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
-import { WindowWrapper } from "@/components/window/window-wrapper"
-import { ContactForm } from "@/app/contact/contact-form"
+import { ContactForm } from "@/components/contact-form"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "contact",

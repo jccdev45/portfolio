@@ -9,9 +9,9 @@ import { myProjects as PROJECTS } from "@/lib/constants"
 import { Badge } from "@/components/ui/badge"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { WindowContent } from "@/components/window/window-content"
-import { WindowIcon } from "@/components/window/window-icon"
-import { WindowSidebar } from "@/components/window/window-sidebar"
+import { WindowContent } from "@/components/window-content"
+import { WindowIcon } from "@/components/window-icon"
+import { WindowSidebar } from "@/components/window-sidebar"
 
 export function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0])

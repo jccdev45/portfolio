@@ -22,8 +22,8 @@ import { Input } from "@/components/ui/input"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { Textarea } from "@/components/ui/textarea"
 import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowContent } from "@/components/window/window-content"
-import { WindowSidebar } from "@/components/window/window-sidebar"
+import { WindowContent } from "@/components/window-content"
+import { WindowSidebar } from "@/components/window-sidebar"
 
 const ContactFormLogic = () => {
   const [status, setStatus] = useState({

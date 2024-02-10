@@ -3,9 +3,8 @@ import { Terminal } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
 import { cn } from "@/lib/utils"
-import { WindowWrapper } from "@/components/window/window-wrapper"
-
-import { TerminalWindow } from "./terminal"
+import { TerminalWindow } from "@/components/terminal"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 const chivo = Chivo_Mono({ subsets: ["latin"], weight: ["400"] })
 

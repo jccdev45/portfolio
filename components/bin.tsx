@@ -7,9 +7,9 @@ import { useMediaQuery } from "usehooks-ts"
 import { toRecycle } from "@/lib/constants"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowContent } from "@/components/window/window-content"
-import { WindowIcon } from "@/components/window/window-icon"
-import { WindowSidebar } from "@/components/window/window-sidebar"
+import { WindowContent } from "@/components/window-content"
+import { WindowIcon } from "@/components/window-icon"
+import { WindowSidebar } from "@/components/window-sidebar"
 
 export function Bin() {
   const [recycleItem, setRecycleItem] = useState<(typeof toRecycle)[0]>()

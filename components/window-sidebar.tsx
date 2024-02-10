@@ -3,8 +3,7 @@
 import { useMediaQuery } from "usehooks-ts"
 
 import { cn } from "@/lib/utils"
-
-import { ResizablePanel } from "../ui/resizable"
+import { ResizablePanel } from "@/components/ui/resizable"
 
 type WindowSidebarProps = {
   children: React.ReactNode

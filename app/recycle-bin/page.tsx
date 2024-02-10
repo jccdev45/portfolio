@@ -1,8 +1,8 @@
 import { Trash2 } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
-import { WindowWrapper } from "@/components/window/window-wrapper"
-import { Bin } from "@/app/recycle-bin/bin"
+import { Bin } from "@/components/bin"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "recycle bin",

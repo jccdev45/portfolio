@@ -5,8 +5,7 @@ import { useEffect, useState } from "react"
 import { CardType, Suit } from "@/lib/types"
 import { Button } from "@/components/ui/button"
 import { Skeleton } from "@/components/ui/skeleton"
-
-import { Card } from "./card"
+import { Card } from "@/components/card"
 
 const createDeck = (): CardType[] => {
   const deck: CardType[] = []
