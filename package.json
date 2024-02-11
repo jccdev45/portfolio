@@ -1,7 +1,18 @@
 {
   "name": "portfolio",
-  "version": "0.1.0",
+  "version": "2.0",
   "private": true,
+  "description": "A replica of a Windows 98 desktop experience (yet still responsive across different screen sizes), made with NextJS, shadcn-ui and TailwindCSS. No external styling was used, everything was designed and styled with my own two hands and (relatively) working brain.",
+  "author": {
+    "name": "jccdev",
+    "email": "jccdev45@gmail.com",
+    "url": "https://jccdev.vercel.app"
+  },
+  "homepage": "https://github.com/jccdev45/portfolio#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jccdev45/portfolio.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
