@@ -1,24 +1,15 @@
-export enum Suit {
-  Hearts = "hearts",
-  Diamonds = "diamonds",
-  Clubs = "clubs",
-  Spades = "spades",
-}
+import { SUITS, VALUES } from "./constants"
 
-export interface Offset {
-  [key: number]: string;
-}
+export type Suit = (typeof SUITS)[number]
+export type Value = (typeof VALUES)[number]
+export type Rank = (keyof typeof VALUES)[number]
+export type Offset = Record<number, string>
 
-export interface Value {
-  [key: number]: string;
-}
-
-export interface CardType {
-  idx: number;
-  suit: Suit;
-  value: number;
-  faceUp: boolean;
-  table?: boolean;
-  offset?: string;
-  handleClick?: (event: React.MouseEvent) => void;
+export type CardInfo = {
+  suit: Suit
+  value: Value
+  rank: Rank
+  faceUp: boolean
+  offset?: Offset
+  handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }

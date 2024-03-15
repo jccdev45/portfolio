@@ -1,7 +1,7 @@
 import { Club } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
-import { Game } from "@/components/game"
+import { Solitaire } from "@/components/game"
 import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
@@ -17,7 +17,7 @@ export default function SolitairePage() {
       menu={menuItems.default}
       bottomBar
     >
-      <Game />
+      <Solitaire />
     </WindowWrapper>
   )
 }

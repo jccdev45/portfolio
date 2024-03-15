@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Contact } from "lucide-react"
+import { Contact, Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { useMediaQuery } from "usehooks-ts"
@@ -78,9 +78,14 @@ const ContactFormLogic = () => {
 }
 
 export function ContactForm() {
+  const [isClient, setIsClient] = useState(false)
   const { status, form, handleSubmit } = ContactFormLogic()
   const matches = useMediaQuery("(min-width: 850px)")
   const dir = matches ? `horizontal` : `vertical`
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   return (
     <>
@@ -91,112 +96,118 @@ export function ContactForm() {
       )}
 
       <div className="absolute inset-x-0 bottom-6 top-0 flex flex-col justify-evenly gap-y-2 overflow-scroll p-2 lg:flex-row lg:p-0">
-        <ResizablePanelGroup direction={dir}>
-          <WindowSidebar className="min-h-fit lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
-            <figure className="flex w-full flex-col items-center justify-start md:p-4">
-              <Contact className="size-12 md:size-24" />
-              <figcaption className="max-w-full text-xl font-semibold">
-                Contact Me
-              </figcaption>
-            </figure>
-            <RainbowSeparator />
-            <div className="mx-auto grid w-5/6 grid-cols-4 place-items-center gap-2">
-              {socials.map((social) => (
-                <Link
-                  href={social.link}
-                  key={social.id}
-                  className="flex flex-col items-center p-2 hover:cursor-pointer hover:border hover:border-dashed hover:border-windows-dark hover:bg-windows/50 md:px-4"
-                  target="_blank"
-                >
-                  <span className="size-10">{social.icon}</span>
-                  <span className="sr-only">{social.title}</span>
-                </Link>
-              ))}
-            </div>
-          </WindowSidebar>
+        {isClient ? (
+          <ResizablePanelGroup direction={dir}>
+            <WindowSidebar className="min-h-fit lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+              <figure className="flex w-full flex-col items-center justify-start md:p-4">
+                <Contact className="size-12 md:size-24" />
+                <figcaption className="max-w-full text-xl font-semibold">
+                  Contact Me
+                </figcaption>
+              </figure>
+              <RainbowSeparator />
+              <div className="mx-auto grid w-5/6 grid-cols-4 place-items-center gap-2">
+                {socials.map((social) => (
+                  <Link
+                    href={social.link}
+                    key={social.id}
+                    className="flex flex-col items-center p-2 hover:cursor-pointer hover:border hover:border-dashed hover:border-windows-dark hover:bg-windows/50 md:px-4"
+                    target="_blank"
+                  >
+                    <span className="size-10">{social.icon}</span>
+                    <span className="sr-only">{social.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </WindowSidebar>
 
-          <ResizableHandle withHandle />
+            <ResizableHandle withHandle />
 
-          <WindowContent className="h-2/3 md:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
-            <Form {...form}>
-              <form
-                className="grid h-full p-8 md:p-20"
-                onSubmit={form.handleSubmit(handleSubmit)}
-              >
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
-                        <FormLabel>
-                          <span className="underline">E</span>mail:
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
-                            placeholder="yourname@domain.com"
-                            {...field}
-                          />
-                        </FormControl>
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="subject"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
-                        <FormLabel>
-                          <span className="underline">S</span>ubject:
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
-                            placeholder="Hiring 🤞🏽"
-                            {...field}
-                          />
-                        </FormControl>
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
-                        <FormLabel>
-                          <span className="underline">M</span>essage:
-                        </FormLabel>
-                        <FormControl>
-                          <Textarea
-                            className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
-                            placeholder="Four score and seven years ago..."
-                            {...field}
-                          />
-                        </FormControl>
-                      </div>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button
-                  type="submit"
-                  className="ml-auto w-1/3"
-                  disabled={status.submitting}
+            <WindowContent className="h-2/3 md:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
+              <Form {...form}>
+                <form
+                  className="grid h-full p-8 md:p-20"
+                  onSubmit={form.handleSubmit(handleSubmit)}
                 >
-                  Submit
-                </Button>
-              </form>
-            </Form>
-          </WindowContent>
-        </ResizablePanelGroup>
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
+                          <FormLabel>
+                            <span className="underline">E</span>mail:
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
+                              placeholder="yourname@domain.com"
+                              {...field}
+                            />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
+                          <FormLabel>
+                            <span className="underline">S</span>ubject:
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
+                              placeholder="Hiring 🤞🏽"
+                              {...field}
+                            />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
+                          <FormLabel>
+                            <span className="underline">M</span>essage:
+                          </FormLabel>
+                          <FormControl>
+                            <Textarea
+                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
+                              placeholder="Four score and seven years ago..."
+                              {...field}
+                            />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button
+                    type="submit"
+                    className="ml-auto w-1/3"
+                    disabled={status.submitting}
+                  >
+                    Submit
+                  </Button>
+                </form>
+              </Form>
+            </WindowContent>
+          </ResizablePanelGroup>
+        ) : (
+          <div className="grid size-full place-items-center">
+            <Loader2 className="size-20 animate-spin text-windows-blue" />
+          </div>
+        )}
       </div>
     </>
   )

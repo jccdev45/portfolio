@@ -1,227 +1,87 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
-import { CardType, Suit } from "@/lib/types"
-import { Button } from "@/components/ui/button"
-import { Skeleton } from "@/components/ui/skeleton"
-import { Card } from "@/components/card"
+import { SUITS, VALUES } from "@/lib/constants"
+import { CardInfo } from "@/lib/types"
 
-const createDeck = (): CardType[] => {
-  const deck: CardType[] = []
+import { Button } from "./ui/button"
 
-  for (const suit in Suit) {
-    for (let value = 1; value <= 13; value++) {
-      deck.push({
-        idx: value,
-        suit: Suit[suit as keyof typeof Suit],
-        value,
+type Deck = {
+  cards: CardInfo[]
+  length: number
+}
+
+function generateCards(): CardInfo[] {
+  const cards: CardInfo[] = []
+
+  for (const suit in SUITS) {
+    for (const value in VALUES) {
+      cards.push({
+        suit: SUITS[suit],
+        value: VALUES[value],
+        rank: value,
         faceUp: false,
       })
     }
   }
 
-  return deck
+  return cards
 }
-const initialDeck = createDeck()
 
-export function Game() {
-  const [deck, setDeck] = useState<CardType[]>(initialDeck)
-  const [tableau, setTableau] = useState<Array<CardType[]>>([])
-  const [foundation] = useState<CardType[][]>(
-    Array.from({ length: 4 }, () => [])
-  )
+function shuffleCards(cards?: CardInfo[]): CardInfo[] {
+  const shuffledCards = cards ? [...cards] : generateCards()
+  shuffledCards.sort(() => Math.random() - 0.5)
 
-  useEffect(() => {
-    dealCards()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  return shuffledCards
+}
+const deckShuffled = shuffleCards()
 
-  const shuffleDeck = (deck: CardType[]): CardType[] => {
-    const shuffledDeck = [...deck]
-    for (let i = shuffledDeck.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]]
-    }
-    return shuffledDeck
-  }
-
-  const dealCards = () => {
-    const shuffledDeck = shuffleDeck([...deck])
-    const tableauPiles: Array<CardType[]> = []
-
-    setDeck(shuffledDeck)
-
-    for (let i = 0; i < 7; i++) {
-      tableauPiles.push(
-        shuffledDeck.splice(0, i + 1).map((card, index, array) => ({
-          ...card,
-          faceUp: index === array.length - 1,
-          offset: `top-${index * 4}`,
-        }))
-      )
-    }
-
-    setTableau(tableauPiles)
-    setDeck(shuffledDeck)
-  }
-
-  const handleDeckClick = () => {
-    // Deal a card from the deck to the waste pile (tableau)
-    const topDeckCard = deck[deck.length - 1]
-
-    if (topDeckCard) {
-      const newTableau = [...tableau]
-      newTableau[0] = [...newTableau[0], { ...topDeckCard, faceUp: true }]
-      setTableau(newTableau)
-      setDeck((prevDeck) => {
-        const updatedDeck: CardType[] = prevDeck.slice(0, prevDeck.length - 1)
-        return updatedDeck
-      })
-      return deck.slice(0, deck.length - 1)
-    } else {
-      return deck
-    }
-  }
-
-  const handleTableauClick = (pileIndex: number, cardIndex: number) => {
-    const selectedPile = tableau[pileIndex]
-    const selectedCard = selectedPile[cardIndex]
-
-    if (!selectedCard.faceUp) {
-      // Flip face-down card
-      const updatedPile = selectedPile.map((card, index) =>
-        index === cardIndex ? { ...card, faceUp: true } : card
-      )
-
-      const newTableau = [...tableau]
-      newTableau[pileIndex] = updatedPile
-      return newTableau
-    } else {
-      const selectedCardValue = selectedCard.value
-      let matchingFoundationPileIndex = -1
-
-      for (let i = 0; i < foundation.length; i++) {
-        const foundationPile = foundation[i]
-        console.log("Foundation pile:", foundationPile)
-        if (
-          foundationPile.length > 0 &&
-          foundationPile[foundationPile.length - 1].suit ===
-            selectedCard.suit &&
-          foundationPile[foundationPile.length - 1].value + 1 ===
-            selectedCardValue
-        ) {
-          matchingFoundationPileIndex = i
-          break // terminate the loop
-        }
-      }
-
-      if (matchingFoundationPileIndex !== -1) {
-        // Move the card to the foundation pile
-        // const selectedCardMoved = selectedPile.slice(cardIndex)
-
-        const updatedPile = selectedPile.slice(0, cardIndex)
-
-        const newTableau = [...tableau]
-        newTableau[pileIndex] = updatedPile
-
-        return newTableau
-      } else {
-        return tableau
-      }
-    }
-  }
+export function Solitaire() {
+  const [deck] = useState<Deck>({
+    cards: deckShuffled,
+    length: deckShuffled.length,
+  })
+  // const [topCard, setTopCard] = useState<CardInfo | null>(
+  //   deckShuffled[0] || null
+  // )
 
   return (
-    <>
-      <div className="relative grid h-full max-h-[90vh] grid-cols-9 grid-rows-4 gap-y-4 bg-windows-solitaire p-3">
-        {/* DECK */}
-        <div className="col-span-1 row-span-1 cursor-pointer">
-          {deck.length > 0 ? (
-            <div
-              className="grid h-[131px] w-[100px] place-items-center rounded-sm border-2 border-solid border-windows-white bg-windows-blue text-sm text-windows-white shadow-sm"
-              onClick={() => {
-                const newTableau = handleDeckClick()
-
-                if (newTableau) {
-                  setTableau((prevTableau) => [...prevTableau, newTableau])
-                }
-              }}
-            >
-              Left: {deck.length}
-            </div>
-          ) : (
-            <div
-              className="h-[131px] w-[100px] rounded-sm border-2 border-dashed border-windows-dark shadow-sm"
-              // onClick={handleDeckClick}
-            ></div>
-          )}
-        </div>
-
-        {/* FOUNDATION */}
-        <div className="col-span-4 col-end-10 grid grid-cols-4 gap-x-4">
-          {foundation.map((pile, pileIndex) => (
-            <span
-              key={pileIndex}
-              className="col-span-1 max-h-[131px] max-w-[100px] rounded border border-windows-black"
-            >
-              {pile.map((card, cardIndex) => (
-                <Card
-                  key={cardIndex}
-                  idx={cardIndex}
-                  suit={card.suit}
-                  value={card.value}
-                  faceUp={card.faceUp}
-                />
-              ))}
-            </span>
-          ))}
-        </div>
-
-        {/* TABLEAU */}
-        <div className="col-span-9 row-span-4 row-start-2 grid max-h-[90%] grid-cols-7 place-items-center gap-2">
-          {tableau.length > 0 ? (
-            tableau.map((pile, pileIndex) => (
-              <div
-                key={pileIndex}
-                className="relative mx-auto h-full w-[110px]"
-              >
-                {pile.map((card, cardIndex) => (
-                  <Card
-                    key={cardIndex}
-                    idx={cardIndex}
-                    suit={card.suit}
-                    value={card.value}
-                    faceUp={card.faceUp}
-                    offset={card.offset}
-                    table={true}
-                    handleClick={() => {
-                      const newTableau = handleTableauClick(
-                        pileIndex,
-                        cardIndex
-                      )
-
-                      setTableau(newTableau)
-                    }}
-                  />
-                ))}
-              </div>
-            ))
-          ) : (
-            <>
-              {Array(7)
-                .fill(0)
-                .map((_, idx) => (
-                  <Skeleton key={idx} className="mx-auto h-[131px] w-[100px]" />
-                ))}
-            </>
-          )}
-        </div>
-
-        <Button className="absolute bottom-12 right-12" onClick={dealCards}>
-          Reset
+    <section className="relative grid size-full grid-rows-4 bg-windows-solitaire p-4">
+      {/* deck + foundation */}
+      <div className="flex w-full justify-between border border-red-500">
+        <Button className="h-32 w-24 rounded border border-windows-black">
+          Left: {deck.length}
         </Button>
+
+        <ul className="grid grid-cols-4 gap-2">
+          <li className="h-32 w-24 rounded border border-windows-black"></li>
+          <li className="h-32 w-24 rounded border border-windows-black"></li>
+          <li className="h-32 w-24 rounded border border-windows-black"></li>
+          <li className="h-32 w-24 rounded border border-windows-black"></li>
+        </ul>
       </div>
-    </>
+
+      {/* tableau */}
+      <ul className="row-span-full row-start-2 grid w-full grid-cols-7 border border-blue-500">
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+        <li className="col-span-1 h-32 w-24 border border-windows-black"></li>
+      </ul>
+
+      <Button
+        variant={"destructive"}
+        onClick={() => shuffleCards()}
+        className="absolute bottom-12 right-8"
+        id="resetGame"
+        aria-roledescription="Reset solitaire game"
+      >
+        Reset
+      </Button>
+    </section>
   )
 }

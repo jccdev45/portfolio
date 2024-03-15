@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { Trash2 } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Loader2, Trash2 } from "lucide-react"
 import { useMediaQuery } from "usehooks-ts"
 
 import { toRecycle } from "@/lib/constants"
@@ -12,9 +12,22 @@ import { WindowIcon } from "@/components/window-icon"
 import { WindowSidebar } from "@/components/window-sidebar"
 
 export function Bin() {
+  const [isClient, setIsClient] = useState(false)
   const [recycleItem, setRecycleItem] = useState<(typeof toRecycle)[0]>()
   const matches = useMediaQuery("(min-width: 850px)")
   const dir = matches ? `horizontal` : `vertical`
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return (
+      <div className="grid size-full place-items-center">
+        <Loader2 className="size-20 animate-spin text-windows-blue" />
+      </div>
+    )
+  }
 
   return (
     <ResizablePanelGroup direction={dir} className="overflow-auto">

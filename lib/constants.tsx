@@ -2,9 +2,7 @@ import {
   BookOpen,
   Briefcase,
   ChefHat,
-  ClipboardPaste,
   Club,
-  Copy,
   Diamond,
   File,
   FileSliders,
@@ -18,7 +16,6 @@ import {
   MailPlus,
   Music,
   PlugZap,
-  Save,
   Spade,
   StickyNote,
   Terminal,
@@ -32,7 +29,7 @@ import {
 } from "lucide-react"
 import * as z from "zod"
 
-import { Offset, Value } from "./types"
+import { Offset } from "./types"
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -97,24 +94,24 @@ export const menuItems = {
     {
       trigger: "File",
       items: [
-        {
-          title: "Save",
-          icon: <Save />,
-        },
+        // {
+        //   title: "Save",
+        //   icon: <Save />,
+        // },
         { title: "Exit", icon: <XCircle /> },
       ],
     },
-    {
-      trigger: "Edit",
-      items: [
-        { title: "Copy", icon: <Copy /> },
-        {
-          title: "Paste",
-          tooltip: "",
-          icon: <ClipboardPaste />,
-        },
-      ],
-    },
+    // {
+    //   trigger: "Edit",
+    //   items: [
+    //     { title: "Copy", icon: <Copy /> },
+    //     {
+    //       title: "Paste",
+    //       tooltip: "",
+    //       icon: <ClipboardPaste />,
+    //     },
+    //   ],
+    // },
   ],
   recycleBin: [
     {
@@ -439,6 +436,24 @@ export const toRecycle = [
 ]
 
 // NOTE: SOLITAIRE
+export const SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"] as const
+
+export const VALUES: Record<string, number> = {
+  A: 1,
+  "2": 2,
+  "3": 3,
+  "4": 4,
+  "5": 5,
+  "6": 6,
+  "7": 7,
+  "8": 8,
+  "9": 9,
+  "10": 10,
+  J: 11,
+  Q: 12,
+  K: 13,
+} as const
+
 export const offsets: Offset = {
   0: "top-0",
   1: "top-4",
@@ -459,26 +474,10 @@ export const offsets: Offset = {
 }
 
 export const suitIcons = {
-  hearts: <Heart size={12} fill="rgb(239, 68, 68)" className="text-red-500" />,
-  clubs: <Club size={12} fill="rgb(0, 0, 0)" className="text-black" />,
-  diamonds: (
+  HEARTS: <Heart size={12} fill="rgb(239, 68, 68)" className="text-red-500" />,
+  CLUBS: <Club size={12} fill="rgb(0, 0, 0)" className="text-black" />,
+  DIAMONDS: (
     <Diamond size={12} fill="rgb(239, 68, 68)" className="text-red-500" />
   ),
-  spades: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
-}
-
-export const values: Value = {
-  1: "A",
-  2: "2",
-  3: "3",
-  4: "4",
-  5: "5",
-  6: "6",
-  7: "7",
-  8: "8",
-  9: "9",
-  10: "10",
-  11: "J",
-  12: "Q",
-  13: "K",
+  SPADES: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
 }

@@ -1,10 +1,43 @@
 /* eslint-disable react/no-unescaped-entities */
+import Image from "next/image"
 import Link from "next/link"
+import me from "@/assets/me.png"
 import { Contact, UserCircle } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowWrapper } from "@/components/window-wrapper"
+
+const data = [
+  {
+    category: "FRONTEND",
+    skills: [
+      "React",
+      "Javascript",
+      "Typescript",
+      "NextJS",
+      "TailwindCSS",
+      "HTML/CSS",
+    ],
+  },
+  {
+    category: "BACKEND",
+    skills: ["Supabase", "Firebase", "NodeJS", "Express", "PostgreSQL"],
+  },
+  {
+    category: "GENERAL",
+    skills: ["Git/Github", "Debugging", "Accessibility", "Project Management"],
+  },
+  {
+    category: "INTERPERSONAL",
+    skills: [
+      "Customer Service",
+      "Written Communication",
+      "Public Speaking",
+      "Stressful Situations",
+    ],
+  },
+]
 
 export const metadata = {
   title: "about",
@@ -21,7 +54,7 @@ export default function AboutPage() {
     >
       <div className="absolute inset-x-0 bottom-6 top-0 flex flex-col overflow-auto lg:flex-row">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <aside className="min-w-fit p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+          <aside className="flex min-w-fit flex-col items-center space-y-4 p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
             <figure className="flex flex-col items-center">
               <UserCircle className="size-12 md:size-24" />
               <figcaption className="max-w-full text-xl font-semibold">
@@ -30,16 +63,25 @@ export default function AboutPage() {
             </figure>
             <Link
               href="/contact"
-              className="my-4 flex items-center justify-center gap-2 text-windows-blue/80 underline underline-offset-2 hover:text-windows-blue"
+              className="my-4 flex w-fit items-center justify-center gap-2 self-center text-windows-blue/80 underline underline-offset-2 hover:text-windows-blue"
             >
               <Contact className="size-5" /> Get in touch
             </Link>
             <RainbowSeparator />
+            <div className="mx-auto h-full w-40">
+              <Image
+                src={me}
+                alt="Some jabrone"
+                width={450}
+                height={850}
+                className="object-cover"
+              />
+            </div>
           </aside>
 
-          <section className="mx-auto flex flex-col overflow-scroll p-3 scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:col-span-2 lg:shadow-inner lg:shadow-windows-dark">
+          <section className="mx-auto flex flex-col overflow-scroll px-3 py-10 scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:col-span-2 lg:shadow-inner lg:shadow-windows-dark">
             <div className="prose max-w-full px-4">
-              <h1 className="">Hey there!</h1>
+              <h1 className="text-center lg:text-left">Hey there!</h1>
               <p className="">
                 I'm Jordan, a software engineer mostly focused on front-end
                 development but fully capable of back-end work. I'm skilled in
@@ -48,50 +90,22 @@ export default function AboutPage() {
                 Supabase. I'm self sufficient and capable of troubleshooting
                 using any and all available resources.
               </p>
-              <h3 className="">Skills</h3>
+
+              <h2 className="">Skills</h2>
               <div className="flex flex-col break-words sm:table sm:w-full sm:min-w-full sm:table-auto sm:flex-row">
-                <div className="sm:table-cell sm:w-1/3">
-                  <div className="p-4">FRONTEND</div>
-                  <ul>
-                    <li>React</li>
-                    <li>Javascript</li>
-                    <li>Typescript</li>
-                    <li>NextJS</li>
-                    <li>TailwindCSS</li>
-                    <li>HTML/CSS</li>
-                  </ul>
-                </div>
-                <div className="sm:table-cell sm:w-1/3">
-                  <div className="p-4">BACKEND</div>
-                  <ul>
-                    <li>Supabase</li>
-                    <li>Firebase</li>
-                    <li>NodeJS</li>
-                    <li>Express</li>
-                    <li>PostgreSQL</li>
-                  </ul>
-                </div>
-                <div className="sm:table-cell sm:w-1/3">
-                  <div className="p-4">GENERAL</div>
-                  <ul>
-                    <li>Git/Github</li>
-                    <li>Debugging</li>
-                    <li>Accessibility</li>
-                    <li>Project Management</li>
-                  </ul>
-                </div>
-                <div className="sm:table-cell sm:w-1/3">
-                  <div className="p-4">INTERPERSONAL</div>
-                  <ul>
-                    <li>Customer Service</li>
-                    <li>Written Communication</li>
-                    <li>Public Speaking</li>
-                    <li>Stressful Situations</li>
-                  </ul>
-                </div>
+                {data.map(({ category, skills }) => (
+                  <div className="sm:table-cell sm:w-1/3" key={category}>
+                    <h3 className="border-b p-4">{category}</h3>
+                    <ul>
+                      {skills.map((skill) => (
+                        <li key={skill}>{skill}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
 
-              <h3 className="">Experience</h3>
+              <h2 className="">Experience</h2>
               <p className="">
                 Most recently, I worked as a cook at a high-level restaurant in
                 downtown Manhattan and before that, I was a teaching assistant
@@ -101,7 +115,7 @@ export default function AboutPage() {
                 <i>can you believe this shit?</i>&nbsp;&nbsp;" moments.
               </p>
 
-              <h3 className="">Interests</h3>
+              <h2 className="">Interests</h2>
               <p className="">
                 Besides my technical chops, I consider myself a laid-back person
                 with diverse interests. People usually find me friendly and
@@ -112,19 +126,25 @@ export default function AboutPage() {
                 bass and mess around.
               </p>
 
-              <h3 className="">Projects & Achievements</h3>
+              <h2 className="">Projects & Achievements</h2>
               <p className="">
-                Check out my <a href="/portfolio">portfolio</a> to see some of
-                the stuff I've built.
+                Check out my{" "}
+                <a className="text-windows-blue" href="/portfolio">
+                  portfolio
+                </a>{" "}
+                to see some of the stuff I've built.
               </p>
 
-              <h3 className="">Contact Me</h3>
+              <h2 className="">Contact Me</h2>
               <p className="">
                 Web development is my passion, and I'm always up for new
-                challenges. I'm not afraid to put in the extra effort, so I'm
-                confident that I can be a valuable asset to your team. If you're
-                interested in working together, please don't hesitate to{" "}
-                <a href="/contact">reach out</a>.
+                challenges so I'm confident that I can be a valuable asset to
+                your team. If you're interested in working together, please
+                don't hesitate to{" "}
+                <a className="text-windows-blue" href="/contact">
+                  reach out
+                </a>
+                .
               </p>
             </div>
           </section>

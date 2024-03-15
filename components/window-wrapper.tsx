@@ -110,7 +110,7 @@ export function WindowWrapper({
         )}
       </div>
 
-      <div className={cn(`relative h-full w-full`)}>{children}</div>
+      <div className={cn(`relative size-full`)}>{children}</div>
 
       <div
         className={cn(

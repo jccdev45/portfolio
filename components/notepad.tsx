@@ -12,6 +12,7 @@ export function Notepad() {
   const [isBold, setIsBold] = useState(false)
   const [isItalic, setIsItalic] = useState(false)
   const [isUnderline, setIsUnderline] = useState(false)
+
   return (
     <>
       <FormatBar
@@ -22,14 +23,14 @@ export function Notepad() {
         isItalic={isItalic}
         isUnderline={isUnderline}
       />
-      <label htmlFor="notepad" className="sr-only">
-        Notepad for writing notes. Placeholder is &quot;Eggs, milk,
-        sugar...&quot;. It&apos;s just a visual thing, the notes aren&apos;t
-        actually functional. Maybe I can add that in the future but probably
-        not, nobody is coming to my portfolio site to take notes. Thanks for
-        (screen) reading.
-      </label>
       <div className="min-h-full overflow-hidden">
+        <label htmlFor="notepad" className="sr-only">
+          Notepad for writing notes. Placeholder is &quot;Eggs, milk,
+          sugar...&quot;. It&apos;s just a visual thing, the notes aren&apos;t
+          actually functional. Maybe I can add that in the future but probably
+          not, nobody is coming to my portfolio site to take notes. Thanks for
+          (screen) reading.
+        </label>
         <Textarea
           id="notepad"
           placeholder="Eggs, milk, sugar..."

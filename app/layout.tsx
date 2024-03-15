@@ -45,7 +45,7 @@ export default function RootLayout({
           <Image src="/download.png" alt="" height={200} width={200} priority />
         </div>
 
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
 
         <MainNav />
 

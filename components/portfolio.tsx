@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Loader2 } from "lucide-react"
 import { useMediaQuery } from "usehooks-ts"
 
 import { myProjects as PROJECTS } from "@/lib/constants"
@@ -15,8 +15,13 @@ import { WindowSidebar } from "@/components/window-sidebar"
 
 export function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0])
+  const [isClient, setIsClient] = useState(false)
   const matches = useMediaQuery("(min-width: 850px)")
   const dir = matches ? `horizontal` : `vertical`
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const handleProjectClick = (project: (typeof PROJECTS)[number]) => {
     setSelectedProject(project)
@@ -24,18 +29,24 @@ export function Portfolio() {
 
   return (
     <div className="absolute inset-x-0 bottom-6 top-0 gap-y-2 text-xs lg:p-0">
-      <ResizablePanelGroup direction={dir}>
-        <WindowSidebar className="grid h-full auto-rows-min gap-4 p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
-          {renderProjectSummary(selectedProject)}
-          {renderProjectTechStack(selectedProject.tech)}
-        </WindowSidebar>
+      {isClient ? (
+        <ResizablePanelGroup direction={dir}>
+          <WindowSidebar className="grid h-full auto-rows-min gap-4 p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+            {renderProjectSummary(selectedProject)}
+            {renderProjectTechStack(selectedProject.tech)}
+          </WindowSidebar>
 
-        <ResizableHandle withHandle />
+          <ResizableHandle withHandle />
 
-        <WindowContent className="h-1/2 md:h-2/5 lg:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
-          {renderProjectIcons()}
-        </WindowContent>
-      </ResizablePanelGroup>
+          <WindowContent className="h-1/2 md:h-2/5 lg:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
+            {renderProjectIcons()}
+          </WindowContent>
+        </ResizablePanelGroup>
+      ) : (
+        <div className="grid size-full place-items-center">
+          <Loader2 className="size-20 animate-spin text-windows-blue" />
+        </div>
+      )}
     </div>
   )
 
