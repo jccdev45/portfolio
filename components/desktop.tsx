@@ -2,9 +2,11 @@
 
 import Link from "next/link"
 
-import { desktopIcons } from "@/lib/constants"
+import { useDesktop } from "@/components/desktop-context"
 
 export default function Desktop() {
+  const { desktopIcons } = useDesktop()
+
   return (
     <div className="absolute left-2 top-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-center gap-8">
       {desktopIcons.map((icon) => (

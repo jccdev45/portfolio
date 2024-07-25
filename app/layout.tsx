@@ -31,8 +31,10 @@ import {
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Desktop from "@/components/desktop"
+import { DesktopProvider } from "@/components/desktop-context"
 import { DialogDesc } from "@/components/dialog-description"
 import { MainNav } from "@/components/main-nav"
+import { AscendButton, DescendButton } from "@/components/sort-buttons"
 
 const fontLevi = localFont({
   src: "../assets/MS Sans Serif.ttf",
@@ -61,8 +63,10 @@ export default function RootLayout({
         )}
       >
         <Analytics />
-        <Desktop />
-        <DesktopDialog />
+        <DesktopProvider>
+          <Desktop />
+          <DesktopDialog />
+        </DesktopProvider>
         <main className="flex-1">{children}</main>
         <MainNav />
         <Toaster />
@@ -91,8 +95,8 @@ function DesktopDialog() {
             {/* NOTE: Make functional? */}
             <ContextMenuSubTrigger>Arrange Icons</ContextMenuSubTrigger>
             <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black">
-              <ContextMenuItem>Ascending</ContextMenuItem>
-              <ContextMenuItem>Descending</ContextMenuItem>
+              <AscendButton />
+              <DescendButton />
             </ContextMenuSubContent>
           </ContextMenuSub>
           <ContextMenuSeparator />
