@@ -58,8 +58,10 @@ export function MainNav({ defaultValue }: MainNavProps) {
   const path = usePathname()
   const withoutSlashes = path.replace(/\//g, "")
 
-  const capitalized =
-    withoutSlashes.charAt(0).toUpperCase() + withoutSlashes.slice(1)
+  const sanitizedPathname = withoutSlashes
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
 
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [value, setValue] = useState(defaultValue)
@@ -188,9 +190,9 @@ export function MainNav({ defaultValue }: MainNavProps) {
             </div>
           </AlertDialogContent>
 
-          {capitalized.length > 0 && (
+          {sanitizedPathname.length > 0 && (
             <div className="mr-auto w-28 truncate border-2 border-windows-white border-l-windows-dark border-t-windows-dark bg-windows-white/30 px-1.5 py-1 shadow-inner shadow-windows-dark md:w-36 lg:w-44">
-              {capitalized}
+              {sanitizedPathname}
             </div>
           )}
         </div>
