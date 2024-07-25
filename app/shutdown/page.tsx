@@ -26,6 +26,7 @@ export default function ShutdownPage() {
         src={Shutdown}
         alt="Windows 98 shutdown screen"
         className="aspect-square bg-[#a5c6de] object-contain object-center lg:object-cover"
+        unoptimized
       />
       <div className="absolute inset-x-0 bottom-0 mx-auto flex w-fit flex-col items-center border bg-windows-white p-4 text-center text-2xl">
         <span>
