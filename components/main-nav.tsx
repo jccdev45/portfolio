@@ -202,7 +202,6 @@ export function MainNav({ defaultValue }: MainNavProps) {
                 <MenubarTrigger>
                   <TooltipTrigger asChild>
                     <span>
-                      {/* {value && value.length > 0 ? <Volume2 /> : <Volume />} */}
                       {value && value[0] === 0 ? <Volume /> : <Volume2 />}
                     </span>
                   </TooltipTrigger>

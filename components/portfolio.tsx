@@ -106,7 +106,7 @@ export function Portfolio() {
           {tech.map((item) => (
             <Badge
               key={item}
-              className="truncate break-keep bg-windows-blue md:text-sm"
+              className="truncate break-keep bg-windows-blue hover:bg-windows-blue md:text-sm"
             >
               {item}
             </Badge>

@@ -4,6 +4,7 @@ import React from "react"
 import Link from "next/link"
 import { AppWindow, Laptop2, X } from "lucide-react"
 
+import { menuItems } from "@/lib/constants"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -34,7 +35,7 @@ export function WindowWrapper({
   children,
   expand,
   icon,
-  menu,
+  menu = menuItems.default,
   title,
 }: WindowWrapperProps) {
   const [isMax, setIsMax] = React.useState<boolean | null>(expand || false)
