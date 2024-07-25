@@ -1,5 +1,5 @@
 import {
-  BookOpen,
+  // BookUser,
   Briefcase,
   ChefHat,
   Club,
@@ -15,6 +15,7 @@ import {
   Linkedin,
   MailPlus,
   Music,
+  NotebookPen,
   PlugZap,
   Spade,
   StickyNote,
@@ -313,7 +314,7 @@ export const desktopIcons = [
     label: "Notepad",
     path: "/notepad",
     icon: (
-      <BookOpen
+      <NotebookPen
         fill="white"
         color="rgb(2, 132, 199, 0.9)"
         className="block size-12 text-windows-black/70"
@@ -349,13 +350,25 @@ export const desktopIcons = [
     path: "/terminal",
     icon: <Terminal className="block size-12 text-windows-black/70" />,
   },
+  // {
+  //   id: 8,
+  //   label: "Blog",
+  //   path: "/blog",
+  //   icon: (
+  //     <BookUser
+  //       fill="white"
+  //       color="rgba(104,102,29, 0.9)"
+  //       className="block size-12"
+  //     />
+  //   ),
+  // },
 ]
 
 // NOTE: RECYCLE
 export const toRecycle = [
   {
     id: 1,
-    title: "passwords.txt",
+    title: "definitely_not_passwords.txt",
     ext: ".txt",
     size: "14 kb",
     icon: <StickyNote className="size-full" />,
@@ -379,7 +392,7 @@ export const toRecycle = [
   },
   {
     id: 4,
-    title: "important_documents.pdf",
+    title: "how_to_pretend_youre_working.pdf",
     ext: ".pdf",
     size: "1.2 mb",
     icon: <File className="size-full" />,
@@ -387,7 +400,7 @@ export const toRecycle = [
   },
   {
     id: 5,
-    title: "old_photos.jpg",
+    title: "embarrassing_haircut_2007.jpg",
     ext: ".jpg",
     size: "3.4 mb",
     icon: <ImageIcon className="size-full" />,
@@ -395,7 +408,7 @@ export const toRecycle = [
   },
   {
     id: 6,
-    title: "old_resume.doc",
+    title: "resume_with_exaggerated_skills.doc",
     ext: ".doc",
     size: "25 kb",
     icon: <File className="size-full" />,
@@ -403,7 +416,7 @@ export const toRecycle = [
   },
   {
     id: 7,
-    title: "funny_cat_video.avi",
+    title: "definitely_not_pirated_movie.avi",
     ext: ".avi",
     size: "12.5 mb",
     icon: <Video className="size-full" />,
@@ -411,7 +424,7 @@ export const toRecycle = [
   },
   {
     id: 8,
-    title: "secret_letter.txt",
+    title: "love_letter_to_crush.txt",
     ext: ".txt",
     size: "10 kb",
     icon: <StickyNote className="size-full" />,
@@ -419,7 +432,7 @@ export const toRecycle = [
   },
   {
     id: 9,
-    title: "old_presentation.ppt",
+    title: "why_i_deserve_a_raise.ppt",
     ext: ".ppt",
     size: "500 kb",
     icon: <FileSliders className="size-full" />,
@@ -427,7 +440,7 @@ export const toRecycle = [
   },
   {
     id: 10,
-    title: "old_spreadsheet.xls",
+    title: "budget_if_i_won_the_lottery.xls",
     ext: ".xls",
     size: "200 kb",
     icon: <FileSpreadsheet className="size-full" />,
@@ -481,3 +494,12 @@ export const suitIcons = {
   ),
   SPADES: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
 }
+
+export const performanceStatusItems = [
+  { id: 1, title: "Memory:", value: "3 Floppy Disks of RAM" },
+  { id: 2, title: "System Resources:", value: "42% confused" },
+  { id: 3, title: "File System:", value: "Origami-folded" },
+  { id: 4, title: "Virtual Memory:", value: "Imaginary" },
+  { id: 5, title: "Disk Compression:", value: "Squeezed by hand" },
+  { id: 6, title: "PC Cards (PCMCIA):", value: "Tarot-based" },
+]
