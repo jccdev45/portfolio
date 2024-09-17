@@ -13,3 +13,13 @@ export type CardInfo = {
   offset?: Offset
   handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
+
+export interface MenuItem {
+  title: string
+  icon: JSX.Element
+}
+
+export interface MenuItemType {
+  trigger: string
+  items: MenuItem[]
+}

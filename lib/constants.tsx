@@ -1,5 +1,4 @@
 import {
-  // BookUser,
   Briefcase,
   ChefHat,
   Club,
@@ -260,7 +259,6 @@ export const myProjects = [
     tech: ["frontend", "react", "gatsbyjs", "tailwindcss"],
     live: "https://willneff.netlify.app/",
     repoURL: "https://github.com/jccdev45/willneff",
-    demo: "https://youtu.be/RDVMhI4ZAgs",
     icon: (
       <Twitch
         className="size-full"
