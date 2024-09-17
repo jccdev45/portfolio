@@ -1,6 +1,7 @@
 import "./globals.css"
 
 import { Fragment } from "react"
+import { Metadata } from "next"
 import localFont from "next/font/local"
 import Image from "next/image"
 import { DesktopProvider } from "@/context/desktop-context"
@@ -41,12 +42,87 @@ const fontLevi = localFont({
   variable: "--font-levi",
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
-    template: "%s | jccdev 🆒",
-    default: "jccdev 🆒",
+    template: "%s | jccdev",
+    default: "jccdev | Innovative Software Engineer",
   },
-  description: "🆗",
+  description:
+    "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
+  keywords: [
+    "jccdev",
+    "Jordan Cruz-Correa",
+    "software engineer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "TailwindCSS",
+    "full-stack developer",
+    "frontend developer",
+    "web development",
+    "UI/UX design",
+    "responsive design",
+    "Windows 98 inspired",
+    "retro tech",
+    "portfolio",
+    "Supabase",
+    "Node.js",
+    "PostgreSQL",
+    "Git",
+    "GitHub",
+    "Vercel",
+    "Netlify",
+  ],
+  authors: [{ name: "jccdev" }],
+  creator: "Jordan Cruz-Correa",
+  publisher: "jccdev",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: "jccdev | Fullstack Software Engineer",
+    description:
+      "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
+    url: "https://jccdev.vercel.app",
+    siteName: "jccdev's Digital Playground",
+    images: [
+      {
+        url: "https://jccdev.vercel.app/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "jccdev's Retro-Modern Portfolio Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "jccdev | Fullstack Software Engineer",
+    description:
+      "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
+    creator: "@jccdev",
+    images: ["https://jccdev.vercel.app/twitter-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 }
 
 export default function RootLayout({
@@ -55,7 +131,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           `relative min-h-screen bg-gradient-to-br from-sky-400 to-sky-200 font-levi scrollbar scrollbar-track-windows scrollbar-thumb-windows-dark`,
@@ -101,15 +177,15 @@ function DesktopDialog() {
           <ContextMenuSeparator />
           <ContextMenuItem disabled>Paste</ContextMenuItem>
           <ContextMenuSeparator />
-          <ContextMenuSub>
-            {/* NOTE: Make functional? */}
-            <ContextMenuSubTrigger>New</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black">
-              <ContextMenuItem>Folder</ContextMenuItem>
-              <ContextMenuItem>Shortcut</ContextMenuItem>
-              <ContextMenuSeparator />
-            </ContextMenuSubContent>
-          </ContextMenuSub>
+          {/* NOTE: Make functional? */}
+          {/* <ContextMenuSub> */}
+          {/* <ContextMenuSubTrigger>New</ContextMenuSubTrigger> */}
+          {/* <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black"> */}
+          {/* <ContextMenuItem>Folder</ContextMenuItem> */}
+          {/* <ContextMenuItem>Shortcut</ContextMenuItem> */}
+          {/* <ContextMenuSeparator /> */}
+          {/* </ContextMenuSubContent> */}
+          {/* </ContextMenuSub> */}
           <DialogTrigger asChild>
             <ContextMenuItem>Properties</ContextMenuItem>
           </DialogTrigger>
