@@ -1,7 +1,8 @@
 "use client"
 
+import { useDesktop } from "@/context/desktop-context"
+
 import { ContextMenuItem } from "@/components/ui/context-menu"
-import { useDesktop } from "@/components/desktop-context"
 
 export function AscendButton() {
   const { sortAscending, currentSortOrder } = useDesktop()

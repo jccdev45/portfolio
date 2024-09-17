@@ -3,6 +3,7 @@ import "./globals.css"
 import { Fragment } from "react"
 import localFont from "next/font/local"
 import Image from "next/image"
+import { DesktopProvider } from "@/context/desktop-context"
 import { Analytics } from "@vercel/analytics/react"
 import { Computer } from "lucide-react"
 import { Toaster } from "sonner"
@@ -31,7 +32,6 @@ import {
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import Desktop from "@/components/desktop"
-import { DesktopProvider } from "@/components/desktop-context"
 import { DialogDesc } from "@/components/dialog-description"
 import { MainNav } from "@/components/main-nav"
 import { AscendButton, DescendButton } from "@/components/sort-buttons"
@@ -92,7 +92,6 @@ function DesktopDialog() {
         </ContextMenuTrigger>
         <ContextMenuContent className="border border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows text-windows-black">
           <ContextMenuSub>
-            {/* NOTE: Make functional? */}
             <ContextMenuSubTrigger>Arrange Icons</ContextMenuSubTrigger>
             <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black">
               <AscendButton />

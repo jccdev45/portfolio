@@ -1,8 +1,7 @@
 "use client"
 
 import Link from "next/link"
-
-import { useDesktop } from "@/components/desktop-context"
+import { useDesktop } from "@/context/desktop-context"
 
 export default function Desktop() {
   const { desktopIcons } = useDesktop()
