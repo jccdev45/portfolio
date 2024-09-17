@@ -100,7 +100,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
               </MenubarSub>
 
               {startMenuItems.map((item) => (
-                <MenubarItem key={item.id} className="rounded-none">
+                <MenubarItem key={item.id} className="rounded-none" asChild>
                   <Link
                     href={item.link.href}
                     className="flex w-full cursor-pointer items-center"
