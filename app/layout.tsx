@@ -44,8 +44,8 @@ const fontLevi = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | jccdev",
-    default: "jccdev | Innovative Software Engineer",
+    template: "%s | jccdev 🆒",
+    default: "jccdev 🆒",
   },
   description:
     "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
