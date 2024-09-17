@@ -1,12 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Contact, Loader2 } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
-import { useMediaQuery } from "usehooks-ts"
+import { useIsClient, useMediaQuery } from "usehooks-ts"
 
 import { ContactSchema, ContactSchemaValues, socials } from "@/lib/constants"
 import { Button } from "@/components/ui/button"
@@ -22,8 +22,8 @@ import { Input } from "@/components/ui/input"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { Textarea } from "@/components/ui/textarea"
 import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowContent } from "@/components/window-content"
-import { WindowSidebar } from "@/components/window-sidebar"
+import { WindowPanelContent } from "@/components/window-panel-content"
+import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 const ContactFormLogic = () => {
   const [status, setStatus] = useState({
@@ -78,14 +78,10 @@ const ContactFormLogic = () => {
 }
 
 export function ContactForm() {
-  const [isClient, setIsClient] = useState(false)
   const { status, form, handleSubmit } = ContactFormLogic()
   const matches = useMediaQuery("(min-width: 850px)")
+  const isClient = useIsClient()
   const dir = matches ? `horizontal` : `vertical`
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   return (
     <>
@@ -98,7 +94,7 @@ export function ContactForm() {
       <div className="absolute inset-x-0 bottom-6 top-0 flex flex-col justify-evenly gap-y-2 overflow-scroll p-2 lg:flex-row lg:p-0">
         {isClient ? (
           <ResizablePanelGroup direction={dir}>
-            <WindowSidebar className="min-h-fit lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+            <WindowPanelSidebar className="min-h-fit lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
               <figure className="flex w-full flex-col items-center justify-start md:p-4">
                 <Contact className="size-12 md:size-24" />
                 <figcaption className="max-w-full text-xl font-semibold">
@@ -119,11 +115,11 @@ export function ContactForm() {
                   </Link>
                 ))}
               </div>
-            </WindowSidebar>
+            </WindowPanelSidebar>
 
             <ResizableHandle withHandle />
 
-            <WindowContent className="h-2/3 md:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
+            <WindowPanelContent className="h-2/3 md:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
               <Form {...form}>
                 <form
                   className="grid h-full p-8 md:p-20"
@@ -201,7 +197,7 @@ export function ContactForm() {
                   </Button>
                 </form>
               </Form>
-            </WindowContent>
+            </WindowPanelContent>
           </ResizablePanelGroup>
         ) : (
           <div className="grid size-full place-items-center">

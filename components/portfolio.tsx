@@ -1,27 +1,23 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { ExternalLink, Loader2 } from "lucide-react"
-import { useMediaQuery } from "usehooks-ts"
+import { useIsClient, useMediaQuery } from "usehooks-ts"
 
 import { myProjects as PROJECTS } from "@/lib/constants"
 import { Badge } from "@/components/ui/badge"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { WindowContent } from "@/components/window-content"
 import { WindowIcon } from "@/components/window-icon"
-import { WindowSidebar } from "@/components/window-sidebar"
+import { WindowPanelContent } from "@/components/window-panel-content"
+import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0])
-  const [isClient, setIsClient] = useState(false)
   const matches = useMediaQuery("(min-width: 850px)")
+  const isClient = useIsClient()
   const dir = matches ? `horizontal` : `vertical`
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   const handleProjectClick = (project: (typeof PROJECTS)[number]) => {
     setSelectedProject(project)
@@ -31,16 +27,16 @@ export function Portfolio() {
     <div className="absolute inset-x-0 bottom-6 top-0 gap-y-2 text-xs lg:p-0">
       {isClient ? (
         <ResizablePanelGroup direction={dir}>
-          <WindowSidebar className="grid h-full auto-rows-min gap-4 p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+          <WindowPanelSidebar className="grid h-full auto-rows-min gap-4 p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
             {renderProjectSummary(selectedProject)}
             {renderProjectTechStack(selectedProject.tech)}
-          </WindowSidebar>
+          </WindowPanelSidebar>
 
           <ResizableHandle withHandle />
 
-          <WindowContent className="h-1/2 md:h-2/5 lg:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
+          <WindowPanelContent className="h-1/2 md:h-2/5 lg:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
             {renderProjectIcons()}
-          </WindowContent>
+          </WindowPanelContent>
         </ResizablePanelGroup>
       ) : (
         <div className="grid size-full place-items-center">

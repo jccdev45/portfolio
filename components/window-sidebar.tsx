@@ -5,12 +5,15 @@ import { useMediaQuery } from "usehooks-ts"
 import { cn } from "@/lib/utils"
 import { ResizablePanel } from "@/components/ui/resizable"
 
-type WindowSidebarProps = {
+type WindowPanelSidebarProps = {
   children: React.ReactNode
   className?: string
 }
 
-export function WindowSidebar({ children, className }: WindowSidebarProps) {
+export function WindowPanelSidebar({
+  children,
+  className,
+}: WindowPanelSidebarProps) {
   const matches = useMediaQuery("(min-width: 850px)")
   const size = !matches ? 30 : 50
 

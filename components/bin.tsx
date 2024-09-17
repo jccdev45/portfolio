@@ -1,25 +1,21 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Loader2, Trash2 } from "lucide-react"
-import { useMediaQuery } from "usehooks-ts"
+import { useIsClient, useMediaQuery } from "usehooks-ts"
 
 import { toRecycle } from "@/lib/constants"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowContent } from "@/components/window-content"
 import { WindowIcon } from "@/components/window-icon"
-import { WindowSidebar } from "@/components/window-sidebar"
+import { WindowPanelContent } from "@/components/window-panel-content"
+import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function Bin() {
-  const [isClient, setIsClient] = useState(false)
   const [recycleItem, setRecycleItem] = useState<(typeof toRecycle)[0]>()
+  const isClient = useIsClient()
   const matches = useMediaQuery("(min-width: 850px)")
   const dir = matches ? `horizontal` : `vertical`
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   if (!isClient) {
     return (
@@ -31,7 +27,7 @@ export function Bin() {
 
   return (
     <ResizablePanelGroup direction={dir} className="overflow-auto">
-      <WindowSidebar className="lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+      <WindowPanelSidebar className="lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
         <div className="flex flex-row items-center justify-evenly md:p-4 lg:flex-col">
           <Trash2 className="size-16 lg:size-24" />
           <h2 className="max-w-full text-xl font-semibold">Recycle Bin</h2>
@@ -58,11 +54,11 @@ export function Bin() {
             </li>
           </ul>
         </div>
-      </WindowSidebar>
+      </WindowPanelSidebar>
 
       <ResizableHandle withHandle />
 
-      <WindowContent className="grid grid-cols-2 place-items-start overflow-scroll p-2 align-baseline scrollbar md:grid-cols-4 lg:shadow-inner lg:shadow-windows-dark">
+      <WindowPanelContent className="grid grid-cols-2 place-items-start overflow-scroll p-2 align-baseline scrollbar md:grid-cols-4 lg:shadow-inner lg:shadow-windows-dark">
         {toRecycle.map((trash) => (
           <WindowIcon
             key={trash.id}
@@ -84,7 +80,7 @@ export function Bin() {
             }}
           />
         ))}
-      </WindowContent>
+      </WindowPanelContent>
     </ResizablePanelGroup>
   )
 }

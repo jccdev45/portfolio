@@ -1,22 +1,31 @@
-import { ResizablePanel } from "@/components/ui/resizable"
+"use client"
 
-type WindowContentProps = {
+import React from "react"
+import { useWindowContext } from "@/context/window-context"
+
+import { cn } from "@/lib/utils"
+
+interface WindowContentProps {
   children: React.ReactNode
-  className?: string
+  bottomBar: boolean
 }
 
-export function WindowContent({ children, className }: WindowContentProps) {
+export function WindowContent({ children, bottomBar }: WindowContentProps) {
+  const { isMax } = useWindowContext()
+
   return (
-    <ResizablePanel
-      defaultSize={70}
-      minSize={50}
-      className={className}
-      // className={cn(
-      //   `grid w-full grid-cols-12 col-span-8 grid-rows-6 p-2 pb-0 space-4`,
-      //   style
-      // )}
+    <div
+      id="window-wrapper"
+      className={cn(
+        "absolute flex resize-none flex-col justify-evenly border-2 border-b-windows-dark border-l-windows border-r-windows-dark border-t-windows bg-white shadow-inner shadow-windows-dark",
+        isMax
+          ? bottomBar
+            ? "inset-0 h-[calc(100vh-48px)]"
+            : "inset-0"
+          : "left-1/2 top-[45%] mx-auto size-5/6 -translate-x-1/2 -translate-y-1/2"
+      )}
     >
       {children}
-    </ResizablePanel>
+    </div>
   )
 }
