@@ -11,7 +11,7 @@ export default function NotFoundPage() {
   return (
     <main className="absolute inset-0 m-auto flex h-screen items-center justify-center">
       <section
-        className="relative w-5/6 border-2 border-b-windows-dark border-l-windows border-r-windows-dark border-t-windows bg-windows shadow-windows-dark md:w-1/2 lg:w-2/5"
+        className="relative w-5/6 border-4 border-b-windows-dark border-l-windows border-r-windows-dark border-t-windows bg-windows shadow shadow-windows-dark md:w-1/2 lg:w-2/5"
         role="alert"
         aria-labelledby="error-title"
       >
