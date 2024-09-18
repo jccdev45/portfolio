@@ -1,22 +1,35 @@
 "use client"
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import { useDesktop } from "@/context/desktop-context";
+import { cn } from "@/lib/utils";
 
 export default function Desktop() {
   const { desktopIcons } = useDesktop()
+  const pathname = usePathname()
 
   return (
-    <div className="absolute left-2 top-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-start gap-x-2 gap-y-8">
-      {desktopIcons.map((icon) => (
+    <div className="absolute left-2 top-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-start gap-x-2 gap-y-4">
+      {desktopIcons.map(({ icon, id, path, label }) => (
         <Link
-          href={icon.path}
-          key={icon.id}
-          className="flex size-20 flex-col items-center justify-center"
+          href={path}
+          key={id}
+          className={cn(
+            "flex size-24 flex-col items-center justify-center gap-2",
+            pathname === path && "border border-dashed border-windows-black"
+          )}
         >
-          <span className="p-4">{icon.icon}</span>
-          <span className="text-xs">{icon.label}</span>
+          <span className="">{icon}</span>
+          <span
+            className={cn(
+              "text-sm",
+              pathname === path && "bg-windows-blue text-windows-white"
+            )}
+          >
+            {label}
+          </span>
         </Link>
       ))}
     </div>
