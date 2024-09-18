@@ -1,9 +1,9 @@
 "use client"
 
-import { useMediaQuery } from "usehooks-ts"
+import { useMediaQuery } from "usehooks-ts";
 
-import { cn } from "@/lib/utils"
-import { ResizablePanel } from "@/components/ui/resizable"
+import { ResizablePanel } from "@/components/ui/resizable";
+import { cn } from "@/lib/utils";
 
 type WindowPanelSidebarProps = {
   children: React.ReactNode
@@ -22,10 +22,6 @@ export function WindowPanelSidebar({
       defaultSize={size}
       minSize={20}
       className={cn(`h-fit md:h-full`, className)}
-      // className={cn(
-      //   `grid col-span-4 grid-rows-3 gap-y-8 max-w-[350px] h-full max-h-[80vh] p-2 text-center`,
-      //   style
-      // )}
     >
       {children}
     </ResizablePanel>
