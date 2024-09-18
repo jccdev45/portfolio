@@ -13,11 +13,13 @@ const data = [
     category: "FRONTEND",
     skills: [
       "React",
-      "Javascript",
-      "Typescript",
+      "JavaScript",
+      "TypeScript",
       "NextJS",
       "TailwindCSS",
-      "HTML/CSS",
+      "HTML",
+      "CSS",
+      "Remix",
     ],
   },
   {
@@ -25,16 +27,19 @@ const data = [
     skills: ["Supabase", "Firebase", "NodeJS", "Express", "PostgreSQL"],
   },
   {
-    category: "GENERAL",
-    skills: ["Git/Github", "Debugging", "Accessibility", "Project Management"],
+    category: "TOOLS/PLATFORMS",
+    skills: ["Git/GitHub", "VS Code", "Vercel", "Netlify"],
   },
   {
-    category: "INTERPERSONAL",
+    category: "SOFT SKILLS",
     skills: [
+      "Problem-solving",
+      "Adaptability",
+      "Teamwork",
       "Customer Service",
       "Written Communication",
       "Public Speaking",
-      "Stressful Situations",
+      "Stress Management",
     ],
   },
 ]
@@ -81,70 +86,79 @@ export default function AboutPage() {
 
           <section className="mx-auto flex flex-col overflow-scroll px-3 py-10 scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:col-span-2 lg:shadow-inner lg:shadow-windows-dark">
             <div className="prose max-w-full px-4">
-              <h1 className="text-center lg:text-left">Hey there!</h1>
+              <h1 className="text-center lg:text-left">Hello 👋🏽</h1>
               <p className="">
-                I'm Jordan, a software engineer mostly focused on front-end
-                development but fully capable of back-end work. I'm skilled in
-                HTML, CSS (especially TailwindCSS), JavaScript, and React.
-                Lately, I've been diving into TypeScript, NextJS, Remix, and
-                Supabase. I'm self sufficient and capable of troubleshooting
-                using any and all available resources.
+                I'm Jordan, a frontend-focused software engineer with a knack
+                for creating responsive, user-friendly web applications. My
+                expertise lies in React, TypeScript, and NextJS, complemented by
+                proficiency in HTML, CSS, and TailwindCSS for crafting visually
+                appealing interfaces. While my heart belongs to the frontend,
+                I'm no stranger to backend technologies like Supabase and
+                Node.js, making me adaptable to full-stack roles.
               </p>
 
-              <h2 className="">Skills</h2>
-              <div className="flex flex-col break-words sm:table sm:w-full sm:min-w-full sm:table-auto sm:flex-row">
+              <h2 className="">Technical Skills</h2>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {data.map(({ category, skills }) => (
-                  <div className="sm:table-cell sm:w-1/3" key={category}>
-                    <h3 className="border-b p-4">{category}</h3>
-                    <ul>
+                  <div key={category} className="">
+                    <h3 className="truncate border-b p-2 text-center font-bold">
+                      {category}
+                    </h3>
+                    <ul className="space-y-2 p-4">
                       {skills.map((skill) => (
-                        <li key={skill}>{skill}</li>
+                        <li key={skill} className="text-sm">
+                          {skill}
+                        </li>
                       ))}
                     </ul>
                   </div>
                 ))}
               </div>
 
-              <h2 className="">Experience</h2>
+              <h2 className="">Journey & Experience</h2>
               <p className="">
-                Most recently, I worked as a cook at a high-level restaurant in
-                downtown Manhattan and before that, I was a teaching assistant
-                at a software engineer bootcamp. I've also served in the Army
-                and worked as a residential electrician so I've definitely got a
-                well-rounded background and I'm ready to handle those "
-                <i>can you believe this shit?</i>&nbsp;&nbsp;" moments.
+                My path to software engineering has been anything but
+                conventional. I've worn many hats - from serving in the Army as
+                a Power Generator Equipment Repairer to working as a residential
+                electrician, and even as a line cook in a high-pressure
+                Manhattan restaurant. Additionally, I was a teaching assistant
+                at a software engineering bootcamp, where I honed my skills in
+                explaining complex concepts and troubleshooting code. This
+                diverse background has equipped me with a unique problem-solving
+                perspective and the ability to thrive in fast-paced, challenging
+                environments.
               </p>
 
-              <h2 className="">Interests</h2>
+              <h2 className="">Beyond Code</h2>
               <p className="">
-                Besides my technical chops, I consider myself a laid-back person
-                with diverse interests. People usually find me friendly and
-                easygoing. I've got a strong work ethic and love learning new
-                things. Outside of web dev, I'm an avid PC gamer (League of
-                Legends player for well over a decade so...there's that), pro
-                wrestling fan and occasionally I'll even pick up my guitar and
-                bass and mess around.
+                When I'm not immersed in web development, you can find me gaming
+                (some favorites include League of Legends, Baldur's Gate 3 and
+                Elden Ring), watching pro wrestling or playing guitar/bass. I'm
+                known for my laid-back demeanor, friendly attitude, and having
+                an appetite for learning new technologies and skills.
               </p>
 
-              <h2 className="">Projects & Achievements</h2>
+              <h2 className="">Projects & Creations</h2>
               <p className="">
-                Check out my{" "}
-                <a className="text-windows-blue" href="/portfolio">
-                  portfolio
-                </a>{" "}
-                to see some of the stuff I've built.
+                Curious about my work? Check out my{" "}
+                <Link className="text-windows-blue" href="/projects">
+                  projects
+                </Link>{" "}
+                which include a family recipe book app and this very Windows
+                98-inspired portfolio site.
               </p>
 
-              <h2 className="">Contact Me</h2>
+              <h2 className="">Let's Connect!</h2>
               <p className="">
-                Web development is my passion, and I'm always up for new
-                challenges so I'm confident that I can be a valuable asset to
-                your team. If you're interested in working together, please
-                don't hesitate to{" "}
-                <a className="text-windows-blue" href="/contact">
+                I'm passionate about creating innovative web solutions and
+                always eager to tackle new challenges. If you're looking for a
+                developer who brings both technical skills and creative
+                problem-solving to the table, I'd love to chat. Feel free to{" "}
+                <Link className="text-windows-blue" href="/contact">
                   reach out
-                </a>
-                .
+                </Link>{" "}
+                and let's discuss how we can work together to bring your ideas
+                to life!
               </p>
             </div>
           </section>
