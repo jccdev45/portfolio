@@ -6,6 +6,7 @@ import {
   File,
   FileSliders,
   FileSpreadsheet,
+  FileText,
   FileX2,
   Github,
   Heart,
@@ -25,11 +26,11 @@ import {
   UserCircle2,
   UtensilsCrossed,
   Video,
-  XCircle,
-} from "lucide-react"
-import * as z from "zod"
+  XCircle
+} from "lucide-react";
+import * as z from "zod";
 
-import { Offset } from "./types"
+import { Offset } from "./types";
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -93,25 +94,8 @@ export const menuItems = {
   notepad: [
     {
       trigger: "File",
-      items: [
-        // {
-        //   title: "Save",
-        //   icon: <Save />,
-        // },
-        { title: "Exit", icon: <XCircle /> },
-      ],
+      items: [{ title: "Exit", icon: <XCircle /> }],
     },
-    // {
-    //   trigger: "Edit",
-    //   items: [
-    //     { title: "Copy", icon: <Copy /> },
-    //     {
-    //       title: "Paste",
-    //       tooltip: "",
-    //       icon: <ClipboardPaste />,
-    //     },
-    //   ],
-    // },
   ],
   recycleBin: [
     {
@@ -279,7 +263,7 @@ export const desktopIcons = [
       <UserCircle2
         fill="rgba(256,256,256,0.5)"
         color="black"
-        className="block size-12 text-windows-black/70"
+        className="size-12 text-windows-black/70"
       />
     ),
   },
@@ -291,7 +275,7 @@ export const desktopIcons = [
       <Briefcase
         fill="rgba(154,102,29, 0.9)"
         color="black"
-        className="block size-12 text-windows-black/70"
+        className="size-12 text-windows-black/70"
       />
     ),
   },
@@ -303,7 +287,7 @@ export const desktopIcons = [
       <Trash2
         fill="rgba(200,200,200)"
         // color="black"
-        className="block size-12 text-windows-black/70"
+        className="size-12 text-windows-black/70"
       />
     ),
   },
@@ -315,7 +299,7 @@ export const desktopIcons = [
       <NotebookPen
         fill="white"
         color="rgb(2, 132, 199, 0.9)"
-        className="block size-12 text-windows-black/70"
+        className="size-12 text-windows-black/70"
       />
     ),
   },
@@ -338,7 +322,7 @@ export const desktopIcons = [
       <MailPlus
         fill="rgba(256,256,256,0.7)"
         // color="black"
-        className="block size-12 text-windows-black/70"
+        className="size-12 text-windows-black/70"
       />
     ),
   },
@@ -346,7 +330,7 @@ export const desktopIcons = [
     id: 7,
     label: "Terminal",
     path: "/terminal",
-    icon: <Terminal className="block size-12 text-windows-black/70" />,
+    icon: <Terminal className="size-12 text-windows-black/70" />,
   },
   // {
   //   id: 8,
@@ -360,6 +344,12 @@ export const desktopIcons = [
   //     />
   //   ),
   // },
+  {
+    id: 9,
+    label: "Resume",
+    path: "/resume",
+    icon: <FileText className="size-12" fill="white" />,
+  },
 ]
 
 // NOTE: RECYCLE

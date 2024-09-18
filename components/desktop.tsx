@@ -1,13 +1,14 @@
 "use client"
 
-import Link from "next/link"
-import { useDesktop } from "@/context/desktop-context"
+import Link from "next/link";
+
+import { useDesktop } from "@/context/desktop-context";
 
 export default function Desktop() {
   const { desktopIcons } = useDesktop()
 
   return (
-    <div className="absolute left-2 top-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-center gap-8">
+    <div className="absolute left-2 top-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-start gap-x-2 gap-y-8">
       {desktopIcons.map((icon) => (
         <Link
           href={icon.path}
