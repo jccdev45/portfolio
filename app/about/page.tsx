@@ -1,12 +1,12 @@
+import { Contact, UserCircle } from "lucide-react";
 /* eslint-disable react/no-unescaped-entities */
-import Image from "next/image"
-import Link from "next/link"
-import me from "@/assets/me.png"
-import { Contact, UserCircle } from "lucide-react"
+import Image from "next/image";
+import Link from "next/link";
 
-import { menuItems } from "@/lib/constants"
-import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowWrapper } from "@/components/window-wrapper"
+import me from "@/assets/me2.jpg";
+import { RainbowSeparator } from "@/components/rainbow-separator";
+import { WindowWrapper } from "@/components/window-wrapper";
+import { menuItems } from "@/lib/constants";
 
 const data = [
   {
@@ -73,13 +73,13 @@ export default function AboutPage() {
               <Contact className="size-5" /> Get in touch
             </Link>
             <RainbowSeparator />
-            <div className="mx-auto h-full w-40">
+            <div className="mx-auto size-full">
               <Image
                 src={me}
                 alt="Some jabrone"
                 width={450}
-                height={850}
-                className="object-cover"
+                height={750}
+                className="aspect-square object-cover"
               />
             </div>
           </aside>
@@ -98,7 +98,7 @@ export default function AboutPage() {
               </p>
 
               <h2 className="">Technical Skills</h2>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-2 lg:grid-cols-4">
                 {data.map(({ category, skills }) => (
                   <div key={category} className="">
                     <h3 className="truncate border-b p-2 text-center font-bold">
@@ -150,15 +150,12 @@ export default function AboutPage() {
 
               <h2 className="">Let's Connect!</h2>
               <p className="">
-                I'm passionate about creating innovative web solutions and
-                always eager to tackle new challenges. If you're looking for a
-                developer who brings both technical skills and creative
-                problem-solving to the table, I'd love to chat. Feel free to{" "}
+                Want to work together? Or maybe just talk wrestling, video games
+                or whatever else? Feel free to{" "}
                 <Link className="text-windows-blue" href="/contact">
-                  reach out
+                  reach out.
                 </Link>{" "}
-                and let's discuss how we can work together to bring your ideas
-                to life!
+                Thanks for stopping by 💖
               </p>
             </div>
           </section>
