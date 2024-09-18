@@ -58,6 +58,7 @@ export const metadata: Metadata = {
     "TypeScript",
     "JavaScript",
     "TailwindCSS",
+    "shadcn-ui",
     "full-stack developer",
     "frontend developer",
     "web development",
@@ -83,29 +84,21 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "jccdev | Fullstack Software Engineer",
+    title: "jccdev Portfolio",
     description:
       "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
     url: "https://jccdev.vercel.app",
-    siteName: "jccdev's Digital Playground",
-    images: [
-      {
-        url: "https://jccdev.vercel.app/opengraph-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "jccdev's Retro-Modern Portfolio Preview",
-      },
-    ],
+    siteName: "jccdev Portfolio",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "jccdev | Fullstack Software Engineer",
+    title: "jccdev Portfolio",
     description:
       "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
     creator: "@jccdev",
-    images: ["https://jccdev.vercel.app/twitter-image.jpg"],
+    images: ["https://jccdev.vercel.app/opengraph-image.jpg"],
   },
   robots: {
     index: true,
