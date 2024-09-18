@@ -144,6 +144,17 @@ export const startMenuItems = [
     },
   },
   {
+    id: 5,
+    link: {
+      href: "/resume",
+      text: (
+        <>
+          <FileText className="mr-2" /> Resume
+        </>
+      ),
+    },
+  },
+  {
     id: 3,
     link: {
       href: "/contact",
