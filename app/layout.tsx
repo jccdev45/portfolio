@@ -1,17 +1,17 @@
-import "./globals.css"
+import "./globals.css";
 
-import { Fragment } from "react"
-import { Metadata } from "next"
-import localFont from "next/font/local"
-import Image from "next/image"
-import { DesktopProvider } from "@/context/desktop-context"
-import { Analytics } from "@vercel/analytics/react"
-import { Computer } from "lucide-react"
-import { Toaster } from "sonner"
+import { Computer } from "lucide-react";
+import { Metadata } from "next";
+import localFont from "next/font/local";
+import Image from "next/image";
+import { Fragment } from "react";
+import { Toaster } from "sonner";
 
-import { performanceStatusItems } from "@/lib/constants"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import Desktop from "@/components/desktop";
+import { DialogDesc } from "@/components/dialog-description";
+import { MainNav } from "@/components/main-nav";
+import { AscendButton, DescendButton } from "@/components/sort-buttons";
+import { Button } from "@/components/ui/button";
 import {
   ContextMenu,
   ContextMenuContent,
@@ -20,8 +20,8 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger,
-} from "@/components/ui/context-menu"
+  ContextMenuTrigger
+} from "@/components/ui/context-menu";
 import {
   Dialog,
   DialogClose,
@@ -29,13 +29,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import Desktop from "@/components/desktop"
-import { DialogDesc } from "@/components/dialog-description"
-import { MainNav } from "@/components/main-nav"
-import { AscendButton, DescendButton } from "@/components/sort-buttons"
+  DialogTrigger
+} from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { siteConfig } from "@/config/site";
+import { DesktopProvider } from "@/context/desktop-context";
+import { performanceStatusItems } from "@/lib/constants";
+import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
 
 const fontLevi = localFont({
   src: "../assets/MS Sans Serif.ttf",
@@ -47,59 +48,18 @@ export const metadata: Metadata = {
     template: "%s | jccdev 🆒",
     default: "jccdev 🆒",
   },
-  description:
-    "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
-  keywords: [
-    "jccdev",
-    "Jordan Cruz-Correa",
-    "software engineer",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "JavaScript",
-    "TailwindCSS",
-    "shadcn-ui",
-    "full-stack developer",
-    "frontend developer",
-    "web development",
-    "UI/UX design",
-    "responsive design",
-    "Windows 98 inspired",
-    "retro tech",
-    "portfolio",
-    "Supabase",
-    "Node.js",
-    "PostgreSQL",
-    "Git",
-    "GitHub",
-    "Vercel",
-    "Netlify",
-  ],
-  authors: [{ name: "jccdev" }],
-  creator: "Jordan Cruz-Correa",
-  publisher: "jccdev",
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  authors: [{ name: siteConfig.author }],
+  creator: siteConfig.creator,
+  publisher: siteConfig.author,
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  openGraph: {
-    title: "jccdev Portfolio",
-    description:
-      "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
-    url: "https://jccdev.vercel.app",
-    siteName: "jccdev Portfolio",
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "jccdev Portfolio",
-    description:
-      "Explore my Windows 98-inspired portfolio blending modern development skills with a nostalgic twist.",
-    creator: "@jccdev",
-    images: ["https://jccdev.vercel.app/opengraph-image.jpg"],
-  },
+  openGraph: siteConfig.openGraph,
+  twitter: siteConfig.twitter,
   robots: {
     index: true,
     follow: true,
@@ -171,14 +131,14 @@ function DesktopDialog() {
           <ContextMenuItem disabled>Paste</ContextMenuItem>
           <ContextMenuSeparator />
           {/* NOTE: Make functional? */}
-          {/* <ContextMenuSub> */}
-          {/* <ContextMenuSubTrigger>New</ContextMenuSubTrigger> */}
-          {/* <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black"> */}
-          {/* <ContextMenuItem>Folder</ContextMenuItem> */}
-          {/* <ContextMenuItem>Shortcut</ContextMenuItem> */}
-          {/* <ContextMenuSeparator /> */}
-          {/* </ContextMenuSubContent> */}
-          {/* </ContextMenuSub> */}
+          {/* <ContextMenuSub>
+            <ContextMenuSubTrigger>New</ContextMenuSubTrigger>
+            <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black">
+              <ContextMenuItem>Folder</ContextMenuItem>
+              <ContextMenuItem>Shortcut</ContextMenuItem>
+              <ContextMenuSeparator />
+            </ContextMenuSubContent>
+          </ContextMenuSub> */}
           <DialogTrigger asChild>
             <ContextMenuItem>Properties</ContextMenuItem>
           </DialogTrigger>
