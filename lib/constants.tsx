@@ -151,10 +151,10 @@ export const startMenuItems = [
   {
     id: 2,
     link: {
-      href: "/portfolio",
+      href: "/projects",
       text: (
         <>
-          <Briefcase className="mr-2" /> Portfolio
+          <Briefcase className="mr-2" /> Projects
         </>
       ),
     },
@@ -285,8 +285,8 @@ export const desktopIcons = [
   },
   {
     id: 2,
-    label: "Portfolio",
-    path: "/portfolio",
+    label: "Projects",
+    path: "/projects",
     icon: (
       <Briefcase
         fill="rgba(154,102,29, 0.9)"
