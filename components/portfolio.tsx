@@ -9,19 +9,14 @@ import { myProjects as PROJECTS } from "@/lib/constants"
 import { Badge } from "@/components/ui/badge"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { WindowIcon } from "@/components/window-icon"
 import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function Portfolio() {
-  const [selectedProject, setSelectedProject] = useState(PROJECTS[0])
+  const [selectedProject] = useState(PROJECTS[0])
   const matches = useMediaQuery("(min-width: 850px)")
   const isClient = useIsClient()
   const dir = matches ? "horizontal" : "vertical"
-
-  const handleProjectClick = (project: (typeof PROJECTS)[number]) => {
-    setSelectedProject(project)
-  }
 
   return (
     <div className="absolute inset-x-0 bottom-6 top-0 gap-y-2 text-xs lg:p-0">
@@ -48,7 +43,7 @@ export function Portfolio() {
 
   function renderProjectSummary(project: (typeof PROJECTS)[number]) {
     return (
-      <div className="bg-yellow grid w-full grid-rows-3 place-items-center">
+      <div className="grid w-full grid-rows-3 place-items-center">
         <iframe
           id="dextswap-aggregator-widget"
           title="DEXTswap Aggregator"
@@ -121,7 +116,7 @@ export function Portfolio() {
 
   function renderProjectIcons() {
     return (
-      <div className="dwck flex justify-center p-4">
+      <div className="flex justify-center p-4">
         <iframe
           id="dextools-widget"
           title="DEXTools Trading Chart"

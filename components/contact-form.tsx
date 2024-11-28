@@ -2,83 +2,21 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { Contact, Loader2 } from "lucide-react"
-import { useForm } from "react-hook-form"
-import { toast } from "sonner"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { ContactSchema, ContactSchemaValues, socials } from "@/lib/constants"
-import { Button } from "@/components/ui/button"
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+import { socials } from "@/lib/constants"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
-import { Textarea } from "@/components/ui/textarea"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
-const ContactFormLogic = () => {
-  const [status, setStatus] = useState({
+export function ContactForm() {
+  const [status] = useState({
     submitted: false,
     submitting: false,
-    info: { error: false, msg: null || "" },
+    info: { error: false, msg: "" },
   })
-
-  const handleServerResponse = (ok: boolean, msg: string) => {
-    setStatus({
-      ...status,
-      info: { error: !ok, msg },
-      submitted: ok,
-      submitting: false,
-    })
-
-    if (ok) {
-      toast(msg)
-      form.reset()
-    }
-  }
-
-  const form = useForm<ContactSchemaValues>({
-    resolver: zodResolver(ContactSchema),
-    defaultValues: {
-      email: "",
-      subject: "",
-      message: "",
-    },
-  })
-
-  const handleSubmit = (values: ContactSchemaValues) => {
-    setStatus((prevStatus) => ({ ...prevStatus, submitting: true }))
-
-    fetch("https://formspree.io/f/myyqyjzd", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((response) =>
-        handleServerResponse(
-          response.ok,
-          "Thank you, your message has been submitted."
-        )
-      )
-      .catch((error) => handleServerResponse(false, error.response.data.error))
-  }
-
-  return { status, form, handleSubmit }
-}
-
-export function ContactForm() {
-  const { status, form, handleSubmit } = ContactFormLogic()
   const matches = useMediaQuery("(min-width: 850px)")
   const isClient = useIsClient()
   const dir = matches ? `horizontal` : `vertical`
