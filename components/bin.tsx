@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Loader2, Trash2 } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
 import { toRecycle } from "@/lib/constants"
@@ -28,9 +28,21 @@ export function Bin() {
   return (
     <ResizablePanelGroup direction={dir} className="overflow-auto">
       <WindowPanelSidebar className="lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
-        <div className="flex flex-row items-center justify-evenly md:p-4 lg:flex-col">
-          <Trash2 className="size-16 lg:size-24" />
-          <h2 className="max-w-full text-xl font-semibold">Recycle Bin</h2>
+        <div className="p-4 text-sm md:text-base">
+          <ul className="text-left">
+            <li className="">
+              <span className="whitespace-nowrap font-bold">Image: </span>
+              {recycleItem?.ext === ".jpg" || recycleItem?.ext === ".png" ? (
+                <img
+                  src={recycleItem.path} // Make sure this points to the correct image URL
+                  alt={recycleItem.title}
+                  className="mt-2 h-56 w-56 border border-windows-dark object-cover"
+                />
+              ) : (
+                "No image available"
+              )}
+            </li>
+          </ul>
         </div>
         <RainbowSeparator />
 

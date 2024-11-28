@@ -49,7 +49,7 @@ export function Portfolio() {
           title="DEXTswap Aggregator"
           width="400"
           height="420"
-          src="https://www.dextools.io/widget-aggregator/en/swap/solana/BLb3PC1LtxjQZuczcFkTfhndu64VxcbZrVV91PTHpump"
+          src="https://jup.ag/swap/SOL-BLb3PC1LtxjQZuczcFkTfhndu64VxcbZrVV91PTHpump"
         ></iframe>
         <figure className="grid grid-cols-3 place-items-center gap-4">
           <span className="size-12 md:size-20">{project.icon}</span>

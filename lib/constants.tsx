@@ -127,7 +127,7 @@ export const startMenuItems = [
       href: "/about",
       text: (
         <>
-          <UserCircle2 className="mr-2" /> About
+          <UserCircle2 className="mr-2" /> My Story
         </>
       ),
     },
@@ -268,7 +268,7 @@ export const myProjects = [
 export const desktopIcons = [
   {
     id: 1,
-    label: "About",
+    label: "My Story",
     path: "/about",
     icon: (
       <UserCircle2
@@ -280,7 +280,7 @@ export const desktopIcons = [
   },
   {
     id: 2,
-    label: "Get DWCK.exe",
+    label: "GetDWCK.exe",
     path: "/projects",
     icon: (
       <Briefcase
@@ -367,83 +367,83 @@ export const desktopIcons = [
 export const toRecycle = [
   {
     id: 1,
-    title: "definitely_not_passwords.txt",
-    ext: ".txt",
+    title: "shopping.png",
+    ext: ".png",
     size: "14 kb",
-    icon: <StickyNote className="size-full" />,
-    path: "/user/notes",
+    icon: <ImageIcon className="size-full" />,
+    path: "./shopping.png",
   },
   {
     id: 2,
-    title: "creed_take_me_higher.mp3",
-    ext: ".mp3",
+    title: "solarsystem.png",
+    ext: ".png",
     size: "4.6 mb",
-    icon: <Music className="size-full" />,
-    path: "/user/audio",
+    icon: <ImageIcon className="size-full" />,
+    path: "./solarsystem.png",
   },
   {
     id: 3,
-    title: "bank_account_number_and_debit_card_pin.txt",
+    title: "not_dev_seed_phrase.txt",
     ext: ".txt",
     size: "8 kb",
     icon: <StickyNote className="size-full" />,
-    path: "/user/notes",
+    path: "/assets",
   },
   {
     id: 4,
-    title: "how_to_pretend_youre_working.pdf",
-    ext: ".pdf",
+    title: "babenotnow.jpg",
+    ext: ".jpg",
     size: "1.2 mb",
-    icon: <File className="size-full" />,
-    path: "/user/documents",
+    icon: <ImageIcon className="size-full" />,
+    path: "./babenotnow.jpg",
   },
   {
     id: 5,
-    title: "embarrassing_haircut_2007.jpg",
-    ext: ".jpg",
+    title: "embarrassing_haircut_2007.png",
+    ext: ".png",
     size: "3.4 mb",
     icon: <ImageIcon className="size-full" />,
-    path: "/user/pictures",
+    path: "./embarrassing_haircut_2007.png",
   },
   {
     id: 6,
-    title: "resume_with_exaggerated_skills.doc",
-    ext: ".doc",
-    size: "25 kb",
-    icon: <File className="size-full" />,
-    path: "/user/documents",
-  },
-  {
-    id: 7,
-    title: "definitely_not_pirated_movie.avi",
+    title: "daisy.avi",
     ext: ".avi",
     size: "12.5 mb",
     icon: <Video className="size-full" />,
     path: "/user/videos",
   },
   {
+    id: 7,
+    title: "i_had_a_dream.jpg",
+    ext: ".png",
+    size: "3.4 mb",
+    icon: <ImageIcon className="size-full" />,
+    path: "./i_had_a_dream.jpg",
+  },
+  {
     id: 8,
-    title: "love_letter_to_crush.txt",
-    ext: ".txt",
-    size: "10 kb",
-    icon: <StickyNote className="size-full" />,
-    path: "/user/notes",
+    title: "japan_trip_pics.png",
+    ext: ".png",
+    size: "3.4 mb",
+    icon: <ImageIcon className="size-full" />,
+    path: "./japan_trip_pics.png",
   },
   {
     id: 9,
-    title: "why_i_deserve_a_raise.ppt",
-    ext: ".ppt",
-    size: "500 kb",
-    icon: <FileSliders className="size-full" />,
-    path: "/user/presentations",
+    title: "no_FWCKS.png",
+    ext: ".png",
+    size: "3.4 mb",
+    icon: <ImageIcon className="size-full" />,
+    path: "./no_FWCKS.png",
   },
   {
     id: 10,
-    title: "budget_if_i_won_the_lottery.xls",
-    ext: ".xls",
-    size: "200 kb",
-    icon: <FileSpreadsheet className="size-full" />,
-    path: "/user/spreadsheets",
+    title: "family.png",
+    ext: ".png",
+    size: "3.4 mb",
+    icon: <ImageIcon className="size-full" />,
+    path: "./family.png",
   },
 ]
 

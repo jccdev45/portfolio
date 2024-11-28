@@ -19,8 +19,8 @@ const fontLevi = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | jccdev 🆒",
-    default: "jccdev 🆒",
+    template: "DWCK_FWCK",
+    default: "DWCK_FWCK",
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
