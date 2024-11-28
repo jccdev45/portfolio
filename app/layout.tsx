@@ -1,16 +1,16 @@
-import "./globals.css";
+import "./globals.css"
 
-import { Metadata } from "next";
-import localFont from "next/font/local";
-import { Toaster } from "sonner";
+import { Metadata } from "next"
+import localFont from "next/font/local"
+import { DesktopProvider } from "@/context/desktop-context"
+import { Analytics } from "@vercel/analytics/react"
+import { Toaster } from "sonner"
 
-import Desktop from "@/components/desktop";
-import { DesktopDialog } from "@/components/desktop-dialog";
-import { MainNav } from "@/components/main-nav";
-import { siteConfig } from "@/config/site";
-import { DesktopProvider } from "@/context/desktop-context";
-import { cn } from "@/lib/utils";
-import { Analytics } from "@vercel/analytics/react";
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import Desktop from "@/components/desktop"
+import { DesktopDialog } from "@/components/desktop-dialog"
+import { MainNav } from "@/components/main-nav"
 
 const fontLevi = localFont({
   src: "../assets/MS Sans Serif.ttf",
@@ -61,9 +61,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          `relative min-h-screen bg-gradient-to-br from-sky-400 to-sky-200 font-levi scrollbar scrollbar-track-windows scrollbar-thumb-windows-dark`,
+          `relative min-h-screen font-levi scrollbar scrollbar-track-windows scrollbar-thumb-windows-dark`,
           fontLevi.className
         )}
+        style={{
+          backgroundColor: "rgba(254,255,55,255)",
+        }}
       >
         <Analytics />
         <DesktopProvider>

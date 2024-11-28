@@ -98,7 +98,7 @@ export function ContactForm() {
               <figure className="flex w-full flex-col items-center justify-start md:p-4">
                 <Contact className="size-12 md:size-24" />
                 <figcaption className="max-w-full text-xl font-semibold">
-                  Contact Me
+                  Socials
                 </figcaption>
               </figure>
               <RainbowSeparator />
@@ -120,83 +120,11 @@ export function ContactForm() {
             <ResizableHandle withHandle />
 
             <WindowPanelContent className="h-2/3 md:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
-              <Form {...form}>
-                <form
-                  className="grid h-full p-8 md:p-20"
-                  onSubmit={form.handleSubmit(handleSubmit)}
-                >
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
-                          <FormLabel>
-                            <span className="underline">E</span>mail:
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
-                              placeholder="yourname@domain.com"
-                              {...field}
-                            />
-                          </FormControl>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
-                          <FormLabel>
-                            <span className="underline">S</span>ubject:
-                          </FormLabel>
-                          <FormControl>
-                            <Input
-                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
-                              placeholder="Hiring 🤞🏽"
-                              {...field}
-                            />
-                          </FormControl>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <div className="grid grid-rows-2 gap-2 md:grid-cols-4">
-                          <FormLabel>
-                            <span className="underline">M</span>essage:
-                          </FormLabel>
-                          <FormControl>
-                            <Textarea
-                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
-                              placeholder="Four score and seven years ago..."
-                              {...field}
-                            />
-                          </FormControl>
-                        </div>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <Button
-                    type="submit"
-                    className="ml-auto w-1/3"
-                    disabled={status.submitting}
-                  >
-                    Submit
-                  </Button>
-                </form>
-              </Form>
+              <iframe
+                width="450"
+                height="100"
+                src="https://x.com/itsadwck"
+              ></iframe>
             </WindowPanelContent>
           </ResizablePanelGroup>
         ) : (

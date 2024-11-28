@@ -17,7 +17,7 @@ export function Portfolio() {
   const [selectedProject, setSelectedProject] = useState(PROJECTS[0])
   const matches = useMediaQuery("(min-width: 850px)")
   const isClient = useIsClient()
-  const dir = matches ? `horizontal` : `vertical`
+  const dir = matches ? "horizontal" : "vertical"
 
   const handleProjectClick = (project: (typeof PROJECTS)[number]) => {
     setSelectedProject(project)
@@ -48,7 +48,14 @@ export function Portfolio() {
 
   function renderProjectSummary(project: (typeof PROJECTS)[number]) {
     return (
-      <div className="grid w-full grid-rows-3 place-items-center">
+      <div className="bg-yellow grid w-full grid-rows-3 place-items-center">
+        <iframe
+          id="dextswap-aggregator-widget"
+          title="DEXTswap Aggregator"
+          width="400"
+          height="420"
+          src="https://www.dextools.io/widget-aggregator/en/swap/solana/BLb3PC1LtxjQZuczcFkTfhndu64VxcbZrVV91PTHpump"
+        ></iframe>
         <figure className="grid grid-cols-3 place-items-center gap-4">
           <span className="size-12 md:size-20">{project.icon}</span>
           <figcaption className="col-span-2 w-full truncate text-center text-sm font-semibold uppercase md:text-lg">
@@ -114,26 +121,13 @@ export function Portfolio() {
 
   function renderProjectIcons() {
     return (
-      <div className="grid grid-cols-2 gap-2 p-4 md:grid-cols-3 lg:grid-cols-4">
-        {PROJECTS.map((proj) => (
-          <WindowIcon
-            key={proj.id}
-            className="col-span-1 mx-auto flex aspect-square size-full flex-col items-center justify-center p-1"
-            topStyle={
-              proj === selectedProject
-                ? `border border-dashed border-windows-dark`
-                : ``
-            }
-            bottomStyle={
-              proj === selectedProject
-                ? `bg-windows-blue text-windows-white`
-                : ``
-            }
-            handleClick={() => handleProjectClick(proj)}
-            icon={proj.icon}
-            title={proj.title}
-          />
-        ))}
+      <div className="dwck flex justify-center p-4">
+        <iframe
+          id="dextools-widget"
+          title="DEXTools Trading Chart"
+          className="h-[350px] w-full max-w-4xl rounded-lg border shadow-md"
+          src="https://www.dextools.io/widget-chart/en/solana/pe-light/D2fivcN4XQ8UQ2bYEdpevrFedAERi6Zw9LmkixDsavuQ?theme=light&chartType=2&chartResolution=30&drawingToolbars=false"
+        ></iframe>
       </div>
     )
   }

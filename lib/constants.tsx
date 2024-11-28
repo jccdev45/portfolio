@@ -26,11 +26,11 @@ import {
   UserCircle2,
   UtensilsCrossed,
   Video,
-  XCircle
-} from "lucide-react";
-import * as z from "zod";
+  XCircle,
+} from "lucide-react"
+import * as z from "zod"
 
-import { Offset } from "./types";
+import { Offset } from "./types"
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -138,7 +138,7 @@ export const startMenuItems = [
       href: "/projects",
       text: (
         <>
-          <Briefcase className="mr-2" /> Projects
+          <Briefcase className="mr-2" /> Get DWCK!
         </>
       ),
     },
@@ -160,7 +160,7 @@ export const startMenuItems = [
       href: "/contact",
       text: (
         <>
-          <MailPlus className="mr-2" /> Contact
+          <MailPlus className="mr-2" /> Socials
         </>
       ),
     },
@@ -280,7 +280,7 @@ export const desktopIcons = [
   },
   {
     id: 2,
-    label: "Projects",
+    label: "Get DWCK.exe",
     path: "/projects",
     icon: (
       <Briefcase
@@ -327,7 +327,7 @@ export const desktopIcons = [
   // },
   {
     id: 6,
-    label: "Contact",
+    label: "Socials",
     path: "/contact",
     icon: (
       <MailPlus

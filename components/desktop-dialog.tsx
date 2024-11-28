@@ -1,10 +1,9 @@
-import { Computer } from "lucide-react";
-import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment } from "react"
+import Image from "next/image"
+import { Computer } from "lucide-react"
 
-import { DialogDesc } from "@/components/dialog-description";
-import { AscendButton, DescendButton } from "@/components/sort-buttons";
-import { Button } from "@/components/ui/button";
+import { performanceStatusItems } from "@/lib/constants"
+import { Button } from "@/components/ui/button"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -13,8 +12,8 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger
-} from "@/components/ui/context-menu";
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 import {
   Dialog,
   DialogClose,
@@ -22,10 +21,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { performanceStatusItems } from "@/lib/constants";
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { DialogDesc } from "@/components/dialog-description"
+import { AscendButton, DescendButton } from "@/components/sort-buttons"
 
 export function DesktopDialog() {
   return (
@@ -35,7 +35,7 @@ export function DesktopDialog() {
           <div className="-z-0 mx-auto grid h-screen w-1/3 place-items-center">
             <Image
               src="/download.png"
-              alt="Logo for jccdev"
+              alt="Logo for DwCK"
               height={200}
               width={200}
               priority

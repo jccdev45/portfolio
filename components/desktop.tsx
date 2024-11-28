@@ -1,10 +1,10 @@
 "use client"
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { useDesktop } from "@/context/desktop-context"
 
-import { useDesktop } from "@/context/desktop-context";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
 export default function Desktop() {
   const { desktopIcons } = useDesktop()

@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
+    --background: 237 240 34 1; /* Updated background color in rgba format */
+    --foreground: 237 240 34 1;
 
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
@@ -19,7 +19,7 @@
     --border: 20 5.9% 90%;
     --input: 20 5.9% 90%;
 
-    --primary: 24 9.8% 10%;
+    --primary: 237 240 34 1;
     --primary-foreground: 60 9.1% 97.8%;
 
     --secondary: 60 4.8% 95.9%;
@@ -46,7 +46,7 @@
   }
 
   .dark {
-    --background: 20 14.3% 4.1%;
+    --background: 237 240 34 1;
     --foreground: 60 9.1% 97.8%;
 
     --muted: 12 6.5% 15.1%;
@@ -64,7 +64,7 @@
     --primary: 60 9.1% 97.8%;
     --primary-foreground: 24 9.8% 10%;
 
-    --secondary: 12 6.5% 15.1%;
+    --secondary: 237 240 34 1;
     --secondary-foreground: 60 9.1% 97.8%;
 
     --accent: 12 6.5% 15.1%;
