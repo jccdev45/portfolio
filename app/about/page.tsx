@@ -1,49 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image"
-import Link from "next/link"
 import me2 from "@/assets/me2.png"
 import me3 from "@/assets/me3.png"
-import { Contact, UserCircle } from "lucide-react"
+import { UserCircle } from "lucide-react"
 
 import { menuItems } from "@/lib/constants"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowWrapper } from "@/components/window-wrapper"
-
-const data = [
-  {
-    category: "FRONTEND",
-    skills: [
-      "React",
-      "JavaScript",
-      "TypeScript",
-      "NextJS",
-      "TailwindCSS",
-      "HTML",
-      "CSS",
-      "Remix",
-    ],
-  },
-  {
-    category: "BACKEND",
-    skills: ["Supabase", "Firebase", "NodeJS", "Express", "PostgreSQL"],
-  },
-  {
-    category: "TOOLS/PLATFORMS",
-    skills: ["Git/GitHub", "VS Code", "Vercel", "Netlify"],
-  },
-  {
-    category: "SOFT SKILLS",
-    skills: [
-      "Problem-solving",
-      "Adaptability",
-      "Teamwork",
-      "Customer Service",
-      "Written Communication",
-      "Public Speaking",
-      "Stress Management",
-    ],
-  },
-]
 
 export const metadata = {
   title: "about",
