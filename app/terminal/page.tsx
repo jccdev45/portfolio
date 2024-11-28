@@ -30,11 +30,11 @@ export default function TerminalPage() {
         <div className="mb-4">
           <div className="text-lg font-bold">
             <div>********************</div>
-            <div>******* iDev *******</div>
+            <div>******* iDwCK *******</div>
             <div>********************</div>
           </div>
           <span className="ml-8 block">
-            &copy;copyright by: nobody {new Date().getFullYear()}
+            &copy; Copyrighted by: DWCK Inc. {new Date().getFullYear()}
           </span>
         </div>
         <TerminalWindow />

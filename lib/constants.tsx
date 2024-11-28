@@ -443,6 +443,41 @@ export const toRecycle = [
   },
 ]
 
+export const toRecycle2 = [
+  {
+    id: 1,
+    title: "Tik Tok",
+    ext: "Social Media",
+    size: "5 followers",
+    icon: <StickyNote className="size-full" />,
+    path: "Coming Soon!",
+  },
+  {
+    id: 2,
+    title: "X",
+    ext: "Social Media",
+    size: "200 followers",
+    icon: <StickyNote className="size-full" />,
+    path: "https://x.com/itsadwck",
+  },
+  {
+    id: 3,
+    title: "Telegram",
+    ext: "Messaging App",
+    size: "500 degens",
+    icon: <StickyNote className="size-full" />,
+    path: "https://t.me/dwckcto",
+  },
+  {
+    id: 4,
+    title: "DEXScreener",
+    ext: "Crypto Profile",
+    size: "300 ROCKETS",
+    icon: <StickyNote className="size-full" />,
+    path: "https://dexscreener.com/solana/d2fivcn4xq8uq2byedpevrfedaeri6zw9lmkixdsavuq",
+  },
+]
+
 // NOTE: SOLITAIRE
 export const SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"] as const
 
