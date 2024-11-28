@@ -12,7 +12,7 @@ import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function Bin() {
-  const [recycleItem, setRecycleItem] = useState<(typeof toRecycle)[0]>()
+  const [recycleItem, setRecycleItem] = useState<(typeof toRecycle2)[0]>()
   const isClient = useIsClient()
   const matches = useMediaQuery("(min-width: 850px)")
   const dir = matches ? `horizontal` : `vertical`
@@ -30,17 +30,24 @@ export function Bin() {
       <WindowPanelSidebar className="lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
         <div className="p-4 text-sm md:text-base">
           <ul className="text-left">
-            <li className="">
-              <span className="whitespace-nowrap font-bold">Title: </span>
-              <a
-                href={recycleItem.path} // Ensure this points to the correct URL
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-windows-blue underline hover:text-windows-blue/70"
-              >
-                {recycleItem.title}
-              </a>
-            </li>
+            {recycleItem ? (
+              <li>
+                <span className="whitespace-nowrap font-bold">Title: </span>
+                <a
+                  href={recycleItem.path} // Ensure this points to the correct URL
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-windows-blue underline hover:text-windows-blue/70"
+                >
+                  {recycleItem.title}
+                </a>
+              </li>
+            ) : (
+              <li>
+                <span className="whitespace-nowrap font-bold">Title: </span>
+                ---
+              </li>
+            )}
           </ul>
         </div>
         <RainbowSeparator />
@@ -49,19 +56,19 @@ export function Bin() {
           <ul className="text-left">
             <li className="">
               <span className="whitespace-nowrap font-bold">File name: </span>
-              {recycleItem?.title}
+              {recycleItem?.title || `---`}
             </li>
             <li className="">
               <span className="whitespace-nowrap font-bold">File type: </span>
-              {recycleItem ? recycleItem.ext : `---`}
+              {recycleItem?.ext || `---`}
             </li>
             <li className="">
               <span className="whitespace-nowrap font-bold">Size: </span>
-              {recycleItem ? recycleItem.size : `0 b`}
+              {recycleItem?.size || `0 b`}
             </li>
             <li className="">
               <span className="whitespace-nowrap font-bold">Path: </span>
-              {recycleItem ? recycleItem.path : `---`}
+              {recycleItem?.path || `---`}
             </li>
           </ul>
         </div>

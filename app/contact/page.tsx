@@ -5,14 +5,14 @@ import { Bin } from "@/components/bin2"
 import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
-  title: "recycle bin",
+  title: "Socials",
   description: "🆗",
 }
 
 export default function RecycleBinPage() {
   return (
     <WindowWrapper
-      title="Recycle Bin"
+      title="Socials"
       icon={<Trash2 />}
       menu={menuItems.recycleBin}
       bottomBar
