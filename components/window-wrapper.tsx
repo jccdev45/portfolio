@@ -1,5 +1,6 @@
 "use client"
 
+import type { JSX } from "react"
 import { WindowProvider } from "@/context/window-context"
 
 import { MenuItemType } from "@/lib/types"

@@ -1,3 +1,5 @@
+import type { JSX } from "react"
+
 import { SUITS, VALUES } from "./constants"
 
 export type Suit = (typeof SUITS)[number]
