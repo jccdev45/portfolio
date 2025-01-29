@@ -1,86 +1,106 @@
 "use client"
 
-import { useState } from "react"
-import { Loader2, Trash2 } from "lucide-react"
-import { useIsClient, useMediaQuery } from "usehooks-ts"
+import { Loader2, Trash2 } from "lucide-react";
+import { JSX, useState } from "react";
+import { useIsClient, useMediaQuery } from "usehooks-ts";
 
-import { toRecycle } from "@/lib/constants"
-import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
-import { RainbowSeparator } from "@/components/rainbow-separator"
-import { WindowIcon } from "@/components/window-icon"
-import { WindowPanelContent } from "@/components/window-panel-content"
-import { WindowPanelSidebar } from "@/components/window-sidebar"
+import { RainbowSeparator } from "@/components/rainbow-separator";
+import {
+  ResizableHandle,
+  ResizablePanelGroup
+} from "@/components/ui/resizable";
+import { WindowIcon } from "@/components/window-icon";
+import { WindowPanelContent } from "@/components/window-panel-content";
+import { WindowPanelSidebar } from "@/components/window-sidebar";
+import { toRecycle } from "@/lib/constants";
+
+interface RecycleItem {
+  id: number
+  title: string
+  ext: string
+  size: string
+  path: string
+  icon: JSX.Element
+}
 
 export function Bin() {
-  const [recycleItem, setRecycleItem] = useState<(typeof toRecycle)[0]>()
+  const [selectedRecycleItem, setSelectedRecycleItem] =
+    useState<RecycleItem | null>(null)
   const isClient = useIsClient()
   const matches = useMediaQuery("(min-width: 850px)")
-  const dir = matches ? `horizontal` : `vertical`
+  const direction = matches ? "horizontal" : "vertical"
 
   if (!isClient) {
     return (
       <div className="grid size-full place-items-center">
-        <Loader2 className="size-20 animate-spin text-windows-blue" />
+        <Loader2 className="text-windows-blue size-20 animate-spin" />
       </div>
     )
   }
 
   return (
-    <ResizablePanelGroup direction={dir} className="overflow-auto">
-      <WindowPanelSidebar className="lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+    <ResizablePanelGroup direction={direction} className="overflow-auto">
+      <WindowPanelSidebar className="lg:border-windows-dark lg:shadow-windows-dark lg:border-r lg:shadow-inner">
         <div className="flex flex-row items-center justify-evenly md:p-4 lg:flex-col">
           <Trash2 className="size-16 lg:size-24" />
           <h2 className="max-w-full text-xl font-semibold">Recycle Bin</h2>
         </div>
         <RainbowSeparator />
-
-        <div className="p-4 text-sm md:text-base">
-          <ul className="text-left">
-            <li className="">
-              <span className="whitespace-nowrap font-bold">File name: </span>
-              {recycleItem?.title}
-            </li>
-            <li className="">
-              <span className="whitespace-nowrap font-bold">File type: </span>
-              {recycleItem ? recycleItem.ext : `---`}
-            </li>
-            <li className="">
-              <span className="whitespace-nowrap font-bold">Size: </span>
-              {recycleItem ? recycleItem.size : `0 b`}
-            </li>
-            <li className="">
-              <span className="whitespace-nowrap font-bold">Path: </span>
-              {recycleItem ? recycleItem.path : `---`}
-            </li>
-          </ul>
-        </div>
+        <RecycleItemDetails recycleItem={selectedRecycleItem} />
       </WindowPanelSidebar>
 
       <ResizableHandle withHandle />
 
-      <WindowPanelContent className="grid grid-cols-2 place-items-start overflow-scroll p-2 align-baseline scrollbar md:grid-cols-4 lg:shadow-inner lg:shadow-windows-dark">
-        {toRecycle.map((trash) => (
+      <WindowPanelContent className="scrollbar lg:shadow-windows-dark grid grid-cols-2 place-items-start overflow-scroll p-2 align-baseline md:grid-cols-4 lg:shadow-inner">
+        {toRecycle.map((item) => (
           <WindowIcon
-            key={trash.id}
+            key={item.id}
             className="col-span-1 mx-auto flex aspect-square size-24 flex-col items-center justify-center p-1 md:size-32"
-            icon={trash.icon}
-            title={trash.title}
+            icon={item.icon}
+            title={item.title}
             topStyle={
-              trash === recycleItem
-                ? `border border-dashed border-windows-dark`
-                : ``
+              item === selectedRecycleItem
+                ? "border border-dashed border-windows-dark"
+                : ""
             }
             bottomStyle={
-              trash === recycleItem
-                ? `bg-windows-blue text-windows-white break-words w-full`
-                : `truncate`
+              item === selectedRecycleItem
+                ? "bg-windows-blue text-windows-white break-words w-full"
+                : "truncate"
             }
-            handleClick={() => {
-              trash !== recycleItem && setRecycleItem(trash)
-            }}
+            handleClick={() => setSelectedRecycleItem(item)}
           />
         ))}
       </WindowPanelContent>
     </ResizablePanelGroup>
+  )
+}
+
+interface RecycleItemDetailsProps {
+  recycleItem: RecycleItem | null
+}
+
+function RecycleItemDetails({ recycleItem }: RecycleItemDetailsProps) {
+  return (
+    <div className="p-4 text-sm md:text-base">
+      <ul className="text-left">
+        <li>
+          <span className="font-bold whitespace-nowrap">File name: </span>
+          {recycleItem?.title || "---"}
+        </li>
+        <li>
+          <span className="font-bold whitespace-nowrap">File type: </span>
+          {recycleItem?.ext || "---"}
+        </li>
+        <li>
+          <span className="font-bold whitespace-nowrap">Size: </span>
+          {recycleItem?.size || "0 b"}
+        </li>
+        <li>
+          <span className="font-bold whitespace-nowrap">Path: </span>
+          {recycleItem?.path || "---"}
+        </li>
+      </ul>
+    </div>
   )
 }
