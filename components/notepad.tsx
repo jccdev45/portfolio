@@ -35,7 +35,7 @@ export function Notepad() {
           id="notepad"
           placeholder="Eggs, milk, sugar..."
           className={cn(
-            `absolute h-[95%] flex-grow resize-none rounded-none border-none p-4 placeholder:font-normal placeholder:italic md:top-10 lg:h-[90%]`,
+            `absolute h-[95%] grow resize-none rounded-none border-none p-4 placeholder:font-normal placeholder:italic md:top-10 lg:h-[90%]`,
             isBold ? `font-bold` : `font-normal`,
             isItalic ? `italic` : `not-italic`,
             isUnderline ? `underline` : `no-underline`

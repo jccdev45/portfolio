@@ -11,11 +11,11 @@ export default function NotFoundPage() {
   return (
     <main className="absolute inset-0 m-auto flex h-screen items-center justify-center">
       <section
-        className="relative w-5/6 border-4 border-b-windows-dark border-l-windows border-r-windows-dark border-t-windows bg-windows shadow shadow-windows-dark md:w-1/2 lg:w-2/5"
+        className="relative w-5/6 border-4 border-b-windows-dark border-l-windows border-r-windows-dark border-t-windows bg-windows shadow-sm shadow-windows-dark md:w-1/2 lg:w-2/5"
         role="alert"
         aria-labelledby="error-title"
       >
-        <header className="flex h-8 w-full select-none items-center justify-between bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] px-1 py-0.5 text-windows-white md:h-9">
+        <header className="flex h-8 w-full select-none items-center justify-between bg-linear-to-r from-windows-blue to-[rgb(0,126,196)] px-1 py-0.5 text-windows-white md:h-9">
           <h1 id="error-title" className="text-sm font-bold">
             Error
           </h1>

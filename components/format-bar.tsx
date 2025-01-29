@@ -25,7 +25,7 @@ export function FormatBar({
       <Toggle
         onClick={setBold}
         className={cn(
-          `h-7 w-7 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-2 py-1 shadow shadow-windows-dark hover:bg-white/50`,
+          `h-7 w-7 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-2 py-1 shadow-sm shadow-windows-dark hover:bg-white/50`,
           isBold && `bg-windows-dark/50 shadow-inner shadow-windows-black`
         )}
       >
@@ -34,7 +34,7 @@ export function FormatBar({
       <Toggle
         onClick={setItalic}
         className={cn(
-          `h-7 w-7 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-2 py-1 shadow shadow-windows-dark hover:bg-white/50`,
+          `h-7 w-7 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-2 py-1 shadow-sm shadow-windows-dark hover:bg-white/50`,
           isItalic && `bg-windows-dark/50 shadow-inner shadow-windows-black`
         )}
       >
@@ -43,7 +43,7 @@ export function FormatBar({
       <Toggle
         onClick={setUnderline}
         className={cn(
-          `h-7 w-7 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-2 py-1 shadow shadow-windows-dark hover:bg-white/50`,
+          `h-7 w-7 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-2 py-1 shadow-sm shadow-windows-dark hover:bg-white/50`,
           isUnderline && `bg-windows-dark/50 shadow-inner shadow-windows-black`
         )}
       >

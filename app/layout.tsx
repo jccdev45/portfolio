@@ -61,7 +61,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          `relative min-h-screen bg-gradient-to-br from-sky-400 to-sky-200 font-levi scrollbar scrollbar-track-windows scrollbar-thumb-windows-dark`,
+          `relative min-h-screen bg-linear-to-br from-sky-400 to-sky-200 font-levi scrollbar scrollbar-track-windows scrollbar-thumb-windows-dark`,
           fontLevi.className
         )}
       >

@@ -69,7 +69,7 @@ export function DesktopDialog() {
       </ContextMenu>
       <DialogContent className="border-2 border-b-windows-black/80 border-l-windows-white border-r-windows-black/80 border-t-windows-white bg-windows p-0 sm:rounded-none">
         <DialogHeader>
-          <DialogTitle className="flex h-8 w-full select-none items-center justify-between bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
+          <DialogTitle className="flex h-8 w-full select-none items-center justify-between bg-linear-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
             System Properties
           </DialogTitle>
           {/* NOTE: Changed to custom DialogDescription component to change from <p> to <div>, removing the errors of invalid nesting where certain elements cannot be a descendant of a <p> */}

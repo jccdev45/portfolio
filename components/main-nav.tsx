@@ -71,7 +71,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
       <Menubar className="absolute bottom-0 left-0 flex h-12 w-screen justify-between rounded-none border border-t-windows-white bg-windows px-1">
         <div className="flex items-center gap-x-1">
           <MenubarMenu>
-            <MenubarTrigger className="relative flex items-center justify-between rounded-none border-2 border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-1.5 py-1 shadow shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-b-windows-white data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-t-windows-dark data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark focus:bg-windows active:shadow-windows-dark">
+            <MenubarTrigger className="relative flex items-center justify-between rounded-none border-2 border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-1.5 py-1 shadow-sm shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-b-windows-white data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-t-windows-dark data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark focus:bg-windows active:shadow-windows-dark">
               <Ungroup /> Start
             </MenubarTrigger>
             <MenubarContent className="relative mb-[-0.2rem] rounded-none bg-windows py-0 pl-6 pr-0">
@@ -122,8 +122,8 @@ export function MainNav({ defaultValue }: MainNavProps) {
             </MenubarContent>
           </MenubarMenu>
 
-          <AlertDialogContent className="rounded-none border-2 border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows p-0.5 shadow-sm">
-            <div className="flex h-8 w-full select-none items-center justify-between bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
+          <AlertDialogContent className="rounded-none border-2 border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows p-0.5 shadow-xs">
+            <div className="flex h-8 w-full select-none items-center justify-between bg-linear-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
               <div className="flex items-center gap-x-2 text-sm">
                 <p className="font-bold">Shut Down</p>
               </div>
@@ -178,14 +178,14 @@ export function MainNav({ defaultValue }: MainNavProps) {
                     </span>
                   </RadioGroup>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="!justify-center">
+                <AlertDialogFooter className="justify-center!">
                   <AlertDialogAction
-                    className="w-28 rounded-none border-b-2 border-l border-r-2 border-t border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-transparent text-windows-black shadow shadow-windows-black hover:bg-transparent active:border-none active:bg-windows-white/50 active:shadow-inner active:shadow-windows-dark"
+                    className="w-28 rounded-none border-b-2 border-l border-r-2 border-t border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-transparent text-windows-black shadow-sm shadow-windows-black hover:bg-transparent active:border-none active:bg-windows-white/50 active:shadow-inner active:shadow-windows-dark"
                     asChild
                   >
                     <Link href="/shutdown">OK</Link>
                   </AlertDialogAction>
-                  <AlertDialogCancel className="w-28 rounded-none border-b-2 border-l border-r-2 border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-transparent shadow hover:bg-transparent active:border-none active:bg-windows-white/50 active:shadow-inner active:shadow-windows-dark">
+                  <AlertDialogCancel className="w-28 rounded-none border-b-2 border-l border-r-2 border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-transparent shadow-sm hover:bg-transparent active:border-none active:bg-windows-white/50 active:shadow-inner active:shadow-windows-dark">
                     Cancel
                   </AlertDialogCancel>
                 </AlertDialogFooter>
@@ -261,7 +261,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
                   mode="single"
                   selected={date}
                   onSelect={setDate}
-                  className="rounded-none border bg-windows-white shadow"
+                  className="rounded-none border bg-windows-white shadow-sm"
                 />
               </MenubarItem>
             </MenubarContent>

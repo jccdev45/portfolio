@@ -9,7 +9,7 @@ export function WindowHeader() {
   const { isMax, setIsMax, icon, title } = useWindowContext()
 
   return (
-    <div className="flex h-8 w-full select-none items-center justify-between bg-gradient-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
+    <div className="flex h-8 w-full select-none items-center justify-between bg-linear-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
       <div className="flex items-center gap-x-2 text-sm">
         {icon}
         <p className="font-bold">{title}</p>

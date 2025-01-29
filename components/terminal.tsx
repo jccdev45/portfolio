@@ -30,7 +30,7 @@ export function TerminalWindow() {
         <span className="mr-2">{`C:\\>`}</span>
         <span
           contentEditable
-          className="flex-1 appearance-none break-all border-none bg-transparent outline-none"
+          className="flex-1 appearance-none break-all border-none bg-transparent outline-hidden"
           autoFocus
           onKeyDown={handleEnterKey}
         />
