@@ -75,23 +75,26 @@ export function MainNav({ defaultValue }: MainNavProps) {
               <Ungroup /> Start
             </MenubarTrigger>
             <MenubarContent className="relative mb-[-0.2rem] rounded-none bg-windows py-0 pl-6 pr-0">
-              <div className="absolute left-0 h-full w-6 bg-windows-blue">
+              <div className="absolute left-0 h-full w-6 border-r-2 border-windows-white bg-windows-blue">
                 <span className="absolute -left-5 bottom-8 -rotate-90 text-sm tracking-widest text-windows-white">
-                  jccdev
+                  JCCDEV
                 </span>
               </div>
               <MenubarSub>
-                <MenubarSubTrigger className="rounded-none">
+                <MenubarSubTrigger className="rounded-none hover:bg-windows-blue hover:text-windows-white">
                   <LayoutPanelLeft className="mr-2" /> Programs
                 </MenubarSubTrigger>
                 <MenubarSeparator />
                 <MenubarSubContent className="rounded-none bg-windows">
-                  <MenubarItem className="rounded-none">
-                    <Link href="/notepad" className="flex items-center">
+                  <MenubarItem asChild>
+                    <Link
+                      href="/notepad"
+                      className="flex size-full items-center"
+                    >
                       <StickyNote className="mr-2" /> Notepad
                     </Link>
                   </MenubarItem>
-                  {/* <MenubarItem className="rounded-none">
+                  {/* <MenubarItem>
                   <Link href="/solitaire" className="flex items-center">
                     <Club className="mr-2" /> Solitaire
                   </Link>
@@ -100,7 +103,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
               </MenubarSub>
 
               {startMenuItems.map((item) => (
-                <MenubarItem key={item.id} className="rounded-none" asChild>
+                <MenubarItem key={item.id} asChild>
                   <Link
                     href={item.link.href}
                     className="flex w-full cursor-pointer items-center"
@@ -112,7 +115,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
 
               <MenubarSeparator />
               <AlertDialogTrigger asChild>
-                <MenubarItem className="rounded-none">
+                <MenubarItem>
                   <Power className="mr-2" /> Shut Down
                 </MenubarItem>
               </AlertDialogTrigger>
@@ -201,14 +204,14 @@ export function MainNav({ defaultValue }: MainNavProps) {
           <MenubarMenu>
             <TooltipProvider>
               <Tooltip>
-                <MenubarTrigger>
+                <MenubarTrigger className="rounded-none data-[state=open]:bg-transparent focus:bg-transparent">
                   <TooltipTrigger asChild>
                     <span>
                       {value && value[0] === 0 ? <Volume /> : <Volume2 />}
                     </span>
                   </TooltipTrigger>
                 </MenubarTrigger>
-                <TooltipContent>
+                <TooltipContent className="rounded-none bg-windows-dark text-windows-white">
                   <div>
                     Volume: {value && value.length > 0 ? value[0] : 0} %
                   </div>
@@ -216,8 +219,8 @@ export function MainNav({ defaultValue }: MainNavProps) {
               </Tooltip>
             </TooltipProvider>
 
-            <MenubarContent>
-              <MenubarItem>
+            <MenubarContent className="bg-windows">
+              <MenubarItem className="hover:bg-windows focus:bg-windows">
                 <Slider
                   id="volume"
                   defaultValue={value}
@@ -234,13 +237,11 @@ export function MainNav({ defaultValue }: MainNavProps) {
           <MenubarMenu>
             <TooltipProvider>
               <Tooltip>
-                <MenubarTrigger>
+                <MenubarTrigger className="rounded-none data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:border-windows-black data-[state=open]:bg-transparent focus:border focus:border-dashed focus:border-windows-black focus:bg-transparent">
                   <TooltipTrigger asChild>
-                    <span>
-                      <Clock />
-                    </span>
+                    <Clock />
                   </TooltipTrigger>
-                  <TooltipContent>
+                  <TooltipContent className="rounded-none bg-windows-dark text-windows-white">
                     <p>
                       {new Date().toLocaleDateString("en-US", {
                         weekday: "long",

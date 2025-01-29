@@ -29,7 +29,7 @@ const ContactFormLogic = () => {
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,
-    info: { error: false, msg: null || "" },
+    info: { error: false, msg: "" },
   })
 
   const handleServerResponse = (ok: boolean, msg: string) => {
