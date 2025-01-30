@@ -3,7 +3,6 @@
 import { useEffect } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import Shutdown from "@/assets/shutdown.gif"
 
 export default function ShutdownPage() {
   const router = useRouter()
@@ -23,12 +22,12 @@ export default function ShutdownPage() {
     <div className="absolute inset-0 z-30 h-svh w-svw">
       <Image
         fill
-        src={Shutdown}
+        src="/shutdown.gif"
         alt="Windows 98 shutdown screen"
         className="aspect-square bg-[#a5c6de] object-contain object-center lg:object-cover"
         unoptimized
       />
-      <div className="absolute inset-x-0 bottom-0 mx-auto flex w-fit flex-col items-center border bg-windows-white p-4 text-center text-2xl">
+      <div className="bg-windows-white absolute inset-x-0 bottom-0 mx-auto flex w-fit flex-col items-center border p-4 text-center text-2xl">
         <span>
           Shutting down/restarting...(redirecting back home, don&apos;t worry)
         </span>

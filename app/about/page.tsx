@@ -1,12 +1,11 @@
-import { Contact, UserCircle } from "lucide-react";
 /* eslint-disable react/no-unescaped-entities */
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
+import { Contact, UserCircle } from "lucide-react"
 
-import me from "@/assets/me2.jpg";
-import { RainbowSeparator } from "@/components/rainbow-separator";
-import { WindowWrapper } from "@/components/window-wrapper";
-import { menuItems } from "@/lib/constants";
+import { menuItems } from "@/lib/constants"
+import { RainbowSeparator } from "@/components/rainbow-separator"
+import { WindowWrapper } from "@/components/window-wrapper"
 
 const data = [
   {
@@ -57,9 +56,9 @@ export default function AboutPage() {
       menu={menuItems.default}
       bottomBar
     >
-      <div className="absolute inset-x-0 bottom-6 top-0 flex flex-col overflow-auto lg:flex-row">
+      <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col overflow-auto lg:flex-row">
         <div className="grid grid-cols-1 lg:grid-cols-3">
-          <aside className="flex min-w-fit flex-col items-center space-y-4 p-4 lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+          <aside className="lg:border-windows-dark lg:shadow-windows-dark flex min-w-fit flex-col items-center space-y-4 p-4 lg:border-r lg:shadow-inner">
             <figure className="flex flex-col items-center">
               <UserCircle className="size-12 md:size-24" />
               <figcaption className="max-w-full text-xl font-semibold">
@@ -68,15 +67,15 @@ export default function AboutPage() {
             </figure>
             <Link
               href="/contact"
-              className="my-4 flex w-fit items-center justify-center gap-2 self-center text-windows-blue/80 underline underline-offset-2 hover:text-windows-blue"
+              className="text-windows-blue/80 hover:text-windows-blue my-4 flex w-fit items-center justify-center gap-2 self-center underline underline-offset-2"
             >
               <Contact className="size-5" /> Get in touch
             </Link>
             <RainbowSeparator />
             <div className="mx-auto size-full">
               <Image
-                src={me}
-                alt="Some jabrone"
+                src="/me2.jpg"
+                alt="Some jabrone named Jordan, looking handsome"
                 width={450}
                 height={750}
                 className="aspect-square object-cover"
@@ -84,7 +83,7 @@ export default function AboutPage() {
             </div>
           </aside>
 
-          <section className="mx-auto flex flex-col overflow-scroll px-3 py-10 scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:col-span-2 lg:shadow-inner lg:shadow-windows-dark">
+          <section className="scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:shadow-windows-dark mx-auto flex flex-col overflow-scroll px-3 py-10 lg:col-span-2 lg:shadow-inner">
             <div className="prose max-w-full px-4">
               <h1 className="text-center lg:text-left">Hello 👋🏽</h1>
               <p className="">
