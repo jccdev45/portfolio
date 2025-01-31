@@ -54,38 +54,44 @@ interface MainNavProps {
   defaultValue?: SliderProps["defaultValue"]
 }
 
+function formatPathname(path: string): string {
+  const segments = path.split("/").filter(Boolean)
+  const formattedSegments = segments.map((segment) => {
+    return segment
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  })
+  return formattedSegments.join(" - ")
+}
+
 export function MainNav({ defaultValue }: MainNavProps) {
   const path = usePathname()
-  const withoutSlashes = path.replace(/\//g, "")
-
-  const sanitizedPathname = withoutSlashes
-    .split("-")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ")
+  const formattedPathname = formatPathname(path)
 
   const [date, setDate] = useState<Date | undefined>(new Date())
   const [value, setValue] = useState(defaultValue)
 
   return (
     <AlertDialog>
-      <Menubar className="absolute bottom-0 left-0 flex h-12 w-screen justify-between rounded-none border border-t-windows-white bg-windows px-1">
+      <Menubar className="border-t-windows-white bg-windows absolute bottom-0 left-0 flex h-12 w-screen justify-between rounded-none border px-1">
         <div className="flex items-center gap-x-1">
           <MenubarMenu>
-            <MenubarTrigger className="relative flex items-center justify-between rounded-none border-2 border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white px-1.5 py-1 shadow-sm shadow-windows-dark data-[state=open]:border-2 data-[state=open]:border-b-windows-white data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-t-windows-dark data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black data-[state=open]:shadow-inner data-[state=open]:shadow-windows-dark focus:bg-windows active:shadow-windows-dark">
+            <MenubarTrigger className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white shadow-windows-dark data-[state=open]:border-b-windows-white data-[state=open]:border-l-windows-dark data-[state=open]:border-r-windows-white data-[state=open]:border-t-windows-dark data-[state=open]:bg-windows-white/30 data-[state=open]:text-windows-black data-[state=open]:shadow-windows-dark focus:bg-windows active:shadow-windows-dark relative flex items-center justify-between rounded-none border-2 px-1.5 py-1 shadow-sm data-[state=open]:border-2 data-[state=open]:shadow-inner">
               <Ungroup /> Start
             </MenubarTrigger>
-            <MenubarContent className="relative mb-[-0.2rem] rounded-none bg-windows py-0 pl-6 pr-0">
-              <div className="absolute left-0 h-full w-6 border-r-2 border-windows-white bg-windows-blue">
-                <span className="absolute -left-5 bottom-8 -rotate-90 text-sm tracking-widest text-windows-white">
+            <MenubarContent className="bg-windows relative mb-[-0.2rem] rounded-none py-0 pr-0 pl-6">
+              <div className="border-windows-white bg-windows-blue absolute left-0 h-full w-6 border-r-2">
+                <span className="text-windows-white absolute bottom-8 -left-5 -rotate-90 text-sm tracking-widest">
                   JCCDEV
                 </span>
               </div>
               <MenubarSub>
-                <MenubarSubTrigger className="rounded-none hover:bg-windows-blue hover:text-windows-white">
+                <MenubarSubTrigger className="hover:bg-windows-blue hover:text-windows-white rounded-none">
                   <LayoutPanelLeft className="mr-2" /> Programs
                 </MenubarSubTrigger>
                 <MenubarSeparator />
-                <MenubarSubContent className="rounded-none bg-windows">
+                <MenubarSubContent className="bg-windows rounded-none">
                   <MenubarItem asChild>
                     <Link
                       href="/notepad"
@@ -122,8 +128,8 @@ export function MainNav({ defaultValue }: MainNavProps) {
             </MenubarContent>
           </MenubarMenu>
 
-          <AlertDialogContent className="rounded-none border-2 border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows p-0.5 shadow-xs">
-            <div className="flex h-8 w-full select-none items-center justify-between bg-linear-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
+          <AlertDialogContent className="border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows rounded-none border-2 p-0.5 shadow-xs">
+            <div className="from-windows-blue text-windows-white flex h-8 w-full items-center justify-between bg-linear-to-r to-[rgb(0,126,196)] px-1.5 py-0.5 select-none md:h-9">
               <div className="flex items-center gap-x-2 text-sm">
                 <p className="font-bold">Shut Down</p>
               </div>
@@ -131,7 +137,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
                 <AlertDialogCancel asChild>
                   <Button
                     variant="ghost"
-                    className="size-6 rounded-none border border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows p-0.5 text-windows-black"
+                    className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black size-6 rounded-none border p-0.5"
                     asChild
                   >
                     <X />
@@ -158,7 +164,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
                       />
                       <Label
                         htmlFor="shutdown"
-                        className="border-dashed peer-data-[state=checked]:border peer-data-[state=checked]:border-windows-black"
+                        className="peer-data-[state=checked]:border-windows-black border-dashed peer-data-[state=checked]:border"
                       >
                         Shutdown
                       </Label>
@@ -171,7 +177,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
                       />
                       <Label
                         htmlFor="restart"
-                        className="border-dashed peer-data-[state=checked]:border peer-data-[state=checked]:border-windows-black"
+                        className="peer-data-[state=checked]:border-windows-black border-dashed peer-data-[state=checked]:border"
                       >
                         Restart
                       </Label>
@@ -180,12 +186,12 @@ export function MainNav({ defaultValue }: MainNavProps) {
                 </AlertDialogHeader>
                 <AlertDialogFooter className="justify-center!">
                   <AlertDialogAction
-                    className="w-28 rounded-none border-b-2 border-l border-r-2 border-t border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-transparent text-windows-black shadow-sm shadow-windows-black hover:bg-transparent active:border-none active:bg-windows-white/50 active:shadow-inner active:shadow-windows-dark"
+                    className="border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black shadow-windows-black active:bg-windows-white/50 active:shadow-windows-dark w-28 rounded-none border-t border-r-2 border-b-2 border-l bg-transparent shadow-sm hover:bg-transparent active:border-none active:shadow-inner"
                     asChild
                   >
                     <Link href="/shutdown">OK</Link>
                   </AlertDialogAction>
-                  <AlertDialogCancel className="w-28 rounded-none border-b-2 border-l border-r-2 border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-transparent shadow-sm hover:bg-transparent active:border-none active:bg-windows-white/50 active:shadow-inner active:shadow-windows-dark">
+                  <AlertDialogCancel className="border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white active:bg-windows-white/50 active:shadow-windows-dark w-28 rounded-none border-r-2 border-b-2 border-l bg-transparent shadow-sm hover:bg-transparent active:border-none active:shadow-inner">
                     Cancel
                   </AlertDialogCancel>
                 </AlertDialogFooter>
@@ -193,25 +199,25 @@ export function MainNav({ defaultValue }: MainNavProps) {
             </div>
           </AlertDialogContent>
 
-          {sanitizedPathname.length > 0 && (
-            <div className="mr-auto w-28 truncate border-2 border-windows-white border-l-windows-dark border-t-windows-dark bg-windows-white/30 px-1.5 py-1 shadow-inner shadow-windows-dark md:w-36 lg:w-44">
-              {sanitizedPathname}
+          {formattedPathname.length > 0 && (
+            <div className="border-windows-white border-l-windows-dark border-t-windows-dark bg-windows-white/30 shadow-windows-dark mr-auto w-28 truncate border-2 px-1.5 py-1 shadow-inner md:w-36 lg:w-44">
+              {formattedPathname}
             </div>
           )}
         </div>
 
-        <div className="flex items-center justify-between shadow-inner shadow-windows-dark">
+        <div className="shadow-windows-dark flex items-center justify-between shadow-inner">
           <MenubarMenu>
             <TooltipProvider>
               <Tooltip>
-                <MenubarTrigger className="rounded-none data-[state=open]:bg-transparent focus:bg-transparent">
+                <MenubarTrigger className="rounded-none focus:bg-transparent data-[state=open]:bg-transparent">
                   <TooltipTrigger asChild>
                     <span>
                       {value && value[0] === 0 ? <Volume /> : <Volume2 />}
                     </span>
                   </TooltipTrigger>
                 </MenubarTrigger>
-                <TooltipContent className="rounded-none bg-windows-dark text-windows-white">
+                <TooltipContent className="bg-windows-dark text-windows-white rounded-none">
                   <div>
                     Volume: {value && value.length > 0 ? value[0] : 0} %
                   </div>
@@ -226,7 +232,7 @@ export function MainNav({ defaultValue }: MainNavProps) {
                   defaultValue={value}
                   max={100}
                   step={1}
-                  className="rounded-none bg-windows [&_[role=slider]]:size-5"
+                  className="bg-windows rounded-none [&_[role=slider]]:size-5"
                   onValueChange={setValue}
                   aria-label="Volume"
                 />
@@ -237,11 +243,11 @@ export function MainNav({ defaultValue }: MainNavProps) {
           <MenubarMenu>
             <TooltipProvider>
               <Tooltip>
-                <MenubarTrigger className="rounded-none data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:border-windows-black data-[state=open]:bg-transparent focus:border focus:border-dashed focus:border-windows-black focus:bg-transparent">
+                <MenubarTrigger className="data-[state=open]:border-windows-black focus:border-windows-black rounded-none focus:border focus:border-dashed focus:bg-transparent data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:bg-transparent">
                   <TooltipTrigger asChild>
                     <Clock />
                   </TooltipTrigger>
-                  <TooltipContent className="rounded-none bg-windows-dark text-windows-white">
+                  <TooltipContent className="bg-windows-dark text-windows-white rounded-none">
                     <p>
                       {new Date().toLocaleDateString("en-US", {
                         weekday: "long",
@@ -255,13 +261,13 @@ export function MainNav({ defaultValue }: MainNavProps) {
               </Tooltip>
             </TooltipProvider>
 
-            <MenubarContent className="mb-0.5 rounded-none bg-windows">
+            <MenubarContent className="bg-windows mb-0.5 rounded-none">
               <MenubarItem className="bg-windows">
                 <Calendar
                   mode="single"
                   selected={date}
                   onSelect={setDate}
-                  className="rounded-none border bg-windows-white shadow-sm"
+                  className="bg-windows-white rounded-none border shadow-sm"
                 />
               </MenubarItem>
             </MenubarContent>

@@ -1,4 +1,5 @@
 import {
+  ArrowLeft,
   Briefcase,
   ChefHat,
   Club,
@@ -117,6 +118,19 @@ export const menuItems = {
     {
       trigger: "File",
       items: [{ title: "Exit", icon: <XCircle /> }],
+    },
+  ],
+  blog: [
+    {
+      // trigger: "←",
+      trigger: "File",
+      items: [
+        {
+          title: "Back",
+          icon: <ArrowLeft />,
+        },
+        { title: "Exit", icon: <XCircle /> },
+      ],
     },
   ],
 }

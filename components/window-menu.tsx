@@ -1,8 +1,10 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
-import { MenuItemType } from "@/lib/types"
+import { MenuItem, MenuItemType } from "@/lib/types"
+import { cn } from "@/lib/utils"
 import {
   Menubar,
   MenubarContent,
@@ -16,17 +18,32 @@ interface WindowMenuProps {
 }
 
 export function WindowMenu({ menu }: WindowMenuProps) {
+  const path = usePathname()
+
+  function isItemDisabled(item: MenuItem) {
+    return item.title === "Back" && path === "/blog"
+  }
+
   return (
-    <Menubar className="h-8 rounded-none border-0 bg-windows md:h-9">
+    <Menubar className="bg-windows h-8 rounded-none border-0 md:h-9">
       {menu.map((menuItem) => (
         <MenubarMenu key={menuItem.trigger}>
-          <MenubarTrigger className="data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:border-windows-dark data-[state=open]:bg-windows/70 data-[state=open]:shadow-inner focus:bg-windows/50">
+          <MenubarTrigger className="data-[state=open]:border-windows-dark data-[state=open]:bg-windows/70 focus:bg-windows/50 data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:shadow-inner">
             {menuItem.trigger}
           </MenubarTrigger>
-          <MenubarContent className="-mt-2 ml-1 rounded-none bg-windows">
+          <MenubarContent className="bg-windows -mt-2 ml-1 rounded-none">
             {menuItem.items.map((item) => (
-              <MenubarItem key={item.title}>
-                {item.title === "Exit" ? (
+              <MenubarItem
+                key={item.title}
+                disabled={isItemDisabled(item)}
+                className={cn("hover:bg-windows-blue hover:text-windows-white")}
+              >
+                {item.title === "Back" ? (
+                  <Link href="/blog" className="flex w-full items-center">
+                    {item.icon}
+                    <span className="mx-2">{item.title}</span>
+                  </Link>
+                ) : item.title === "Exit" ? (
                   <Link
                     href="/"
                     className="flex w-full items-center hover:bg-transparent"
