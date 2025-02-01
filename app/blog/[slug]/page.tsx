@@ -29,7 +29,11 @@ import { compileMDX } from "next-mdx-remote/rsc"
 
 // export const dynamicParams = false
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
   const content = await fs.readFile(
     path.join(process.cwd(), "articles", `${slug}.mdx`)
