@@ -86,15 +86,15 @@ export function ContactForm() {
   return (
     <>
       {status.submitting && (
-        <div className="absolute inset-x-0 bottom-6 top-0 z-10 grid place-items-center bg-white/90">
-          <div className="m-auto size-32 animate-spin rounded-full border-4 border-solid border-windows-blue border-t-transparent" />
+        <div className="absolute inset-x-0 top-0 bottom-6 z-10 grid place-items-center bg-white/90">
+          <div className="border-windows-blue m-auto size-32 animate-spin rounded-full border-4 border-solid border-t-transparent" />
         </div>
       )}
 
-      <div className="absolute inset-x-0 bottom-6 top-0 flex flex-col justify-evenly gap-y-2 overflow-scroll p-2 lg:flex-row lg:p-0">
+      <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col justify-evenly gap-y-2 overflow-auto p-2 lg:flex-row lg:p-0">
         {isClient ? (
           <ResizablePanelGroup direction={dir}>
-            <WindowPanelSidebar className="min-h-fit lg:border-r lg:border-windows-dark lg:shadow-inner lg:shadow-windows-dark">
+            <WindowPanelSidebar className="lg:border-windows-dark lg:shadow-windows-dark min-h-fit lg:border-r lg:shadow-inner">
               <figure className="flex w-full flex-col items-center justify-start md:p-4">
                 <Contact className="size-12 md:size-24" />
                 <figcaption className="max-w-full text-xl font-semibold">
@@ -107,7 +107,7 @@ export function ContactForm() {
                   <Link
                     href={social.link}
                     key={social.id}
-                    className="flex flex-col items-center p-2 hover:cursor-pointer hover:border hover:border-dashed hover:border-windows-dark hover:bg-windows/50 md:px-4"
+                    className="hover:border-windows-dark hover:bg-windows/50 flex flex-col items-center p-2 hover:cursor-pointer hover:border hover:border-dashed md:px-4"
                     target="_blank"
                   >
                     <span className="size-10">{social.icon}</span>
@@ -119,7 +119,7 @@ export function ContactForm() {
 
             <ResizableHandle withHandle />
 
-            <WindowPanelContent className="h-2/3 md:h-full lg:w-2/3 lg:shadow-inner lg:shadow-windows-dark">
+            <WindowPanelContent className="lg:shadow-windows-dark h-2/3 md:h-full lg:w-2/3 lg:shadow-inner">
               <Form {...form}>
                 <form
                   className="grid h-full p-8 md:p-20"
@@ -136,7 +136,7 @@ export function ContactForm() {
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
+                              className="border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white col-span-3 rounded-none border shadow-inner"
                               placeholder="yourname@domain.com"
                               {...field}
                             />
@@ -157,7 +157,7 @@ export function ContactForm() {
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
+                              className="border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white col-span-3 rounded-none border shadow-inner"
                               placeholder="Hiring 🤞🏽"
                               {...field}
                             />
@@ -178,7 +178,7 @@ export function ContactForm() {
                           </FormLabel>
                           <FormControl>
                             <Textarea
-                              className="col-span-3 rounded-none border border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white shadow-inner"
+                              className="border-b-windows-white border-l-windows border-r-windows-white border-t-windows bg-windows-white col-span-3 rounded-none border shadow-inner"
                               placeholder="Four score and seven years ago..."
                               {...field}
                             />
@@ -201,7 +201,7 @@ export function ContactForm() {
           </ResizablePanelGroup>
         ) : (
           <div className="grid size-full place-items-center">
-            <Loader2 className="size-20 animate-spin text-windows-blue" />
+            <Loader2 className="text-windows-blue size-20 animate-spin" />
           </div>
         )}
       </div>

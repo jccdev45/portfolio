@@ -382,7 +382,9 @@ export const desktopIcons = [
     id: 7,
     label: "Terminal",
     path: "/terminal",
-    icon: <Terminal className="text-windows-black/70 size-12" />,
+    icon: (
+      <Terminal className="text-windows-white border-windows-blue size-12 border-t-8 bg-stone-700" />
+    ),
   },
   {
     id: 9,
