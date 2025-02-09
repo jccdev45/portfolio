@@ -25,3 +25,21 @@ export interface MenuItemType {
   trigger: string
   items: MenuItem[]
 }
+
+export interface Project {
+  id: number
+  title: string
+  desc: string
+  tech: string[]
+  live: string
+  repoURL: string
+  icon: JSX.Element
+}
+
+export interface StartMenuItem {
+  id: number
+  link: {
+    href: string
+    text: JSX.Element
+  }
+}

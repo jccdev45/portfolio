@@ -1,5 +1,7 @@
 import {
   ArrowLeft,
+  Bitcoin,
+  Bot,
   Briefcase,
   ChefHat,
   Club,
@@ -18,6 +20,7 @@ import {
   Music,
   Notebook,
   NotebookPen,
+  Paintbrush,
   PlugZap,
   Spade,
   StickyNote,
@@ -32,7 +35,7 @@ import {
 } from "lucide-react"
 import * as z from "zod"
 
-import { Offset } from "./types"
+import { Offset, Project, StartMenuItem } from "./types"
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -135,7 +138,7 @@ export const menuItems = {
   ],
 }
 
-export const startMenuItems = [
+export const startMenuItems: StartMenuItem[] = [
   {
     id: 1,
     link: {
@@ -205,7 +208,7 @@ export const startMenuItems = [
 ]
 
 // NOTE: PORTFOLIO
-export const myProjects = [
+export const myProjects: Project[] = [
   {
     id: 1,
     title: "Portfolio",
@@ -244,27 +247,12 @@ export const myProjects = [
     ),
   },
   {
-    id: 3,
-    title: "Health Inspections",
-    desc: "Search and view grades & health inspection records of restaurants across NYC. Everything is dirty. (v2 in progress,Typescript / NextJS)",
-    tech: ["frontend", "react", "hooks", "react-mapbox-gl", "tailwindcss"],
-    live: "https://nyc-health-violations.netlify.app/",
-    repoURL: "https://github.com/jccdev45/nyc-restaurant-violations",
-    icon: (
-      <UtensilsCrossed
-        className="size-full"
-        color="hsl(0, 0%, 51%)"
-        fill="hsla(0, 0%, 51%, 0.5)"
-      />
-    ),
-  },
-  {
     id: 4,
     title: "Luz Electric",
-    desc: "Luz Electric is a residential, commercial and industrial electrical contracting company based in the Bronx. This is an essentially 1-to-1 redesign of their existing website.",
-    tech: ["frontend", "react", "gatsbyjs", "tailwindcss", "react-bootstrap"],
-    live: "https://luzcontrolsystems.com/",
-    repoURL: "https://github.com/jccdev45/luz-electric",
+    desc: "Luz Electric is an electrical contracting company based in the Bronx. This is a new and improved version of their current site, soon to be live in production.",
+    tech: ["frontend", "react", "nextjs", "tailwindcss", "shadcn-ui"],
+    live: "luz-electric-ctrl-systems.vercel.app",
+    repoURL: "https://github.com/jccdev45/luz-electric-ctrl-systems",
     icon: (
       <PlugZap
         className="size-full"
@@ -274,17 +262,32 @@ export const myProjects = [
     ),
   },
   {
-    id: 5,
-    title: "Will Neff",
-    desc: "(Unofficial) personal site for content creator extraordinaire Will Neff. He's got great hair.",
-    tech: ["frontend", "react", "gatsbyjs", "tailwindcss"],
-    live: "https://willneff.netlify.app/",
-    repoURL: "https://github.com/jccdev45/willneff",
+    id: 0,
+    title: "jccbot",
+    desc: "A Twitch chatbot with commands for trivia, gambling, displaying random wrestling quotes and more.",
+    tech: ["typescript", "bun", "tmi.js"],
+    live: "https://twitch.tv/jcc_bot",
+    repoURL: "https://github.com/jccdev45/jccbot",
     icon: (
-      <Twitch
+      <Bot
         className="size-full"
         color="rgb(126, 34, 206)"
         fill="rgba(126, 34, 206, 0.5)"
+      />
+    ),
+  },
+  {
+    id: 6,
+    title: "Coin Checker",
+    desc: "Chatterino (v2.5.2) plugin to retrieve the current price of various cryptocurrencies and display them in the chat.",
+    tech: ["lua", "chatterino"],
+    live: "https://chatterino.com",
+    repoURL: "https://github.com/jccdev45/check-fartcoin",
+    icon: (
+      <Bitcoin
+        className="size-full rounded-full bg-gray-200"
+        color="rgb(239, 142, 26)"
+        // fill="rgba(206, 256, 256, 1)"
       />
     ),
   },
@@ -385,7 +388,13 @@ export const desktopIcons = [
     id: 9,
     label: "Resume",
     path: "/resume",
-    icon: <FileText className="size-12" fill="white" />,
+    icon: <FileText className="size-12 fill-amber-100" />,
+  },
+  {
+    id: 10,
+    label: "Paint",
+    path: "/paint",
+    icon: <Paintbrush className="size-12 fill-amber-300 stroke-amber-950" />,
   },
 ]
 
