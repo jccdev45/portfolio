@@ -16,8 +16,19 @@ export type CardInfo = {
   handleClick?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 
+export type SortOrder = "ascending" | "descending"
+
 export interface MenuItem {
   title: string
+  icon: JSX.Element
+}
+
+export interface RecycleItem {
+  id: number
+  title: string
+  ext: string
+  size: string
+  path: string
   icon: JSX.Element
 }
 
@@ -42,4 +53,11 @@ export interface StartMenuItem {
     href: string
     text: JSX.Element
   }
+}
+
+export interface DesktopIcon {
+  id: number
+  label: string
+  path: string
+  icon: JSX.Element
 }

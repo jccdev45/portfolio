@@ -1,7 +1,9 @@
 "use client"
 
+import { useLayoutEffect } from "react"
 import type { JSX } from "react"
-import { WindowProvider } from "@/context/window-context"
+import { windowIconAtom, windowTitleAtom } from "@/atoms/atoms"
+import { useSetAtom } from "jotai"
 
 import { MenuItemType } from "@/lib/types"
 import { cn } from "@/lib/utils"
@@ -25,14 +27,21 @@ export function WindowWrapper({
   menu,
   title,
 }: WindowWrapperProps) {
+  const setIcon = useSetAtom(windowIconAtom)
+  const setTitle = useSetAtom(windowTitleAtom)
+
+  // Use useLayoutEffect to set the state after rendering
+  useLayoutEffect(() => {
+    setIcon(icon)
+    setTitle(title)
+  }, [setIcon, setTitle, icon, title])
+
   return (
-    <WindowProvider icon={icon} title={title}>
-      <WindowContent bottomBar>
-        <WindowHeader />
-        {menu && <WindowMenu menu={menu} />}
-        <div className={cn(`relative size-full`)}>{children}</div>
-        {bottomBar && <WindowBottomBar />}
-      </WindowContent>
-    </WindowProvider>
+    <WindowContent bottomBar>
+      <WindowHeader />
+      {menu && <WindowMenu menu={menu} />}
+      <div className={cn(`relative size-full`)}>{children}</div>
+      {bottomBar && <WindowBottomBar />}
+    </WindowContent>
   )
 }

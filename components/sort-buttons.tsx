@@ -1,7 +1,6 @@
 "use client"
 
-import { useDesktop } from "@/context/desktop-context"
-
+import { useDesktop } from "@/hooks/useDesktop"
 import { ContextMenuItem } from "@/components/ui/context-menu"
 
 export function AscendButton() {

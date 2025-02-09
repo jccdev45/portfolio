@@ -35,7 +35,14 @@ import {
 } from "lucide-react"
 import * as z from "zod"
 
-import { Offset, Project, StartMenuItem } from "./types"
+import {
+  DesktopIcon,
+  MenuItem,
+  MenuItemType,
+  Offset,
+  Project,
+  StartMenuItem,
+} from "./types"
 
 export const ContactSchema = z.object({
   email: z.string().email({ message: "Must be a valid email" }),
@@ -95,7 +102,9 @@ export const socials = [
   },
 ]
 
-export const menuItems = {
+export const menuItems: {
+  [key: string]: MenuItemType[]
+} = {
   notepad: [
     {
       trigger: "File",
@@ -294,7 +303,7 @@ export const myProjects: Project[] = [
 ]
 
 // NOTE: DESKTOP
-export const desktopIcons = [
+export const desktopIcons: DesktopIcon[] = [
   {
     id: 1,
     label: "About",

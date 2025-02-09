@@ -1,31 +1,22 @@
 "use client"
 
-import { Loader2, Trash2 } from "lucide-react";
-import { JSX, useState } from "react";
-import { useIsClient, useMediaQuery } from "usehooks-ts";
+import { useState } from "react"
+import { recycleMenuAtom } from "@/atoms/atoms"
+import { useAtomValue } from "jotai"
+import { Loader2, Trash2 } from "lucide-react"
+import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { RainbowSeparator } from "@/components/rainbow-separator";
-import {
-  ResizableHandle,
-  ResizablePanelGroup
-} from "@/components/ui/resizable";
-import { WindowIcon } from "@/components/window-icon";
-import { WindowPanelContent } from "@/components/window-panel-content";
-import { WindowPanelSidebar } from "@/components/window-sidebar";
-import { toRecycle } from "@/lib/constants";
-
-interface RecycleItem {
-  id: number
-  title: string
-  ext: string
-  size: string
-  path: string
-  icon: JSX.Element
-}
+import { RecycleItem } from "@/lib/types"
+import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
+import { RainbowSeparator } from "@/components/rainbow-separator"
+import { WindowIcon } from "@/components/window-icon"
+import { WindowPanelContent } from "@/components/window-panel-content"
+import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function Bin() {
   const [selectedRecycleItem, setSelectedRecycleItem] =
     useState<RecycleItem | null>(null)
+  const recycleItems = useAtomValue(recycleMenuAtom)
   const isClient = useIsClient()
   const matches = useMediaQuery("(min-width: 850px)")
   const direction = matches ? "horizontal" : "vertical"
@@ -52,7 +43,7 @@ export function Bin() {
       <ResizableHandle withHandle />
 
       <WindowPanelContent className="scrollbar lg:shadow-windows-dark grid grid-cols-2 place-items-start overflow-scroll p-2 align-baseline md:grid-cols-4 lg:shadow-inner">
-        {toRecycle.map((item) => (
+        {recycleItems?.map((item) => (
           <WindowIcon
             key={item.id}
             className="col-span-1 mx-auto flex aspect-square size-24 flex-col items-center justify-center p-1 md:size-32"

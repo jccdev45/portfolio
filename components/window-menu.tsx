@@ -2,6 +2,8 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { recycleMenuAtom } from "@/atoms/atoms"
+import { useSetAtom } from "jotai"
 
 import { MenuItem, MenuItemType } from "@/lib/types"
 import { cn } from "@/lib/utils"
@@ -18,6 +20,7 @@ interface WindowMenuProps {
 }
 
 export function WindowMenu({ menu }: WindowMenuProps) {
+  const setRecycleItems = useSetAtom(recycleMenuAtom)
   const path = usePathname()
 
   function isItemDisabled(item: MenuItem) {
@@ -37,13 +40,19 @@ export function WindowMenu({ menu }: WindowMenuProps) {
                 key={item.title}
                 disabled={isItemDisabled(item)}
                 className={cn("hover:bg-windows-blue hover:text-windows-white")}
+                onSelect={() => {
+                  if (item.title === "Empty") {
+                    setRecycleItems([])
+                  }
+                }}
               >
-                {item.title === "Back" ? (
+                {item.title === "Back" && (
                   <Link href="/blog" className="flex w-full items-center">
                     {item.icon}
                     <span className="mx-2">{item.title}</span>
                   </Link>
-                ) : item.title === "Exit" ? (
+                )}
+                {item.title === "Exit" && (
                   <Link
                     href="/"
                     className="flex w-full items-center hover:bg-transparent"
@@ -51,7 +60,8 @@ export function WindowMenu({ menu }: WindowMenuProps) {
                     {item.icon}
                     <span className="mx-2">{item.title}</span>
                   </Link>
-                ) : (
+                )}
+                {item.title !== "Back" && item.title !== "Exit" && (
                   <>
                     {item.icon}
                     <span className="mx-2">{item.title}</span>
