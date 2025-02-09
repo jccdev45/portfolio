@@ -401,12 +401,12 @@ export const desktopIcons: DesktopIcon[] = [
     path: "/resume",
     icon: <FileText className="size-12 fill-amber-100" />,
   },
-  {
-    id: 10,
-    label: "Paint",
-    path: "/paint",
-    icon: <Paintbrush className="size-12 fill-amber-300 stroke-amber-950" />,
-  },
+  // {
+  //   id: 10,
+  //   label: "Paint",
+  //   path: "/paint",
+  //   icon: <Paintbrush className="size-12 fill-amber-300 stroke-amber-950" />,
+  // },
 ]
 
 // NOTE: RECYCLE

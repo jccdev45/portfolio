@@ -105,6 +105,11 @@ export function MainNav({ defaultValue }: MainNavProps) {
                     <Club className="mr-2" /> Solitaire
                   </Link>
                 </MenubarItem> */}
+                  {/* <MenubarItem>
+                  <Link href="/paint" className="flex items-center">
+                    <Paintbrush className="mr-2" /> Paint
+                  </Link>
+                </MenubarItem> */}
                 </MenubarSubContent>
               </MenubarSub>
 
