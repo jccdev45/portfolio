@@ -16,14 +16,13 @@ const data = [
       "TypeScript",
       "NextJS",
       "TailwindCSS",
-      "HTML",
-      "CSS",
+      "shadcn-ui",
       "Remix",
     ],
   },
   {
     category: "BACKEND",
-    skills: ["Supabase", "Firebase", "NodeJS", "Express", "PostgreSQL"],
+    skills: ["Supabase", "Firebase", "NodeJS", "Express", "PostgreSQL", "Bun"],
   },
   {
     category: "TOOLS/PLATFORMS",
@@ -72,18 +71,16 @@ export default function AboutPage() {
               <Contact className="size-5" /> Get in touch
             </Link>
             <RainbowSeparator />
-            <div className="mx-auto size-full">
-              <Image
-                src="/me2.jpg"
-                alt="Some jabrone named Jordan, looking handsome"
-                width={450}
-                height={750}
-                className="aspect-square object-cover"
-              />
-            </div>
+            <Image
+              src="/me2.jpg"
+              alt="Some jabrone named Jordan, looking handsome"
+              width={450}
+              height={750}
+              className="mx-auto aspect-square w-full max-w-sm object-cover"
+            />
           </aside>
 
-          <section className="scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:shadow-windows-dark mx-auto flex flex-col overflow-scroll px-3 py-10 lg:col-span-2 lg:shadow-inner">
+          <section className="scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:shadow-windows-dark mx-auto flex flex-col overflow-auto px-3 py-10 lg:col-span-2 lg:shadow-inner">
             <div className="prose max-w-full px-4">
               <h1 className="text-center lg:text-left">Hello 👋🏽</h1>
               <p className="">
@@ -130,28 +127,57 @@ export default function AboutPage() {
 
               <h2 className="">Beyond Code</h2>
               <p className="">
-                When I'm not immersed in web development, you can find me gaming
-                (some favorites include League of Legends, Baldur's Gate 3 and
-                Elden Ring), watching pro wrestling or playing guitar/bass. I'm
-                known for my laid-back demeanor, friendly attitude, and having
-                an appetite for learning new technologies and skills.
+                When I'm not immersed in web development, you can often find me
+                gaming (some favorites include League of Legends, Baldur's Gate
+                3 and Elden Ring), watching pro wrestling or playing
+                guitar/bass. I'm an absolute addict for music and not a day goes
+                by where I'm not listening to some. Currently, I'm obssessed
+                with bands like{" "}
+                <Link
+                  className="text-windows-blue font-bold"
+                  href="https://www.youtube.com/watch?v=pk4MoWFp2dc"
+                  target="_blank"
+                >
+                  Boundaries
+                </Link>
+                ,{" "}
+                <Link
+                  className="text-windows-blue font-bold"
+                  href="https://www.youtube.com/watch?v=MA315mvXrCs"
+                  target="_blank"
+                >
+                  Rolo Tomassi
+                </Link>{" "}
+                and{" "}
+                <Link
+                  className="text-windows-blue font-bold"
+                  href="https://www.youtube.com/watch?v=gLvJiOTnDtk"
+                  target="_blank"
+                >
+                  Strangled
+                </Link>
+                .
               </p>
 
               <h2 className="">Projects & Creations</h2>
               <p className="">
                 Curious about my work? Check out my{" "}
-                <Link className="text-windows-blue" href="/projects">
+                <Link className="text-windows-blue font-bold" href="/projects">
                   projects
                 </Link>{" "}
-                which include a family recipe book app and this very Windows
-                98-inspired portfolio site.
+                which include a family recipe book app and a custom made Twitch
+                chatbot, or my{" "}
+                <Link className="text-windows-blue font-bold" href="/blog">
+                  blog
+                </Link>{" "}
+                to read about what's going on in my life.
               </p>
 
               <h2 className="">Let's Connect!</h2>
               <p className="">
                 Want to work together? Or maybe just talk wrestling, video games
                 or whatever else? Feel free to{" "}
-                <Link className="text-windows-blue" href="/contact">
+                <Link className="text-windows-blue font-bold" href="/contact">
                   reach out.
                 </Link>{" "}
                 Thanks for stopping by 💖

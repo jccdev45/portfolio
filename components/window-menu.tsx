@@ -28,10 +28,10 @@ export function WindowMenu({ menu }: WindowMenuProps) {
     <Menubar className="bg-windows h-8 rounded-none border-0 md:h-9">
       {menu.map((menuItem) => (
         <MenubarMenu key={menuItem.trigger}>
-          <MenubarTrigger className="data-[state=open]:border-windows-dark data-[state=open]:bg-windows/70 focus:bg-windows/50 data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:shadow-inner">
+          <MenubarTrigger className="data-[state=open]:outline-windows-dark data-[state=open]:bg-windows/70 focus:bg-windows/50 rounded-none data-[state=open]:shadow-inner data-[state=open]:outline data-[state=open]:outline-dashed">
             {menuItem.trigger}
           </MenubarTrigger>
-          <MenubarContent className="bg-windows -mt-2 ml-1 rounded-none">
+          <MenubarContent className="bg-windows -mt-1 ml-0 rounded-none">
             {menuItem.items.map((item) => (
               <MenubarItem
                 key={item.title}
