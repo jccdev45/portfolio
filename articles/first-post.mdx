@@ -1,0 +1,33 @@
+---
+title: "First Post"
+slug: "first-post"
+date: "2025-01-31"
+---
+
+# Is This Thing On? 🎤
+
+I spent the last day figuring out how to get NextJS MDX functionality working so I could start up a blog. It's finally come together and now I'm sitting here, struggling to think of what to write. Do I write about getting a blog started or do I write about the technical side of how I got the blog started? Let's go with both.
+
+The idea of a blog has always somewhat interested me. A lot of people seem to be opposed to writing but I grew up an avid reader in my childhood, so writing was never a huge obstacle for me. From early on in my dev career, people have said "document things, write about what you're learning, literally anything". I wish I'd listened back then but I'd always had this nagging voice in the back of my head saying, "Nobody gives a shit what you have to say, chump." That, paired with big impostor syndrome, is an environment not at all conducive to starting a blog. It took a while to silence those voices but alas, the whispers remain.
+
+So, here we are. I have my personal site that is easily my favorite project I've ever created. As a replica of a Windows 98 desktop, adding relevant features is always a fun time and something like a blog works perfectly.
+
+<figure className="mx-auto text-center py-2 bg-windows/50 my-4 w-full">
+  <img src="/portfolio.png" alt="jccdev's personal site homepage, a Windows 98 desktop replica" className="max-w-lg w-full mx-auto" />
+  <figcaption>I just think it's neat.</figcaption>
+</figure>
+
+To get a blog up and running, I had to do some research. Previously, I'd tried this exact approach with @next/mdx but I had trouble implementing it so I thought an already existing CMS would be a better approach. I found something called Outstatic that was free, open source and (claimed to be) easy to set up. I hit some roadblocks pretty quickly; apparently there were compatibility issues with Outstatic and NextJS 15/React 19, to which I'd recently upgraded my site. I was unable to login to Github through Outstatic and I didn't want to abandon ship so quickly so I tried for a while, to no avail. Then I thought about just trying @next/mdx again so I started looking into that. The idea of just having the MDX files in my repo and a way to display them appealed to me over using an external CMS. This time around, things went a lot smoother.
+
+<hr />
+Editor Note: (2025-02-09) I'm returning to this article at this point nearly two weeks later, so my memory might be fuzzy on some of the details (I'm 35).
+
+I pulled up some resources and with the help of the [official NextJS docs](https://nextjs.org/docs/app/building-your-application/configuring/mdx) and some AI chatbots, I was able to get up and running. Ultimately, I ended up using `next-mdx-remote` to read the `.mdx` files in my `/articles` folder and properly handle frontmatter. I wanted to be able to add a title, slug and date directly to each post but the previous mdx methods weren't set to handle frontmatter. I was initially using the filename as the slug but I needed a formatted title, and also having a date would help with sorting.
+
+Now my only issue left is...figuring out what to write about and then actually writing about it 😶
+
+<figure className="mx-auto text-center py-2 bg-windows/50 my-4 w-full">
+  <img src="/blog.png" alt="jccdev's personal site blog page, showing a welcome message and list of all posts" className="max-w-lg w-full mx-auto" />
+  <figcaption>A visually simple approach to setting up a list of all my posts.</figcaption>
+</figure>
+
