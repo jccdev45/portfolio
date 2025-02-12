@@ -260,7 +260,7 @@ export const myProjects: Project[] = [
     title: "Luz Electric",
     desc: "Luz Electric is an electrical contracting company based in the Bronx. This is a new and improved version of their current site, soon to be live in production.",
     tech: ["frontend", "react", "nextjs", "tailwindcss", "shadcn-ui"],
-    live: "luz-electric-ctrl-systems.vercel.app",
+    live: "https://luz-electric-ctrl-systems.vercel.app",
     repoURL: "https://github.com/jccdev45/luz-electric-ctrl-systems",
     icon: (
       <PlugZap
@@ -285,21 +285,21 @@ export const myProjects: Project[] = [
       />
     ),
   },
-  {
-    id: 6,
-    title: "Coin Checker",
-    desc: "Chatterino (v2.5.2) plugin to retrieve the current price of various cryptocurrencies and display them in the chat.",
-    tech: ["lua", "chatterino"],
-    live: "https://chatterino.com",
-    repoURL: "https://github.com/jccdev45/check-fartcoin",
-    icon: (
-      <Bitcoin
-        className="size-full rounded-full bg-gray-200"
-        color="rgb(239, 142, 26)"
-        // fill="rgba(206, 256, 256, 1)"
-      />
-    ),
-  },
+  // {
+  //   id: 6,
+  //   title: "Coin Checker",
+  //   desc: "Chatterino (v2.5.2) plugin to retrieve the current price of various cryptocurrencies and display them in the chat.",
+  //   tech: ["lua", "chatterino"],
+  //   live: "https://chatterino.com",
+  //   repoURL: "https://github.com/jccdev45/check-fartcoin",
+  //   icon: (
+  //     <Bitcoin
+  //       className="size-full rounded-full bg-gray-200"
+  //       color="rgb(239, 142, 26)"
+  //       // fill="rgba(206, 256, 256, 1)"
+  //     />
+  //   ),
+  // },
 ]
 
 // NOTE: DESKTOP
@@ -392,7 +392,7 @@ export const desktopIcons: DesktopIcon[] = [
     label: "Terminal",
     path: "/terminal",
     icon: (
-      <Terminal className="text-windows-white border-windows-blue size-12 border-t-8 bg-stone-700" />
+      <Terminal className="text-windows-white border-t-windows-blue border-windows-black size-12 rounded-sm border-4 border-t-8 bg-stone-700" />
     ),
   },
   {

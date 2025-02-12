@@ -1,20 +1,17 @@
 "use client"
 
-import { ExternalLink, Loader2 } from "lucide-react";
-import Link from "next/link";
-import { JSX, useState } from "react";
-import { useIsClient, useMediaQuery } from "usehooks-ts";
+import { JSX, useState } from "react"
+import Link from "next/link"
+import { ExternalLink, Loader2 } from "lucide-react"
+import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { Badge } from "@/components/ui/badge";
-import {
-  ResizableHandle,
-  ResizablePanelGroup
-} from "@/components/ui/resizable";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { WindowIcon } from "@/components/window-icon";
-import { WindowPanelContent } from "@/components/window-panel-content";
-import { WindowPanelSidebar } from "@/components/window-sidebar";
-import { myProjects as PROJECTS } from "@/lib/constants";
+import { myProjects as PROJECTS } from "@/lib/constants"
+import { Badge } from "@/components/ui/badge"
+import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { WindowIcon } from "@/components/window-icon"
+import { WindowPanelContent } from "@/components/window-panel-content"
+import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 interface Project {
   id: number
@@ -146,7 +143,7 @@ function ProjectIcons({
   onProjectClick,
 }: ProjectIconsProps) {
   return (
-    <div className="grid grow grid-cols-2 gap-2 p-4 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grow grid-cols-2 p-4 md:grid-cols-3 lg:grid-cols-4">
       {projects.map((proj) => (
         <WindowIcon
           key={proj.id}
