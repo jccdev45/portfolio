@@ -4,7 +4,8 @@ import { JSX, Suspense } from "react"
 import Link from "next/link"
 import matter from "gray-matter"
 
-// Helper function to fetch blog posts
+import { BlogPost } from "@/lib/types"
+
 async function fetchBlogPosts(): Promise<BlogPost[]> {
   const articlesDir = path.join(process.cwd(), "articles")
   const filenames = await fs.readdir(articlesDir)
@@ -28,7 +29,6 @@ async function fetchBlogPosts(): Promise<BlogPost[]> {
   return posts
 }
 
-// BlogPostList component
 export async function BlogPostList(): Promise<JSX.Element> {
   const posts = await fetchBlogPosts()
 
@@ -39,7 +39,6 @@ export async function BlogPostList(): Promise<JSX.Element> {
   )
 }
 
-// BlogPostListContent subcomponent
 interface BlogPostListContentProps {
   posts: BlogPost[]
 }
@@ -57,7 +56,6 @@ function BlogPostListContent({ posts }: BlogPostListContentProps): JSX.Element {
   )
 }
 
-// BlogPostListItem component
 interface BlogPostListItemProps {
   post: BlogPost
 }
@@ -74,11 +72,4 @@ function BlogPostListItem({ post }: BlogPostListItemProps): JSX.Element {
       <p className="text-windows-black text-sm">{post.date}</p>
     </li>
   )
-}
-
-// BlogPost type
-export interface BlogPost {
-  slug: string
-  title: string
-  date: string
 }

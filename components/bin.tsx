@@ -14,6 +14,7 @@ import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function Bin() {
+  // TODO: atom instead of usestate
   const [selectedRecycleItem, setSelectedRecycleItem] =
     useState<RecycleItem | null>(null)
   const recycleItems = useAtomValue(recycleMenuAtom)

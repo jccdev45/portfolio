@@ -1,3 +1,5 @@
+// TODO: Restyle to this https://guidebookgallery.org/pics/gui/applications/multimedia/volume/win98se-1-1.png
+
 "use client"
 
 import { volumeAtom } from "@/atoms/atoms"

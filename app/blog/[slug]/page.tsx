@@ -1,21 +1,59 @@
 import { promises as fs } from "fs"
 import path from "path"
+import { Metadata } from "next"
 import { compileMDX } from "next-mdx-remote/rsc"
 
-export default async function Page({
+interface Frontmatter {
+  title: string
+  date: string
+  description?: string
+}
+
+export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
+  params: { slug: string }
+}): Promise<Metadata> {
+  const { slug } = params
   const content = await fs.readFile(
     path.join(process.cwd(), "articles", `${slug}.mdx`)
   )
 
-  interface Frontmatter {
-    title: string
-    date: string
+  const { frontmatter } = await compileMDX<Frontmatter>({
+    source: content,
+    options: {
+      parseFrontmatter: true,
+    },
+  })
+
+  return {
+    title: frontmatter.title,
+    description:
+      frontmatter.description ||
+      "one of the articles of all time from one of the blogs of all time",
+    openGraph: {
+      title: frontmatter.title,
+      description:
+        frontmatter.description ||
+        "one of the articles of all time from one of the blogs of all time",
+      type: "article",
+      publishedTime: frontmatter.date,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontmatter.title,
+      description:
+        frontmatter.description ||
+        "one of the articles of all time from one of the blogs of all time",
+    },
   }
+}
+
+export default async function Page({ params }: { params: { slug: string } }) {
+  const { slug } = params
+  const content = await fs.readFile(
+    path.join(process.cwd(), "articles", `${slug}.mdx`)
+  )
 
   const data = await compileMDX<Frontmatter>({
     source: content,

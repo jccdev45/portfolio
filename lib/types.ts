@@ -61,3 +61,9 @@ export interface DesktopIcon {
   path: string
   icon: JSX.Element
 }
+
+export interface BlogPost {
+  slug: string
+  title: string
+  date: string
+}
