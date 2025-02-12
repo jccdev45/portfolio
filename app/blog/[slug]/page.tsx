@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { Metadata } from "next"
+import { Metadata, ResolvingMetadata } from "next"
 import { compileMDX } from "next-mdx-remote/rsc"
 
 interface Frontmatter {
@@ -9,12 +9,16 @@ interface Frontmatter {
   description?: string
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const { slug } = params
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const { slug } = await params
   const content = await fs.readFile(
     path.join(process.cwd(), "articles", `${slug}.mdx`)
   )
@@ -49,8 +53,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default async function Page({ params }: Props) {
+  const { slug } = await params
   const content = await fs.readFile(
     path.join(process.cwd(), "articles", `${slug}.mdx`)
   )
