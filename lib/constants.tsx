@@ -22,6 +22,7 @@ import {
   NotebookPen,
   Paintbrush,
   PlugZap,
+  Save,
   Spade,
   StickyNote,
   Terminal,
@@ -102,9 +103,25 @@ export const socials = [
   },
 ]
 
+// TODO: Try to refactor to avoid so much repetition of "file" and "exit"
 export const menuItems: {
   [key: string]: MenuItemType[]
 } = {
+  paint: [
+    {
+      trigger: "File",
+      items: [
+        {
+          title: "Save",
+          icon: <Save />,
+        },
+        {
+          title: "Exit",
+          icon: <XCircle />,
+        },
+      ],
+    },
+  ],
   notepad: [
     {
       trigger: "File",

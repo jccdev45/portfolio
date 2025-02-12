@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { recycleMenuAtom } from "@/atoms/atoms"
+import { isTriggerDownloadAtom, recycleMenuAtom } from "@/atoms/atoms"
 import { useSetAtom } from "jotai"
 
 import { MenuItem, MenuItemType } from "@/lib/types"
@@ -21,7 +21,12 @@ interface WindowMenuProps {
 
 export function WindowMenu({ menu }: WindowMenuProps) {
   const setRecycleItems = useSetAtom(recycleMenuAtom)
+  const setTriggerDownload = useSetAtom(isTriggerDownloadAtom)
   const path = usePathname()
+
+  function handleDownload() {
+    setTriggerDownload(true)
+  }
 
   function isItemDisabled(item: MenuItem) {
     return item.title === "Back" && path === "/blog"
@@ -43,6 +48,9 @@ export function WindowMenu({ menu }: WindowMenuProps) {
                 onSelect={() => {
                   if (item.title === "Empty") {
                     setRecycleItems([])
+                  }
+                  if (item.title === "Save") {
+                    handleDownload()
                   }
                 }}
               >
