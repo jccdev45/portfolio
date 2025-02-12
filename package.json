@@ -67,6 +67,7 @@
     "react-draggable": "^4.4.5",
     "react-hook-form": "^7.50.1",
     "react-resizable-panels": "^2.0.3",
+    "react-timer-hook": "^3.0.8",
     "sharp": "^0.33.2",
     "sonner": "^1.4.0",
     "tailwind-merge": "^2.2.1",

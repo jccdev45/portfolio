@@ -1,17 +1,10 @@
-"use client"
-
-import { useState } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { SliderProps } from "@radix-ui/react-slider"
 import {
   Laptop2,
   LayoutPanelLeft,
   Power,
   StickyNote,
   Ungroup,
-  Volume,
-  Volume2,
   X,
 } from "lucide-react"
 
@@ -27,7 +20,6 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
 import { Label } from "@/components/ui/label"
 import {
   Menubar,
@@ -41,37 +33,11 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Slider } from "@/components/ui/slider"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import Clock from "@/components/clock"
+import { NavClock } from "@/components/nav-clock"
+import { NavWindowTitle } from "@/components/nav-window-title"
+import { VolumeSlider } from "@/components/volume-slider"
 
-interface MainNavProps {
-  defaultValue?: SliderProps["defaultValue"]
-}
-
-function formatPathname(path: string): string {
-  const segments = path.split("/").filter(Boolean)
-  const formattedSegments = segments.map((segment) => {
-    return segment
-      .split("-")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ")
-  })
-  return formattedSegments.join(" - ")
-}
-
-export function MainNav({ defaultValue }: MainNavProps) {
-  const path = usePathname()
-  const formattedPathname = formatPathname(path)
-
-  const [date, setDate] = useState<Date | undefined>(new Date())
-  const [value, setValue] = useState(defaultValue)
-
+export function MainNav() {
   return (
     <AlertDialog>
       <Menubar className="border-t-windows-white bg-windows absolute bottom-0 left-0 flex h-12 w-screen justify-between rounded-none border px-1">
@@ -204,79 +170,13 @@ export function MainNav({ defaultValue }: MainNavProps) {
             </div>
           </AlertDialogContent>
 
-          {formattedPathname.length > 0 && (
-            <div className="border-windows-white border-l-windows-dark border-t-windows-dark bg-windows-white/30 shadow-windows-dark mr-auto w-28 truncate border-2 px-1.5 py-1 shadow-inner md:w-36 lg:w-44">
-              {formattedPathname}
-            </div>
-          )}
+          <NavWindowTitle />
         </div>
 
-        <div className="shadow-windows-dark flex items-center justify-between shadow-inner">
-          <MenubarMenu>
-            <TooltipProvider>
-              <Tooltip>
-                <MenubarTrigger className="rounded-none focus:bg-transparent data-[state=open]:bg-transparent">
-                  <TooltipTrigger asChild>
-                    <span>
-                      {value && value[0] === 0 ? <Volume /> : <Volume2 />}
-                    </span>
-                  </TooltipTrigger>
-                </MenubarTrigger>
-                <TooltipContent className="bg-windows-dark text-windows-white rounded-none">
-                  <div>
-                    Volume: {value && value.length > 0 ? value[0] : 0} %
-                  </div>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+        <div className="shadow-windows-dark flex items-center justify-between gap-2 shadow-inner">
+          <VolumeSlider />
 
-            <MenubarContent className="bg-windows">
-              <MenubarItem className="hover:bg-windows focus:bg-windows">
-                <Slider
-                  id="volume"
-                  defaultValue={value}
-                  max={100}
-                  step={1}
-                  className="bg-windows rounded-none [&_[role=slider]]:size-5"
-                  onValueChange={setValue}
-                  aria-label="Volume"
-                />
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
-
-          <MenubarMenu>
-            <TooltipProvider>
-              <Tooltip>
-                <MenubarTrigger className="data-[state=open]:border-windows-black focus:border-windows-black rounded-none focus:border focus:border-dashed focus:bg-transparent data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:bg-transparent">
-                  <TooltipTrigger asChild>
-                    <Clock />
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-windows-dark text-windows-white rounded-none">
-                    <p>
-                      {new Date().toLocaleDateString("en-US", {
-                        weekday: "long",
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      })}
-                    </p>
-                  </TooltipContent>
-                </MenubarTrigger>
-              </Tooltip>
-            </TooltipProvider>
-
-            <MenubarContent className="bg-windows mb-0.5 rounded-none">
-              <MenubarItem className="bg-windows">
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  className="bg-windows-white rounded-none border shadow-sm"
-                />
-              </MenubarItem>
-            </MenubarContent>
-          </MenubarMenu>
+          <NavClock />
         </div>
       </Menubar>
     </AlertDialog>
