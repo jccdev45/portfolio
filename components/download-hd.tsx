@@ -75,7 +75,7 @@ export function DownloadHD() {
   return (
     <div
       className={cn(
-        "bg-windows border-windows absolute inset-0 grid grid-cols-1 gap-4 overflow-y-auto border p-4 shadow-inner md:grid-cols-2",
+        "bg-windows border-windows absolute inset-0 grid grid-cols-1 gap-4 overflow-y-auto border p-4 py-8 shadow-inner md:grid-cols-2 md:px-12 md:py-4 lg:place-items-center",
         showEmbed ?? "lg:grid-cols-3"
       )}
     >
@@ -99,9 +99,13 @@ export function DownloadHD() {
           className="disabled:text-windows-black/50 text-windows-black mb-4 w-fit disabled:opacity-50"
           variant="windows"
           onClick={handleDownload}
-          disabled={!selectedDrive || !selectedSpace}
+          disabled={isDownloading || !selectedDrive || !selectedSpace}
         >
-          {isDownloading ? "Stop Download" : "Download More Space"}
+          {isDownloading ? (
+            <span className="animate-pulse">Downloading...</span>
+          ) : (
+            "Download More Space"
+          )}
         </Button>
         <ProgressBar progress={progress} />
         {progress === 100 && !showScan && (
@@ -170,7 +174,7 @@ function CompletionMessage({ onScanClick }: { onScanClick: () => void }) {
     <div className="mt-4">
       <p className="text-windows-green font-bold">Download Complete!</p>
       <Button variant="windows" className="mt-2" onClick={onScanClick}>
-        Click to run scans for additional info
+        Click to run verification scan
       </Button>
     </div>
   )
@@ -185,7 +189,6 @@ function EmbeddedVideo() {
         height="355"
         src="https://www.youtube.com/embed/h1HDWY9rO10?autoplay=1"
         title="YouTube video player"
-        frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen
       ></iframe>
@@ -215,9 +218,6 @@ function LowDiskSpacePlaceholder() {
           </li>
           <li className="text-windows-black">
             Consider deleting temporary files or unused programs.
-          </li>
-          <li className="text-windows-black">
-            Use the "Analyze Disk Space" tool to identify large files.
           </li>
         </ul>
         <div className="bg-windows border-windows-dark w-full border p-4 text-sm">
