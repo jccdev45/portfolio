@@ -2,7 +2,7 @@
 
 import { useTime } from "react-timer-hook"
 
-import { useLiveDate } from "@/hooks/useTime"
+import { useLiveDate } from "@/hooks/useLiveDate"
 import {
   Tooltip,
   TooltipContent,
@@ -28,11 +28,16 @@ export function NavClock() {
           className="data-[state=open]:border-windows-black focus:border-windows-black rounded-none pr-2 select-none focus:border focus:border-dashed focus:bg-transparent data-[state=open]:border data-[state=open]:border-dashed data-[state=open]:bg-transparent"
         >
           <div className="flex items-center gap-0.5">
-            <span>
+            <>
               {hours}
               <span className="animate-pulse">:</span>
-              {minutes}
-            </span>
+              {/*
+                Current time: 5:13 AM
+                Four minutes late to see if this actually works
+                Pushing to prod anyway
+              */}
+              {minutes < 10 ? `0${minutes}` : minutes}
+            </>
             <span className="uppercase">{ampm}</span>
           </div>
         </TooltipTrigger>
