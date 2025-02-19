@@ -164,7 +164,7 @@ export const menuItems: {
   ],
 }
 
-export const startMenuItems: StartMenuItem[] = [
+export const START_MENU_ITEMS: StartMenuItem[] = [
   {
     id: 1,
     link: {
@@ -556,12 +556,3 @@ export const suitIcons = {
   ),
   SPADES: <Spade size={12} fill="rgb(0, 0, 0)" className="text-black" />,
 }
-
-export const performanceStatusItems = [
-  { id: 1, title: "Memory:", value: "3 Floppy Disks of RAM" },
-  { id: 2, title: "System Resources:", value: "42% confused" },
-  { id: 3, title: "File System:", value: "Origami-folded" },
-  { id: 4, title: "Virtual Memory:", value: "Imaginary" },
-  { id: 5, title: "Disk Compression:", value: "Squeezed by hand" },
-  { id: 6, title: "PC Cards (PCMCIA):", value: "Tarot-based" },
-]

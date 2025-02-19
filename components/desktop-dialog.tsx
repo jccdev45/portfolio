@@ -1,10 +1,8 @@
-import { Computer } from "lucide-react";
-import Image from "next/image";
-import { Fragment } from "react";
+import { Fragment } from "react"
+import Image from "next/image"
+import { Computer } from "lucide-react"
 
-import { DialogDesc } from "@/components/dialog-description";
-import { AscendButton, DescendButton } from "@/components/sort-buttons";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   ContextMenu,
   ContextMenuContent,
@@ -13,8 +11,8 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger
-} from "@/components/ui/context-menu";
+  ContextMenuTrigger,
+} from "@/components/ui/context-menu"
 import {
   Dialog,
   DialogClose,
@@ -22,10 +20,24 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
-} from "@/components/ui/dialog";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { performanceStatusItems } from "@/lib/constants";
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { DialogDesc } from "@/components/dialog-description"
+import { AscendButton, DescendButton } from "@/components/sort-buttons"
+
+const PERFORMANCE_STATUS_ITEMS = [
+  { id: 1, title: "CPU Usage:", value: "99% (Thinking Hard)" },
+  { id: 2, title: "Memory:", value: "98% (Holding On)" },
+  { id: 3, title: "Disk Space:", value: "5MB Left (Good Luck)" },
+  { id: 4, title: "Graphics:", value: "256 Colors (Barely)" },
+  { id: 5, title: "Sound Card:", value: "Beep Boop (Mono)" },
+  { id: 6, title: "Internet:", value: "Dial-Up (56k Maybe)" },
+  { id: 7, title: "Floppy Drive:", value: "Ready (For Retirement)" },
+  { id: 8, title: "CD-ROM:", value: "Spinning (Sometimes)" },
+  { id: 9, title: "Mouse:", value: "Ball Stuck (Clean It, Idiot)" },
+  { id: 10, title: "Printer:", value: "Out of Paper (Always)" },
+]
 
 export function DesktopDialog() {
   return (
@@ -42,10 +54,10 @@ export function DesktopDialog() {
             />
           </div>
         </ContextMenuTrigger>
-        <ContextMenuContent className="border border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows text-windows-black">
+        <ContextMenuContent className="border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white bg-windows text-windows-black border">
           <ContextMenuSub>
             <ContextMenuSubTrigger>Arrange Icons</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black">
+            <ContextMenuSubContent className="bg-windows text-windows-black rounded-none border-none">
               <AscendButton />
               <DescendButton />
             </ContextMenuSubContent>
@@ -53,52 +65,42 @@ export function DesktopDialog() {
           <ContextMenuSeparator />
           <ContextMenuItem disabled>Paste</ContextMenuItem>
           <ContextMenuSeparator />
-          {/* NOTE: Make functional? */}
-          {/* <ContextMenuSub>
-            <ContextMenuSubTrigger>New</ContextMenuSubTrigger>
-            <ContextMenuSubContent className="rounded-none border-none bg-windows text-windows-black">
-              <ContextMenuItem>Folder</ContextMenuItem>
-              <ContextMenuItem>Shortcut</ContextMenuItem>
-              <ContextMenuSeparator />
-            </ContextMenuSubContent>
-          </ContextMenuSub> */}
           <DialogTrigger asChild>
             <ContextMenuItem>Properties</ContextMenuItem>
           </DialogTrigger>
         </ContextMenuContent>
       </ContextMenu>
-      <DialogContent className="border-2 border-b-windows-black/80 border-l-windows-white border-r-windows-black/80 border-t-windows-white bg-windows p-0 sm:rounded-none">
+      <DialogContent className="border-b-windows-black/80 border-l-windows-white border-r-windows-black/80 border-t-windows-white bg-windows border-2 p-0 sm:rounded-none">
         <DialogHeader>
-          <DialogTitle className="flex h-8 w-full select-none items-center justify-between bg-linear-to-r from-windows-blue to-[rgb(0,126,196)] px-1.5 py-0.5 text-windows-white md:h-9">
+          <DialogTitle className="from-windows-blue text-windows-white flex h-8 w-full items-center justify-between bg-linear-to-r to-[rgb(0,126,196)] px-1.5 py-0.5 select-none md:h-9">
             System Properties
           </DialogTitle>
-          {/* NOTE: Changed to custom DialogDescription component to change from <p> to <div>, removing the errors of invalid nesting where certain elements cannot be a descendant of a <p> */}
           <DialogDesc className="p-2">
             <Tabs
               defaultValue="general"
-              className="border-2 border-x-0 border-t-0 border-b-windows-black text-windows-black"
+              className="border-b-windows-black text-windows-black border-2 border-x-0 border-t-0"
             >
               <TabsList className="rounded-none bg-transparent p-0">
                 <TabsTrigger
-                  className="group/general rounded-b-none rounded-t-lg border-2 border-b-windows border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black data-[state=active]:-mb-1 data-[state=active]:bg-windows data-[state=active]:shadow-none"
+                  className="group/general border-b-windows border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black data-[state=active]:bg-windows rounded-t-lg rounded-b-none border-2 data-[state=active]:-mb-1 data-[state=active]:shadow-none"
                   value="general"
                 >
-                  <span className="group-data-[state=active]/general:border group-data-[state=active]/general:border-dashed group-data-[state=active]/general:border-windows-black group-data-[state=active]/general:px-1">
+                  <span className="group-data-[state=active]/general:border-windows-black group-data-[state=active]/general:border group-data-[state=active]/general:border-dashed group-data-[state=active]/general:px-1">
                     General
                   </span>
                 </TabsTrigger>
                 <TabsTrigger
-                  className="group/performance rounded-b-none rounded-t-lg border-2 border-b-windows border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black data-[state=active]:-mb-1 data-[state=active]:bg-windows data-[state=active]:shadow-none"
+                  className="group/performance border-b-windows border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black data-[state=active]:bg-windows rounded-t-lg rounded-b-none border-2 data-[state=active]:-mb-1 data-[state=active]:shadow-none"
                   value="performance"
                 >
-                  <span className="group-data-[state=active]/performance:border group-data-[state=active]/performance:border-dashed group-data-[state=active]/performance:border-windows-black group-data-[state=active]/performance:px-1">
+                  <span className="group-data-[state=active]/performance:border-windows-black group-data-[state=active]/performance:border group-data-[state=active]/performance:border-dashed group-data-[state=active]/performance:px-1">
                     Performance
                   </span>
                 </TabsTrigger>
               </TabsList>
               <TabsContent
                 value="general"
-                className="-mt-1 border-2 border-b-0 border-l-windows-white border-r-windows-black border-t-windows-white px-2 py-4"
+                className="border-l-windows-white border-r-windows-black border-t-windows-white -mt-1 border-2 border-b-0 px-2 py-4"
               >
                 <section
                   className="grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-6"
@@ -111,7 +113,7 @@ export function DesktopDialog() {
                     aria-label="Computer Icon"
                   >
                     <Computer className="m-auto size-20" />
-                    <figcaption>Manufactured/supported by:</figcaption>
+                    <figcaption>Manufactured by: Gil Bates</figcaption>
                   </figure>
                   <article className="flex flex-col gap-8 px-8 text-left sm:px-0 sm:py-4">
                     <section aria-labelledby="system-info">
@@ -119,9 +121,13 @@ export function DesktopDialog() {
                         System:
                       </h3>
                       <ul className="ml-6 list-disc">
-                        <li>MicroSquishy Doors 98</li>
-                        <li>Slightly Used Edition</li>
-                        <li>4.10.BLUE A</li>
+                        {[
+                          "MicroSquishy Doors 98",
+                          "Secondhand Edition",
+                          "Version 4.10.BLUE A (Beta)",
+                        ].map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
                       </ul>
                     </section>
                     <section aria-labelledby="registration-info">
@@ -129,13 +135,16 @@ export function DesktopDialog() {
                         Registered to:
                       </h3>
                       <ul className="ml-6 list-disc">
-                        <li>FauxIntel</li>
-                        <li>Aluminum(tm) II Toaster</li>
-                        <li>128.0MB of Hopes and Dreams</li>
-                        <li className="h-4 list-none"></li>
-                        <li>Probably Stolen</li>
-                        <li>Capri Sun(r) Cooled</li>
-                        <li>2 Hamsters of Processing Power</li>
+                        {[
+                          "Generic User",
+                          "Intel 486DX2 (Overclocked to 66MHz)",
+                          "16MB RAM (Upgraded from 8MB)",
+                          "420MB Hard Drive (90% Full)",
+                          "CD-ROM Drive (2x Speed, Sometimes)",
+                          "Floppy Disk Drive (Still Kicking)",
+                        ].map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
                       </ul>
                     </section>
                   </article>
@@ -143,40 +152,40 @@ export function DesktopDialog() {
               </TabsContent>
               <TabsContent
                 value="performance"
-                className="-mt-1 border-2 border-b-0 border-l-windows-white border-r-windows-black border-t-windows-white px-2 py-4"
+                className="border-l-windows-white border-r-windows-black border-t-windows-white -mt-1 border-2 border-b-0 px-2 py-4"
               >
                 <section
-                  className="flex flex-col gap-4 text-windows-blue"
+                  className="text-windows-blue flex flex-col gap-4"
                   role="region"
                   aria-label="Performance Information"
                 >
                   <article
-                    className="border border-windows-dark"
+                    className="border-windows-dark border"
                     aria-labelledby="performance-status"
                   >
                     <h3
                       id="performance-status"
-                      className="-mt-3 ml-2 w-fit bg-windows px-1 font-bold"
+                      className="bg-windows -mt-3 ml-2 w-fit px-1 font-bold"
                     >
                       Performance status
                     </h3>
                     <dl className="grid grid-cols-3 px-4 py-2">
-                      {performanceStatusItems.map((item) => (
-                        <Fragment key={item.id}>
-                          <dt>{item.title}</dt>
-                          <dd>{item.value}</dd>
+                      {PERFORMANCE_STATUS_ITEMS.map(({ id, title, value }) => (
+                        <Fragment key={id}>
+                          <dt>{title}</dt>
+                          <dd>{value}</dd>
                           <dd></dd>
                         </Fragment>
                       ))}
                     </dl>
                   </article>
                   <article
-                    className="border border-windows-dark"
+                    className="border-windows-dark border"
                     aria-labelledby="advanced-settings"
                   >
                     <h3
                       id="advanced-settings"
-                      className="-mt-3 ml-2 w-fit bg-windows px-1 font-bold"
+                      className="bg-windows -mt-3 ml-2 w-fit px-1 font-bold"
                     >
                       Advanced settings
                     </h3>
@@ -184,9 +193,15 @@ export function DesktopDialog() {
                       className="grid grid-cols-3 gap-2 p-2"
                       aria-label="Advanced setting options"
                     >
-                      <Button variant="windows">File system...</Button>
-                      <Button variant="windows">Graphics...</Button>
-                      <Button variant="windows">Virtual Memory...</Button>
+                      {[
+                        "File system...",
+                        "Graphics...",
+                        "Virtual Memory...",
+                      ].map((item) => (
+                        <Button key={item} variant="windows">
+                          {item}
+                        </Button>
+                      ))}
                     </nav>
                   </article>
                 </section>
@@ -196,7 +211,9 @@ export function DesktopDialog() {
         </DialogHeader>
         <DialogFooter className="px-4 pb-4">
           <DialogClose asChild>
-            <Button variant="windows">OK</Button>
+            <Button variant="windows" className="mx-auto w-fit">
+              OK
+            </Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>

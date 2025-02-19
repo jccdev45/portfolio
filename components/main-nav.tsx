@@ -8,7 +8,7 @@ import {
   X,
 } from "lucide-react"
 
-import { startMenuItems } from "@/lib/constants"
+import { START_MENU_ITEMS } from "@/lib/constants"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,7 +19,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import {
   Menubar,
@@ -79,11 +78,11 @@ export function MainNav() {
                 </MenubarSubContent>
               </MenubarSub>
 
-              {startMenuItems.map((item) => (
+              {START_MENU_ITEMS.map((item) => (
                 <MenubarItem key={item.id} asChild>
                   <Link
                     href={item.link.href}
-                    className="flex w-full cursor-pointer items-center"
+                    className="flex w-full items-center"
                   >
                     {item.link.text}
                   </Link>
@@ -104,17 +103,9 @@ export function MainNav() {
               <div className="flex items-center gap-x-2 text-sm">
                 <p className="font-bold">Shut Down</p>
               </div>
-              <div className="flex items-center gap-1">
-                <AlertDialogCancel asChild>
-                  <Button
-                    variant="ghost"
-                    className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black size-6 rounded-none border p-0.5"
-                    asChild
-                  >
-                    <X />
-                  </Button>
-                </AlertDialogCancel>
-              </div>
+              <AlertDialogCancel className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black hover:bg-windows size-6 rounded-none border p-0.5">
+                <X />
+              </AlertDialogCancel>
             </div>
             <div className="flex items-start gap-8 p-4">
               <Laptop2 className="size-10" />
@@ -155,9 +146,9 @@ export function MainNav() {
                     </span>
                   </RadioGroup>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="justify-center!">
+                <AlertDialogFooter className="justify-center">
                   <AlertDialogAction
-                    className="border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black shadow-windows-black active:bg-windows-white/50 active:shadow-windows-dark w-28 rounded-none border-t border-r-2 border-b-2 border-l bg-transparent shadow-sm hover:bg-transparent active:border-none active:shadow-inner"
+                    className="border-b-windows-black border-l-windows-white border-r-windows-black border-t-windows-white text-windows-black shadow-windows-black active:bg-windows-white/50 active:shadow-windows-dark w-28 cursor-default rounded-none border-t border-r-2 border-b-2 border-l bg-transparent shadow-sm hover:bg-transparent active:border-none active:shadow-inner"
                     asChild
                   >
                     <Link href="/shutdown">OK</Link>
