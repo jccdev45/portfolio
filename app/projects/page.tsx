@@ -13,7 +13,7 @@ export default function PortfolioPage() {
   return (
     <WindowWrapper
       icon={<Briefcase />}
-      title="My Work"
+      title="Projects"
       menu={menuItems.default}
       bottomBar
     >

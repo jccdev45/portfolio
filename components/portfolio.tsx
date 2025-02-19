@@ -1,6 +1,7 @@
 "use client"
 
-import { JSX, useState } from "react"
+import { useState } from "react"
+import type { JSX } from "react"
 import Link from "next/link"
 import { ExternalLink, Loader2 } from "lucide-react"
 import { useIsClient, useMediaQuery } from "usehooks-ts"

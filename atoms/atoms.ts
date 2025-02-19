@@ -1,4 +1,4 @@
-import { JSX } from "react"
+import type { JSX } from "react"
 import type { SliderProps } from "@radix-ui/react-slider"
 import { atom } from "jotai"
 

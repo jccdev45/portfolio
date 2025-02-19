@@ -1,6 +1,7 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { JSX, Suspense } from "react"
+import { Suspense } from "react"
+import type { JSX } from "react"
 import Link from "next/link"
 import matter from "gray-matter"
 
