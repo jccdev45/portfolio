@@ -1,5 +1,3 @@
-import type { LucideIcon } from "lucide-react"
-
 import { SUITS, VALUES } from "@/lib/constants/solitaire"
 import type { IconType } from "@/components/icons"
 
@@ -61,7 +59,7 @@ export interface DesktopIcon {
   label: string
   path: string
   icon: {
-    name: LucideIcon
+    name: IconType
     className: string
   }
 }

@@ -31,7 +31,7 @@ export const PROJECT_LIST_ITEMS: Project[] = [
   {
     id: 4,
     title: "Luz Electric",
-    desc: "Luz Electric is an electrical contracting company based in the Bronx. This is a new and improved version of their current site, soon to be live in production.",
+    desc: `Luz Electric is an electrical contracting company based in the Bronx. This is a new and improved version of their current site, soon to be live in production.`,
     tech: ["frontend", "react", "nextjs", "tailwindcss", "shadcn-ui"],
     live: "https://luz-electric-ctrl-systems.vercel.app",
     repoURL: "https://github.com/jccdev45/luz-electric-ctrl-systems",

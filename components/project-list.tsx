@@ -5,19 +5,20 @@ import Link from "next/link"
 import { ExternalLink, Loader2 } from "lucide-react"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { PROJECT_LIST_ITEMS as PROJECTS } from "@/lib/constants/project-list-items"
+import { PROJECT_LIST_ITEMS } from "@/lib/constants/project-list-items"
 import type { Project } from "@/lib/types"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Icon } from "@/components/icons"
 import { WindowIcon } from "@/components/window-icon"
 import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 export function ProjectList() {
-  const [selectedProject, setSelectedProject] = useState<Project>(PROJECTS[0])
+  const [selectedProject, setSelectedProject] = useState<Project>(
+    PROJECT_LIST_ITEMS[0]
+  )
   const matches = useMediaQuery("(min-width: 850px)")
   const isClient = useIsClient()
   const direction = matches ? "horizontal" : "vertical"
@@ -39,7 +40,7 @@ export function ProjectList() {
 
           <WindowPanelContent className="lg:shadow-windows-dark h-full lg:w-2/3 lg:shadow-inner">
             <ProjectIcons
-              projects={PROJECTS}
+              projects={PROJECT_LIST_ITEMS}
               selectedProject={selectedProject}
               onProjectClick={handleProjectClick}
             />
@@ -86,7 +87,7 @@ function ProjectSummary({ project }: ProjectSummaryProps) {
           <ExternalLink className="" /> Github
         </Link>
       </div>
-      <p className="break-words">
+      <p className="text-justify">
         {project.id === 1 ? (
           <>
             {project.desc}
@@ -112,18 +113,16 @@ interface ProjectTechStackProps {
 
 function ProjectTechStack({ tech }: ProjectTechStackProps) {
   return (
-    <ScrollArea className="w-full">
-      <div className="flex h-5 gap-1 md:justify-center lg:h-auto lg:flex-wrap">
-        {tech.map((item) => (
-          <Badge
-            key={item}
-            className="bg-windows-blue hover:bg-windows-blue truncate break-keep md:text-sm"
-          >
-            {item}
-          </Badge>
-        ))}
-      </div>
-    </ScrollArea>
+    <div className="flex h-5 flex-wrap items-center justify-center gap-1 lg:h-auto">
+      {tech.map((item) => (
+        <Badge
+          key={item}
+          className="bg-windows-blue hover:bg-windows-blue truncate break-keep md:text-sm"
+        >
+          {item}
+        </Badge>
+      ))}
+    </div>
   )
 }
 

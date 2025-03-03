@@ -1,14 +1,3 @@
-import {
-  Briefcase,
-  FileText,
-  MailPlus,
-  Notebook,
-  NotebookPen,
-  Terminal,
-  Trash2,
-  UserCircle2,
-} from "lucide-react"
-
 import type { DesktopIcon } from "@/lib/types"
 
 export const DESKTOP_ICONS: DesktopIcon[] = [
@@ -17,8 +6,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "About",
     path: "/about",
     icon: {
-      name: UserCircle2,
-      className: "text-windows-black size-12 fill-windows-white/50", // Using opacity modifier
+      name: "userCircle2",
+      className: "text-windows-black fill-windows-white/50",
     },
   },
   {
@@ -26,8 +15,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Projects",
     path: "/projects",
     icon: {
-      name: Briefcase,
-      className: "text-windows-black size-12 fill-amber-900/80",
+      name: "briefcase",
+      className: "text-windows-black fill-amber-900/80",
     },
   },
   {
@@ -35,8 +24,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Blog",
     path: "/blog",
     icon: {
-      name: NotebookPen,
-      className: "size-12 fill-windows-white text-amber-950/90",
+      name: "notebookPen",
+      className: "fill-amber-100 text-windows-black",
     },
   },
   {
@@ -44,8 +33,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Recycle Bin",
     path: "/recycle-bin",
     icon: {
-      name: Trash2,
-      className: "text-windows-black size-12 fill-gray-400",
+      name: "trash2",
+      className: "text-windows-black fill-gray-300",
     },
   },
   {
@@ -53,8 +42,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Notepad",
     path: "/notepad",
     icon: {
-      name: Notebook,
-      className: "text-sky-600 size-12 fill-windows-white",
+      name: "notebook",
+      className: "text-sky-600 fill-windows-white",
     },
   },
   {
@@ -62,8 +51,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Contact",
     path: "/contact",
     icon: {
-      name: MailPlus,
-      className: "text-windows-black size-12 fill-windows-white/70",
+      name: "mailPlus",
+      className: "text-windows-black fill-windows-white/70",
     },
   },
   {
@@ -71,9 +60,9 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Terminal",
     path: "/terminal",
     icon: {
-      name: Terminal,
+      name: "terminal",
       className:
-        "text-windows-white border-t-windows-blue border-windows-black size-12 rounded-sm border-4 border-t-8 bg-stone-700",
+        "text-windows-white border-t-windows-blue border-windows-black rounded-sm border-4 border-t-8 bg-stone-700",
     },
   },
   {
@@ -81,8 +70,8 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     label: "Resume",
     path: "/resume",
     icon: {
-      name: FileText,
-      className: "size-12 fill-amber-100",
+      name: "fileText",
+      className: "fill-amber-100",
     },
   },
 ]

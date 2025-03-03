@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { recycleMenuAtom } from "@/atoms/atoms"
 import { useAtomValue } from "jotai"
-import { Loader2, Trash2 } from "lucide-react"
+import { Loader2, Trash, Trash2 } from "lucide-react"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
 import { RecycleItem } from "@/lib/types"
@@ -35,7 +35,11 @@ export function Bin() {
     <ResizablePanelGroup direction={direction} className="overflow-auto">
       <WindowPanelSidebar className="lg:border-windows-dark lg:shadow-windows-dark lg:border-r lg:shadow-inner">
         <div className="flex flex-row items-center justify-evenly md:p-4 lg:flex-col">
-          <Trash2 className="size-16 lg:size-24" />
+          {recycleItems?.length ? (
+            <Trash2 className="size-16 lg:size-24" />
+          ) : (
+            <Trash className="size-16 lg:size-24" />
+          )}
           <h2 className="max-w-full text-xl font-semibold">Recycle Bin</h2>
         </div>
         <RainbowSeparator />
