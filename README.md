@@ -1,5 +1,6 @@
-<h1 align="center">Welcome to my portfolio 👋</h1>
-<p>
+# Welcome to my Portfolio 👋
+
+<p align="center">
   <a href="https://github.com/jccdev45/portfolio#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -11,20 +12,38 @@
   </a>
 </p>
 
-> A replica of a Windows 98 desktop experience (but still responsive across different screen sizes), made with NextJS, shadcn-ui and TailwindCSS. No external styling was used, everything was designed and styled with my own two hands and (relatively) working brain.
+> A responsive replica of a Windows 98 desktop experience, built with NextJS, Typescript, shadcn-ui, and Tailwind CSS.
 
-### 🏠 [Homepage](https://jccdev.vercel.app)
+## 🏠 [Homepage](https://jccdev.vercel.app)
+
+---
+
+## Features
+
+* **Windows 98 Aesthetic:**  Captures the nostalgic look and feel of a classic Windows 98 desktop.
+* **Responsive Design:** Works seamlessly across various screen sizes.
+* **Built with Modern Technologies:** Leverages NextJS, Typescript, shadcn-ui, and Tailwind CSS.
+* **Easter Eggs:** Of course a project like this has to have some fun little secrets tucked away. See if you can find them all 👀
+
+---
 
 ## Author
 
 👤 **jccdev**
 
-* Twitter: [@jccdev](https://twitter.com/jccdev)
-* Github: [@jccdev45](https://github.com/jccdev45)
+* [Twitter](https://twitter.com/jccdev)
+* [GitHub](https://github.com/jccdev45)
 
-## Show your support (or don't)
+---
 
-I mean, you can star the repo if you really want.
+## License
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+If you should decide to fork/copy this project, all I ask for is attribution, 🆗? 🆒
+
+---
+
+## Show Your Support (Optional)
+
+Star the repo (if you're into that sort of thing)
