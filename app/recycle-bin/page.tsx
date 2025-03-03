@@ -1,5 +1,3 @@
-import { Trash2 } from "lucide-react"
-
 import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
 import { Bin } from "@/components/bin"
 import { WindowWrapper } from "@/components/window-wrapper"
@@ -13,7 +11,7 @@ export default function RecycleBinPage() {
   return (
     <WindowWrapper
       title="Recycle Bin"
-      icon={<Trash2 />}
+      icon="trash2"
       menu={WINDOW_MENU_ITEMS.recycleBin}
       bottomBar
     >

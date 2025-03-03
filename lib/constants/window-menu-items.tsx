@@ -1,5 +1,3 @@
-import { ArrowLeft, FileX2, Save, XCircle } from "lucide-react"
-
 import type { MenuItemType } from "@/lib/types"
 
 export const WINDOW_MENU_ITEMS: {
@@ -11,11 +9,11 @@ export const WINDOW_MENU_ITEMS: {
       items: [
         {
           title: "Save",
-          icon: <Save />,
+          icon: "save",
         },
         {
           title: "Exit",
-          icon: <XCircle />,
+          icon: "xCircle",
         },
       ],
     },
@@ -23,7 +21,7 @@ export const WINDOW_MENU_ITEMS: {
   notepad: [
     {
       trigger: "File",
-      items: [{ title: "Exit", icon: <XCircle /> }],
+      items: [{ title: "Exit", icon: "xCircle" }],
     },
   ],
   recycleBin: [
@@ -32,11 +30,11 @@ export const WINDOW_MENU_ITEMS: {
       items: [
         {
           title: "Empty",
-          icon: <FileX2 />,
+          icon: "fileX2",
         },
         {
           title: "Exit",
-          icon: <XCircle />,
+          icon: "xCircle",
         },
       ],
     },
@@ -44,7 +42,7 @@ export const WINDOW_MENU_ITEMS: {
   default: [
     {
       trigger: "File",
-      items: [{ title: "Exit", icon: <XCircle /> }],
+      items: [{ title: "Exit", icon: "xCircle" }],
     },
   ],
   blog: [
@@ -54,9 +52,9 @@ export const WINDOW_MENU_ITEMS: {
       items: [
         {
           title: "Back",
-          icon: <ArrowLeft />,
+          icon: "arrowLeft",
         },
-        { title: "Exit", icon: <XCircle /> },
+        { title: "Exit", icon: "xCircle" },
       ],
     },
   ],

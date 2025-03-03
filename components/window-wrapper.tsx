@@ -1,12 +1,12 @@
 "use client"
 
 import { useLayoutEffect } from "react"
-import type { JSX } from "react"
 import { windowIconAtom, windowTitleAtom } from "@/atoms/atoms"
 import { useSetAtom } from "jotai"
 
-import { MenuItemType } from "@/lib/types"
+import type { MenuItemType } from "@/lib/types"
 import { cn } from "@/lib/utils"
+import { Icon, type IconType } from "@/components/icons"
 import { WindowBottomBar } from "@/components/window-bottom-bar"
 import { WindowContent } from "@/components/window-content"
 import { WindowHeader } from "@/components/window-header"
@@ -15,7 +15,7 @@ import { WindowMenu } from "@/components/window-menu"
 interface WindowWrapperProps {
   bottomBar: boolean
   children: React.ReactNode
-  icon: JSX.Element
+  icon: IconType
   menu?: MenuItemType[]
   title: string
 }
@@ -32,9 +32,9 @@ export function WindowWrapper({
 
   // Use useLayoutEffect to set the state after rendering
   useLayoutEffect(() => {
-    setIcon(icon)
+    setIcon(<Icon iconName={icon} />)
     setTitle(title)
-  }, [setIcon, setTitle, icon, title])
+  }, [setIcon, setTitle, Icon, title])
 
   return (
     <WindowContent bottomBar>

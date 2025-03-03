@@ -1,6 +1,4 @@
-import { FileText } from "lucide-react";
-
-import { WindowWrapper } from "@/components/window-wrapper";
+import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "resume",
@@ -8,7 +6,7 @@ export const metadata = {
 
 export default function ResumePage() {
   return (
-    <WindowWrapper title="Resume" icon={<FileText />} bottomBar>
+    <WindowWrapper title="Resume" icon="fileText" bottomBar>
       <object
         data="/Jordan_Cruz-Correa_Software_Engineer_Resume.pdf"
         width="100%"

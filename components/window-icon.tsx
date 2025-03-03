@@ -1,21 +1,23 @@
-import React from "react"
+"use client"
+
+import type { ReactNode } from "react"
 
 import { cn } from "@/lib/utils"
 
 type Props = {
-  handleClick: () => void
-  icon: React.ReactNode
-  title: string
   bottomStyle?: string
+  children: ReactNode
   className?: string
+  handleClick: () => void
+  title: string
   topStyle?: string
 }
 
 export function WindowIcon({
   bottomStyle,
+  children,
   className,
   handleClick,
-  icon,
   title,
   topStyle,
 }: Props) {
@@ -24,7 +26,8 @@ export function WindowIcon({
       className={cn(`cursor-pointer text-center`, topStyle, className)}
       onClick={handleClick}
     >
-      <span className="w-1/3">{icon}</span>
+      {/* <Icon className="w-1/3" /> */}
+      {children}
       <figcaption
         className={cn(`mx-auto w-3/4 text-xs md:text-sm`, bottomStyle)}
       >

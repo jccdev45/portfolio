@@ -14,7 +14,7 @@ export default function Desktop() {
 
   return (
     <div className="absolute top-2 left-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-start gap-x-2 gap-y-4">
-      {desktopIcons.map(({ icon, id, path, label }) => (
+      {desktopIcons.map(({ icon: Icon, id, path, label }) => (
         <Link
           href={path}
           key={id}
@@ -23,7 +23,7 @@ export default function Desktop() {
             pathname === path && "border-windows-black border border-dashed"
           )}
         >
-          <span className="">{icon}</span>
+          <Icon.name className={Icon.className} />
           <span
             className={cn(
               "text-sm",

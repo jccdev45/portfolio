@@ -1,5 +1,4 @@
 import { Chivo_Mono } from "next/font/google"
-import { Terminal } from "lucide-react"
 
 import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
 import { cn } from "@/lib/utils"
@@ -17,7 +16,7 @@ export default function TerminalPage() {
   return (
     <WindowWrapper
       title="Terminal"
-      icon={<Terminal />}
+      icon="terminal"
       bottomBar
       menu={WINDOW_MENU_ITEMS.default}
     >

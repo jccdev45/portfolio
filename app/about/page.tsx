@@ -7,7 +7,7 @@ import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowWrapper } from "@/components/window-wrapper"
 
-const data = [
+const DATA = [
   {
     category: "FRONTEND",
     skills: [
@@ -51,7 +51,8 @@ export default function AboutPage() {
   return (
     <WindowWrapper
       title="About"
-      icon={<UserCircle />}
+      // icon={UserCircle}
+      icon="userCircle2"
       menu={WINDOW_MENU_ITEMS.default}
       bottomBar
     >
@@ -95,7 +96,7 @@ export default function AboutPage() {
 
               <h2 className="">Technical Skills</h2>
               <div className="grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-2 lg:grid-cols-4">
-                {data.map(({ category, skills }) => (
+                {DATA.map(({ category, skills }) => (
                   <div key={category} className="">
                     <h3 className="truncate border-b p-2 text-center font-bold">
                       {category}

@@ -1,30 +1,22 @@
 "use client"
 
-import type { JSX } from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { ExternalLink, Loader2 } from "lucide-react"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { PROJECT_LIST as PROJECTS } from "@/lib/constants/project-list"
+import { PROJECT_LIST_ITEMS as PROJECTS } from "@/lib/constants/project-list-items"
+import type { Project } from "@/lib/types"
+import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { Icon } from "@/components/icons"
 import { WindowIcon } from "@/components/window-icon"
 import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
-interface Project {
-  id: number
-  title: string
-  icon: JSX.Element
-  live: string
-  repoURL: string
-  desc: string
-  tech: string[]
-}
-
-export function Portfolio() {
+export function ProjectList() {
   const [selectedProject, setSelectedProject] = useState<Project>(PROJECTS[0])
   const matches = useMediaQuery("(min-width: 850px)")
   const isClient = useIsClient()
@@ -70,7 +62,10 @@ function ProjectSummary({ project }: ProjectSummaryProps) {
   return (
     <div className="grid w-full grid-rows-3 place-items-center">
       <figure className="grid grid-cols-3 place-items-center gap-4">
-        <span className="size-12 md:size-20">{project.icon}</span>
+        <Icon
+          iconName={project.icon}
+          className={cn("size-12 md:size-20", project.className)}
+        />
         <figcaption className="col-span-2 w-full truncate text-center text-sm font-semibold uppercase md:text-lg">
           {project.title}
         </figcaption>
@@ -158,9 +153,13 @@ function ProjectIcons({
             proj === selectedProject ? "bg-windows-blue text-windows-white" : ""
           }
           handleClick={() => onProjectClick(proj)}
-          icon={proj.icon}
           title={proj.title}
-        />
+        >
+          <Icon
+            iconName={proj.icon}
+            className={cn(proj.className, "size-12 md:size-20")}
+          />
+        </WindowIcon>
       ))}
     </div>
   )

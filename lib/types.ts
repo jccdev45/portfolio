@@ -1,6 +1,7 @@
-import type { JSX } from "react"
+import type { LucideIcon } from "lucide-react"
 
 import { SUITS, VALUES } from "@/lib/constants/solitaire"
+import type { IconType } from "@/components/icons"
 
 export type Suit = (typeof SUITS)[number]
 export type Value = (typeof VALUES)[number]
@@ -20,7 +21,7 @@ export type SortOrder = "ascending" | "descending"
 
 export interface MenuItem {
   title: string
-  icon: JSX.Element
+  icon: IconType
 }
 
 export interface RecycleItem {
@@ -29,7 +30,7 @@ export interface RecycleItem {
   ext: string
   size: string
   path: string
-  icon: JSX.Element
+  icon: IconType
 }
 
 export interface MenuItemType {
@@ -44,22 +45,25 @@ export interface Project {
   tech: string[]
   live: string
   repoURL: string
-  icon: JSX.Element
+  icon: IconType
+  className: string
 }
 
 export interface StartMenuItem {
   id: number
-  link: {
-    href: string
-    text: JSX.Element
-  }
+  href: string
+  icon: IconType
+  text: string
 }
 
 export interface DesktopIcon {
   id: number
   label: string
   path: string
-  icon: JSX.Element
+  icon: {
+    name: LucideIcon
+    className: string
+  }
 }
 
 export interface BlogPost {

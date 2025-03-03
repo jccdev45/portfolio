@@ -1,5 +1,3 @@
-import { NotebookPen } from "lucide-react"
-
 import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
 import { WindowWrapper } from "@/components/window-wrapper"
 
@@ -12,7 +10,7 @@ export default function BlogLayout({ children }: BlogProps) {
     <WindowWrapper
       title="Blog"
       bottomBar
-      icon={<NotebookPen />}
+      icon="notebookPen"
       menu={WINDOW_MENU_ITEMS.blog}
     >
       <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col overflow-auto lg:flex-row">

@@ -8,6 +8,7 @@ import { useIsClient, useMediaQuery } from "usehooks-ts"
 
 import { RecycleItem } from "@/lib/types"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
+import { Icon } from "@/components/icons"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowIcon } from "@/components/window-icon"
 import { WindowPanelContent } from "@/components/window-panel-content"
@@ -48,7 +49,6 @@ export function Bin() {
           <WindowIcon
             key={item.id}
             className="col-span-1 mx-auto flex aspect-square size-24 flex-col items-center justify-center p-1 md:size-32"
-            icon={item.icon}
             title={item.title}
             topStyle={
               item === selectedRecycleItem
@@ -61,7 +61,9 @@ export function Bin() {
                 : "truncate"
             }
             handleClick={() => setSelectedRecycleItem(item)}
-          />
+          >
+            <Icon iconName={item.icon} className="w-1/3" />
+          </WindowIcon>
         ))}
       </WindowPanelContent>
     </ResizablePanelGroup>

@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils"
 import { Textarea } from "@/components/ui/textarea"
 import { FormatBar } from "@/components/format-bar"
 
-// TODO: FIX THIS GROTESQUERIE AT ONCE
 export function Notepad() {
   const [note, setNote] = useState("")
   const [isBold, setIsBold] = useState(false)

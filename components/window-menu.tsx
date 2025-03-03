@@ -14,6 +14,7 @@ import {
   MenubarMenu,
   MenubarTrigger,
 } from "@/components/ui/menubar"
+import { Icon } from "@/components/icons"
 
 interface WindowMenuProps {
   menu: MenuItemType[]
@@ -40,43 +41,47 @@ export function WindowMenu({ menu }: WindowMenuProps) {
             {menuItem.trigger}
           </MenubarTrigger>
           <MenubarContent className="bg-windows -mt-1 ml-0 rounded-none">
-            {menuItem.items.map((item) => (
-              <MenubarItem
-                key={item.title}
-                disabled={isItemDisabled(item)}
-                className={cn("hover:bg-windows-blue hover:text-windows-white")}
-                onSelect={() => {
-                  if (item.title === "Empty") {
-                    setRecycleItems([])
-                  }
-                  if (item.title === "Save") {
-                    handleDownload()
-                  }
-                }}
-              >
-                {item.title === "Back" && (
-                  <Link href="/blog" className="flex w-full items-center">
-                    {item.icon}
-                    <span className="mx-2">{item.title}</span>
-                  </Link>
-                )}
-                {item.title === "Exit" && (
-                  <Link
-                    href="/"
-                    className="flex w-full items-center hover:bg-transparent"
-                  >
-                    {item.icon}
-                    <span className="mx-2">{item.title}</span>
-                  </Link>
-                )}
-                {item.title !== "Back" && item.title !== "Exit" && (
-                  <>
-                    {item.icon}
-                    <span className="mx-2">{item.title}</span>
-                  </>
-                )}
-              </MenubarItem>
-            ))}
+            {menuItem.items.map((item) => {
+              return (
+                <MenubarItem
+                  key={item.title}
+                  disabled={isItemDisabled(item)}
+                  className={cn(
+                    "hover:bg-windows-blue hover:text-windows-white"
+                  )}
+                  onSelect={() => {
+                    if (item.title === "Empty") {
+                      setRecycleItems([])
+                    }
+                    if (item.title === "Save") {
+                      handleDownload()
+                    }
+                  }}
+                >
+                  {item.title === "Back" && (
+                    <Link href="/blog" className="flex w-full items-center">
+                      <Icon iconName={item.icon} />
+                      <span className="mx-2">{item.title}</span>
+                    </Link>
+                  )}
+                  {item.title === "Exit" && (
+                    <Link
+                      href="/"
+                      className="flex w-full items-center hover:bg-transparent"
+                    >
+                      <Icon iconName={item.icon} />
+                      <span className="mx-2">{item.title}</span>
+                    </Link>
+                  )}
+                  {item.title !== "Back" && item.title !== "Exit" && (
+                    <>
+                      <Icon iconName={item.icon} />
+                      <span className="mx-2">{item.title}</span>
+                    </>
+                  )}
+                </MenubarItem>
+              )
+            })}
           </MenubarContent>
         </MenubarMenu>
       ))}

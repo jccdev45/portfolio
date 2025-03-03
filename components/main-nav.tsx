@@ -32,6 +32,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Icon } from "@/components/icons"
 import { NavClock } from "@/components/nav-clock"
 import { NavWindowTitle } from "@/components/nav-window-title"
 import { VolumeSlider } from "@/components/volume-slider"
@@ -78,13 +79,11 @@ export function MainNav() {
                 </MenubarSubContent>
               </MenubarSub>
 
-              {START_MENU_ITEMS.map((item) => (
-                <MenubarItem key={item.id} asChild>
-                  <Link
-                    href={item.link.href}
-                    className="flex w-full items-center"
-                  >
-                    {item.link.text}
+              {START_MENU_ITEMS.map(({ id, href, icon, text }) => (
+                <MenubarItem key={id} asChild>
+                  <Link href={href} className="flex w-full items-center">
+                    <Icon iconName={icon} className="mr-2" />
+                    {text}
                   </Link>
                 </MenubarItem>
               ))}

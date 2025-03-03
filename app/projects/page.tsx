@@ -1,7 +1,5 @@
-import { Briefcase } from "lucide-react"
-
 import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
-import { Portfolio } from "@/components/portfolio"
+import { ProjectList } from "@/components/project-list"
 import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
@@ -12,12 +10,12 @@ export const metadata = {
 export default function PortfolioPage() {
   return (
     <WindowWrapper
-      icon={<Briefcase />}
+      icon="briefcase"
       title="Projects"
       menu={WINDOW_MENU_ITEMS.default}
       bottomBar
     >
-      <Portfolio />
+      <ProjectList />
     </WindowWrapper>
   )
 }
