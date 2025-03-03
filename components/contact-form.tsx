@@ -8,7 +8,8 @@ import { useForm } from "react-hook-form"
 import { toast } from "sonner"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { ContactSchema, ContactSchemaValues, socials } from "@/lib/constants"
+import { SOCIAL_MEDIA_LIST } from "@/lib/constants/socials"
+import { ContactSchema, type ContactSchemaValues } from "@/lib/contact-schema"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -103,7 +104,7 @@ export function ContactForm() {
               </figure>
               <RainbowSeparator />
               <div className="mx-auto grid w-5/6 grid-cols-4 place-items-center gap-2">
-                {socials.map((social) => (
+                {SOCIAL_MEDIA_LIST.map((social) => (
                   <Link
                     href={social.link}
                     key={social.id}

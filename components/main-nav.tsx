@@ -8,7 +8,7 @@ import {
   X,
 } from "lucide-react"
 
-import { START_MENU_ITEMS } from "@/lib/constants"
+import { START_MENU_ITEMS } from "@/lib/constants/start-menu-items"
 import {
   AlertDialog,
   AlertDialogAction,

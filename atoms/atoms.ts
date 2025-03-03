@@ -2,7 +2,8 @@ import type { JSX } from "react"
 import type { SliderProps } from "@radix-ui/react-slider"
 import { atom } from "jotai"
 
-import { desktopIcons as initialDesktopIcons, toRecycle } from "@/lib/constants"
+import { DESKTOP_ICONS as initialDesktopIcons } from "@/lib/constants/desktop-icons"
+import { RECYCLE_BIN_ITEMS } from "@/lib/constants/recycle-bin-items"
 import { DesktopIcon, RecycleItem, SortOrder } from "@/lib/types"
 
 export const dateAtom = atom<Date | undefined>(new Date())
@@ -12,7 +13,7 @@ export const imageDataAtom = atom<string | null>(null)
 export const isDrawingAtom = atom<boolean>(false)
 export const isMaxAtom = atom(false)
 export const isTriggerDownloadAtom = atom<boolean>(false)
-export const recycleMenuAtom = atom<RecycleItem[] | null>(toRecycle)
+export const recycleMenuAtom = atom<RecycleItem[] | null>(RECYCLE_BIN_ITEMS)
 export const screenshotRefAtom = atom<React.RefObject<HTMLDivElement> | null>(
   null
 )

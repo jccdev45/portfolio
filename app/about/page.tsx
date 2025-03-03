@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Contact, UserCircle } from "lucide-react"
 
-import { menuItems } from "@/lib/constants"
+import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowWrapper } from "@/components/window-wrapper"
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
     <WindowWrapper
       title="About"
       icon={<UserCircle />}
-      menu={menuItems.default}
+      menu={WINDOW_MENU_ITEMS.default}
       bottomBar
     >
       <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col overflow-auto lg:flex-row">

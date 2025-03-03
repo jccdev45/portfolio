@@ -1,6 +1,6 @@
 import { HardDrive } from "lucide-react"
 
-import { menuItems } from "@/lib/constants"
+import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
 import { DownloadHD } from "@/components/download-hd"
 import { WindowWrapper } from "@/components/window-wrapper"
 
@@ -14,7 +14,7 @@ export default function HDPage() {
     <WindowWrapper
       title="Download More Disk Space"
       icon={<HardDrive />}
-      menu={menuItems.default}
+      menu={WINDOW_MENU_ITEMS.default}
       bottomBar
     >
       <DownloadHD />

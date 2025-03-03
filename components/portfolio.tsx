@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
 import type { JSX } from "react"
+import { useState } from "react"
 import Link from "next/link"
 import { ExternalLink, Loader2 } from "lucide-react"
 import { useIsClient, useMediaQuery } from "usehooks-ts"
 
-import { myProjects as PROJECTS } from "@/lib/constants"
+import { PROJECT_LIST as PROJECTS } from "@/lib/constants/project-list"
 import { Badge } from "@/components/ui/badge"
 import { ResizableHandle, ResizablePanelGroup } from "@/components/ui/resizable"
 import { ScrollArea } from "@/components/ui/scroll-area"

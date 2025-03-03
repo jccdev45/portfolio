@@ -1,6 +1,6 @@
 import type { JSX } from "react"
 
-import { SUITS, VALUES } from "./constants"
+import { SUITS, VALUES } from "@/lib/constants/solitaire"
 
 export type Suit = (typeof SUITS)[number]
 export type Value = (typeof VALUES)[number]
