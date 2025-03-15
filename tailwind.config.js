@@ -79,6 +79,7 @@ module.exports = {
       },
       fontFamily: {
         levi: "var(--font-levi)",
+        chivo: "var(--font-chivo)",
       },
       keyframes: {
         "accordion-down": {

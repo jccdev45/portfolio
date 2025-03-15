@@ -5,7 +5,12 @@ import { cn } from "@/lib/utils"
 import { TerminalWindow } from "@/components/terminal"
 import { WindowWrapper } from "@/components/window-wrapper"
 
-const chivo = Chivo_Mono({ subsets: ["latin"], weight: ["400"] })
+const chivo = Chivo_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+  variable: "--font-chivo",
+})
 
 export const metadata = {
   title: "terminal",

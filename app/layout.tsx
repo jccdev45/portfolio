@@ -15,6 +15,7 @@ import { MainNav } from "@/components/main-nav"
 const fontLevi = localFont({
   src: "../assets/MS Sans Serif.ttf",
   variable: "--font-levi",
+  display: "swap",
 })
 
 export const metadata: Metadata = {
