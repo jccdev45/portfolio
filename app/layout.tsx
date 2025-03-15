@@ -13,7 +13,7 @@ import { DesktopDialog } from "@/components/desktop-dialog"
 import { MainNav } from "@/components/main-nav"
 
 const fontLevi = localFont({
-  src: "../assets/MS Sans Serif.ttf",
+  src: "../assets/ms-sans-serif.ttf",
   variable: "--font-levi",
   display: "swap",
 })
