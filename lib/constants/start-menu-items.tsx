@@ -20,12 +20,6 @@ export const START_MENU_ITEMS: StartMenuItem[] = [
     text: "Projects",
   },
   {
-    id: 5,
-    href: "/resume",
-    icon: "fileText",
-    text: "Resume",
-  },
-  {
     id: 3,
     href: "/contact",
     icon: "mailPlus",

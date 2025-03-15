@@ -65,13 +65,4 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
         "text-windows-white border-t-windows-blue border-windows-black rounded-sm border-4 border-t-8 bg-stone-700",
     },
   },
-  {
-    id: 9,
-    label: "Resume",
-    path: "/resume",
-    icon: {
-      name: "fileText",
-      className: "fill-amber-100",
-    },
-  },
 ]
