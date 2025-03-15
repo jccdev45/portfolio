@@ -4,6 +4,7 @@ import Link from "next/link"
 import { Contact, UserCircle } from "lucide-react"
 
 import { WINDOW_MENU_ITEMS } from "@/lib/constants/window-menu-items"
+import { Button } from "@/components/ui/button"
 import { RainbowSeparator } from "@/components/rainbow-separator"
 import { WindowWrapper } from "@/components/window-wrapper"
 
@@ -65,12 +66,23 @@ export default function AboutPage() {
                 About Me
               </figcaption>
             </figure>
-            <Link
-              href="/contact"
-              className="text-windows-blue/80 hover:text-windows-blue my-4 flex w-fit items-center justify-center gap-2 self-center underline underline-offset-2"
-            >
-              <Contact className="size-5" /> Get in touch
-            </Link>
+            <div className="flex w-full flex-col items-center">
+              <Link
+                href="/contact"
+                className="text-windows-blue/80 hover:text-windows-blue my-4 flex w-fit items-center justify-center gap-2 self-center underline underline-offset-2"
+              >
+                <Contact className="size-5" /> Get in touch
+              </Link>
+              <Button asChild variant="windows">
+                <Link
+                  href="/resume.txt"
+                  download="Jordan_Cruz_Correa_Software_Engineer_Resume"
+                  target="_blank"
+                >
+                  Download Resume
+                </Link>
+              </Button>
+            </div>
             <RainbowSeparator />
             <Image
               src="/me2.jpg"
