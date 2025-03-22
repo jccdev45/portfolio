@@ -1,12 +1,13 @@
 import { promises as fs } from "fs"
 import path from "path"
 import { Metadata, ResolvingMetadata } from "next"
-import { compileMDX } from "next-mdx-remote/rsc"
+import { evaluate } from "next-mdx-remote-client/rsc"
 
 interface Frontmatter {
   title: string
   date: string
   description?: string
+  [key: string]: unknown
 }
 
 type Props = {
@@ -23,7 +24,7 @@ export async function generateMetadata(
     path.join(process.cwd(), "articles", `${slug}.mdx`)
   )
 
-  const { frontmatter } = await compileMDX<Frontmatter>({
+  const { frontmatter } = await evaluate<Frontmatter>({
     source: content,
     options: {
       parseFrontmatter: true,
@@ -59,7 +60,7 @@ export default async function Page({ params }: Props) {
     path.join(process.cwd(), "articles", `${slug}.mdx`)
   )
 
-  const data = await compileMDX<Frontmatter>({
+  const data = await evaluate<Frontmatter>({
     source: content,
     options: {
       parseFrontmatter: true,
