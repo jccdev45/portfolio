@@ -30,6 +30,7 @@ import {
   Trash2,
   Twitter,
   UserCircle2,
+  Utensils,
   Video,
   XCircle,
 } from "lucide-react"
@@ -68,6 +69,7 @@ const Icons = {
   trash2: Trash2,
   twitter: Twitter,
   userCircle2: UserCircle2,
+  utensils: Utensils,
   video: Video,
   xCircle: XCircle,
 }

@@ -138,7 +138,7 @@ function ProjectIcons({
   onProjectClick,
 }: ProjectIconsProps) {
   return (
-    <div className="grid grow grid-cols-2 p-4 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grow grid-cols-2 p-4 md:grid-cols-4">
       {projects.map((proj) => (
         <WindowIcon
           key={proj.id}

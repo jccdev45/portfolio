@@ -12,6 +12,23 @@ export const PROJECT_LIST_ITEMS: Project[] = [
     className: "fill-[rgba(154,102,29,0.9)] text-black",
   },
   {
+    id: 5,
+    title: "CleanPlate",
+    desc: "Explore NYC restaurant inspection results, grades, and inspection history. Search by name, cuisine, or location.",
+    tech: [
+      "frontend",
+      "react",
+      "tanstack",
+      "typescript",
+      "shadcn-ui",
+      "tailwindcss",
+    ],
+    live: "https://cleanplate.vercel.app",
+    repoURL: "https://github.com/jccdev45/cleanplate",
+    icon: "utensils",
+    className: "text-[rgb(1,22,199)]",
+  },
+  {
     id: 2,
     title: "Family Recipes",
     desc: "Digital version of a family recipe book. Includes several Supabase services: Authentication, Database and Storage.",

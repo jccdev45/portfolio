@@ -75,7 +75,7 @@ export default function AboutPage() {
               </Link>
               <Button asChild variant="windows">
                 <Link
-                  href="/resume.txt"
+                  href="/Jordan_Cruz-Correa_Software_Engineer_Resume.pdf"
                   download="Jordan_Cruz_Correa_Software_Engineer_Resume"
                   target="_blank"
                 >
@@ -178,8 +178,8 @@ export default function AboutPage() {
                 <Link className="text-windows-blue font-bold" href="/projects">
                   projects
                 </Link>{" "}
-                which include a family recipe book app and a custom made Twitch
-                chatbot, or my{" "}
+                which include a NYC health inspection results app, a family
+                recipe book app and a custom made Twitch chatbot, or my{" "}
                 <Link className="text-windows-blue font-bold" href="/blog">
                   blog
                 </Link>{" "}
