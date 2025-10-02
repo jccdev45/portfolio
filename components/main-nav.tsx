@@ -3,6 +3,7 @@ import {
   Calculator,
   Laptop2,
   LayoutPanelLeft,
+  Paintbrush,
   Power,
   StickyNote,
   Ungroup,
@@ -73,6 +74,11 @@ export function MainNav() {
                       className="flex size-full items-center"
                     >
                       <Calculator className="mr-2" /> Calculator
+                    </Link>
+                  </MenubarItem>
+                  <MenubarItem asChild>
+                    <Link href="/paint" className="flex size-full items-center">
+                      <Paintbrush className="mr-2" /> Paint
                     </Link>
                   </MenubarItem>
                   {/* <MenubarItem>

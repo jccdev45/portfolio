@@ -19,6 +19,7 @@ interface WindowWrapperProps {
   menu?: MenuItemType[]
   title: string
   allowMaximize?: boolean
+  defaultMax?: boolean
 }
 
 export function WindowWrapper({
@@ -28,6 +29,7 @@ export function WindowWrapper({
   menu,
   title,
   allowMaximize = true,
+  defaultMax = false,
 }: WindowWrapperProps) {
   const setIcon = useSetAtom(windowIconAtom)
   const setTitle = useSetAtom(windowTitleAtom)
@@ -39,7 +41,11 @@ export function WindowWrapper({
   }, [setIcon, setTitle, Icon, title])
 
   return (
-    <WindowContent bottomBar allowMaximize={allowMaximize}>
+    <WindowContent
+      bottomBar
+      allowMaximize={allowMaximize}
+      defaultMax={title === "Paint" && defaultMax}
+    >
       <WindowHeader allowMaximize={allowMaximize} />
       {menu && <WindowMenu menu={menu} />}
       <div className={cn(`relative size-full`)}>{children}</div>

@@ -7,10 +7,11 @@ export default function PaintPage() {
     <WindowWrapper
       title="Paint"
       icon="paintbrush"
-      bottomBar
+      bottomBar={false}
       menu={WINDOW_MENU_ITEMS.paint}
+      defaultMax
     >
-      <div className="absolute inset-x-0 top-0 bottom-6 size-full overflow-auto">
+      <div className="flex h-full w-full flex-col">
         <Win98Paint />
       </div>
     </WindowWrapper>

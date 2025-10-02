@@ -38,15 +38,6 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     },
   },
   {
-    id: 5,
-    label: "Calculator",
-    path: "/calculator",
-    icon: {
-      name: "calculator",
-      className: "fill-cyan-100 text-cyan-900",
-    },
-  },
-  {
     id: 6,
     label: "Contact",
     path: "/contact",
@@ -72,6 +63,24 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     icon: {
       name: "notebookPen",
       className: "fill-amber-100 text-windows-black",
+    },
+  },
+  {
+    id: 5,
+    label: "Calculator",
+    path: "/calculator",
+    icon: {
+      name: "calculator",
+      className: "fill-cyan-100 text-cyan-900",
+    },
+  },
+  {
+    id: 9,
+    label: "Paint",
+    path: "/paint",
+    icon: {
+      name: "paintbrush",
+      className: "text-windows-black fill-windows-white/50",
     },
   },
 ]

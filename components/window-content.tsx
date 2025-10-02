@@ -9,24 +9,26 @@ interface WindowContentProps {
   children: React.ReactNode
   bottomBar: boolean
   allowMaximize?: boolean
+  defaultMax?: boolean
 }
 
 export function WindowContent({
   children,
   bottomBar,
   allowMaximize = true,
+  defaultMax,
 }: WindowContentProps) {
   const { isMax } = useWindow()
 
-  // when maximize is not allowed, keep a fixed window size even when not maximized
-  // const fixedSizeClass = "w-[28rem] h-[36rem]"
+  // Treat the window as maximized if the hook says so OR if defaultMax is true
+  const isMaximized = Boolean(defaultMax) || isMax
 
   return (
     <div
       id="window-wrapper"
       className={cn(
         "border-b-windows-dark border-l-windows border-r-windows-dark border-t-windows shadow-windows-dark absolute flex resize-none flex-col justify-evenly border-2 bg-white shadow-inner",
-        isMax
+        isMaximized
           ? bottomBar
             ? "inset-0 h-[calc(100vh-48px)]"
             : "inset-0"
