@@ -20,6 +20,10 @@ export function NavClock() {
     year: "numeric",
   })
 
+  // react-timer-hook may return hours as a string or number; ensure midnight shows as 12
+  const hourNum = typeof hours === "string" ? Number(hours) : hours
+  const displayHour = hourNum === 0 ? 12 : hourNum
+
   return (
     <TooltipProvider>
       <Tooltip>
@@ -29,13 +33,8 @@ export function NavClock() {
         >
           <div className="flex items-center gap-0.5">
             <>
-              {hours}
+              {displayHour}
               <span className="animate-pulse">:</span>
-              {/*
-                Current time: 5:13 AM
-                Four minutes late to see if this actually works
-                Pushing to prod anyway
-              */}
               {minutes < 10 ? `0${minutes}` : minutes}
             </>
             <span className="uppercase">{ampm}</span>
