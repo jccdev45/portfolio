@@ -17,6 +17,13 @@ export const WINDOW_MENU_ITEMS: {
         },
       ],
     },
+    {
+      trigger: "Edit",
+      items: [
+        { title: "Undo", icon: "undo" },
+        { title: "Redo", icon: "redo" },
+      ],
+    },
   ],
   notepad: [
     {

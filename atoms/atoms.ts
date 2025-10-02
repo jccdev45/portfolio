@@ -13,6 +13,8 @@ export const imageDataAtom = atom<string | null>(null)
 export const isDrawingAtom = atom<boolean>(false)
 export const isMaxAtom = atom(false)
 export const isTriggerDownloadAtom = atom<boolean>(false)
+export const undoRequestedAtom = atom<boolean>(false)
+export const redoRequestedAtom = atom<boolean>(false)
 export const recycleMenuAtom = atom<RecycleItem[] | null>(RECYCLE_BIN_ITEMS)
 export const screenshotRefAtom = atom<React.RefObject<HTMLDivElement> | null>(
   null

@@ -2,7 +2,12 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { isTriggerDownloadAtom, recycleMenuAtom } from "@/atoms/atoms"
+import {
+  isTriggerDownloadAtom,
+  recycleMenuAtom,
+  redoRequestedAtom,
+  undoRequestedAtom,
+} from "@/atoms/atoms"
 import { useSetAtom } from "jotai"
 
 import { MenuItem, MenuItemType } from "@/lib/types"
@@ -24,6 +29,8 @@ export function WindowMenu({ menu }: WindowMenuProps) {
   const setRecycleItems = useSetAtom(recycleMenuAtom)
   const setTriggerDownload = useSetAtom(isTriggerDownloadAtom)
   const path = usePathname()
+  const setUndoRequested = useSetAtom(undoRequestedAtom)
+  const setRedoRequested = useSetAtom(redoRequestedAtom)
 
   function handleDownload() {
     setTriggerDownload(true)
@@ -55,6 +62,12 @@ export function WindowMenu({ menu }: WindowMenuProps) {
                     }
                     if (item.title === "Save") {
                       handleDownload()
+                    }
+                    if (item.title === "Undo") {
+                      setUndoRequested(true)
+                    }
+                    if (item.title === "Redo") {
+                      setRedoRequested(true)
                     }
                   }}
                 >

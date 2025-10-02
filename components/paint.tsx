@@ -1,6 +1,13 @@
 "use client"
 
 import React, { useCallback, useEffect, useRef, useState } from "react"
+import {
+  imageDataAtom,
+  isTriggerDownloadAtom,
+  redoRequestedAtom,
+  undoRequestedAtom,
+} from "@/atoms/atoms"
+import { useAtomValue, useSetAtom } from "jotai"
 import { RedoIcon, UndoIcon } from "lucide-react"
 
 import { COLOR_PALETTE, TOOLS } from "@/lib/constants/paint-items"
@@ -511,6 +518,120 @@ export function Win98Paint() {
       setHistoryVersion((v) => v + 1)
     })()
   }, [])
+
+  // Listen for menu-driven Undo/Redo/Save triggers via atoms
+  const isTriggerDownload = useAtomValue(isTriggerDownloadAtom)
+  const undoRequested = useAtomValue(undoRequestedAtom)
+  const redoRequested = useAtomValue(redoRequestedAtom)
+  const setImageData = useSetAtom(imageDataAtom)
+  const setUndoRequested = useSetAtom(undoRequestedAtom)
+  const setRedoRequested = useSetAtom(redoRequestedAtom)
+  const setTriggerDownload = useSetAtom(isTriggerDownloadAtom)
+
+  useEffect(() => {
+    if (undoRequested) {
+      // perform undo and reset trigger
+      undo()
+      setUndoRequested(false)
+    }
+  }, [undoRequested, undo, setUndoRequested])
+
+  useEffect(() => {
+    if (redoRequested) {
+      redo()
+      setRedoRequested(false)
+    }
+  }, [redoRequested, redo, setRedoRequested])
+
+  useEffect(() => {
+    if (!isTriggerDownload) return
+    ;(async () => {
+      try {
+        const canvas = canvasRef.current
+        if (!canvas) return
+
+        // prefer blob to avoid huge dataurls in memory
+        const blobOrData = await captureSnapshot()
+        if (!blobOrData) return
+
+        // create a filename with timestamp
+        const filename = `paint-${new Date().toISOString().replace(/[:.]/g, "-")}.png`
+
+        if (typeof blobOrData === "string") {
+          // data URL
+          // attempt navigator.share on mobile
+          if ((navigator as any).share) {
+            try {
+              const res = await fetch(blobOrData)
+              const blob = await res.blob()
+              const file = new File([blob], filename, { type: blob.type })
+              await (navigator as any).share({ files: [file] })
+            } catch (e) {
+              // fallback to opening in new tab
+              window.open(blobOrData, "_blank")
+            }
+          } else {
+            // desktop/mobile fallback
+            const a = document.createElement("a")
+            a.href = blobOrData
+            a.download = filename
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+          }
+          setImageData(blobOrData)
+        } else {
+          // Blob path
+          // On supporting browsers, prefer navigator.share with Files
+          if ((navigator as any).canShare && (navigator as any).share) {
+            try {
+              const file = new File([blobOrData], filename, {
+                type: blobOrData.type,
+              })
+              await (navigator as any).share({ files: [file] })
+            } catch (e) {
+              // fallback to download
+              const url = URL.createObjectURL(blobOrData)
+              const a = document.createElement("a")
+              a.href = url
+              a.download = filename
+              document.body.appendChild(a)
+              a.click()
+              a.remove()
+              URL.revokeObjectURL(url)
+            }
+          } else {
+            const url = URL.createObjectURL(blobOrData)
+            const a = document.createElement("a")
+            a.href = url
+            a.download = filename
+            document.body.appendChild(a)
+            a.click()
+            a.remove()
+            URL.revokeObjectURL(url)
+          }
+
+          try {
+            // also set imageData as dataURL for other consumers
+            const dataUrl = await new Promise<string | null>((res) => {
+              const reader = new FileReader()
+              reader.onload = () => res(String(reader.result))
+              reader.onerror = () => res(null)
+              reader.readAsDataURL(blobOrData)
+            })
+            if (dataUrl) setImageData(dataUrl)
+          } catch (e) {
+            /* ignore */
+          }
+        }
+      } catch (e) {
+        console.error("save failed", e)
+      } finally {
+        // reset trigger
+        setTriggerDownload(false)
+      }
+    })()
+  }, [isTriggerDownload, setImageData, setTriggerDownload])
 
   // keyboard shortcuts: ctrl/cmd+z (undo), ctrl/cmd+y or ctrl+shift+z (redo)
   useEffect(() => {
