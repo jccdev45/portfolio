@@ -1,5 +1,6 @@
 import Link from "next/link"
 import {
+  Calculator,
   Laptop2,
   LayoutPanelLeft,
   Power,
@@ -64,6 +65,14 @@ export function MainNav() {
                       className="flex size-full items-center"
                     >
                       <StickyNote className="mr-2" /> Notepad
+                    </Link>
+                  </MenubarItem>
+                  <MenubarItem asChild>
+                    <Link
+                      href="/calculator"
+                      className="flex size-full items-center"
+                    >
+                      <Calculator className="mr-2" /> Calculator
                     </Link>
                   </MenubarItem>
                   {/* <MenubarItem>

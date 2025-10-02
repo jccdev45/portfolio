@@ -20,15 +20,6 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     },
   },
   {
-    id: 8,
-    label: "Blog",
-    path: "/blog",
-    icon: {
-      name: "notebookPen",
-      className: "fill-amber-100 text-windows-black",
-    },
-  },
-  {
     id: 3,
     label: "Recycle Bin",
     path: "/recycle-bin",
@@ -44,6 +35,15 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
     icon: {
       name: "notebook",
       className: "text-sky-600 fill-windows-white",
+    },
+  },
+  {
+    id: 5,
+    label: "Calculator",
+    path: "/calculator",
+    icon: {
+      name: "calculator",
+      className: "fill-cyan-100 text-cyan-900",
     },
   },
   {
@@ -63,6 +63,15 @@ export const DESKTOP_ICONS: DesktopIcon[] = [
       name: "terminal",
       className:
         "text-windows-white border-t-windows-blue border-windows-black rounded-sm border-4 border-t-8 bg-stone-700",
+    },
+  },
+  {
+    id: 8,
+    label: "Blog",
+    path: "/blog",
+    icon: {
+      name: "notebookPen",
+      className: "fill-amber-100 text-windows-black",
     },
   },
 ]
