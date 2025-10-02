@@ -8,6 +8,7 @@ import { useAtomValue } from "jotai"
 import { Trash, Trash2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
+import HireMePopup from "@/components/hire-me-popup"
 import { Icon } from "@/components/icons"
 
 export default function Desktop() {
@@ -17,6 +18,7 @@ export default function Desktop() {
 
   return (
     <div className="absolute top-2 left-2 flex max-h-[90vh] flex-col flex-wrap items-center justify-start gap-x-2 gap-y-4">
+      <HireMePopup />
       {desktopIcons.map(({ icon, id, path, label }) => (
         <Link
           href={path}
@@ -31,7 +33,7 @@ export default function Desktop() {
               <div className="absolute top-1 left-[45%] grid w-2/3 -translate-x-[50%] grid-cols-4 gap-x-0.5">
                 <div
                   className={cn(
-                    "border-windows/50 relative h-3 w-2.5 -translate-y-0.5 translate-x-1 -rotate-[26deg] overflow-hidden rounded-full rounded-b-none border-[1px] bg-gray-100"
+                    "border-windows/50 relative h-3 w-2.5 translate-x-1 -translate-y-0.5 -rotate-[26deg] overflow-hidden rounded-full rounded-b-none border-[1px] bg-gray-100"
                   )}
                 />
                 <div

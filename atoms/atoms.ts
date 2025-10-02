@@ -20,3 +20,5 @@ export const screenshotRefAtom = atom<React.RefObject<HTMLDivElement> | null>(
 export const volumeAtom = atom<SliderProps["defaultValue"]>([50])
 export const windowIconAtom = atom<JSX.Element | null>(null)
 export const windowTitleAtom = atom<string>("")
+// whether to show the retro "hire me" popup on the desktop
+export const hireMeVisibleAtom = atom<boolean>(true)

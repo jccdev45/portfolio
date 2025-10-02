@@ -1,6 +1,6 @@
 "use client"
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from "react"
 
 const CONSOLE_ART_KEY = "jccdev_console_art_displayed"
 
@@ -29,7 +29,7 @@ const logArt = () => {
     "color: #00CED1; font-weight: bold;"
   )
   console.log(
-    `%c Welcome to my portfolio site, enjoy your stay ♥`,
+    `%c Welcome, enjoy your stay ♥`,
     "font-size: 14px; color: #4CAF50; font-weight: bold"
   )
 }
