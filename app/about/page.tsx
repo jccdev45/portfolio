@@ -16,9 +16,10 @@ const DATA = [
       "JavaScript",
       "TypeScript",
       "NextJS",
+      "TanStack",
       "TailwindCSS",
       "shadcn-ui",
-      "Remix",
+      "accessibility (a11y)",
     ],
   },
   {
@@ -27,7 +28,14 @@ const DATA = [
   },
   {
     category: "TOOLS/PLATFORMS",
-    skills: ["Git/GitHub", "VS Code", "Vercel", "Netlify"],
+    skills: [
+      "Git/GitHub",
+      "VS Code",
+      "Vercel",
+      "Netlify",
+      "Vitest",
+      "Lighthouse",
+    ],
   },
   {
     category: "SOFT SKILLS",
@@ -45,14 +53,13 @@ const DATA = [
 
 export const metadata = {
   title: "about",
-  description: "🆗",
+  description: "jccdev (Software Engineer) — portfolio and contact",
 }
 
 export default function AboutPage() {
   return (
     <WindowWrapper
       title="About"
-      // icon={UserCircle}
       icon="userCircle2"
       menu={WINDOW_MENU_ITEMS.default}
       bottomBar
@@ -60,8 +67,8 @@ export default function AboutPage() {
       <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col overflow-auto lg:flex-row">
         <div className="grid grid-cols-1 lg:grid-cols-3">
           <aside className="lg:border-windows-dark lg:shadow-windows-dark flex min-w-fit flex-col items-center space-y-4 p-4 lg:border-r lg:shadow-inner">
-            <figure className="flex flex-col items-center">
-              <UserCircle className="size-12 md:size-24" />
+            <figure className="flex items-center gap-2">
+              <UserCircle className="size-12" />
               <figcaption className="max-w-full text-xl font-semibold">
                 About Me
               </figcaption>
@@ -84,26 +91,30 @@ export default function AboutPage() {
               </Button>
             </div>
             <RainbowSeparator />
-            <Image
-              src="/me2.jpg"
-              alt="Some jabrone named Jordan, looking handsome"
-              width={450}
-              height={750}
-              className="mx-auto aspect-square w-full max-w-sm object-cover"
-            />
+            <div className="mx-auto w-full max-w-sm">
+              <div className="relative aspect-square w-full">
+                <Image
+                  src="/me2.jpg"
+                  alt="Some jabrone named Jordan, looking handsome"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </aside>
 
           <section className="scrollbar scrollbar-track-rounded-none scrollbar-thumb-rounded-none lg:shadow-windows-dark mx-auto flex flex-col overflow-auto px-3 py-10 lg:col-span-2 lg:shadow-inner">
             <div className="prose max-w-full px-4">
               <h1 className="text-center lg:text-left">Hello 👋🏽</h1>
               <p className="">
-                I'm Jordan, a frontend-focused software engineer with a knack
-                for creating responsive, user-friendly web applications. My
-                expertise lies in React, TypeScript, and NextJS, complemented by
-                proficiency in HTML, CSS, and TailwindCSS for crafting visually
-                appealing interfaces. While my heart belongs to the frontend,
-                I'm no stranger to backend technologies like Supabase and
-                Node.js, making me adaptable to full-stack roles.
+                Hi — I’m Jordan, a frontend-focused software engineer who builds
+                responsive, user-first web apps with React, TypeScript, and
+                Next.js. I specialize in component-driven UIs, performance, and
+                accessibility, and I enjoy owning features end-to-end — from API
+                design to polished UI. While I lean frontend, I’m comfortable
+                full-stack (Supabase, Node.js, PostgreSQL) and shipping
+                production systems.
               </p>
 
               <h2 className="">Technical Skills</h2>
@@ -126,26 +137,22 @@ export default function AboutPage() {
 
               <h2 className="">Journey & Experience</h2>
               <p className="">
-                My path to software engineering has been anything but
-                conventional. I've worn many hats - from serving in the Army as
-                a Power Generator Equipment Repairer to working as a residential
-                electrician, and even as a line cook in a high-pressure
-                Manhattan restaurant. Additionally, I was a teaching assistant
-                at a software engineering bootcamp, where I honed my skills in
-                explaining complex concepts and troubleshooting code. This
-                diverse background has equipped me with a unique problem-solving
-                perspective and the ability to thrive in fast-paced, challenging
-                environments.
+                My path into software engineering has been hands-on and varied —
+                from repairing power generators in the Army to electrical work
+                and cooking in busy Manhattan kitchens. Each role sharpened my
+                troubleshooting, discipline, and ability to stay calm under
+                pressure. I also worked as a teaching assistant at a software
+                engineering bootcamp, which strengthened my technical
+                communication and real-time debugging skills. Those experiences
+                inform a pragmatic approach to building reliable, maintainable
+                products.
               </p>
 
               <h2 className="">Beyond Code</h2>
               <p className="">
-                When I'm not immersed in web development, you can often find me
-                gaming (some favorites include League of Legends, Baldur's Gate
-                3 and Elden Ring), watching pro wrestling or playing
-                guitar/bass. I'm an absolute addict for music and not a day goes
-                by where I'm not listening to some. Currently, I'm obssessed
-                with bands like{" "}
+                Outside of work I play guitar and bass, game (League of Legends,
+                Baldur's Gate 3, Elden Ring), and follow pro wrestling. Music is
+                a daily habit — currently into bands like{" "}
                 <Link
                   className="text-windows-blue font-bold"
                   href="https://www.youtube.com/watch?v=pk4MoWFp2dc"
@@ -178,22 +185,21 @@ export default function AboutPage() {
                 <Link className="text-windows-blue font-bold" href="/projects">
                   projects
                 </Link>{" "}
-                which include a NYC health inspection results app, a family
-                recipe book app and a custom made Twitch chatbot, or my{" "}
-                <Link className="text-windows-blue font-bold" href="/blog">
-                  blog
-                </Link>{" "}
-                to read about what's going on in my life.
+                for examples of production-focused work: a NYC health-inspection
+                results app, a family recipe book app, and a custom Twitch
+                chatbot. Each project emphasizes UI polish, reliable data flows,
+                and a focus on user experience. Visit the project pages for
+                source and live demos where available.
               </p>
 
               <h2 className="">Let's Connect!</h2>
               <p className="">
-                Want to work together? Or maybe just talk wrestling, video games
-                or whatever else? Feel free to{" "}
+                Interested in collaborating or just want to talk games, music,
+                or wrestling?{" "}
                 <Link className="text-windows-blue font-bold" href="/contact">
-                  reach out.
-                </Link>{" "}
-                Thanks for stopping by 💖
+                  Reach out
+                </Link>
+                . Thanks for stopping by 💖
               </p>
             </div>
           </section>
