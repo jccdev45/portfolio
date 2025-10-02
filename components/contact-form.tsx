@@ -27,25 +27,17 @@ import { WindowPanelContent } from "@/components/window-panel-content"
 import { WindowPanelSidebar } from "@/components/window-sidebar"
 
 const ContactFormLogic = () => {
-  const [status, setStatus] = useState({
+  type Status = {
+    submitted: boolean
+    submitting: boolean
+    info: { error: boolean; msg: string }
+  }
+
+  const [status, setStatus] = useState<Status>({
     submitted: false,
     submitting: false,
     info: { error: false, msg: "" },
   })
-
-  const handleServerResponse = (ok: boolean, msg: string) => {
-    setStatus({
-      ...status,
-      info: { error: !ok, msg },
-      submitted: ok,
-      submitting: false,
-    })
-
-    if (ok) {
-      toast(msg)
-      form.reset()
-    }
-  }
 
   const form = useForm<ContactSchemaValues>({
     resolver: zodResolver(ContactSchema),
@@ -56,23 +48,70 @@ const ContactFormLogic = () => {
     },
   })
 
-  const handleSubmit = (values: ContactSchemaValues) => {
+  const handleServerResponse = (ok: boolean, msg: string) => {
+    // use functional update to avoid stale closures
+    setStatus((prev) => ({
+      ...prev,
+      info: { error: !ok, msg },
+      submitted: ok,
+      submitting: false,
+    }))
+
+    if (ok) {
+      toast(msg)
+      form.reset()
+    }
+  }
+
+  const handleSubmit = async (values: ContactSchemaValues) => {
     setStatus((prevStatus) => ({ ...prevStatus, submitting: true }))
 
-    fetch("https://formspree.io/f/myyqyjzd", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "content-type": "application/json",
-      },
-    })
-      .then((response) =>
+    // use an env var when available so the endpoint isn't hard-coded
+    const endpoint =
+      process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ??
+      "https://formspree.io/f/myyqyjzd"
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+
+      // try to parse json body for a helpful message, but fall back to status text
+      let bodyMessage = ""
+      try {
+        const data = await res.json().catch(() => null)
+        if (data && typeof data === "object") {
+          // common shapes: { error: 'msg' } or { message: 'msg' }
+          bodyMessage = (data.error ||
+            data.message ||
+            JSON.stringify(data)) as string
+        }
+      } catch (e) {
+        /* ignore json parse errors */
+      }
+
+      if (res.ok) {
         handleServerResponse(
-          response.ok,
-          "Thank you, your message has been submitted."
+          true,
+          bodyMessage || "Thank you, your message has been submitted."
         )
+      } else {
+        handleServerResponse(
+          false,
+          bodyMessage || `request failed: ${res.status} ${res.statusText}`
+        )
+      }
+    } catch (err: any) {
+      // network or other unexpected error
+      handleServerResponse(
+        false,
+        err?.message ?? "An unexpected error occurred. Please try again later."
       )
-      .catch((error) => handleServerResponse(false, error.response.data.error))
+    }
   }
 
   return { status, form, handleSubmit }
@@ -95,7 +134,7 @@ export function ContactForm() {
       <div className="absolute inset-x-0 top-0 bottom-6 flex flex-col justify-evenly gap-y-2 overflow-auto p-2 lg:flex-row lg:p-0">
         {isClient ? (
           <ResizablePanelGroup direction={dir}>
-            <WindowPanelSidebar className="lg:border-windows-dark lg:shadow-windows-dark min-h-fit lg:border-r lg:shadow-inner">
+            <WindowPanelSidebar className="lg:border-windows-dark lg:shadow-windows-dark min-h-fit space-y-1 lg:border-r lg:shadow-inner">
               <figure className="flex w-full flex-col items-center justify-start md:p-4">
                 <Contact className="size-12 md:size-24" />
                 <figcaption className="max-w-full text-xl font-semibold">
@@ -108,7 +147,7 @@ export function ContactForm() {
                   <Link
                     href={social.link}
                     key={social.id}
-                    className="hover:border-windows-dark hover:bg-windows/50 flex flex-col items-center p-2 hover:cursor-pointer hover:border hover:border-dashed md:px-4"
+                    className="hover:outline-windows-dark hover:bg-windows/50 flex flex-col items-center p-2 hover:cursor-pointer hover:outline hover:outline-dashed md:px-4"
                     target="_blank"
                   >
                     <span className="size-10">{social.icon}</span>
