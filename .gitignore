@@ -36,3 +36,9 @@ next-env.d.ts
 
 .vscode
 /notes.txt
+.github/conventional-commit.instructions.md
+.github/nextjs-tailwind.instructions.md
+.github/nextjs.instructions.md
+.github/reactjs.instructions.md
+.github/self-explanatory-code-commenting.instructions.md
+.github/task-implementation.instructions.md
