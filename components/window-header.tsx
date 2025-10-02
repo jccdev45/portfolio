@@ -5,7 +5,11 @@ import { AppWindow, X } from "lucide-react"
 import { useWindow } from "@/hooks/useWindow"
 import { Button } from "@/components/ui/button"
 
-export function WindowHeader() {
+interface WindowHeaderProps {
+  allowMaximize?: boolean
+}
+
+export function WindowHeader({ allowMaximize = true }: WindowHeaderProps) {
   const { isMax, setIsMax, icon, title } = useWindow()
 
   return (
@@ -19,6 +23,7 @@ export function WindowHeader() {
           variant="ghost"
           className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black size-6 rounded-none border p-0.5"
           onClick={() => setIsMax(!isMax)}
+          disabled={!allowMaximize}
         >
           <AppWindow />
         </Button>

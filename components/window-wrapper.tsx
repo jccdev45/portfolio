@@ -18,6 +18,7 @@ interface WindowWrapperProps {
   icon: IconType
   menu?: MenuItemType[]
   title: string
+  allowMaximize?: boolean
 }
 
 export function WindowWrapper({
@@ -26,6 +27,7 @@ export function WindowWrapper({
   icon,
   menu,
   title,
+  allowMaximize = true,
 }: WindowWrapperProps) {
   const setIcon = useSetAtom(windowIconAtom)
   const setTitle = useSetAtom(windowTitleAtom)
@@ -37,8 +39,8 @@ export function WindowWrapper({
   }, [setIcon, setTitle, Icon, title])
 
   return (
-    <WindowContent bottomBar>
-      <WindowHeader />
+    <WindowContent bottomBar allowMaximize={allowMaximize}>
+      <WindowHeader allowMaximize={allowMaximize} />
       {menu && <WindowMenu menu={menu} />}
       <div className={cn(`relative size-full`)}>{children}</div>
       {bottomBar && <WindowBottomBar />}
