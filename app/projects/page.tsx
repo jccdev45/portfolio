@@ -4,7 +4,8 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "portfolio",
-  description: "🆗",
+  description:
+    "Selected projects: apps, demos, and live deployments showcasing frontend and full-stack work",
 }
 
 export default function PortfolioPage() {

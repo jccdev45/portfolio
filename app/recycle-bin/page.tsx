@@ -4,7 +4,7 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "recycle bin",
-  description: "🆗",
+  description: "Recycle Bin UI — view and restore demo files",
 }
 
 export default function RecycleBinPage() {

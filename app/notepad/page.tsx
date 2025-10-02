@@ -4,7 +4,7 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "notepad",
-  description: "🆗",
+  description: "Simple in-browser notepad demo — save and edit notes locally",
 }
 
 export default function NotepadPage() {

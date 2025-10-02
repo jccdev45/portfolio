@@ -14,7 +14,8 @@ const chivo = Chivo_Mono({
 
 export const metadata = {
   title: "terminal",
-  description: "🆗",
+  description:
+    "Interactive terminal emulator — try commands and demos in-browser",
 }
 
 export default function TerminalPage() {

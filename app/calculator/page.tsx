@@ -4,7 +4,7 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "calculator",
-  description: "🆗",
+  description: "Simple calculator demo — try arithmetic in-browser",
 }
 
 export default function CalculatorPage() {

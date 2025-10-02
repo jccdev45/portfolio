@@ -4,7 +4,7 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "solitaire",
-  description: "🆗",
+  description: "Classic Solitaire game built with React — play in your browser",
 }
 
 export default function SolitairePage() {

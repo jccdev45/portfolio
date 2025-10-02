@@ -4,7 +4,7 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "download more hard drive space FREE",
-  description: "🆗",
+  description: "Playful demo UI: pretend to download more disk space",
 }
 
 export default function HDPage() {

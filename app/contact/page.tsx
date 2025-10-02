@@ -4,7 +4,7 @@ import { WindowWrapper } from "@/components/window-wrapper"
 
 export const metadata = {
   title: "contact",
-  description: "🆗",
+  description: "Contact page — send a message or view ways to connect",
 }
 
 export default function ContactPage() {
