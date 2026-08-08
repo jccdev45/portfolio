@@ -16,17 +16,17 @@ export default function BlogPage() {
         <h1 className="text-4xl font-bold">blog</h1>
         <p className="mt-4 text-lg">
           Here I will write about new tech I am learning, things that interest
-          me, life in general or literally whatever enters my brain that can't
+          me, life in general or literally whatever enters my brain that can’t
           fit in a tweet.
         </p>
         <p className="mt-4 text-lg">
           Browse the list of posts below and select whichever one your little
-          heart desires. If you'd like to discuss something I've written about,{" "}
+          heart desires. If you’d like to discuss something I’ve written about,{" "}
           <Link
             href="/contact"
             className="text-windows-blue/80 hover:text-windows-blue underline transition-colors duration-200 ease-in-out"
           >
-            let's chat
+            let’s chat
           </Link>
           .
         </p>

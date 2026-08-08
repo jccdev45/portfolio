@@ -2,6 +2,8 @@
 
 import { useLayoutEffect } from "react"
 
+import { ReadmeWindow } from "@/components/readme-window"
+
 const CONSOLE_ART_KEY = "jccdev_console_art_displayed"
 
 const logArt = () => {
@@ -45,5 +47,9 @@ export default function Home() {
     }
   }, [])
 
-  return <section className="">{/* hi */}</section>
+  return (
+    <section className="">
+      <ReadmeWindow />
+    </section>
+  )
 }

@@ -48,7 +48,8 @@ export function Win98Paint() {
   // history stacks store Blobs (preferred) or dataURL strings as a fallback
   const undoStackRef = useRef<Array<Blob | string>>([])
   const redoStackRef = useRef<Array<Blob | string>>([])
-  const [historyVersion, setHistoryVersion] = useState(0)
+  // only the setter is used; bumping it forces a re-render after history changes
+  const [, setHistoryVersion] = useState(0)
 
   const [tool, setTool] = useState<string>("pencil")
   const [primaryColor, setPrimaryColor] = useState("oklch(0.0 0.0 0.0)")
@@ -192,9 +193,8 @@ export function Win98Paint() {
   ) {
     const canvas = canvasRef.current!
     const rect = canvas.getBoundingClientRect()
-    const anyEvent = e as any
-    if (anyEvent.touches && anyEvent.touches.length) {
-      const t = anyEvent.touches[0]
+    if ("touches" in e && e.touches.length) {
+      const t = e.touches[0]
       return {
         // return css pixel coords; context transform handles dpr scaling
         x: t.clientX - rect.left,
@@ -213,7 +213,6 @@ export function Win98Paint() {
   function startDrawing(
     e: React.MouseEvent<HTMLCanvasElement> | React.TouchEvent<HTMLCanvasElement>
   ) {
-    const ctx = ctxRef.current
     // ensure the canvas buffer matches the current css size before drawing.
     // this covers the case where the window was later maximized after initial
     // render but we didn't yet reinitialize the canvas buffer.
@@ -560,12 +559,12 @@ export function Win98Paint() {
         if (typeof blobOrData === "string") {
           // data URL
           // attempt navigator.share on mobile
-          if ((navigator as any).share) {
+          if (typeof navigator.share === "function") {
             try {
               const res = await fetch(blobOrData)
               const blob = await res.blob()
               const file = new File([blob], filename, { type: blob.type })
-              await (navigator as any).share({ files: [file] })
+              await navigator.share({ files: [file] })
             } catch (e) {
               // fallback to opening in new tab
               window.open(blobOrData, "_blank")
@@ -583,12 +582,15 @@ export function Win98Paint() {
         } else {
           // Blob path
           // On supporting browsers, prefer navigator.share with Files
-          if ((navigator as any).canShare && (navigator as any).share) {
+          if (
+            typeof navigator.canShare === "function" &&
+            typeof navigator.share === "function"
+          ) {
             try {
               const file = new File([blobOrData], filename, {
                 type: blobOrData.type,
               })
-              await (navigator as any).share({ files: [file] })
+              await navigator.share({ files: [file] })
             } catch (e) {
               // fallback to download
               const url = URL.createObjectURL(blobOrData)

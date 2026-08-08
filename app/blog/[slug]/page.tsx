@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 import path from "path"
-import { Metadata, ResolvingMetadata } from "next"
+import { Metadata } from "next"
 import { evaluate } from "next-mdx-remote-client/rsc"
 
 interface Frontmatter {
@@ -15,10 +15,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const content = await fs.readFile(
     path.join(process.cwd(), "articles", `${slug}.mdx`)
