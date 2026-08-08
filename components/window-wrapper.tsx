@@ -20,6 +20,8 @@ interface WindowWrapperProps {
   title: string
   allowMaximize?: boolean
   defaultMax?: boolean
+  // for windows that aren't a route of their own and so have nowhere to close to
+  onClose?: () => void
 }
 
 export function WindowWrapper({
@@ -30,6 +32,7 @@ export function WindowWrapper({
   title,
   allowMaximize = true,
   defaultMax = false,
+  onClose,
 }: WindowWrapperProps) {
   const setIcon = useSetAtom(windowIconAtom)
   const setTitle = useSetAtom(windowTitleAtom)
@@ -46,7 +49,7 @@ export function WindowWrapper({
       allowMaximize={allowMaximize}
       defaultMax={title === "Paint" && defaultMax}
     >
-      <WindowHeader allowMaximize={allowMaximize} />
+      <WindowHeader allowMaximize={allowMaximize} onClose={onClose} />
       {menu && <WindowMenu menu={menu} />}
       <div className={cn(`relative size-full`)}>{children}</div>
       {bottomBar && <WindowBottomBar />}

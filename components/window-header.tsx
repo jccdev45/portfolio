@@ -7,9 +7,17 @@ import { Button } from "@/components/ui/button"
 
 interface WindowHeaderProps {
   allowMaximize?: boolean
+  // when provided, the close button dismisses in place instead of routing home
+  onClose?: () => void
 }
 
-export function WindowHeader({ allowMaximize = true }: WindowHeaderProps) {
+const titleBarButton =
+  "border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black size-6 rounded-none border p-0.5"
+
+export function WindowHeader({
+  allowMaximize = true,
+  onClose,
+}: WindowHeaderProps) {
   const { isMax, setIsMax, icon, title } = useWindow()
 
   return (
@@ -21,21 +29,28 @@ export function WindowHeader({ allowMaximize = true }: WindowHeaderProps) {
       <div className="flex items-center gap-1">
         <Button
           variant="ghost"
-          className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black size-6 rounded-none border p-0.5"
+          className={titleBarButton}
           onClick={() => setIsMax(!isMax)}
           disabled={!allowMaximize}
         >
           <AppWindow />
         </Button>
-        <Button
-          variant="ghost"
-          className="border-b-windows-dark border-l-windows-white border-r-windows-dark border-t-windows-white bg-windows text-windows-black size-6 rounded-none border p-0.5"
-          asChild
-        >
-          <Link href="/">
+        {onClose ? (
+          <Button
+            variant="ghost"
+            className={titleBarButton}
+            onClick={onClose}
+            aria-label="Close"
+          >
             <X />
-          </Link>
-        </Button>
+          </Button>
+        ) : (
+          <Button variant="ghost" className={titleBarButton} asChild>
+            <Link href="/" aria-label="Close">
+              <X />
+            </Link>
+          </Button>
+        )}
       </div>
     </div>
   )
