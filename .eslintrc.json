@@ -6,7 +6,8 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "ignorePatterns": [
-    "components/ui"
+    "components/ui",
+    "next-env.d.ts"
   ],
   "overrides": [
     {
@@ -22,5 +23,8 @@
   "plugins": [
     "@typescript-eslint"
   ],
+  "rules": {
+    "no-extra-semi": "off"
+  },
   "root": true
 }

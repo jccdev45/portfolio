@@ -105,11 +105,13 @@ const ContactFormLogic = () => {
           bodyMessage || `request failed: ${res.status} ${res.statusText}`
         )
       }
-    } catch (err: any) {
+    } catch (err) {
       // network or other unexpected error
       handleServerResponse(
         false,
-        err?.message ?? "An unexpected error occurred. Please try again later."
+        err instanceof Error
+          ? err.message
+          : "An unexpected error occurred. Please try again later."
       )
     }
   }
